@@ -17,6 +17,7 @@ int main(int argc, char *argv[])
     w.setgameobject(Play);
     w.show();
     int x = 5;
+    int y = 6;
     return a.exec();
 
 }
