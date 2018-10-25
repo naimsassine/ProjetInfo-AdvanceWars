@@ -3,6 +3,7 @@
 #include <QMouseEvent>
 #include <QMainWindow>
 #include"Gameobject.h"
+#include "map.h"
 class Gameobject;
 namespace Ui {
 class MainWindow;
@@ -15,17 +16,14 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-    void paintEvent(QPaintEvent *event);
-    void mousePressEvent(QMouseEvent *e);
-    void setgameobject(Gameobject value);
+    void redraw();
 
 private:
     Ui::MainWindow *ui;
-    Gameobject gameobject[21][21];
-    bool selected = false;
-    int posXselec;
-    int posYselec;
+    Map *map;
+
 
 };
 
 #endif // MAINWINDOW_H
+
