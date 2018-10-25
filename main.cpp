@@ -18,7 +18,7 @@ int main(int argc, char *argv[])
     w.show();
     int x = 5;
     int y = 6;
-    int z = 6;
+   
 
     return a.exec();
 
