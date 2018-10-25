@@ -12,7 +12,13 @@ int main(int argc, char *argv[])
     Game& game=Game::Instance();
     game.InitGame(w);
     w.show();
+<<<<<<< HEAD
 
+=======
+    int x = 5;
+    int y = 6;
+   
+>>>>>>> f213888fbc1a3fec2257f4a6afdaef580b0df084
 
     return a.exec();
 
