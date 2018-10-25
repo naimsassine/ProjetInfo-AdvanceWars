@@ -10,10 +10,13 @@ public:
     int getPosY() const;
     void setPosY(int value);
     int getType() const;
+    bool getSelected() const;
+    void setSelected(bool value);
 
 private:
     float posX;
     float posY;
     int type;
+    bool selected;
 };
 #endif // Gameobject_H
