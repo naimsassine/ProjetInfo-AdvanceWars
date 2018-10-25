@@ -1,24 +1,18 @@
 #include "mainwindow.h"
-#include "Gameobject.h"
-#include <QtWidgets>
-#include <QWidget>
+#include"Gameobject.h"
+#include "game.h"
 #include <QApplication>
-#include <QPushButton>
-#include <QApplication>
-#include <QGraphicsScene>
-#include <QGraphicsView>
 #include <QHBoxLayout>
 int main(int argc, char *argv[])
-{   Gameobject Play(5,10,2);
+{
 
 
     QApplication a(argc, argv);
     MainWindow w;
-    w.setgameobject(Play);
+    Game& game=Game::Instance();
+    game.InitGame(w);
     w.show();
-    int x = 5;
-    int y = 6;
-    int z = 6;
+
 
     return a.exec();
 
