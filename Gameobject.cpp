@@ -4,6 +4,7 @@ Gameobject::Gameobject(int initX, int initY, int initType)
  posX=initX;
  posY=initY;
  type=initType;
+ selected = false;
 
 }
 Gameobject::Gameobject()
@@ -29,6 +30,16 @@ void Gameobject::setPosY(int value)
 int Gameobject::getType() const
 {
     return type;
+}
+
+bool Gameobject::getSelected() const
+{
+    return selected;
+}
+
+void Gameobject::setSelected(bool value)
+{
+    selected = value;
 }
 
 void Gameobject::setPosX(int value)
