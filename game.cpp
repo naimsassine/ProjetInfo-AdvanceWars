@@ -1,7 +1,7 @@
 #include "game.h"
 #include <iostream>
 #include <math.h>
-#include "plain.h"
+#include "Plain.h"
 Game Game::gameinst=Game();
 Game::Game()
 {

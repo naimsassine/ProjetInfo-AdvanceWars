@@ -1,4 +1,4 @@
-#include "plain.h"
+#include "Plain.h"
 
 
 Plain::Plain(int x, int y)
