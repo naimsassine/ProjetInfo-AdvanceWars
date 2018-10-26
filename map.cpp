@@ -9,17 +9,18 @@ Map::Map(QWidget *parent ) : QWidget(parent)
 }
 
 void Map::paintEvent(QPaintEvent *event)
-{
+{   QPixmap pixmap(":/plain.gif");
     QPainter painter(this);
     for(int i=0 ;i<21;i++){
         int c=i+5;
         for (int j=0; j <21 ;j++){
 
-           painter.drawRect(c*40,j*40,38,38);
+
            if(gameobject[i][j].getType() == 1){
-           painter.fillRect(c*40,j*40,38,38,Qt::cyan);}
+                  painter.drawPixmap(c*40,j*40,40,40,pixmap);
+           }
            else{
-           painter.fillRect(c*40,j*40,38,38,Qt::red);}
+           painter.fillRect(c*40,j*40,40,40,Qt::red);}
         }
     }
 
