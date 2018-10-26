@@ -1,5 +1,6 @@
 #include "game.h"
 #include <iostream>
+#include <math.h>
 Game Game::gameinst=Game();
 Game::Game()
 {
@@ -16,7 +17,7 @@ void Game::move(QMouseEvent *e)
     if(gameobject[posXselec][posYselec].getSelected()){
         float x=floorf(e->x()/40);
         float y=floorf(e->y()/40);
-        int r= (int)x;
+        int r= (int)x-5;
         int s= (int)y;
 
     std::cout<<"la position en X est "<< e->x() <<std::endl;
@@ -36,7 +37,7 @@ void Game::move(QMouseEvent *e)
     else{
         float x=floorf(e->x()/40);
         float y=floorf(e->y()/40);
-        int z= (int)x;
+        int z= (int)x-5;
         int e= (int)y;
        if( gameobject[z][e].getType()==2 ){
            std::cout<<"la position en X est "<<std::endl;
