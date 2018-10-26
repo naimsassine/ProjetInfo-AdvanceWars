@@ -7,14 +7,6 @@ public:
 
 private:
     int nbVie;
-    int typeTerrain;
-
-
-
-
-
-
-
 
 };
 

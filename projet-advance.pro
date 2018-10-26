@@ -32,7 +32,14 @@ SOURCES += \
     map.cpp \
     Terrain.cpp \
     Unites.cpp \
-    plain.cpp
+    plain.cpp \
+    Infanterie.cpp \
+    NonInfanterie.cpp \
+    Aerienne.cpp \
+    Buildings.cpp \
+    Ville.cpp \
+    Usine.cpp \
+    Aeroport.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -41,7 +48,14 @@ HEADERS += \
     map.h \
     Terrain.h \
     Unites.h \
-    plain.h
+    plain.h \
+    Infanterie.h \
+    NonInfanterie.h \
+    Aerienne.h \
+    Buildings.h \
+    Ville.h \
+    Usine.h \
+    Aeroport.h
 
 FORMS += \
         mainwindow.ui

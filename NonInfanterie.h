@@ -1,0 +1,4 @@
+#ifndef NONINFANTERIE_H
+#define NONINFANTERIE_H
+
+#endif // NONINFANTERIE_H

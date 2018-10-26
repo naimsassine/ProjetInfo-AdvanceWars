@@ -10,13 +10,12 @@ public:
     int getvie();
     int getdamage();
     int getnumero();
-private:
+protected:
     int vie;
     int ptattack;
     int ptdeplacement;
     int damage;
     int numero;
-
 };
 
 
