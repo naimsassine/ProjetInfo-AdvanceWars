@@ -1,6 +1,7 @@
 #include "game.h"
 #include <iostream>
 #include <math.h>
+#include "plain.h"
 Game Game::gameinst=Game();
 Game::Game()
 {
@@ -27,7 +28,7 @@ void Game::move(QMouseEvent *e)
     gameobject[posXselec][posYselec].setPosX(r);
     gameobject[posXselec][posYselec].setPosY(s);
     gameobject[r][s]=gameobject[posXselec][posYselec];
-    gameobject[posXselec][posYselec] = *new Gameobject(posXselec,posYselec,1);
+    gameobject[posXselec][posYselec] = *new Gameobject(posXselec,posYselec);
     std::cout<< "gameobject[posXselec][posYselec]="<< gameobject[posXselec][posYselec].getType()  <<std::endl;
 
 
@@ -55,7 +56,7 @@ void Game::InitGame(MainWindow &wind)
     for(int i=0 ;i<21;i++){
         for (int j=0; j <21 ;j++){
 
-            gameobject[i][j]= *new Gameobject(i,j,1);
+            gameobject[i][j]= *new Gameobject(i,j) ;
         }}
     Gameobject Play(5,10,2);
     gameobject[5][10]=Play;

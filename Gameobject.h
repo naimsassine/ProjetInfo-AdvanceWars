@@ -3,7 +3,7 @@
 class Gameobject
 {
 public:
-    Gameobject(int initX,int initY,int type) ;
+    Gameobject(int initX,int initY, int Inittype = 0) ;
     Gameobject() ;
     int getPosX() const;
     void setPosX(int value);
@@ -12,8 +12,7 @@ public:
     int getType() const;
     bool getSelected() const;
     void setSelected(bool value);
-
-private:
+protected:
     float posX;
     float posY;
     int type;

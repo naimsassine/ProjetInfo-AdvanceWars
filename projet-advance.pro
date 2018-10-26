@@ -29,13 +29,19 @@ SOURCES += \
         mainwindow.cpp \
     Gameobject.cpp \
     game.cpp \
-    map.cpp
+    map.cpp \
+    Terrain.cpp \
+    Unites.cpp \
+    plain.cpp
 
 HEADERS += \
         mainwindow.h \
     Gameobject.h \
     game.h \
-    map.h
+    map.h \
+    Terrain.h \
+    Unites.h \
+    plain.h
 
 FORMS += \
         mainwindow.ui

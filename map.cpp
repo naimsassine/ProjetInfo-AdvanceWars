@@ -16,7 +16,7 @@ void Map::paintEvent(QPaintEvent *event)
         for (int j=0; j <21 ;j++){
 
 
-           if(gameobject[i][j].getType() == 1){
+           if(gameobject[i][j].getType() == 0){
                   painter.drawPixmap(c*40,j*40,40,40,pixmap);
            }
            else{

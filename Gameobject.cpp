@@ -1,10 +1,10 @@
 #include "Gameobject.h"
-Gameobject::Gameobject(int initX, int initY, int initType)
+Gameobject::Gameobject(int initX, int initY, int Inittype)
 {
  posX=initX;
  posY=initY;
- type=initType;
  selected = false;
+ type = Inittype;
 
 }
 Gameobject::Gameobject()
