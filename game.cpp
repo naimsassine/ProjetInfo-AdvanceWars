@@ -1,5 +1,6 @@
 #include "game.h"
 #include <iostream>
+#include <math.h>
 Game Game::gameinst=Game();
 Game::Game()
 {
