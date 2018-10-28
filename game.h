@@ -14,5 +14,7 @@ private:
     Gameobject gameobject[21][21];
     int posXselec=0;
     int posYselec=0;
+
+    // NAim on te...//
 };
 #endif // GAME_H
