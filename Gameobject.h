@@ -12,6 +12,7 @@ public:
     int getType() const;
     bool getSelected() const;
     void setSelected(bool value);
+    // LOLOLOLOLOOLOLOLOLOLOL //
 protected:
     float posX;
     float posY;
