@@ -1,6 +1,7 @@
 #ifndef Gameobject_H
 #define Gameobject_H
 #include <QString>
+
 class Gameobject
 {
 public:
@@ -20,7 +21,8 @@ protected:
     float posX;
     float posY;
     int type;
-    bool selected;
+    bool selected=false;
     QString filename;
+
 };
 #endif // Gameobject_H
