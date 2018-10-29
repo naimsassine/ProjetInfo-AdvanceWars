@@ -1,5 +1,6 @@
 #ifndef Gameobject_H
 #define Gameobject_H
+#include <QString>
 class Gameobject
 {
 public:
@@ -13,10 +14,13 @@ public:
     bool getSelected() const;
     void setSelected(bool value);
     // LOLOLOLOLOOLOLOLOLOLOL //
+    QString getFilename() const;
+
 protected:
     float posX;
     float posY;
     int type;
     bool selected;
+    QString filename;
 };
 #endif // Gameobject_H
