@@ -11,15 +11,28 @@ Map::Map(QWidget *parent ) : QWidget(parent)
 }
 
 void Map::paintEvent(QPaintEvent *event)
-{   QPixmap pixmap(":/plain.gif");
+{
     QPainter painter(this);
-    for(int i=0 ;i<21;i++){
+    for(int i=0 ;i<20;i++){
         int c=i+5;
-        for (int j=0; j <21 ;j++){
+        for (int j=0; j <20 ;j++){
 
 
            if(gameobject[i][j].getType() == 0){
+                  QPixmap pixmap(":/plain.gif");
                   painter.drawPixmap(c*40,j*40,40,40,pixmap);
+           }
+           else if(gameobject[i][j].getType() == 1){
+               QPixmap pixmap(":/plain.gif");
+               painter.drawPixmap(c*40,j*40,40,40,pixmap);
+           }
+           else if(gameobject[i][j].getType() == 2){
+               QPixmap pixmap(":/sea.gif");
+               painter.drawPixmap(c*40,j*40,40,40,pixmap);
+           }
+           else if(gameobject[i][j].getType() == 3){
+               QPixmap pixmap(":/mountain.gif");
+               painter.drawPixmap(c*40,j*40,40,40,pixmap);
            }
            else{
            painter.fillRect(c*40,j*40,40,40,Qt::red);}
@@ -55,7 +68,7 @@ void Map::redraw()
 
 void Map::readfile()
 {    int c;
-     QFile df(":/test.txt");
+     QFile df(":/map.txt");
 
             if (!df.open(QIODevice::ReadOnly | QIODevice::Text)) {
 
