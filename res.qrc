@@ -13,5 +13,6 @@
         <file>reef.gif</file>
         <file>sea.gif</file>
         <file>wood.gif</file>
+        <file>map.txt</file>
     </qresource>
 </RCC>
