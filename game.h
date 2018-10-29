@@ -12,8 +12,8 @@ private:
     static Game gameinst;
     MainWindow *window;
     Gameobject gameobject[21][21];
-    int posXselec=0;
-    int posYselec=0;
+    int posXselec=12;
+    int posYselec=13;
 
     // NAim on te...//
 };
