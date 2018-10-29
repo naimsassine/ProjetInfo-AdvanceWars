@@ -12,6 +12,7 @@ private:
     static Game gameinst;
     MainWindow *window;
     Gameobject gameobject[21][21];
+    Gameobject set;
     int posXselec=0;
     int posYselec=0;
 
