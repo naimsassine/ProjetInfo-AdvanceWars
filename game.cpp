@@ -2,6 +2,9 @@
 #include <iostream>
 #include <math.h>
 #include "Plain.h"
+#include "Water.h"
+#include "Mountain.h"
+#include <QTextStream>
 Game Game::gameinst=Game();
 Game::Game()
 {
@@ -53,14 +56,49 @@ void Game::move(QMouseEvent *e)
 void Game::InitGame(MainWindow &wind)
 {
     window = &wind ;
-    for(int i=0 ;i<21;i++){
-        for (int j=0; j <21 ;j++){
 
-            gameobject[i][j]= *new Gameobject(i,j) ;
-        }}
-    Gameobject Play(5,10,2);
-    gameobject[5][10]=Play;
-    window->redraw();
+
+    int c;
+    QFile df(":/map.txt");
+
+     if (!df.open(QIODevice::ReadOnly | QIODevice::Text)) {
+
+
+                }
+
+                QTextStream txStream(&df);
+                int d=0;
+
+                while (!txStream.atEnd()) {
+
+                    QString text = txStream.readLine();
+                    QStringList s=text.split(",");
+                    for(int j =0 ;j<20 ;j++){
+                    c = s[j].toInt();
+                    if(c==1){
+                        gameobject[j][d]= Plain(j,d);
+
+                    }
+                    if(c==2){
+                        gameobject[j][d]= Water(j,d);
+
+                    }
+                    if(c==3){
+                        gameobject[j][d]= Mountain(j,d);
+
+                    }
+
+
+                    }
+                    d++;
+
+
+                }
+
+            df.close();
+            /*Gameobject Play(5,10,36);
+            gameobject[5][10]=Play;*/
+            window->redraw();
 
 
 
