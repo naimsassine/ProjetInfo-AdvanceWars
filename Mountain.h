@@ -5,7 +5,7 @@
 class Mountain : public Terrain
 {
 public:
-    Mountain();
+    Mountain(int X, int Y);
 };
 
 #endif // MOUNTAIN_H
