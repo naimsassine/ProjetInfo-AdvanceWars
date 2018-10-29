@@ -1,5 +1,5 @@
-
-string Terrain::getFilename() const
+#include "Terrain.h"
+QString  Terrain::getFilename() const
 {
     return filename;
 }
