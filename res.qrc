@@ -1,5 +1,17 @@
 <RCC>
     <qresource prefix="/">
         <file>plain.gif</file>
+        <file>greenearthairport.gif</file>
+        <file>greenearthbase.gif</file>
+        <file>greenearthcity.gif</file>
+        <file>hbridge.gif</file>
+        <file>hpipe.gif</file>
+        <file>hriver.gif</file>
+        <file>hroad.gif</file>
+        <file>hshoal.gif</file>
+        <file>mountain.gif</file>
+        <file>reef.gif</file>
+        <file>sea.gif</file>
+        <file>wood.gif</file>
     </qresource>
 </RCC>
