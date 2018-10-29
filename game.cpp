@@ -28,10 +28,12 @@ void Game::move(QMouseEvent *e)
     std::cout<<"la position en Y est "<< e->y() <<std::endl;
     std::cout<<"la position en X est "<< x <<std::endl;
     std::cout<<"la position en Y est "<< y <<std::endl;
+    Gameobject c =gameobject[r][s];
     gameobject[posXselec][posYselec].setPosX(r);
     gameobject[posXselec][posYselec].setPosY(s);
     gameobject[r][s]=gameobject[posXselec][posYselec];
-    gameobject[posXselec][posYselec] = *new Gameobject(posXselec,posYselec);
+    gameobject[posXselec][posYselec] =set;
+    set=c;
     std::cout<< "gameobject[posXselec][posYselec]="<< gameobject[posXselec][posYselec].getType()  <<std::endl;
 
 
@@ -98,6 +100,7 @@ void Game::InitGame(MainWindow &wind)
             df.close();
 
             Gameobject Play(5,10,36);
+            set=gameobject[5][10];
             gameobject[5][10]=Play;
             window->redraw();
 
