@@ -5,10 +5,10 @@
 using namespace std;
 class Terrain : public Gameobject {
 public:
-    QString  getFilename() const;
 
-protected:
-    QString filename;
+
+
+
 private:
     int nbVie;
 
