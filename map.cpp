@@ -3,6 +3,8 @@
 #include <QPainter>
 #include <iostream>
 #include <QMouseEvent>
+#include <QTextStream>
+
 Map::Map(QWidget *parent ) : QWidget(parent)
 {
 
@@ -50,3 +52,30 @@ void Map::redraw()
 {
     this->repaint();
 }
+
+void Map::readfile()
+{    int c;
+     QFile df(":/test.txt");
+
+            if (!df.open(QIODevice::ReadOnly | QIODevice::Text)) {
+
+
+            }
+
+            QTextStream txStream(&df);
+
+            while (!txStream.atEnd()) {
+
+                QString text = txStream.readLine();
+                QStringList s=text.split(",");
+                for(int j =0 ;j<7 ;j++){
+                c = s[j].toInt();
+
+                }
+
+
+            }
+
+        df.close();
+}
+
