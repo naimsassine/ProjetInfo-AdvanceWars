@@ -43,7 +43,7 @@ void Game::move(QMouseEvent *e)
         float y=floorf(e->y()/40);
         int z= (int)x-5;
         int e= (int)y;
-       if( gameobject[z][e].getType()==2 ){
+       if( gameobject[z][e].getType()==36 ){
            std::cout<<"la position en X est "<<std::endl;
              gameobject[z][e].setSelected(true);
              std::cout<<"la position en X est "<<std::endl;
@@ -96,8 +96,9 @@ void Game::InitGame(MainWindow &wind)
                 }
 
             df.close();
-            /*Gameobject Play(5,10,36);
-            gameobject[5][10]=Play;*/
+
+            Gameobject Play(5,10,36);
+            gameobject[5][10]=Play;
             window->redraw();
 
 
