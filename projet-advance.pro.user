@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<<<<<<< HEAD
-<!-- Written by QtCreator 4.7.1, 2018-10-28T21:02:44. -->
-=======
-<!-- Written by QtCreator 4.7.1, 2018-10-30T19:07:58. -->
->>>>>>> 635f44d3167c1917d1768b81ecf7e3f3bc502111
+<!-- Written by QtCreator 4.7.1, 2018-10-31T00:01:59. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -310,23 +306,14 @@
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">projet-advance</value>
-<<<<<<< HEAD
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName"></value>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:C:/Users/ramit/Downloads/ProjetInfo-AdvanceWars/projet-advance.pro</value>
-=======
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">projet-advance2</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:/Users/naimsassine/Desktop/ulb/BA3/Projet Info/projet-advance/ProjetInfo-AdvanceWars/projet-advance.pro</value>
     <value type="bool" key="QmakeProjectManager.QmakeRunConfiguration.UseDyldImageSuffix">false</value>
->>>>>>> 635f44d3167c1917d1768b81ecf7e3f3bc502111
     <value type="bool" key="QmakeProjectManager.QmakeRunConfiguration.UseLibrarySearchPath">true</value>
     <value type="QString" key="Qt4ProjectManager.Qt4RunConfiguration.CommandLineArguments"></value>
     <value type="QString" key="Qt4ProjectManager.Qt4RunConfiguration.ProFile">projet-advance.pro</value>
     <value type="QString" key="Qt4ProjectManager.Qt4RunConfiguration.UserWorkingDirectory"></value>
-<<<<<<< HEAD
-    <value type="QString" key="Qt4ProjectManager.Qt4RunConfiguration.UserWorkingDirectory.default">C:/Users/ramit/Downloads/build-projet-advance-Desktop_Qt_5_11_2_MinGW_32bit-Debug</value>
-=======
     <value type="QString" key="Qt4ProjectManager.Qt4RunConfiguration.UserWorkingDirectory.default">/Users/naimsassine/Desktop/ulb/BA3/Projet Info/build-projet-advance-Desktop_Qt_5_11_2_clang_64bit-Debug/projet-advance.app/Contents/MacOS</value>
->>>>>>> 635f44d3167c1917d1768b81ecf7e3f3bc502111
     <value type="uint" key="RunConfiguration.QmlDebugServerPort">3768</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
