@@ -2,6 +2,10 @@
 #define MAP_H
 #include <QWidget>
 #include"Gameobject.h"
+#include <QString>
+
+
+
 class Map : public QWidget{
     Q_OBJECT
 public:
@@ -10,8 +14,10 @@ public:
     void mousePressEvent(QMouseEvent *e);
     void setgameobject();
     void redraw();
+    void readfile();
 private:
-    Gameobject gameobject[21][21];
+    Gameobject gameobject[22][18];
+    QString filename;
 
 };
 #endif // MAP_H

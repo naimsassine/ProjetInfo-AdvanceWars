@@ -5,7 +5,7 @@
 class Water : public Terrain
 {
 public:
-    Water();
+    Water(int X,int Y);
 };
 
 #endif // WATER_H

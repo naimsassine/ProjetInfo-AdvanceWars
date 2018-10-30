@@ -42,6 +42,11 @@ void Gameobject::setSelected(bool value)
     selected = value;
 }
 
+QString Gameobject::getFilename() const
+{
+    return filename;
+}
+
 void Gameobject::setPosX(int value)
 {
     posX = value;
