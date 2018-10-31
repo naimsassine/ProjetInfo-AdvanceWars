@@ -14,5 +14,58 @@
         <file>sea.gif</file>
         <file>wood.gif</file>
         <file>map.txt</file>
+        <file>reelmap.txt</file>
+        <file>criver.gif</file>
+        <file>croad.gif</file>
+        <file>epipeend.gif</file>
+        <file>espipe.gif</file>
+        <file>esriver.gif</file>
+        <file>esroad-2.gif</file>
+        <file>esroad.gif</file>
+        <file>eswriver.gif</file>
+        <file>eswroad.gif</file>
+        <file>greenearthcomtower.gif</file>
+        <file>greenearthhq.gif</file>
+        <file>greenearthlab.gif</file>
+        <file>greenearthport.gif</file>
+        <file>hbridge-2.gif</file>
+        <file>hpipe-2.gif</file>
+        <file>hriver-2.gif</file>
+        <file>hroad-2.gif</file>
+        <file>hshoal-2.gif</file>
+        <file>hshoaln.gif</file>
+        <file>jadesunhq.gif</file>
+        <file>missilesilo.gif</file>
+        <file>nepipe.gif</file>
+        <file>neriver.gif</file>
+        <file>neroad-2.gif</file>
+        <file>neroad.gif</file>
+        <file>nesriver.gif</file>
+        <file>nesroad.gif</file>
+        <file>neutralairport.gif</file>
+        <file>neutralbase.gif</file>
+        <file>neutralcity.gif</file>
+        <file>npipeend.gif</file>
+        <file>reef-2.gif</file>
+        <file>spipeend.gif</file>
+        <file>swnriver-2.gif</file>
+        <file>swnriver.gif</file>
+        <file>swnroad.gif</file>
+        <file>swpipe.gif</file>
+        <file>swriver.gif</file>
+        <file>swroad.gif</file>
+        <file>vbridge.gif</file>
+        <file>vpipe.gif</file>
+        <file>vriver.gif</file>
+        <file>vroad.gif</file>
+        <file>vshoal.gif</file>
+        <file>vshoale.gif</file>
+        <file>wneriver.gif</file>
+        <file>wneroad.gif</file>
+        <file>wnpipe.gif</file>
+        <file>wnriver.gif</file>
+        <file>wnroad-2.gif</file>
+        <file>wnroad.gif</file>
+        <file>wpipeend.gif</file>
     </qresource>
 </RCC>

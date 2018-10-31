@@ -74,7 +74,7 @@ void Game::InitGame(MainWindow &wind)
 
                     QString text = txStream.readLine();
                     QStringList s=text.split(",");
-                    for(int j =0 ;j<20 ;j++){
+                    for(int j =0 ;j<21 ;j++){
                     c = s[j].toInt();
                     if(c==1){
                         gameobject[j][d]= Plain(j,d);

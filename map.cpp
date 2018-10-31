@@ -13,9 +13,9 @@ Map::Map(QWidget *parent ) : QWidget(parent)
 void Map::paintEvent(QPaintEvent *event)
 {
     QPainter painter(this);
-    for(int i=0 ;i<20;i++){
+    for(int i=0 ;i<21;i++){
         int c=i+5;
-        for (int j=0; j <20 ;j++){
+        for (int j=0; j <17 ;j++){
 
 
            if(gameobject[i][j].getType() == 0){
@@ -55,7 +55,7 @@ void Map::mousePressEvent(QMouseEvent *e)
 void Map::setgameobject()
 {   Game& game=Game::Instance();
     for(int i=0 ;i<21;i++){
-        for (int j=0; j <21 ;j++){
+        for (int j=0; j <17 ;j++){
             gameobject[i][j]=game.getgameobject(i,j);
         }}
 

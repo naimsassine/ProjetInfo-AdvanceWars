@@ -16,7 +16,7 @@ public:
     void redraw();
     void readfile();
 private:
-    Gameobject gameobject[21][21];
+    Gameobject gameobject[22][18];
     QString filename;
 
 };
