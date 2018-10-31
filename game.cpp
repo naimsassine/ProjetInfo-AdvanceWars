@@ -65,7 +65,6 @@ void Game::InitGame(MainWindow &wind)
 
      if (!df.open(QIODevice::ReadOnly | QIODevice::Text)) {
 
-
                 }
 
                 QTextStream txStream(&df);
@@ -98,7 +97,6 @@ void Game::InitGame(MainWindow &wind)
                 }
 
             df.close();
-
             Gameobject Play(5,10,36);
             set=gameobject[5][10];
             gameobject[5][10]=Play;
