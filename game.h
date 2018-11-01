@@ -4,7 +4,8 @@
 class Game{
 public:
     static Game& Instance();
-    void move(QMouseEvent *e);
+    void move(int x,int y);
+    void movearrow(int x,int y);
     void InitGame(MainWindow &wind);
     Gameobject getgameobject(int x,int y);
 private:
