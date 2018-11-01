@@ -39,8 +39,6 @@ void Game::move(QMouseEvent *e)
     gameobject[posXselec][posYselec] =set;
     set=c;
     std::cout<< "gameobject[posXselec][posYselec]="<< gameobject[posXselec][posYselec].getType()  <<std::endl;
-
-
     gameobject[r][s].setSelected(false);
     window->redraw();
     }

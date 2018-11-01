@@ -190,7 +190,6 @@ void Map::mousePressEvent(QMouseEvent *e)
 {
 
     if(e->buttons() == Qt::LeftButton){
-
         Game& game=Game::Instance();
         game.move(e);
     }
