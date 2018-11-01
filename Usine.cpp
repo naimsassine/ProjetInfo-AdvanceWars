@@ -8,14 +8,15 @@ Usine::Usine(int X, int Y){
 
 }
 
-//Usine::Usine(int X, int Y, int t, int argent , int PC)
-//{
-    //posX = X;
-    //posY= Y;
-    //t = 3 ;
-    //argent = 1000; //Argent qu'on fournit à chaque tour//
-  //  PC = 20; //Points de capture//
-//}
+Usine::Usine(int X, int Y, int t, int argent , int PC)
+{
+    posX = X;
+    posY= Y;
+    t = 3 ;
+    argent = 1000; //Argent qu'on fournit à chaque tour//
+    PC = 20; //Points de capture//
+}
+
 
 
 void Usine::repair(Unites c)

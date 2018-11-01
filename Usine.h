@@ -6,6 +6,7 @@ class Usine : public Buildings
 {
 public:
     Usine(int posX, int posY, int def, int argent, int PC);
+    Usine(int X, int Y);
     void repair(Unites c);
     int getTeam() const;
     void setTeam(int value);
