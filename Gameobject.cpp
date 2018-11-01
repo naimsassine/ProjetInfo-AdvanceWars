@@ -32,6 +32,11 @@ int Gameobject::getType() const
     return type;
 }
 
+int Gameobject::setType(int value)
+{
+    type = value;
+}
+
 bool Gameobject::getSelected() const
 {
     return selected;

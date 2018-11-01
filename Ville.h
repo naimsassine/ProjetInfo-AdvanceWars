@@ -5,7 +5,7 @@
 class Ville : public Buildings
 {
 public:
-    Ville();
+    Ville(int X, int Y);
 };
 
 #endif // VILLE_H
