@@ -1,12 +1,16 @@
 #ifndef INFANTERIE_H
 #define INFANTERIE_H
 #include "Unites.h"
-class Infanterie : public Unites {
+#include <QKeyEvent>
 
+
+class Infanterie : public Unites {
 private:
     int nombreDeTour;
 
+
 public:
+    Infanterie(int InitX,int InitY);
 
     void capture();
 
