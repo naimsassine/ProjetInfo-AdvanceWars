@@ -4,6 +4,7 @@
 
 class Unites : public Gameobject{
 public:
+    Unites();
     void attack();
     void attend();
     void fusion();
@@ -12,6 +13,7 @@ public:
     int getnumero();
 protected:
     int vie;
+    int prix;
     int ptattack;
     int ptdeplacement;
     int damage;

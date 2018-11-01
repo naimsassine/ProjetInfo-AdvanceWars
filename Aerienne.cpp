@@ -1,6 +1,7 @@
 #include "Aerienne.h"
 #include "Unites.h"
-Aerienne :: Aerienne() {
+Aerienne::Aerienne() {
+
 
 
     this->vie = 0;

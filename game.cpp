@@ -35,13 +35,13 @@ void Game::move(int x,int y)
     gameobject[posXselec][posYselec] =set;
     set=c;
     std::cout<< "gameobject[posXselec][posYselec]="<< gameobject[posXselec][posYselec].getType()  <<std::endl;
-<<<<<<< HEAD
-    gameobject[r][s].setSelected(false);
-=======
+//<<<<< HEAD
+   //ameobject[r][s].setSelected(false);
+//=======
 
 
-    gameobject[x][y].setSelected(false);
->>>>>>> 1c7c5eefb17152d0e80385af124259d2e83269b4
+   //ameobject[x][y].setSelected(false);
+//>>>>> 1c7c5eefb17152d0e80385af124259d2e83269b4
     window->redraw();
     }
     else{

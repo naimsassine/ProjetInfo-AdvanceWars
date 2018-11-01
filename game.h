@@ -8,6 +8,7 @@ public:
     void movearrow(int x,int y);
     void InitGame(MainWindow &wind);
     Gameobject getgameobject(int x,int y);
+    void endtour();
 private:
     Game();
     static Game gameinst;
