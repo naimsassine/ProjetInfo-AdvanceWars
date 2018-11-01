@@ -4,6 +4,10 @@
 #include "Plain.h"
 #include "Water.h"
 #include "Mountain.h"
+#include "Ville.h"
+#include "Aeroport.h"
+#include "Pipe.h"
+#include "Road.h"
 #include <QTextStream>
 Game Game::gameinst=Game();
 Game::Game()
@@ -45,7 +49,7 @@ void Game::move(QMouseEvent *e)
         float y=floorf(e->y()/40);
         int z= (int)x-5;
         int e= (int)y;
-       if( gameobject[z][e].getType()==36 ){
+       if( gameobject[z][e].getType()==1998 ){
            std::cout<<"la position en X est "<<std::endl;
              gameobject[z][e].setSelected(true);
              std::cout<<"la position en X est "<<std::endl;
@@ -61,10 +65,9 @@ void Game::InitGame(MainWindow &wind)
 
 
     int c;
-    QFile df(":/map.txt");
+    QFile df(":/reelmap.txt");
 
      if (!df.open(QIODevice::ReadOnly | QIODevice::Text)) {
-
 
                 }
 
@@ -77,17 +80,160 @@ void Game::InitGame(MainWindow &wind)
                     QStringList s=text.split(",");
                     for(int j =0 ;j<21 ;j++){
                     c = s[j].toInt();
+
                     if(c==1){
                         gameobject[j][d]= Plain(j,d);
-
                     }
                     if(c==2){
-                        gameobject[j][d]= Water(j,d);
-
+                        gameobject[j][d]= Mountain(j,d);
                     }
                     if(c==3){
                         gameobject[j][d]= Mountain(j,d);
-
+                        gameobject[j][d].setType(3);
+                    }
+                    if(c==4){
+                        gameobject[j][d]= Water(j,d);
+                        gameobject[j][d].setType(4);
+                    }
+                    if(c==5){
+                        gameobject[j][d]= Water(j,d);
+                        gameobject[j][d].setType(5);
+                    }
+                    if(c==6){
+                        gameobject[j][d]= Water(j,d);
+                        gameobject[j][d].setType(c);
+                    }
+                    if(c==7){
+                        gameobject[j][d]= Water(j,d);
+                        gameobject[j][d].setType(c);
+                    }
+                    if(c==8){
+                        gameobject[j][d]= Water(j,d);
+                        gameobject[j][d].setType(c);
+                    }
+                    if(c==9){
+                        gameobject[j][d]= Water(j,d);
+                        gameobject[j][d].setType(c);
+                    }
+                    if(c==104){
+                        gameobject[j][d]= Pipe(j,d);
+                        gameobject[j][d].setType(c);
+                    }
+                    if(c==102){
+                        gameobject[j][d]= Pipe(j,d);
+                        gameobject[j][d].setType(c);
+                    }
+                    if(c==108){
+                        gameobject[j][d]= Pipe(j,d);
+                        gameobject[j][d].setType(c);
+                    }
+                    if(c==18){
+                        gameobject[j][d]= Road(j,d);
+                        gameobject[j][d].setType(c);
+                    }
+                    if(c==15){
+                        gameobject[j][d]= Road(j,d);
+                        gameobject[j][d].setType(c);
+                    }
+                    if(c==34){
+                        gameobject[j][d]= Ville(j,d);
+                        gameobject[j][d].setType(c);
+                    }
+                    if(c==30){
+                        gameobject[j][d]= Plain(j,d);
+                        gameobject[j][d].setType(c);
+                    }
+                    if(c==33){
+                        gameobject[j][d]= Buildings(j,d);
+                        gameobject[j][d].setType(c);
+                    }
+                    if(c==19){
+                        gameobject[j][d]= Road(j,d);
+                        gameobject[j][d].setType(c);
+                    }
+                    if(c==106){
+                        gameobject[j][d]= Pipe(j,d);
+                        gameobject[j][d].setType(c);
+                    }
+                    if(c==24){
+                        gameobject[j][d]= Road(j,d);
+                        gameobject[j][d].setType(c);
+                    }
+                    if(c==22){
+                        gameobject[j][d]= Road(j,d);
+                        gameobject[j][d].setType(c);
+                    }
+                    if(c==101){
+                        gameobject[j][d]= Pipe(j,d);
+                        gameobject[j][d].setType(c);
+                    }
+                    if(c==125){
+                        gameobject[j][d]= Buildings(j,d);
+                        gameobject[j][d].setType(c);
+                    }
+                    if(c==35){
+                        gameobject[j][d]= Buildings(j,d);
+                        gameobject[j][d].setType(c);
+                    }
+                    if(c==109){
+                        gameobject[j][d]= Pipe(j,d);
+                        gameobject[j][d].setType(c);
+                    }
+                    if(c==123){
+                        gameobject[j][d]= Buildings(j,d);
+                        gameobject[j][d].setType(c);
+                    }
+                    if(c==23){
+                        gameobject[j][d]= Road(j,d);
+                        gameobject[j][d].setType(c);
+                    }
+                    if(c==21){
+                        gameobject[j][d]= Road(j,d);
+                        gameobject[j][d].setType(c);
+                    }
+                    if(c==16){
+                        gameobject[j][d]= Road(j,d);
+                        gameobject[j][d].setType(c);
+                    }
+                    if(c==26){
+                        gameobject[j][d]= Road(j,d);
+                        gameobject[j][d].setType(c);
+                    }
+                    if(c==29){
+                        gameobject[j][d]= Plain(j,d);
+                        gameobject[j][d].setType(c);
+                    }
+                    if(c==20){
+                        gameobject[j][d]= Road(j,d);
+                        gameobject[j][d].setType(c);
+                    }
+                    if(c==110){
+                        gameobject[j][d]= Pipe(j,d);
+                        gameobject[j][d].setType(c);
+                    }
+                    if(c==36){
+                        gameobject[j][d]= Aeroport(j,d);
+                        gameobject[j][d].setType(c);
+                    }
+                    if (c==95){
+                        gameobject[j][d]= Buildings(j,d);
+                        gameobject[j][d].setType(c);
+                    }
+                    if (c==92){
+                        gameobject[j][d]= Buildings(j,d);
+                        gameobject[j][d].setType(c);
+                    }
+                    if (c==107){
+                        gameobject[j][d]= Pipe(j,d);
+                        gameobject[j][d].setType(c);
+                    }
+                    if (c==25){
+                        gameobject[j][d]= Road(j,d);
+                        gameobject[j][d].setType(c);
+                    }
+                    if (c==10){
+                        gameobject[j][d]= Water(j,d);
+                        gameobject[j][d].setType(c);
                     }
 
 
@@ -98,8 +244,7 @@ void Game::InitGame(MainWindow &wind)
                 }
 
             df.close();
-
-            Gameobject Play(5,10,36);
+            Gameobject Play(5,10,1998);
             set=gameobject[5][10];
             gameobject[5][10]=Play;
             window->redraw();

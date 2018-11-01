@@ -4,5 +4,5 @@ Mountain::Mountain(int X,int Y)
 {
  posX=X;
  posY=Y;
- type=3;
+ type=2;
 }

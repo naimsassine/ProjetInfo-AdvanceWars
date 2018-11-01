@@ -4,7 +4,9 @@
 
 class Buildings : public Terrain {
 
-
+public:
+    Buildings();
+    Buildings(int X, int Y);
 
 
 };

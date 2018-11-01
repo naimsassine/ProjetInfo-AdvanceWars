@@ -41,7 +41,9 @@ SOURCES += \
     Aeroport.cpp \
     Plain.cpp \
     Mountain.cpp \
-    Water.cpp
+    Water.cpp \
+    Pipe.cpp \
+    Road.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -59,7 +61,9 @@ HEADERS += \
     Aeroport.h \
     Plain.h \
     Mountain.h \
-    Water.h
+    Water.h \
+    Pipe.h \
+    Road.h
 
 FORMS += \
         mainwindow.ui

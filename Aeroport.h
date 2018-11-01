@@ -5,7 +5,7 @@
 class Aeroport : public Buildings
 {
 public:
-    Aeroport();
+    Aeroport(int X, int Y);
 };
 
 #endif // AEROPORT_H
