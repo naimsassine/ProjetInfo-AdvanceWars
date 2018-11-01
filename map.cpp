@@ -198,8 +198,15 @@ void Map::mousePressEvent(QMouseEvent *e)
         float y=floorf(e->y()/40);
         int z= (int)x-5;
         int e= (int)y;
-        game.move(z,e);
+        if (gameobject[z][e].getType() == 4){
+            std::cout<< "Tu peux pas marcher sur l'eau"<< std::endl;
+        }
+        else{
+         game.move(z,e);
+        }
+
     }
+
 }
 
 void Map::keyPressEvent(QKeyEvent *keyEvent)
