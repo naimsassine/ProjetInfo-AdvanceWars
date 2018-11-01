@@ -4,6 +4,9 @@
 #include <iostream>
 #include <QMouseEvent>
 #include <QTextStream>
+#include <QtMath>
+#include <math.h>
+#include <stdio.h>
 
 Map::Map(QWidget *parent ) : QWidget(parent)
 {
