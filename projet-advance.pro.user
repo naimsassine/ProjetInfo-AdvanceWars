@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
 <<<<<<< HEAD
+<!-- Written by QtCreator 4.7.1, 2018-10-31T16:32:15. -->
+<qtcreator>
+ <data>
+  <variable>EnvironmentId</variable>
+  <value type="QByteArray">{d5768f34-bee6-402e-8303-ab5ea109f8ee}</value>
+=======
+<<<<<<< HEAD
 <<<<<<< HEAD
 <!-- Written by QtCreator 4.7.1, 2018-10-31T09:31:19. -->
 =======
@@ -13,6 +20,7 @@
  <data>
   <variable>EnvironmentId</variable>
   <value type="QByteArray">{8fc54c5b-f04e-492a-a593-ef519d1fc4f9}</value>
+>>>>>>> 89c030b549c6b3dc47e6c18028d9918a0a94bd1b
  </data>
  <data>
   <variable>ProjectExplorer.Project.ActiveTarget</variable>
@@ -79,7 +87,11 @@
    <value type="int" key="ProjectExplorer.Target.ActiveDeployConfiguration">0</value>
    <value type="int" key="ProjectExplorer.Target.ActiveRunConfiguration">0</value>
    <valuemap type="QVariantMap" key="ProjectExplorer.Target.BuildConfiguration.0">
+<<<<<<< HEAD
+    <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory">C:/Users/User/Documents/build-projet-advance-Desktop_Qt_5_11_2_MinGW_32bit-Debug</value>
+=======
     <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory">C:/Users/ramit/Downloads/build-projet-advance-Desktop_Qt_5_11_2_MinGW_32bit-Debug</value>
+>>>>>>> 89c030b549c6b3dc47e6c18028d9918a0a94bd1b
     <valuemap type="QVariantMap" key="ProjectExplorer.BuildConfiguration.BuildStepList.0">
      <valuemap type="QVariantMap" key="ProjectExplorer.BuildStepList.Step.0">
       <value type="bool" key="ProjectExplorer.BuildStep.Enabled">true</value>
@@ -133,7 +145,11 @@
     <value type="bool" key="Qt4ProjectManager.Qt4BuildConfiguration.UseShadowBuild">true</value>
    </valuemap>
    <valuemap type="QVariantMap" key="ProjectExplorer.Target.BuildConfiguration.1">
+<<<<<<< HEAD
+    <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory">C:/Users/User/Documents/build-projet-advance-Desktop_Qt_5_11_2_MinGW_32bit-Release</value>
+=======
     <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory">C:/Users/ramit/Downloads/build-projet-advance-Desktop_Qt_5_11_2_MinGW_32bit-Release</value>
+>>>>>>> 89c030b549c6b3dc47e6c18028d9918a0a94bd1b
     <valuemap type="QVariantMap" key="ProjectExplorer.BuildConfiguration.BuildStepList.0">
      <valuemap type="QVariantMap" key="ProjectExplorer.BuildStepList.Step.0">
       <value type="bool" key="ProjectExplorer.BuildStep.Enabled">true</value>
@@ -187,7 +203,11 @@
     <value type="bool" key="Qt4ProjectManager.Qt4BuildConfiguration.UseShadowBuild">true</value>
    </valuemap>
    <valuemap type="QVariantMap" key="ProjectExplorer.Target.BuildConfiguration.2">
+<<<<<<< HEAD
+    <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory">C:/Users/User/Documents/build-projet-advance-Desktop_Qt_5_11_2_MinGW_32bit-Profile</value>
+=======
     <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory">C:/Users/ramit/Downloads/build-projet-advance-Desktop_Qt_5_11_2_MinGW_32bit-Profile</value>
+>>>>>>> 89c030b549c6b3dc47e6c18028d9918a0a94bd1b
     <valuemap type="QVariantMap" key="ProjectExplorer.BuildConfiguration.BuildStepList.0">
      <valuemap type="QVariantMap" key="ProjectExplorer.BuildStepList.Step.0">
       <value type="bool" key="ProjectExplorer.BuildStep.Enabled">true</value>
@@ -298,13 +318,22 @@
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">projet-advance</value>
+<<<<<<< HEAD
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">projet-advance2</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:C:/Users/User/Documents/GitHub/ProjetInfo-AdvanceWars/projet-advance.pro</value>
+=======
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName"></value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:C:/Users/ramit/Downloads/ProjetInfo-AdvanceWars/projet-advance.pro</value>
+>>>>>>> 89c030b549c6b3dc47e6c18028d9918a0a94bd1b
     <value type="bool" key="QmakeProjectManager.QmakeRunConfiguration.UseLibrarySearchPath">true</value>
     <value type="QString" key="Qt4ProjectManager.Qt4RunConfiguration.CommandLineArguments"></value>
     <value type="QString" key="Qt4ProjectManager.Qt4RunConfiguration.ProFile">projet-advance.pro</value>
     <value type="QString" key="Qt4ProjectManager.Qt4RunConfiguration.UserWorkingDirectory"></value>
+<<<<<<< HEAD
+    <value type="QString" key="Qt4ProjectManager.Qt4RunConfiguration.UserWorkingDirectory.default">C:/Users/User/Documents/build-projet-advance-Desktop_Qt_5_11_2_MinGW_32bit-Debug</value>
+=======
     <value type="QString" key="Qt4ProjectManager.Qt4RunConfiguration.UserWorkingDirectory.default">C:/Users/ramit/Downloads/build-projet-advance-Desktop_Qt_5_11_2_MinGW_32bit-Debug</value>
+>>>>>>> 89c030b549c6b3dc47e6c18028d9918a0a94bd1b
     <value type="uint" key="RunConfiguration.QmlDebugServerPort">3768</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>

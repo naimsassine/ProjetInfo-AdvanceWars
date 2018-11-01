@@ -8,6 +8,7 @@
 #include "Aeroport.h"
 #include "Pipe.h"
 #include "Road.h"
+#include "Infanterie.h"
 #include <QTextStream>
 Game Game::gameinst=Game();
 Game::Game()
@@ -20,41 +21,58 @@ Game &Game::Instance()
     return gameinst;
 }
 
-void Game::move(QMouseEvent *e)
+
+void Game::move(int x,int y)
 {
     if(gameobject[posXselec][posYselec].getSelected()){
-        float x=floorf(e->x()/40);
-        float y=floorf(e->y()/40);
-        int r= (int)x-5;
-        int s= (int)y;
 
-    std::cout<<"la position en X est "<< e->x() <<std::endl;
-    std::cout<<"la position en Y est "<< e->y() <<std::endl;
     std::cout<<"la position en X est "<< x <<std::endl;
     std::cout<<"la position en Y est "<< y <<std::endl;
-    Gameobject c =gameobject[r][s];
-    gameobject[posXselec][posYselec].setPosX(r);
-    gameobject[posXselec][posYselec].setPosY(s);
-    gameobject[r][s]=gameobject[posXselec][posYselec];
+    Gameobject c =gameobject[x][y];
+    gameobject[posXselec][posYselec].setPosX(x);
+    gameobject[posXselec][posYselec].setPosY(y);
+    gameobject[x][y]=gameobject[posXselec][posYselec];
     gameobject[posXselec][posYselec] =set;
     set=c;
     std::cout<< "gameobject[posXselec][posYselec]="<< gameobject[posXselec][posYselec].getType()  <<std::endl;
+<<<<<<< HEAD
     gameobject[r][s].setSelected(false);
+=======
+
+
+    gameobject[x][y].setSelected(false);
+>>>>>>> 1c7c5eefb17152d0e80385af124259d2e83269b4
     window->redraw();
     }
     else{
-        float x=floorf(e->x()/40);
-        float y=floorf(e->y()/40);
-        int z= (int)x-5;
-        int e= (int)y;
-       if( gameobject[z][e].getType()==1998 ){
+
+       if( gameobject[x][y].getType()==1998 ){
            std::cout<<"la position en X est "<<std::endl;
-             gameobject[z][e].setSelected(true);
+             gameobject[x][y].setSelected(true);
              std::cout<<"la position en X est "<<std::endl;
-             posXselec=z;
-             posYselec=e;
+             posXselec=x;
+             posYselec=y;
        }
     }
+}
+
+void Game::movearrow(int x, int y)
+{
+
+    if(gameobject[posXselec][posYselec].getSelected()){
+
+        x=gameobject[posXselec][posYselec].getPosX()+x;
+        y=gameobject[posXselec][posYselec].getPosY()+y;
+        Gameobject c =gameobject[x][y];
+        gameobject[posXselec][posYselec].setPosX(x);
+        gameobject[posXselec][posYselec].setPosY(y);
+        gameobject[x][y]=gameobject[posXselec][posYselec];
+        gameobject[posXselec][posYselec] =set;
+        set=c;
+        posXselec=x;
+        posYselec=y;
+        window->redraw();}
+
 }
 
 void Game::InitGame(MainWindow &wind)
@@ -242,7 +260,7 @@ void Game::InitGame(MainWindow &wind)
                 }
 
             df.close();
-            Gameobject Play(5,10,1998);
+            Infanterie Play(5,10);
             set=gameobject[5][10];
             gameobject[5][10]=Play;
             window->redraw();

@@ -19,8 +19,8 @@ public:
     QString getFilename() const;
 
 protected:
-    float posX;
-    float posY;
+    int posX;
+    int posY;
     int type;
     bool selected=false;
     QString filename;
