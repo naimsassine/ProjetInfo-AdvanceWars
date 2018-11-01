@@ -7,7 +7,7 @@
 
 Map::Map(QWidget *parent ) : QWidget(parent)
 {
-
+setFocusPolicy(Qt::StrongFocus);
 }
 
 void Map::paintEvent(QPaintEvent *event)
@@ -192,8 +192,34 @@ void Map::mousePressEvent(QMouseEvent *e)
     if(e->buttons() == Qt::LeftButton){
 
         Game& game=Game::Instance();
-        game.move(e);
+        float x=floorf(e->x()/40);
+        float y=floorf(e->y()/40);
+        int z= (int)x-5;
+        int e= (int)y;
+        game.move(z,e);
     }
+}
+
+void Map::keyPressEvent(QKeyEvent *keyEvent)
+{
+    Game& game=Game::Instance();
+        switch (keyEvent->key()) {
+        case Qt::Key_Down:
+
+            game.movearrow(0,1);
+            break;
+        case Qt::Key_Left:
+            game.movearrow(-1,0);
+            break;
+        case Qt::Key_Right:
+            game.movearrow(1,0);
+            break;
+        case Qt::Key_Up:
+            game.movearrow(0,-1);
+            break;
+        default:
+            break;
+        }
 }
 
 
@@ -211,29 +237,5 @@ void Map::redraw()
     this->repaint();
 }
 
-void Map::readfile()
-{    int c;
-     QFile df(":/map.txt");
 
-            if (!df.open(QIODevice::ReadOnly | QIODevice::Text)) {
-
-
-            }
-
-            QTextStream txStream(&df);
-
-            while (!txStream.atEnd()) {
-
-                QString text = txStream.readLine();
-                QStringList s=text.split(",");
-                for(int j =0 ;j<7 ;j++){
-                c = s[j].toInt();
-
-                }
-
-
-            }
-
-        df.close();
-}
 
