@@ -201,6 +201,91 @@ void Map::mousePressEvent(QMouseEvent *e)
         if (gameobject[z][e].getType() == 4){
             std::cout<< "Tu peux pas marcher sur l'eau"<< std::endl;
         }
+
+        else if (gameobject[z][e].getType() == 5){
+            std::cout<< "Tu peux pas marcher sur l'eau"<< std::endl;
+        }
+        else if (gameobject[z][e].getType() == 6){
+            std::cout<< "Tu peux pas marcher sur l'eau"<< std::endl;
+        }
+        else if (gameobject[z][e].getType() == 7){
+            std::cout<< "Tu peux pas marcher sur l'eau"<< std::endl;
+        }
+        else if (gameobject[z][e].getType() == 8){
+            std::cout<< "Tu peux pas marcher sur l'eau"<< std::endl;
+        }
+        else if (gameobject[z][e].getType() == 9){
+            std::cout<< "Tu peux pas marcher sur l'eau"<< std::endl;
+        }
+        else if (gameobject[z][e].getType() == 10){
+            std::cout<< "Tu peux pas marcher sur l'eau"<< std::endl;
+        }
+        else if (gameobject[z][e].getType() == 11){
+            std::cout<< "Tu peux pas marcher sur l'eau"<< std::endl;
+        }
+        else if (gameobject[z][e].getType() == 12){
+            std::cout<< "Tu peux pas marcher sur l'eau"<< std::endl;
+        }
+        else if (gameobject[z][e].getType() == 13){
+            std::cout<< "Tu peux pas marcher sur l'eau"<< std::endl;
+        }
+        else if (gameobject[z][e].getType() == 14){
+            std::cout<< "Tu peux pas marcher sur l'eau"<< std::endl;
+        }
+        else if (gameobject[z][e].getType() == 28){
+            std::cout<< "Tu peux pas marcher sur l'eau"<< std::endl;
+        }
+        else if (gameobject[z][e].getType() == 29){
+            std::cout<< "Tu peux pas marcher sur l'eau"<< std::endl;
+        }
+        else if (gameobject[z][e].getType() == 30){
+            std::cout<< "Tu peux pas marcher sur l'eau"<< std::endl;
+        }
+        else if (gameobject[z][e].getType() == 31){
+            std::cout<< "Tu peux pas marcher sur l'eau"<< std::endl;
+        }
+        else if (gameobject[z][e].getType() == 32){
+            std::cout<< "Tu peux pas marcher sur l'eau"<< std::endl;
+        }
+        else if (gameobject[z][e].getType() == 33){
+            std::cout<< "Tu peux pas marcher sur l'eau"<< std::endl;
+        }
+        else if (gameobject[z][e].getType() == 101){
+            std::cout<< "Tu peux pas marcher sur l'eau"<< std::endl;
+        }
+        else if (gameobject[z][e].getType() == 102){
+            std::cout<< "Tu peux pas marcher sur l'eau"<< std::endl;
+        }
+        else if (gameobject[z][e].getType() == 103){
+            std::cout<< "Tu peux pas marcher sur l'eau"<< std::endl;
+        }
+        else if (gameobject[z][e].getType() == 104){
+            std::cout<< "Tu peux pas marcher sur l'eau"<< std::endl;
+        }
+        else if (gameobject[z][e].getType() == 105){
+            std::cout<< "Tu peux pas marcher sur l'eau"<< std::endl;
+        }
+        else if (gameobject[z][e].getType() == 106){
+            std::cout<< "Tu peux pas marcher sur l'eau"<< std::endl;
+        }
+        else if (gameobject[z][e].getType() == 107){
+            std::cout<< "Tu peux pas marcher sur l'eau"<< std::endl;
+        }
+        else if (gameobject[z][e].getType() == 108){
+            std::cout<< "Tu peux pas marcher sur l'eau"<< std::endl;
+        }
+        else if (gameobject[z][e].getType() == 109){
+            std::cout<< "Tu peux pas marcher sur l'eau"<< std::endl;
+        }
+        else if (gameobject[z][e].getType() == 110){
+            std::cout<< "Tu peux pas marcher sur l'eau"<< std::endl;
+        }
+
+
+
+
+
+
         else{
          game.move(z,e);
         }
