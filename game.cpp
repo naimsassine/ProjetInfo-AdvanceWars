@@ -23,9 +23,29 @@ Game::Game()
 
 }
 
+int Game::getTurn() const
+{
+    return turn;
+}
+
+void Game::setTurn(int value)
+{
+    turn = value;
+}
+
 std::vector<Unites> Game::getUnites() const
 {
     return unites;
+}
+
+void Game::endtour()
+{
+    if(turn==1){
+        turn=2;
+    }
+    else if(turn==2){
+        turn=1;
+    }
 }
 Game &Game::Instance()
 {
@@ -36,44 +56,51 @@ Game &Game::Instance()
 void Game::move(int x,int y)
 {
 
-    if(unites[posXselec].getSelected()){
+    for(std::vector<Unites>::size_type i = 0; i != unites.size(); i++){
+      if( unites[i].getPosX()==x && unites[i].getPosY()==y && unites[i].getTeam()==turn){
 
-
-
-
-    Gameobject c =gameobject[x][y];
-    unites[posXselec].setPosX(x);
-    unites[posXselec].setPosY(y);
-
-    std::cout<< "gameobject[posXselec][posYselec]="<< gameobject[posXselec][posYselec].getType()  <<std::endl;
-
-
+           posXselec=i;
+      }
+    if(unites[posXselec].getTeam()==turn &&unites[posXselec].getSelected()&& unites[posXselec].getPosX()==x && unites[posXselec].getPosY()==y){
 
     unites[posXselec].setSelected(false);
 
-    window->redraw();
     }
-    else{
-     for(std::vector<Unites>::size_type i = 0; i != unites.size(); i++){
-       if( unites[i].getPosX()==x && unites[i].getPosY()==y ){
-           std::cout<<"la position en X est "<<std::endl;
-            unites[i].setSelected(true);
-             std::cout<<"la position en X est "<<std::endl;
+    else if(unites[posXselec].getTeam()==turn&&unites[posXselec].getSelected()){
 
-             posXselec=i;
-       }
+
+        unites[posXselec].setPosX(x);
+        unites[posXselec].setPosY(y);
+
+        std::cout<< "gameobject[posXselec][posYselec]="<< gameobject[posXselec][posYselec].getType()  <<std::endl;
+
+
+
+        unites[posXselec].setSelected(false);
+
+        window->redraw();
+    }
+    else if(unites[posXselec].getTeam()==turn && !unites[posXselec].getSelected()){
+
+
+            unites[i].setSelected(true);
+
+
 
 
 
      }
 
     }
+
 }
 
 
 
-void Game::InitGame(MainWindow &wind){
+void Game::InitGame(MainWindow &wind,Player &InitPlayer1,Player &InitPlayer2){
     window = &wind ;
+    player1=&InitPlayer1;
+    player2=&InitPlayer2;
 
 
     int c;
@@ -278,7 +305,7 @@ Gameobject Game::getgameobject(int x, int y)
 
 
 void Game::movearrow(int x, int y){
-    if(unites[posXselec].getSelected()){
+    if(unites[posXselec].getSelected()&& unites[posXselec].getTeam()==turn){
 
         x=unites[posXselec].getPosX()+x;
         y=unites[posXselec].getPosY()+y;
