@@ -10,8 +10,12 @@ public:
     void movearrow(int x,int y);
     void InitGame(MainWindow &wind);
     Gameobject getgameobject(int x,int y);
+<<<<<<< HEAD
     std::vector<Unites> getUnites() const;
 
+=======
+    void endtour();
+>>>>>>> 46fb271351962e35fc44cd39e8a9ea9c8dad8590
 private:
     Game();
     std::vector<Unites> unites;
