@@ -1,6 +1,6 @@
 #include "Infanterie.h"
 #include "game.h"
-
+#include"Unites.h"
 
 
 Infanterie::Infanterie(int InitX, int InitY, int InitTeam)
