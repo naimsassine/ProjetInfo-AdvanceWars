@@ -16,6 +16,11 @@ Game::Game()
 
 
 }
+
+std::vector<Unites> Game::getUnites() const
+{
+    return unites;
+}
 Game &Game::Instance()
 {
     return gameinst;
@@ -24,30 +29,25 @@ Game &Game::Instance()
 
 void Game::move(int x,int y)
 {
-    if(gameobject[posXselec][posYselec].getSelected()){
+    if(unites[posXselec].getSelected()){
 
-    std::cout<<"la position en X est "<< x <<std::endl;
-    std::cout<<"la position en Y est "<< y <<std::endl;
     Gameobject c =gameobject[x][y];
-    gameobject[posXselec][posYselec].setPosX(x);
-    gameobject[posXselec][posYselec].setPosY(y);
-    gameobject[x][y]=gameobject[posXselec][posYselec];
-    gameobject[posXselec][posYselec] =set;
-    set=c;
+    unites[posXselec].setPosX(x);
+    unites[posXselec].setPosY(y);
+
     std::cout<< "gameobject[posXselec][posYselec]="<< gameobject[posXselec][posYselec].getType()  <<std::endl;
 
 
-    gameobject[x][y].setSelected(false);
+    unites[posXselec].setSelected(false);
     window->redraw();
     }
     else{
-
-       if( gameobject[x][y].getType()==1998 ){
+     for(std::vector<Unites>::size_type i = 0; i != unites.size(); i++){
+       if( unites[i].getPosX()==x && unites[i].getPosY()==y ){
            std::cout<<"la position en X est "<<std::endl;
-             gameobject[x][y].setSelected(true);
+            unites[i].setSelected(true);
              std::cout<<"la position en X est "<<std::endl;
-             posXselec=x;
-             posYselec=y;
+             posXselec=i;}
        }
     }
 }
@@ -55,18 +55,15 @@ void Game::move(int x,int y)
 void Game::movearrow(int x, int y)
 {
 
-    if(gameobject[posXselec][posYselec].getSelected()){
+    if(unites[posXselec].getSelected()){
 
-        x=gameobject[posXselec][posYselec].getPosX()+x;
-        y=gameobject[posXselec][posYselec].getPosY()+y;
-        Gameobject c =gameobject[x][y];
-        gameobject[posXselec][posYselec].setPosX(x);
-        gameobject[posXselec][posYselec].setPosY(y);
-        gameobject[x][y]=gameobject[posXselec][posYselec];
-        gameobject[posXselec][posYselec] =set;
-        set=c;
-        posXselec=x;
-        posYselec=y;
+        x=unites[posXselec].getPosX()+x;
+        y=unites[posXselec].getPosY()+y;
+
+        unites[posXselec].setPosX(x);
+        unites[posXselec].setPosY(y);
+
+
         window->redraw();}
 
 }
@@ -254,11 +251,13 @@ void Game::InitGame(MainWindow &wind)
 
 
                 }
+                window->InitMap();
 
             df.close();
-            Infanterie Play(5,10);
-            set=gameobject[5][10];
-            gameobject[5][10]=Play;
+            Infanterie Play(5,10,1);
+            Infanterie Play2(10,10,2);
+            unites.push_back(Play);
+            unites.push_back(Play2);
             window->redraw();
 
 
