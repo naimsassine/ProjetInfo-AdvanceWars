@@ -2,6 +2,10 @@
 #include "Gameobject.h"
 
 
+Unites::Unites(){
+
+}
+
 void Unites::attack()
 {
 
