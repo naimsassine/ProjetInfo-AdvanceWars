@@ -2,6 +2,7 @@
 #include "game.h"
 #include <QPainter>
 #include <iostream>
+#include <QPushButton>
 #include <QMouseEvent>
 #include <QTextStream>
 #include <QtMath>
@@ -339,6 +340,7 @@ void Map::setgameobject()
         }}
 
 }
+
 
 void Map::redraw()
 {

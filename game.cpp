@@ -1,4 +1,5 @@
 #include "game.h"
+#include"bouton.h"
 #include <iostream>
 #include <math.h>
 #include "Plain.h"
@@ -10,6 +11,11 @@
 #include "Road.h"
 #include "Infanterie.h"
 #include <QTextStream>
+#include <QApplication>
+#include <QPushButton>
+#include <QWidget>
+#include <QFont>
+#include <QIcon>
 Game Game::gameinst=Game();
 Game::Game()
 {
@@ -267,6 +273,9 @@ Gameobject Game::getgameobject(int x, int y)
     return gameobject[x][y];
 
 }
+
+
+
 
 void Game::movearrow(int x, int y){
     if(unites[posXselec].getSelected()){

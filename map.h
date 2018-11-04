@@ -1,5 +1,8 @@
 #ifndef MAP_H
 #define MAP_H
+#include <QApplication>
+#include <QWidget>
+#include <QPushButton>
 #include <QWidget>
 #include"Gameobject.h"
 #include <QString>
