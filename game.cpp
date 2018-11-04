@@ -29,7 +29,11 @@ Game &Game::Instance()
 
 void Game::move(int x,int y)
 {
+<<<<<<< HEAD
     if(unites[posXselec].getSelected()){
+=======
+    if(gameobject[posXselec][posYselec].getSelected() && (posXselec!= x || posYselec!= y)){
+>>>>>>> 46fb271351962e35fc44cd39e8a9ea9c8dad8590
 
     Gameobject c =gameobject[x][y];
     unites[posXselec].setPosX(x);
@@ -37,8 +41,11 @@ void Game::move(int x,int y)
 
     std::cout<< "gameobject[posXselec][posYselec]="<< gameobject[posXselec][posYselec].getType()  <<std::endl;
 
+<<<<<<< HEAD
 
     unites[posXselec].setSelected(false);
+=======
+>>>>>>> 46fb271351962e35fc44cd39e8a9ea9c8dad8590
     window->redraw();
     }
     else{
@@ -47,8 +54,15 @@ void Game::move(int x,int y)
            std::cout<<"la position en X est "<<std::endl;
             unites[i].setSelected(true);
              std::cout<<"la position en X est "<<std::endl;
+<<<<<<< HEAD
              posXselec=i;}
+=======
+             posXselec=x;
+             posYselec=y;
+
+>>>>>>> 46fb271351962e35fc44cd39e8a9ea9c8dad8590
        }
+
     }
 }
 
