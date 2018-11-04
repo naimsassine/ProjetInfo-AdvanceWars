@@ -44,7 +44,8 @@ SOURCES += \
     Water.cpp \
     Pipe.cpp \
     Road.cpp \
-    bouton.cpp
+    bouton.cpp \
+    player.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -65,7 +66,8 @@ HEADERS += \
     Water.h \
     Pipe.h \
     Road.h \
-    bouton.h
+    bouton.h \
+    player.h
 
 FORMS += \
         mainwindow.ui
