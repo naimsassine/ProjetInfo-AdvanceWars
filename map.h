@@ -15,6 +15,7 @@ public:
     void mousePressEvent(QMouseEvent *e);
     void keyPressEvent(QKeyEvent *keyEvent);
     void setgameobject();
+
     void redraw();
 
 private:
