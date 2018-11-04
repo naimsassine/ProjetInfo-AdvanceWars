@@ -29,11 +29,11 @@ Game &Game::Instance()
 
 void Game::move(int x,int y)
 {
-<<<<<<< HEAD
+
     if(unites[posXselec].getSelected()){
-=======
-    if(gameobject[posXselec][posYselec].getSelected() && (posXselec!= x || posYselec!= y)){
->>>>>>> 46fb271351962e35fc44cd39e8a9ea9c8dad8590
+
+
+
 
     Gameobject c =gameobject[x][y];
     unites[posXselec].setPosX(x);
@@ -41,11 +41,10 @@ void Game::move(int x,int y)
 
     std::cout<< "gameobject[posXselec][posYselec]="<< gameobject[posXselec][posYselec].getType()  <<std::endl;
 
-<<<<<<< HEAD
+
 
     unites[posXselec].setSelected(false);
-=======
->>>>>>> 46fb271351962e35fc44cd39e8a9ea9c8dad8590
+
     window->redraw();
     }
     else{
@@ -54,36 +53,20 @@ void Game::move(int x,int y)
            std::cout<<"la position en X est "<<std::endl;
             unites[i].setSelected(true);
              std::cout<<"la position en X est "<<std::endl;
-<<<<<<< HEAD
-             posXselec=i;}
-=======
-             posXselec=x;
-             posYselec=y;
 
->>>>>>> 46fb271351962e35fc44cd39e8a9ea9c8dad8590
+             posXselec=i;
        }
+
+
+
+     }
 
     }
 }
 
-void Game::movearrow(int x, int y)
-{
-
-    if(unites[posXselec].getSelected()){
-
-        x=unites[posXselec].getPosX()+x;
-        y=unites[posXselec].getPosY()+y;
-
-        unites[posXselec].setPosX(x);
-        unites[posXselec].setPosY(y);
 
 
-        window->redraw();}
-
-}
-
-void Game::InitGame(MainWindow &wind)
-{
+void Game::InitGame(MainWindow &wind){
     window = &wind ;
 
 
@@ -283,6 +266,19 @@ Gameobject Game::getgameobject(int x, int y)
 {
     return gameobject[x][y];
 
+}
+
+void Game::movearrow(int x, int y){
+    if(unites[posXselec].getSelected()){
+
+        x=unites[posXselec].getPosX()+x;
+        y=unites[posXselec].getPosY()+y;
+
+        unites[posXselec].setPosX(x);
+        unites[posXselec].setPosY(y);
+
+
+        window->redraw();}
 }
 
 
