@@ -11,7 +11,7 @@ setFocusPolicy(Qt::StrongFocus);
 }
 
 void Map::paintEvent(QPaintEvent *event)
-{
+{   Game game=Game::Instance();
     QPainter painter(this);
     for(int i=0 ;i<21;i++){
         int c=i+5;
@@ -182,6 +182,20 @@ void Map::paintEvent(QPaintEvent *event)
                QPixmap pixmap(":/osinfantry.gif");
                painter.drawPixmap(c*40,j*40,40,40,pixmap);}
         }
+    }
+    std::vector<Unites> unites= game.getUnites();
+    for(std::vector<Unites>::size_type i = 0; i != unites.size(); i++){
+        if(unites[i].getType()==1998 && unites[i].getTeam()==1){
+            QPixmap pixmap(":/osinfantry.gif");
+            painter.drawPixmap((unites[i].getPosX()+5)*40,unites[i].getPosY()*40,40,40,pixmap);
+
+        }
+        else if(unites[i].getType()==1998 && unites[i].getTeam()==2){
+            QPixmap pixmap(":/blue.png");
+            painter.drawPixmap((unites[i].getPosX()+5)*40,unites[i].getPosY()*40,40,40,pixmap);
+
+        }
+
     }
 
 }
