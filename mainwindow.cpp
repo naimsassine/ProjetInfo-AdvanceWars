@@ -4,6 +4,8 @@
 #include "ui_mainwindow.h"
 #include <QPainter>
 #include <iostream>
+#include "endturn.h"
+#include <QDockWidget>
 MainWindow::MainWindow(QWidget *parent) :
 
     QMainWindow(parent),
@@ -12,7 +14,9 @@ MainWindow::MainWindow(QWidget *parent) :
 
     ui->setupUi(this);
     map = new Map(this);
+
     MainWindow::setCentralWidget(map);
+
 }
 
 MainWindow::~MainWindow()
@@ -31,4 +35,10 @@ void MainWindow::redraw()
 {
 
     map->redraw();
+}
+
+void MainWindow::on_pushButton_clicked()
+{
+    Game& game=Game::Instance();
+    game.endtour();
 }
