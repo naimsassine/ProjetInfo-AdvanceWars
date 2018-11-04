@@ -21,8 +21,14 @@ MainWindow::~MainWindow()
     delete map;
 }
 
+void MainWindow::InitMap()
+{
+    map->setgameobject();
+}
+
 
 void MainWindow::redraw()
-{   map->setgameobject();
+{
+
     map->redraw();
 }
