@@ -1,6 +1,8 @@
 #ifndef GAME_H
 #define GAME_H
 #include "mainwindow.h"
+#include "iostream"
+#include "Unites.h"
 class Game{
 public:
     static Game& Instance();
@@ -8,8 +10,11 @@ public:
     void movearrow(int x,int y);
     void InitGame(MainWindow &wind);
     Gameobject getgameobject(int x,int y);
+    std::vector<Unites> getUnites() const;
+
 private:
     Game();
+    std::vector<Unites> unites;
     static Game gameinst;
     MainWindow *window;
     Gameobject gameobject[22][18];
