@@ -22,6 +22,9 @@ public:
     void InitMap();
     void redraw();
 
+private slots:
+    void on_pushButton_clicked();
+
 private:
     Ui::MainWindow *ui;
     Map *map;
