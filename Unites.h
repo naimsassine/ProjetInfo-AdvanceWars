@@ -10,12 +10,17 @@ public:
     int getvie();
     int getdamage();
     int getnumero();
+
+    int getTeam() const;
+    void setTeam(int value);
+
 protected:
     int vie;
     int ptattack;
     int ptdeplacement;
     int damage;
     int numero;
+    int Team;
 };
 
 
