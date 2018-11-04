@@ -1,5 +1,6 @@
 #include "Ville.h"
 
+
 Ville::Ville(int X, int Y)
 {
     posX = X;
