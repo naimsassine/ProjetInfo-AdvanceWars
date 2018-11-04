@@ -8,10 +8,11 @@
 #include <QtMath>
 #include <math.h>
 #include <stdio.h>
-
+#include <QMenu>
 Map::Map(QWidget *parent ) : QWidget(parent)
 {
 setFocusPolicy(Qt::StrongFocus);
+
 }
 
 void Map::paintEvent(QPaintEvent *event)
@@ -306,6 +307,10 @@ void Map::mousePressEvent(QMouseEvent *e)
         }
 
     }
+    else if(e->buttons() == Qt::RightButton){
+        /*créer un bouton end tour */
+
+    }
 
 }
 
@@ -340,6 +345,9 @@ void Map::setgameobject()
         }}
 
 }
+
+
+
 
 
 void Map::redraw()
