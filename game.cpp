@@ -303,7 +303,6 @@ Gameobject Game::getgameobject(int x, int y)
 
 
 
-
 void Game::movearrow(int x, int y){
     if(unites[posXselec].getSelected()&& unites[posXselec].getTeam()==turn){
 

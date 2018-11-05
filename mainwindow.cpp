@@ -16,7 +16,6 @@ MainWindow::MainWindow(QWidget *parent) :
 
     ui->setupUi(this);
     map = new Map(this);
-    bouton = new Bouton(this);
     MainWindow::setCentralWidget(map);
 
 }

@@ -16,8 +16,8 @@ Bouton::Bouton(QWidget *parent ){
 
 }
 void Bouton::createButton(){
-    QPushButton bouton("Pimp mon bouton !", this);
-    bouton.show();
+    //QPushButton bouton("Pimp mon bouton !", this);
+    //bouton.show();
     //*bouton = QPushButton("My Button", this);
 }
 

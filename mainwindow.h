@@ -7,7 +7,6 @@
 #include <QMainWindow>
 #include"Gameobject.h"
 #include "map.h"
-#include "bouton.h"
 class Gameobject;
 namespace Ui {
 class MainWindow;
@@ -29,7 +28,6 @@ private slots:
 private:
     Ui::MainWindow *ui;
     Map *map;
-    Bouton * bouton;
 
 
 };

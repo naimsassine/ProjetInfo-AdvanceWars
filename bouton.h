@@ -8,11 +8,14 @@
 #endif // BOUTON_H
 
 class Bouton : public QPushButton{
+
     Q_OBJECT
+
 public :
     explicit Bouton(QWidget *parent = nullptr);
-   // Bouton();
     void createButton();
+private:
+    Bouton();
 
 };
 
