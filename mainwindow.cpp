@@ -1,20 +1,22 @@
 #include "mainwindow.h"
 #include "Gameobject.h"
 #include "game.h"
+#include"bouton.h"
 #include "ui_mainwindow.h"
 #include <QPainter>
 #include <iostream>
-#include "endturn.h"
 #include <QDockWidget>
 MainWindow::MainWindow(QWidget *parent) :
 
     QMainWindow(parent),
+
     ui(new Ui::MainWindow)
+
 {
 
     ui->setupUi(this);
     map = new Map(this);
-
+    bouton = new Bouton(this);
     MainWindow::setCentralWidget(map);
 
 }

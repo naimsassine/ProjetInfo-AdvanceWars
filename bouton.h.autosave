@@ -11,7 +11,7 @@ class Bouton : public QPushButton{
     Q_OBJECT
 public :
     explicit Bouton(QWidget *parent = nullptr);
-   // Bouton();
+    Bouton();
     void createButton();
 
 };

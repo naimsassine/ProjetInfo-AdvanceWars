@@ -15,6 +15,10 @@ Bouton::Bouton(QWidget *parent ){
     setFocusPolicy(Qt::StrongFocus);
 
 }
-
+void Bouton::createButton(){
+    QPushButton bouton("Pimp mon bouton !", this);
+    bouton.show();
+    //*bouton = QPushButton("My Button", this);
+}
 
 
