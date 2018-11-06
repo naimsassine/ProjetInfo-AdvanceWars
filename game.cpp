@@ -60,7 +60,8 @@ void Game::move(int x,int y)
     for(std::vector<Unites>::size_type i = 0; i != unites.size(); i++){
       if( unites[i].getPosX()==x && unites[i].getPosY()==y && unites[i].getTeam()==turn){
 
-           posXselec=i;
+           posXselec=i;}
+
       }
     if(unites[posXselec].getTeam()==turn &&unites[posXselec].getSelected()&& unites[posXselec].getPosX()==x && unites[posXselec].getPosY()==y){
 
@@ -81,10 +82,10 @@ void Game::move(int x,int y)
 
         window->redraw();
     }
-    else if(unites[posXselec].getTeam()==turn && !unites[posXselec].getSelected()){
+    else if(unites[posXselec].getTeam()==turn && !unites[posXselec].getSelected() &&unites[posXselec].getPosX()==x && unites[posXselec].getPosY()==y){
 
 
-            unites[i].setSelected(true);
+            unites[posXselec].setSelected(true);
 
 
 
@@ -94,7 +95,7 @@ void Game::move(int x,int y)
 
     }
 
-}
+
 
 
 
@@ -321,7 +322,7 @@ void Game::movearrow(int x, int y){
 void Game::createUnite(){
     int i;
     int j;
-    if(gameobject[i][j].setType(34)){
+    /*if(gameobject[i][j].setType(34)){
         gameobject[i][j] = Ville(i,j);
         if((unites[posXselec].getPosX() == i) &&(unites[posYselec].getPosY() == j) ){
             Infanterie Play(7,15,1);
@@ -331,7 +332,7 @@ void Game::createUnite(){
 
         }
 
-    }
+    }*/
 
 }
 
