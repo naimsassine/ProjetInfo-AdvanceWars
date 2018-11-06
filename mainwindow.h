@@ -3,6 +3,8 @@
 #include <QMouseEvent>
 #include <QApplication>
 #include <QWidget>
+#include <QFont>
+#include <QIcon>
 #include <QPushButton>
 #include <QMainWindow>
 #include"Gameobject.h"
@@ -28,7 +30,7 @@ private slots:
 private:
     Ui::MainWindow *ui;
     Map *map;
-
+    QPushButton *bouton;
 
 };
 
