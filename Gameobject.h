@@ -12,7 +12,7 @@ public:
     int getPosY() const;
     void setPosY(int value);
     int getType() const;
-    int setType(int value);
+    void setType(int value);
     bool getSelected() const;
     void setSelected(bool value);
     // LOLOLOLOLOOLOLOLOLOLOL //
