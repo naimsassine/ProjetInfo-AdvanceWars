@@ -29,7 +29,8 @@ MainWindow::MainWindow(QWidget *parent) :
    bouton = new QPushButton("Quitter !", this);
    bouton->setGeometry(60, 50, 180, 70);
    bouton->move(1200, 50);
-   QObject::connect(bouton, SIGNAL(clicked()), qApp, SLOT(quit()));
+   Game& game=Game::Instance();
+   QObject::connect(bouton, SIGNAL(clicked()), qApp, SLOT(game.createUnite()));
    bouton->show();
 
 

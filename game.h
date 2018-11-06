@@ -4,6 +4,7 @@
 #include "iostream"
 #include "Unites.h"
 #include "player.h"
+#include "Ville.h"
 class Game{
 public:
     static Game& Instance();
@@ -15,6 +16,7 @@ public:
     void endtour();
     int getTurn() const;
     void setTurn(int value);
+    void createUnite();
 
 private:
     Game();
@@ -28,6 +30,8 @@ private:
     Player *player1;
     Player *player2;
     int turn=1;
+
+
     // NAim on te...//
 };
 #endif // GAME_H

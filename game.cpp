@@ -3,6 +3,7 @@
 #include <iostream>
 #include <math.h>
 #include "Plain.h"
+#include "mainwindow.h"
 #include "Water.h"
 #include "Mountain.h"
 #include "Ville.h"
@@ -288,6 +289,7 @@ void Game::InitGame(MainWindow &wind,Player &InitPlayer1,Player &InitPlayer2){
             Infanterie Play2(10,10,2);
             unites.push_back(Play);
             unites.push_back(Play2);
+
             window->redraw();
 
 
@@ -316,4 +318,20 @@ void Game::movearrow(int x, int y){
         window->redraw();}
 }
 
+void Game::createUnite(){
+    int i;
+    int j;
+    if(gameobject[i][j].setType(34)){
+        gameobject[i][j] = Ville(i,j);
+        if(unites[posXselec].getPosX() == i){
+            Infanterie Play(7,15,1);
+            unites.push_back(Play);
+            window->redraw();
+
+
+        }
+
+    }
+
+}
 
