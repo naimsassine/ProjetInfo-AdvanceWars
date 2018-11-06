@@ -307,6 +307,7 @@ void Map::mousePressEvent(QMouseEvent *e)
         else if (gameobject[z][e].getType() == 35){
             Game& game=Game::Instance();
             game.createUnite(z, e,1);
+            game.move(z,e);
 
         }
 
