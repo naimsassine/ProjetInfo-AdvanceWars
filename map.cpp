@@ -4,8 +4,14 @@
 #include <QPainter>
 #include <iostream>
 #include <QPushButton>
+#include <QWidget>
+#include <QMessageBox>
 #include <QMouseEvent>
 #include <QTextStream>
+#include <QApplication>
+#include <QTranslator>
+#include <QLocale>
+#include <QLibraryInfo>
 #include <QtMath>
 #include <math.h>
 #include <stdio.h>
@@ -306,8 +312,19 @@ void Map::mousePressEvent(QMouseEvent *e)
 
         else if (gameobject[z][e].getType() == 35){
             Game& game=Game::Instance();
-            game.createUnite(z, e,1);
             game.move(z,e);
+            QMessageBox::question(this, "Création d'Infanterie", "Voulez-vous créer une unité d'infanterie ?", QMessageBox::Yes | QMessageBox::No);
+            int reponse = QMessageBox::question(this, "Création d'Infanterie", "Voulez-vous créer une unité d'infanterie ?", QMessageBox ::Yes | QMessageBox::No);
+
+                if (reponse == QMessageBox::Yes)
+                {
+                    game.createUnite(z, e,1);
+                    game.move(z,e);
+                }
+                else if( reponse == QMessageBox::No)
+                {
+                 game.move(z,e);
+                }
 
         }
 
