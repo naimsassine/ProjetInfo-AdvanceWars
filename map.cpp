@@ -190,7 +190,9 @@ void Map::paintEvent(QPaintEvent *event)
     }
     std::vector<Unites> unites= game.getUnites();
     for(std::vector<Unites>::size_type i = 0; i != unites.size(); i++){
-        if(unites[i].getType()==1998 && unites[i].getTeam()==1){
+
+        if(unites[i].getType()==1998 && unites[i].getTeam()==1 ){
+
             QPixmap pixmap(":/osinfantry.gif");
             painter.drawPixmap((unites[i].getPosX()+5)*40,unites[i].getPosY()*40,40,40,pixmap);
 
@@ -200,6 +202,7 @@ void Map::paintEvent(QPaintEvent *event)
             painter.drawPixmap((unites[i].getPosX()+5)*40,unites[i].getPosY()*40,40,40,pixmap);
 
         }
+
 
     }
 
@@ -345,7 +348,6 @@ void Map::setgameobject()
         }}
 
 }
-
 
 
 

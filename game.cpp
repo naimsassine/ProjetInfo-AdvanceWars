@@ -323,7 +323,7 @@ void Game::createUnite(){
     int j;
     if(gameobject[i][j].setType(34)){
         gameobject[i][j] = Ville(i,j);
-        if(unites[posXselec].getPosX() == i){
+        if((unites[posXselec].getPosX() == i) &&(unites[posYselec].getPosY() == j) ){
             Infanterie Play(7,15,1);
             unites.push_back(Play);
             window->redraw();

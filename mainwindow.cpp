@@ -32,6 +32,7 @@ MainWindow::MainWindow(QWidget *parent) :
    Game& game=Game::Instance();
    QObject::connect(bouton, SIGNAL(clicked()), qApp, SLOT(game.createUnite()));
    bouton->show();
+   map->redraw();
 
 
 
