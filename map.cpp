@@ -1,5 +1,6 @@
 #include "map.h"
 #include "game.h"
+#include"Infanterie.h"
 #include <QPainter>
 #include <iostream>
 #include <QPushButton>
@@ -217,6 +218,9 @@ void Map::mousePressEvent(QMouseEvent *e)
         float y=floorf(e->y()/40);
         int z= (int)x-5;
         int e= (int)y;
+
+
+
         if (gameobject[z][e].getType() == 4){
             std::cout<< "Tu peux pas marcher sur l'eau"<< std::endl;
         }
@@ -299,6 +303,15 @@ void Map::mousePressEvent(QMouseEvent *e)
         else if (gameobject[z][e].getType() == 110){
             std::cout<< "Tu peux pas marcher sur l'eau"<< std::endl;
         }
+
+        else if (gameobject[z][e].getType() == 35){
+            Game& game=Game::Instance();
+            game.createUnite(z, e,1);
+
+        }
+
+
+
 
 
 

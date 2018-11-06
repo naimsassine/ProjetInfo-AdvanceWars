@@ -16,7 +16,7 @@ public:
     void endtour();
     int getTurn() const;
     void setTurn(int value);
-    void createUnite();
+    void createUnite(int x, int y, int type);
 
 private:
     Game();

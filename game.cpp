@@ -92,6 +92,7 @@ void Game::move(int x,int y)
 
      }
 
+
     }
 
 }
@@ -318,20 +319,23 @@ void Game::movearrow(int x, int y){
         window->redraw();}
 }
 
-void Game::createUnite(){
-    int i;
-    int j;
-    if(gameobject[i][j].setType(34)){
-        gameobject[i][j] = Ville(i,j);
-        if((unites[posXselec].getPosX() == i) &&(unites[posYselec].getPosY() == j) ){
-            Infanterie Play(7,15,1);
+
+
+void Game::createUnite(int x, int y, int type ){
+    int i =0;
+   int j =0;
+   if(gameobject[x][y].setType(34)){
+        gameobject[x][y] = Ville(x,y);
+       // if((unites[posXselec].getPosX() == i) &&(unites[posYselec].getPosY() == j) ){
+            Infanterie Play(x,y,1);
             unites.push_back(Play);
+
             window->redraw();
 
 
         }
 
-    }
+    //}
 
 }
 
