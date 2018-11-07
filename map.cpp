@@ -1,20 +1,29 @@
 #include "map.h"
 #include "game.h"
+#include"Infanterie.h"
 #include <QPainter>
 #include <iostream>
+#include <QPushButton>
+#include <QWidget>
+#include <QMessageBox>
 #include <QMouseEvent>
 #include <QTextStream>
+#include <QApplication>
+#include <QTranslator>
+#include <QLocale>
+#include <QLibraryInfo>
 #include <QtMath>
 #include <math.h>
 #include <stdio.h>
-
+#include <QMenu>
 Map::Map(QWidget *parent ) : QWidget(parent)
 {
 setFocusPolicy(Qt::StrongFocus);
+
 }
 
 void Map::paintEvent(QPaintEvent *event)
-{
+{   Game game=Game::Instance();
     QPainter painter(this);
     for(int i=0 ;i<21;i++){
         int c=i+5;
@@ -186,6 +195,23 @@ void Map::paintEvent(QPaintEvent *event)
                painter.drawPixmap(c*40,j*40,40,40,pixmap);}
         }
     }
+    std::vector<Unites> unites= game.getUnites();
+    for(std::vector<Unites>::size_type i = 0; i != unites.size(); i++){
+
+        if(unites[i].getType()==1998 && unites[i].getTeam()==1 ){
+
+            QPixmap pixmap(":/osinfantry.gif");
+            painter.drawPixmap((unites[i].getPosX()+5)*40,unites[i].getPosY()*40,40,40,pixmap);
+
+        }
+        else if(unites[i].getType()==1998 && unites[i].getTeam()==2){
+            QPixmap pixmap(":/blue.png");
+            painter.drawPixmap((unites[i].getPosX()+5)*40,unites[i].getPosY()*40,40,40,pixmap);
+
+        }
+
+
+    }
 
 }
 
@@ -198,12 +224,125 @@ void Map::mousePressEvent(QMouseEvent *e)
         float y=floorf(e->y()/40);
         int z= (int)x-5;
         int e= (int)y;
+
+
+
         if (gameobject[z][e].getType() == 4){
             std::cout<< "Tu peux pas marcher sur l'eau"<< std::endl;
         }
+
+        else if (gameobject[z][e].getType() == 5){
+            std::cout<< "Tu peux pas marcher sur l'eau"<< std::endl;
+        }
+        else if (gameobject[z][e].getType() == 6){
+            std::cout<< "Tu peux pas marcher sur l'eau"<< std::endl;
+        }
+        else if (gameobject[z][e].getType() == 7){
+            std::cout<< "Tu peux pas marcher sur l'eau"<< std::endl;
+        }
+        else if (gameobject[z][e].getType() == 8){
+            std::cout<< "Tu peux pas marcher sur l'eau"<< std::endl;
+        }
+        else if (gameobject[z][e].getType() == 9){
+            std::cout<< "Tu peux pas marcher sur l'eau"<< std::endl;
+        }
+        else if (gameobject[z][e].getType() == 10){
+            std::cout<< "Tu peux pas marcher sur l'eau"<< std::endl;
+        }
+        else if (gameobject[z][e].getType() == 11){
+            std::cout<< "Tu peux pas marcher sur l'eau"<< std::endl;
+        }
+        else if (gameobject[z][e].getType() == 12){
+            std::cout<< "Tu peux pas marcher sur l'eau"<< std::endl;
+        }
+        else if (gameobject[z][e].getType() == 13){
+            std::cout<< "Tu peux pas marcher sur l'eau"<< std::endl;
+        }
+        else if (gameobject[z][e].getType() == 14){
+            std::cout<< "Tu peux pas marcher sur l'eau"<< std::endl;
+        }
+        else if (gameobject[z][e].getType() == 28){
+            std::cout<< "Tu peux pas marcher sur l'eau"<< std::endl;
+        }
+        else if (gameobject[z][e].getType() == 29){
+            std::cout<< "Tu peux pas marcher sur l'eau"<< std::endl;
+        }
+        else if (gameobject[z][e].getType() == 30){
+            std::cout<< "Tu peux pas marcher sur l'eau"<< std::endl;
+        }
+        else if (gameobject[z][e].getType() == 31){
+            std::cout<< "Tu peux pas marcher sur l'eau"<< std::endl;
+        }
+        else if (gameobject[z][e].getType() == 32){
+            std::cout<< "Tu peux pas marcher sur l'eau"<< std::endl;
+        }
+        else if (gameobject[z][e].getType() == 33){
+            std::cout<< "Tu peux pas marcher sur l'eau"<< std::endl;
+        }
+        else if (gameobject[z][e].getType() == 101){
+            std::cout<< "Tu peux pas marcher sur l'eau"<< std::endl;
+        }
+        else if (gameobject[z][e].getType() == 102){
+            std::cout<< "Tu peux pas marcher sur l'eau"<< std::endl;
+        }
+        else if (gameobject[z][e].getType() == 103){
+            std::cout<< "Tu peux pas marcher sur l'eau"<< std::endl;
+        }
+        else if (gameobject[z][e].getType() == 104){
+            std::cout<< "Tu peux pas marcher sur l'eau"<< std::endl;
+        }
+        else if (gameobject[z][e].getType() == 105){
+            std::cout<< "Tu peux pas marcher sur l'eau"<< std::endl;
+        }
+        else if (gameobject[z][e].getType() == 106){
+            std::cout<< "Tu peux pas marcher sur l'eau"<< std::endl;
+        }
+        else if (gameobject[z][e].getType() == 107){
+            std::cout<< "Tu peux pas marcher sur l'eau"<< std::endl;
+        }
+        else if (gameobject[z][e].getType() == 108){
+            std::cout<< "Tu peux pas marcher sur l'eau"<< std::endl;
+        }
+        else if (gameobject[z][e].getType() == 109){
+            std::cout<< "Tu peux pas marcher sur l'eau"<< std::endl;
+        }
+        else if (gameobject[z][e].getType() == 110){
+            std::cout<< "Tu peux pas marcher sur l'eau"<< std::endl;
+        }
+
+        else if (gameobject[z][e].getType() == 35){
+            Game& game=Game::Instance();
+            game.move(z,e);
+            QMessageBox::question(this, "Création d'Infanterie", "Voulez-vous créer une unité d'infanterie ?", QMessageBox::Yes | QMessageBox::No);
+            int reponse = QMessageBox::question(this, "Création d'Infanterie", "Voulez-vous créer une unité d'infanterie ?", QMessageBox ::Yes | QMessageBox::No);
+
+                if (reponse == QMessageBox::Yes)
+                {
+                    game.createUnite(z, e,1);
+                    game.move(z,e);
+                }
+                else if( reponse == QMessageBox::No)
+                {
+                 game.move(z,e);
+                }
+
+        }
+
+
+
+
+
+
+
+
+
         else{
          game.move(z,e);
         }
+
+    }
+    else if(e->buttons() == Qt::RightButton){
+        /*créer un bouton end tour */
 
     }
 
@@ -240,6 +379,9 @@ void Map::setgameobject()
         }}
 
 }
+
+
+
 
 void Map::redraw()
 {
