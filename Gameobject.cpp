@@ -32,7 +32,7 @@ int Gameobject::getType() const
     return type;
 }
 
-void Gameobject::setType(int value)
+int Gameobject::setType(int value)
 {
     type = value;
 }

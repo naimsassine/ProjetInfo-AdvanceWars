@@ -35,13 +35,3 @@ int Unites::getnumero()
 {
     return numero;
 }
-
-int Unites::getTeam() const
-{
-    return Team;
-}
-
-void Unites::setTeam(int value)
-{
-    Team = value;
-}
