@@ -71,5 +71,6 @@
         <file>osinfantry.gif</file>
         <file>blackholehq.gif</file>
         <file>blackholebase.gif</file>
+        <file>blue.png</file>
     </qresource>
 </RCC>

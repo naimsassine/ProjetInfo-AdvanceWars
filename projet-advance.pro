@@ -43,7 +43,9 @@ SOURCES += \
     Mountain.cpp \
     Water.cpp \
     Pipe.cpp \
-    Road.cpp
+    Road.cpp \
+    bouton.cpp \
+    player.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -63,7 +65,9 @@ HEADERS += \
     Mountain.h \
     Water.h \
     Pipe.h \
-    Road.h
+    Road.h \
+    bouton.h \
+    player.h
 
 FORMS += \
         mainwindow.ui
