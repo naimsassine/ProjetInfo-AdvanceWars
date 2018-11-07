@@ -1,7 +1,9 @@
 #include "game.h"
+#include"bouton.h"
 #include <iostream>
 #include <math.h>
 #include "Plain.h"
+#include "mainwindow.h"
 #include "Water.h"
 #include "Mountain.h"
 #include "Ville.h"
@@ -10,11 +12,41 @@
 #include "Road.h"
 #include "Infanterie.h"
 #include <QTextStream>
+#include <QApplication>
+#include <QPushButton>
+#include <QWidget>
+#include <QFont>
+#include <QIcon>
 Game Game::gameinst=Game();
 Game::Game()
 {
 
 
+}
+
+int Game::getTurn() const
+{
+    return turn;
+}
+
+void Game::setTurn(int value)
+{
+    turn = value;
+}
+
+std::vector<Unites> Game::getUnites() const
+{
+    return unites;
+}
+
+void Game::endtour()
+{
+    if(turn==1){
+        turn=2;
+    }
+    else if(turn==2){
+        turn=1;
+    }
 }
 Game &Game::Instance()
 {
@@ -24,69 +56,54 @@ Game &Game::Instance()
 
 void Game::move(int x,int y)
 {
-    if(gameobject[posXselec][posYselec].getSelected()){
 
-    std::cout<<"la position en X est "<< x <<std::endl;
-    std::cout<<"la position en Y est "<< y <<std::endl;
-    Gameobject c =gameobject[x][y];
-    gameobject[posXselec][posYselec].setPosX(x);
-    gameobject[posXselec][posYselec].setPosY(y);
-    gameobject[x][y]=gameobject[posXselec][posYselec];
-    gameobject[posXselec][posYselec] =set;
-    set=c;
-    std::cout<< "gameobject[posXselec][posYselec]="<< gameobject[posXselec][posYselec].getType()  <<std::endl;
-//<<<<<<< HEAD//
-//<<<<< HEAD
-   //ameobject[r][s].setSelected(false);
-//=======
+    for(std::vector<Unites>::size_type i = 0; i != unites.size(); i++){
+      if( unites[i].getPosX()==x && unites[i].getPosY()==y && unites[i].getTeam()==turn){
 
+           posXselec=i;}
 
-   //ameobject[x][y].setSelected(false);
-//>>>>> 1c7c5eefb17152d0e80385af124259d2e83269b4
-/*<<<<<<< HEAD
-    gameobject[r][s].setSelected(false);
-=======
+      }
+    if(unites[posXselec].getTeam()==turn &&unites[posXselec].getSelected()&& unites[posXselec].getPosX()==x && unites[posXselec].getPosY()==y){
 
+    unites[posXselec].setSelected(false);
 
-    gameobject[x][y].setSelected(false);
->>>>>>> 1c7c5eefb17152d0e80385af124259d2e83269b4 */
-//>>>>>>> 88bb820b5047f523774c03792afeeda14ec3718b//
-    window->redraw();
     }
-    else{
+    else if(unites[posXselec].getTeam()==turn&&unites[posXselec].getSelected()){
 
-       if( gameobject[x][y].getType()==1998 ){
-           std::cout<<"la position en X est "<<std::endl;
-             gameobject[x][y].setSelected(true);
-             std::cout<<"la position en X est "<<std::endl;
-             posXselec=x;
-             posYselec=y;
-       }
+
+        unites[posXselec].setPosX(x);
+        unites[posXselec].setPosY(y);
+
+        std::cout<< "gameobject[posXselec][posYselec]="<< gameobject[posXselec][posYselec].getType()  <<std::endl;
+
+
+
+        unites[posXselec].setSelected(false);
+
+        window->redraw();
     }
-}
+    else if(unites[posXselec].getTeam()==turn && !unites[posXselec].getSelected() &&unites[posXselec].getPosX()==x && unites[posXselec].getPosY()==y){
 
-void Game::movearrow(int x, int y)
-{
 
-    if(gameobject[posXselec][posYselec].getSelected()){
+            unites[posXselec].setSelected(true);
 
-        x=gameobject[posXselec][posYselec].getPosX()+x;
-        y=gameobject[posXselec][posYselec].getPosY()+y;
-        Gameobject c =gameobject[x][y];
-        gameobject[posXselec][posYselec].setPosX(x);
-        gameobject[posXselec][posYselec].setPosY(y);
-        gameobject[x][y]=gameobject[posXselec][posYselec];
-        gameobject[posXselec][posYselec] =set;
-        set=c;
-        posXselec=x;
-        posYselec=y;
-        window->redraw();}
 
-}
 
-void Game::InitGame(MainWindow &wind)
-{
+
+
+     }
+
+
+    }
+
+
+
+
+
+void Game::InitGame(MainWindow &wind,Player &InitPlayer1,Player &InitPlayer2){
     window = &wind ;
+    player1=&InitPlayer1;
+    player2=&InitPlayer2;
 
 
     int c;
@@ -267,11 +284,14 @@ void Game::InitGame(MainWindow &wind)
 
 
                 }
+                window->InitMap();
 
             df.close();
-            Infanterie Play(5,10);
-            set=gameobject[5][10];
-            gameobject[5][10]=Play;
+            Infanterie Play(5,10,1);
+            Infanterie Play2(10,10,2);
+            unites.push_back(Play);
+            unites.push_back(Play2);
+
             window->redraw();
 
 
@@ -285,4 +305,36 @@ Gameobject Game::getgameobject(int x, int y)
 
 }
 
+
+
+void Game::movearrow(int x, int y){
+    if(unites[posXselec].getSelected()&& unites[posXselec].getTeam()==turn){
+
+        x=unites[posXselec].getPosX()+x;
+        y=unites[posXselec].getPosY()+y;
+
+        unites[posXselec].setPosX(x);
+        unites[posXselec].setPosY(y);
+
+
+        window->redraw();}
+}
+
+
+
+void Game::createUnite(int x, int y, int type ){
+    int i =0;
+    int j =0;
+    if(gameobject[x][y].getType() == 35){
+        gameobject[x][y] = Ville(x,y);
+
+       // if((unites[posXselec].getPosX() == i) &&(unites[posYselec].getPosY() == j) ){
+            Infanterie Play(x,y,1);
+            unites.push_back(Play);
+
+            window->redraw();
+}
+
+
+}
 
