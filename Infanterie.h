@@ -10,7 +10,7 @@ private:
 
 
 public:
-    Infanterie(int InitX,int InitY,int InitTeam);
+    Infanterie(int InitX,int InitY);
 
     void capture();
 
