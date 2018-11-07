@@ -5,6 +5,7 @@
 #include "Unites.h"
 #include "player.h"
 #include "Ville.h"
+#include "Infanterie.h"
 class Game{
 public:
     static Game& Instance();
@@ -16,7 +17,7 @@ public:
     void endtour();
     int getTurn() const;
     void setTurn(int value);
-    void createUnite(int x, int y, int type);
+    void createUnite(int x, int y, int team);
 
 private:
     Game();

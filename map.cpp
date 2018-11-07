@@ -1,6 +1,7 @@
 #include "map.h"
 #include "game.h"
 #include"Infanterie.h"
+#include "Unites.h"
 #include <QPainter>
 #include <iostream>
 #include <QPushButton>
@@ -215,6 +216,12 @@ void Map::paintEvent(QPaintEvent *event)
 
 }
 
+void Map::redraw()
+{
+    this->repaint();
+}
+
+
 void Map::mousePressEvent(QMouseEvent *e)
 {
 
@@ -312,28 +319,20 @@ void Map::mousePressEvent(QMouseEvent *e)
 
         else if (gameobject[z][e].getType() == 35){
             Game& game=Game::Instance();
-            game.move(z,e);
-            QMessageBox::question(this, "Création d'Infanterie", "Voulez-vous créer une unité d'infanterie ?", QMessageBox::Yes | QMessageBox::No);
             int reponse = QMessageBox::question(this, "Création d'Infanterie", "Voulez-vous créer une unité d'infanterie ?", QMessageBox ::Yes | QMessageBox::No);
 
                 if (reponse == QMessageBox::Yes)
                 {
-                    game.createUnite(z, e,1);
-                    game.move(z,e);
+                    game.createUnite(z+1, e, 1);
+                    this->redraw();
+
                 }
                 else if( reponse == QMessageBox::No)
                 {
-                 game.move(z,e);
+                 game.move(z+1,e);
                 }
 
         }
-
-
-
-
-
-
-
 
 
         else{
@@ -383,10 +382,6 @@ void Map::setgameobject()
 
 
 
-void Map::redraw()
-{
-    this->repaint();
-}
 
 
 
