@@ -323,8 +323,16 @@ void Map::mousePressEvent(QMouseEvent *e)
 
                 if (reponse == QMessageBox::Yes)
                 {
-                    game.createUnite(z+1, e, 1);
-                    this->redraw();
+                    if(game.getTurn()==1)
+                    {
+                        game.createUnite(z+1, e, 1);
+                        this->redraw();
+                    }
+                    else
+                    {
+                        game.createUnite(z+1, e, 2);
+                        this->redraw();
+                    }
 
                 }
                 else if( reponse == QMessageBox::No)
