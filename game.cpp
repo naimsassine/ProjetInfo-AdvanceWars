@@ -66,13 +66,13 @@ void Game::move(int x,int y)
       }
     if(unites[posXselec].getTeam()==turn &&unites[posXselec].getSelected()&& unites[posXselec].getPosX()==x && unites[posXselec].getPosY()==y){
 
-    unites[posXselec].setSelected(false);
+    unites[posXselec].setSelected(false);  // deslectionnner une unités deja selectionner //
 
     }
     else if(unites[posXselec].getTeam()==turn&&unites[posXselec].getSelected()){
 
 
-        unites[posXselec].setPosX(x);
+        unites[posXselec].setPosX(x);   // faire bouger l'unité //
         unites[posXselec].setPosY(y);
 
         std::cout<< "gameobject[posXselec][posYselec]="<< gameobject[posXselec][posYselec].getType()  <<std::endl;
@@ -86,11 +86,7 @@ void Game::move(int x,int y)
     else if(unites[posXselec].getTeam()==turn && !unites[posXselec].getSelected() &&unites[posXselec].getPosX()==x && unites[posXselec].getPosY()==y){
 
 
-            unites[posXselec].setSelected(true);
-
-
-
-
+            unites[posXselec].setSelected(true);  // selectionner unité  //
 
      }
 

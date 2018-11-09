@@ -228,7 +228,7 @@ void Map::mousePressEvent(QMouseEvent *e)
     if(e->buttons() == Qt::LeftButton){
         Game& game=Game::Instance();
         float x=floorf(e->x()/40);
-        float y=floorf(e->y()/40);
+        float y=floorf(e->y()/40); // fonction deja implementé //
         int z= (int)x-5;
         int e= (int)y;
 
