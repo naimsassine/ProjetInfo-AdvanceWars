@@ -15,6 +15,7 @@ public:
     int getTeam() const;
     void setTeam(int value);
 
+
 protected:
     int vie;
     int prix;
