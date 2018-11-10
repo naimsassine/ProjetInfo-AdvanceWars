@@ -17,10 +17,17 @@
 #include <math.h>
 #include <stdio.h>
 #include <QMenu>
+#include <QAction>
 Map::Map(QWidget *parent ) : QWidget(parent)
 {
 setFocusPolicy(Qt::StrongFocus);
 
+}
+
+Map::~Map()
+{
+    delete capture;
+    delete wait;
 }
 
 void Map::paintEvent(QPaintEvent *event)
@@ -90,8 +97,16 @@ void Map::paintEvent(QPaintEvent *event)
                painter.drawPixmap(c*40,j*40,40,40,pixmap);
            }
            else if(gameobject[i][j].getType() == 34){
+               Ville &p=static_cast<Ville&>(gameobject[i][j]);
+               if(gameobject[i][j].getTeam()==0){
                QPixmap pixmap(":/neutralcity.gif");
-               painter.drawPixmap(c*40,j*40,40,40,pixmap);
+               painter.drawPixmap(c*40,j*40,40,40,pixmap);}
+               if(gameobject[i][j].getTeam()==1){
+               QPixmap pixmap(":/orangestarcity.gif");
+               painter.drawPixmap(c*40,j*40,40,40,pixmap);}
+               if(gameobject[i][j].getTeam()==2){
+               QPixmap pixmap(":/bluemooncity.gif");
+               painter.drawPixmap(c*40,j*40,40,40,pixmap);}
            }
            else if(gameobject[i][j].getType() == 30){
                QPixmap pixmap(":/hshoal.gif");
@@ -221,16 +236,23 @@ void Map::redraw()
     this->repaint();
 }
 
-
-void Map::mousePressEvent(QMouseEvent *e)
+void Map::captureville()
 {
+    Game& game=Game::Instance();
+    game.capture(z,e);
+}
 
-    if(e->buttons() == Qt::LeftButton){
+
+void Map::mousePressEvent(QMouseEvent *ev)
+{
+    float x=floorf(ev->x()/40);
+    float y=floorf(ev->y()/40); // fonction deja implementé //
+    z= (int)x-5;
+    e= (int)y;
+    if(ev->buttons() == Qt::LeftButton){
         Game& game=Game::Instance();
-        float x=floorf(e->x()/40);
-        float y=floorf(e->y()/40); // fonction deja implementé //
-        int z= (int)x-5;
-        int e= (int)y;
+
+
 
 
 
@@ -348,8 +370,28 @@ void Map::mousePressEvent(QMouseEvent *e)
         }
 
     }
-    else if(e->buttons() == Qt::RightButton){
-        /*créer un bouton end tour */
+    else if(ev->buttons() == Qt::RightButton){
+        if (gameobject[z][e].getType() == 34){
+            Game& game=Game::Instance();
+            std::vector<Ville> ville =game.getVille();
+            for(std::vector<Ville>::size_type i = 0; i != ville.size(); i++){
+
+
+                if(ville[i].getPosX()==z &&ville[i].getPosY()==e && ville[i].getUnitin()){
+                    QMenu menu(this);
+                    capture =new QAction("Capture", this);
+                    menu.addAction(capture);
+                    wait =new QAction("Wait", this);
+                    menu.addAction(wait);
+                    QObject::connect(capture, SIGNAL(triggered()), this, SLOT(captureville()));
+
+                    // Place the menu in the right position and show it.
+                    menu.exec(ev->globalPos());
+                   }
+            }
+
+
+        }
 
     }
 
