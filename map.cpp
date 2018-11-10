@@ -26,8 +26,8 @@ setFocusPolicy(Qt::StrongFocus);
 
 Map::~Map()
 {
-    delete capture;
-    delete wait;
+    /*delete capture;
+    delete wait;*/
 }
 
 void Map::paintEvent(QPaintEvent *event)
@@ -377,7 +377,7 @@ void Map::mousePressEvent(QMouseEvent *ev)
             for(std::vector<Ville>::size_type i = 0; i != ville.size(); i++){
 
 
-                if(ville[i].getPosX()==z &&ville[i].getPosY()==e && ville[i].getUnitin()){
+                if(ville[i].getPosX()==z &&ville[i].getPosY()==e && ville[i].getUnitin() && ville[i].getTeam()==0){
                     QMenu menu(this);
                     capture =new QAction("Capture", this);
                     menu.addAction(capture);
