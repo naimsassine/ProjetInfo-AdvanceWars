@@ -382,6 +382,7 @@ void Game::capture(int z, int e)
         ville[i].setCapturepoint(unites[posXselec].getvie());
         if(ville[i].getCapturepoint()==0){
         gameobject[z][e].setTeam(turn);
+        ville[i].setTeam(turn);
         window->redraw();
 }
     }
