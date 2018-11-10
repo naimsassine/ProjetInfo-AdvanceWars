@@ -24,8 +24,8 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     map = new Map(this);
     MainWindow::setCentralWidget(map);
-    QSize size(1040,600);
-    this->setFixedSize(size);
+    /*QSize size(1040,600);
+    this->setFixedSize(size);*/
  //Gestions des boutons sur la map//
 
 
