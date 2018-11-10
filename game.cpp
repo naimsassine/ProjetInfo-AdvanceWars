@@ -246,10 +246,10 @@ void Game::InitGame(MainWindow &wind,Player &InitPlayer1,Player &InitPlayer2){
                         ville.push_back(p);
                     }
                     if(c==35){
-                        Ville t(j,d);
-                        gameobject[j][d]= t;
-                        gameobject[j][d].setType(34);
-                        ville.push_back(t);
+
+                        gameobject[j][d]= Buildings(j,d);
+                        gameobject[j][d].setType(35);
+
                     }
                     if(c==109){
                         gameobject[j][d]= Pipe(j,d);
