@@ -45,7 +45,8 @@ SOURCES += \
     Pipe.cpp \
     Road.cpp \
     bouton.cpp \
-    player.cpp
+    player.cpp \
+    usinewindow.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -67,10 +68,12 @@ HEADERS += \
     Pipe.h \
     Road.h \
     bouton.h \
-    player.h
+    player.h \
+    usinewindow.h
 
 FORMS += \
-        mainwindow.ui
+        mainwindow.ui \
+    usinewindow.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
