@@ -1,15 +1,7 @@
 #include "Gameobject.h"
-Gameobject::Gameobject(int initX, int initY, int Inittype)
-{
- posX=initX;
- posY=initY;
- selected = false;
- type = Inittype;
 
-}
-Gameobject::Gameobject()
-{
-}
+
+
 
 
 int Gameobject::getPosX() const
@@ -50,6 +42,16 @@ void Gameobject::setSelected(bool value)
 QString Gameobject::getFilename() const
 {
     return filename;
+}
+
+int Gameobject::getTeam() const
+{
+    return team;
+}
+
+void Gameobject::setTeam(int value)
+{
+    team = value;
 }
 
 void Gameobject::setPosX(int value)
