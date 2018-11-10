@@ -97,7 +97,7 @@ void Map::paintEvent(QPaintEvent *event)
                painter.drawPixmap(c*40,j*40,40,40,pixmap);
            }
            else if(gameobject[i][j].getType() == 34){
-               Ville &p=static_cast<Ville&>(gameobject[i][j]);
+
                if(gameobject[i][j].getTeam()==0){
                QPixmap pixmap(":/neutralcity.gif");
                painter.drawPixmap(c*40,j*40,40,40,pixmap);}
