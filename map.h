@@ -10,17 +10,27 @@
 class Map : public QWidget{
     Q_OBJECT
 public:
+
     explicit Map(QWidget *parent = 0) ;
+    ~Map();
     void paintEvent(QPaintEvent *event);
     void mousePressEvent(QMouseEvent *e);
     void keyPressEvent(QKeyEvent *keyEvent);
     void setgameobject();
 
     void redraw();
+private slots:
+    void captureville();
+
 
 private:
     Gameobject gameobject[22][18];
     QString filename;
+    QAction *capture;
+    QAction *wait;
+    int z;
+    int e;
+
 
 };
 #endif // MAP_H
