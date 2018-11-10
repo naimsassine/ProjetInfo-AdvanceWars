@@ -9,6 +9,7 @@
 #include <QMainWindow>
 #include"Gameobject.h"
 #include "map.h"
+#include <QLabel>
 class Gameobject;
 namespace Ui {
 class MainWindow;
@@ -25,12 +26,17 @@ public:
     void redraw();
 
 private slots:
-    void on_pushButton_clicked();
+void changeturn();
 
 private:
     Ui::MainWindow *ui;
     Map *map;
     QPushButton *bouton;
+    QLabel *lab;
+    QLabel *lab2;
+    QLabel *lab3;
+
+
 
 };
 
