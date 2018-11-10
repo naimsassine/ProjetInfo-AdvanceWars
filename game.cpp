@@ -25,6 +25,22 @@ Game::Game()
 
 }
 
+std::vector<Ville> Game::getVille() const
+{
+    return ville;
+}
+
+Player *Game::getPlayer() const
+{ if(turn==1){
+        return player1;}
+    else if(turn==2){
+        return player2;
+    }
+    else{
+        return nullptr;
+    }
+}
+
 int Game::getTurn() const
 {
     return turn;
@@ -77,10 +93,22 @@ void Game::move(int x,int y)
 
         std::cout<< "gameobject[posXselec][posYselec]="<< gameobject[posXselec][posYselec].getType()  <<std::endl;
 
+        if(gameobject[x][y].getType()==34){
+            for(std::vector<Ville>::size_type i = 0; i != ville.size(); i++){
 
+                std::cout<<ville[i].getPosX()<<ville[i].getPosY();
+                if(ville[i].getPosX()==x &&ville[i].getPosY()==y){
+                    ville[i].setUnitin(true);
 
+                }
+                else{
+                    ville[i].setUnitin(false);
+
+                }
+            }
+
+        }
         unites[posXselec].setSelected(false);
-
         window->redraw();
     }
     else if(unites[posXselec].getTeam()==turn && !unites[posXselec].getSelected() &&unites[posXselec].getPosX()==x && unites[posXselec].getPosY()==y){
@@ -175,16 +203,21 @@ void Game::InitGame(MainWindow &wind,Player &InitPlayer1,Player &InitPlayer2){
                         gameobject[j][d].setType(c);
                     }
                     if(c==34){
-                        gameobject[j][d]= Ville(j,d);
-                        gameobject[j][d].setType(c);
+                        Ville v(j,d);
+
+                        gameobject[j][d]= v;
+                        gameobject[j][d].setType(34);
+                        ville.push_back(v);
                     }
                     if(c==30){
                         gameobject[j][d]= Plain(j,d);
                         gameobject[j][d].setType(c);
                     }
                     if(c==33){
-                        gameobject[j][d]= Buildings(j,d);
-                        gameobject[j][d].setType(c);
+                        Ville e(j,d);
+                        gameobject[j][d]= e;
+                        gameobject[j][d].setType(34);
+                        ville.push_back(e);
                     }
                     if(c==19){
                         gameobject[j][d]= Road(j,d);
@@ -207,20 +240,26 @@ void Game::InitGame(MainWindow &wind,Player &InitPlayer1,Player &InitPlayer2){
                         gameobject[j][d].setType(c);
                     }
                     if(c==125){
-                        gameobject[j][d]= Buildings(j,d);
-                        gameobject[j][d].setType(c);
+                        Ville p(j,d);
+                        gameobject[j][d]= p;
+                        gameobject[j][d].setType(34);
+                        ville.push_back(p);
                     }
                     if(c==35){
-                        gameobject[j][d]= Buildings(j,d);
-                        gameobject[j][d].setType(c);
+                        Ville t(j,d);
+                        gameobject[j][d]= t;
+                        gameobject[j][d].setType(34);
+                        ville.push_back(t);
                     }
                     if(c==109){
                         gameobject[j][d]= Pipe(j,d);
                         gameobject[j][d].setType(c);
                     }
                     if(c==123){
-                        gameobject[j][d]= Buildings(j,d);
-                        gameobject[j][d].setType(c);
+                        Ville r(j,d);
+                        gameobject[j][d]= r;
+                        gameobject[j][d].setType(34);
+                        ville.push_back(r);
                     }
                     if(c==23){
                         gameobject[j][d]= Road(j,d);
@@ -255,12 +294,17 @@ void Game::InitGame(MainWindow &wind,Player &InitPlayer1,Player &InitPlayer2){
                         gameobject[j][d].setType(c);
                     }
                     if (c==95){
-                        gameobject[j][d]= Buildings(j,d);
-                        gameobject[j][d].setType(c);
+                        Ville x(j,d);
+                        gameobject[j][d]= x;
+                        gameobject[j][d].setType(34);
+                        ville.push_back(x);
                     }
                     if (c==92){
-                        gameobject[j][d]= Buildings(j,d);
-                        gameobject[j][d].setType(c);
+                        Ville f(j,d);
+                        gameobject[j][d]= f;
+                        gameobject[j][d].setType(34);
+                        ville.push_back(f);
+
                     }
                     if (c==107){
                         gameobject[j][d]= Pipe(j,d);
@@ -278,6 +322,7 @@ void Game::InitGame(MainWindow &wind,Player &InitPlayer1,Player &InitPlayer2){
 
                     }
                     d++;
+
 
 
                 }
@@ -325,6 +370,23 @@ void Game::createUnite(int x, int y,  int team ){
 
     window->redraw();
     unites.push_back(nom1);
+
+}
+
+void Game::capture(int z, int e)
+{   for(std::vector<Ville>::size_type i = 0; i != ville.size(); i++){
+
+
+    if(ville[i].getPosX()==z &&ville[i].getPosY()==e){
+
+        ville[i].setCapturepoint(unites[posXselec].getvie());
+        if(ville[i].getCapturepoint()==0){
+        gameobject[z][e].setTeam(turn);
+        window->redraw();
+}
+    }
+    }
+
 
 }
 
