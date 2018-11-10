@@ -18,10 +18,15 @@ public:
     int getTurn() const;
     void setTurn(int value);
     void createUnite(int x, int y, int team);
+    void capture(int z,int e);
+    Player *getPlayer() const;
+
+    std::vector<Ville> getVille() const;
 
 private:
     Game();
     std::vector<Unites> unites;
+    std::vector<Ville> ville;
     static Game gameinst;
     MainWindow *window;
     Gameobject gameobject[22][18];
