@@ -5,8 +5,7 @@
 class Gameobject
 {
 public:
-    Gameobject(int initX,int initY, int Inittype = 0) ;
-    Gameobject() ;
+
     int getPosX() const;
     void setPosX(int value);
     int getPosY() const;
@@ -14,9 +13,12 @@ public:
     int getType() const;
     void setType(int value);
     bool getSelected() const;
-    void setSelected(bool value);
+     void setSelected(bool value);
     // LOLOLOLOLOOLOLOLOLOLOL //
     QString getFilename() const;
+
+    int getTeam() const;
+    void setTeam(int value);
 
 protected:
     int posX;
@@ -24,6 +26,7 @@ protected:
     int type;
     bool selected=false;
     QString filename;
+    int team=0;
 
 };
 #endif // Gameobject_H
