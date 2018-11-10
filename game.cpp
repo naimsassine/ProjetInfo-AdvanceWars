@@ -91,12 +91,12 @@ void Game::move(int x,int y)
         unites[posXselec].setPosX(x);   // faire bouger l'unité //
         unites[posXselec].setPosY(y);
 
-        std::cout<< "gameobject[posXselec][posYselec]="<< gameobject[posXselec][posYselec].getType()  <<std::endl;
+
 
         if(gameobject[x][y].getType()==34){
             for(std::vector<Ville>::size_type i = 0; i != ville.size(); i++){
 
-                std::cout<<ville[i].getPosX()<<ville[i].getPosY();
+
                 if(ville[i].getPosX()==x &&ville[i].getPosY()==y){
                     ville[i].setUnitin(true);
 
