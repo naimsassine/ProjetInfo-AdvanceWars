@@ -18,6 +18,7 @@
 #include <stdio.h>
 #include <QMenu>
 #include <QAction>
+#include "usinewindow.h"
 Map::Map(QWidget *parent ) : QWidget(parent)
 {
 setFocusPolicy(Qt::StrongFocus);
@@ -340,7 +341,12 @@ void Map::mousePressEvent(QMouseEvent *ev)
         }
 
         else if (gameobject[z][e].getType() == 35){
-            Game& game=Game::Instance();
+            UsineWindow w;
+
+            w.setX(z);
+            w.setY(e);
+            w.exec();
+            /*Game& game=Game::Instance();
             int reponse = QMessageBox::question(this, "Création d'Infanterie", "Voulez-vous créer une unité d'infanterie ?", QMessageBox ::Yes | QMessageBox::No);
 
                 if (reponse == QMessageBox::Yes)
@@ -360,7 +366,7 @@ void Map::mousePressEvent(QMouseEvent *ev)
                 else if( reponse == QMessageBox::No)
                 {
                  game.move(z+1,e);
-                }
+                }*/
 
         }
 
