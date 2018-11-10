@@ -9,6 +9,7 @@ Infanterie::Infanterie(int InitX, int InitY, int InitTeam)
     type=1998;
     posY=InitY;
     Team = InitTeam;
+    vie=10;
 }
 
 
