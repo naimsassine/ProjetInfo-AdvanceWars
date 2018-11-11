@@ -10,6 +10,8 @@ Infanterie::Infanterie(int InitX, int InitY, int InitTeam)
     posY=InitY;
     Team = InitTeam;
     vie=10;
+    ptdeplacement = 3;
+
 }
 
 

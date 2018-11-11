@@ -9,8 +9,9 @@ public:
 
 
 
-private:
+protected:
     int nbVie;
+
 
 
 };

@@ -18,7 +18,6 @@ public:
     void setAutorisation(int value);
     int getAutorisation();
 
-
     int getTeam() const;
     void setTeam(int value);
 
