@@ -343,13 +343,22 @@ void Map::mousePressEvent(QMouseEvent *ev)
 
 //unites[i].getType()==1998 && unites[i].getTeam()==2
         }
+<<<<<<< HEAD
         else{
+=======
+        else if(ev->buttons() == Qt::RightButton){
+             if(gameobject[z][e].getType() == 1998){
+>>>>>>> b4050471b55469c81a33d9a7fadb6bcc6f67ffe3
             Game& game=Game::Instance();
             std::vector<Unites> unite =game.getUnites();
             for(std::vector<Unites>::size_type i = 0; i != unite.size(); i++){
 
 
+<<<<<<< HEAD
                 if(unite[i].getPosX()==z &&unite[i].getPosY()==e && unite[i].getUnitin() && unite[i].getTeam()!=game.getTurn()){
+=======
+                if(unite[i].getPosX()==z &&unite[i].getPosY()==e && unite[i].getUnitin() && unite[i].getTeam()==2){
+>>>>>>> b4050471b55469c81a33d9a7fadb6bcc6f67ffe3
                     QMenu menu(this);
                     attack =new QAction("Attaquer", this);
                     menu.addAction(attack);
@@ -364,7 +373,7 @@ void Map::mousePressEvent(QMouseEvent *ev)
             }
 
 
-    }
+    }}
     }
 
 
