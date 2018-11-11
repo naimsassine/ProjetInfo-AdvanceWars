@@ -18,7 +18,7 @@ public:
     int getTurn() const;
     void setTurn(int value);
     void createUnite(int x, int y, int team);
-    void attack(int z, int e);
+    void attack(int z, int e ,int  i);
     void capture(int z,int e);
     Player *getPlayer() const;
 
