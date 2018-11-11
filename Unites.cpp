@@ -1,12 +1,13 @@
 #include "Unites.h"
 #include "Gameobject.h"
-
+#include "iostream"
 
 Unites::Unites(){
-   this->ptattack = 90;
-   this->ptdefense = 90;
-   this->defterrain = 10;
+   this->ptattack = 7;
+   this->ptdefense = 3;
+   this->defterrain = 1;
    this->B = 65;
+   vie=10;
 }
 
 void Unites::attack()
@@ -38,6 +39,7 @@ void Unites::setDamage(Unites A)
 {
     // B fournie dans la charte de dégats, comme on a qu'un seul type d'unité je met direct la valeur pour l'instant
 int degat = B * A.ptattack / 10 * (100 - defterrain * ptdefense) / 100;
+std::cout<<degat<<std::endl;
 vie = vie - degat;
 if(vie<0){
     vie=0;
