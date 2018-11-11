@@ -16,6 +16,8 @@ public:
     int getTeam() const;
     void setTeam(int value);
     void setDamage(Unites);
+    bool getUnitin() const;
+    void setUnitin(bool value);
 
 
 protected:
@@ -29,6 +31,7 @@ protected:
     int damage;
     int numero;
     int Team;
+    bool unite =false;
 };
 
 

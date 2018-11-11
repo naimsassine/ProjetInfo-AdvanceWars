@@ -63,3 +63,13 @@ void Unites::setTeam(int value)
 {
     Team = value;
 }
+
+bool Unites::getUnitin() const
+{
+    return unite;
+}
+
+void Unites::setUnitin(bool value)
+{
+    unite = value;
+}

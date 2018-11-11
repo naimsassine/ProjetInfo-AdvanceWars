@@ -417,13 +417,13 @@ void Map::mousePressEvent(QMouseEvent *ev)
 
 
         }
-        else if(gameobject[z][e].getType() == 1998){
+        else if(gameobject[z][e].getTeam() == 2){
             Game& game=Game::Instance();
             std::vector<Unites> unite =game.getUnites();
             for(std::vector<Unites>::size_type i = 0; i != unite.size(); i++){
 
 
-                if(unite[i].getPosX()==z &&unite[i].getPosY()==e &&  unite[i].getTeam()==0){
+                if(unite[i].getPosX()==z &&unite[i].getPosY()==e && unite[i].getUnitin()&& unite[i].getTeam()==0){
                     QMenu menu(this);
                     attack =new QAction("Attaquer", this);
                     menu.addAction(attack);
