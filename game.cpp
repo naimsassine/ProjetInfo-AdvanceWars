@@ -151,7 +151,7 @@ void Game::InitGame(MainWindow &wind,Player &InitPlayer1,Player &InitPlayer2){
 
                     if(c==1){
                         gameobject[j][d]= Plain(j,d);
-                        gameobject[j][d].setDeplacement(2);
+
 
                     }
                     if(c==2){

@@ -68,3 +68,5 @@ void Gameobject::setPosX(int value)
 {
     posX = value;
 }
+
+
