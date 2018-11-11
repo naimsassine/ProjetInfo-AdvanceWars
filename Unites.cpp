@@ -66,10 +66,10 @@ void Unites::setTeam(int value)
 
 bool Unites::getUnitin() const
 {
-    return unite;
+    return unity;
 }
 
 void Unites::setUnitin(bool value)
 {
-    unite = value;
+    unity = value;
 }

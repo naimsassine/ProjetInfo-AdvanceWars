@@ -31,7 +31,7 @@ protected:
     int damage;
     int numero;
     int Team;
-    bool unite =false;
+    bool unity =false;
 };
 
 

@@ -343,7 +343,7 @@ void Map::mousePressEvent(QMouseEvent *ev)
             for(std::vector<Unites>::size_type i = 0; i != unite.size(); i++){
 
 
-                if(unite[i].getPosX()==z &&unite[i].getPosY()==e && unite[i].getUnitin() && unite[i].getTeam()==2){
+                if(unite[i].getPosX()==z &&unite[i].getPosY()==e && unite[i].getUnitin() && unite[i].getTeam()==1){
                     QMenu menu(this);
                     attack =new QAction("Attaquer", this);
                     menu.addAction(attack);
@@ -357,7 +357,8 @@ void Map::mousePressEvent(QMouseEvent *ev)
             }
 
 
-    }}
+    }
+    }
 
 
 
