@@ -109,6 +109,18 @@ void Game::move(int x,int y)
             }
 
         }
+
+
+        else if(gameobject[x][y].getType() == 1998 && gameobject[x][y].getTeam() ==2)
+        {
+            if(gameobject[x][y].getPosX() == unites[posXselec].getPosX() && gameobject[x][y].getPosY() == unites[posYselec].getPosY()){
+                unites[posXselec].setUnitin(true);
+
+            }
+            else{
+                unites[posXselec].setUnitin(false);
+            }
+        }
         unites[posXselec].setSelected(false);
         window->redraw();
     }
