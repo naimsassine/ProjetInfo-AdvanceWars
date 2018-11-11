@@ -13,9 +13,10 @@ public:
     int getType() const;
     void setType(int value);
     bool getSelected() const;
-     void setSelected(bool value);
-    // LOLOLOLOLOOLOLOLOLOLOL //
+    void setSelected(bool value);
     QString getFilename() const;
+    void setAutorisation(int value);
+    int getAutorisation();
 
     int getTeam() const;
     void setTeam(int value);
@@ -27,6 +28,7 @@ protected:
     bool selected=false;
     QString filename;
     int team=0;
+    int autorisation;
 
 };
 #endif // Gameobject_H

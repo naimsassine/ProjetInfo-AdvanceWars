@@ -1,4 +1,5 @@
 #include "usinewindow.h"
+#include "mainwindow.h"
 #include "ui_usinewindow.h"
 #include "game.h"
 UsineWindow::UsineWindow(QWidget *parent) :
@@ -26,7 +27,8 @@ UsineWindow::~UsineWindow()
 void UsineWindow::on_pushButton_clicked()
 {
     Game& game=Game::Instance();
-    game.createUnite(x,y,game.getTurn());
+    game.createUnite(x+1,y,game.getTurn());
+
 }
 
 int UsineWindow::getY() const

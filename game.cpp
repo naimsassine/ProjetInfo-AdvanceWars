@@ -18,6 +18,7 @@
 #include <QFont>
 #include <QIcon>
 #include "Infanterie.h"
+#include "Terrain.h"
 Game Game::gameinst=Game();
 Game::Game()
 {
@@ -150,6 +151,8 @@ void Game::InitGame(MainWindow &wind,Player &InitPlayer1,Player &InitPlayer2){
 
                     if(c==1){
                         gameobject[j][d]= Plain(j,d);
+
+
                     }
                     if(c==2){
                         gameobject[j][d]= Mountain(j,d);
@@ -210,7 +213,7 @@ void Game::InitGame(MainWindow &wind,Player &InitPlayer1,Player &InitPlayer2){
                         ville.push_back(v);
                     }
                     if(c==30){
-                        gameobject[j][d]= Plain(j,d);
+                        gameobject[j][d]= Water(j,d);
                         gameobject[j][d].setType(c);
                     }
                     if(c==33){
@@ -351,13 +354,20 @@ Gameobject Game::getgameobject(int x, int y)
 
 void Game::movearrow(int x, int y){
     if(unites[posXselec].getSelected()&& unites[posXselec].getTeam()==turn){
+        int PX = 0;
+        int PY = 0;
 
-        x=unites[posXselec].getPosX()+x;
-        y=unites[posXselec].getPosY()+y;
 
-        unites[posXselec].setPosX(x);
-        unites[posXselec].setPosY(y);
+        PX=unites[posXselec].getPosX()+x;
+        PY=unites[posXselec].getPosY()+y;
+        if (gameobject[PX][PY].getAutorisation() == 77){
+            std::cout<< "Tu peux pas marcher sur l'eau"<< std::endl;
+        }
+        else {
+            unites[posXselec].setPosX(PX);
+            unites[posXselec].setPosY(PY);
 
+        }
 
         window->redraw();}
 }
