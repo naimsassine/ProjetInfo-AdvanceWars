@@ -44,6 +44,16 @@ QString Gameobject::getFilename() const
     return filename;
 }
 
+void Gameobject::setAutorisation(int value)
+{
+    autorisation = value;
+}
+
+int Gameobject::getAutorisation()
+{
+    return autorisation;
+}
+
 int Gameobject::getTeam() const
 {
     return team;
