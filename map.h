@@ -21,7 +21,7 @@ public:
     void redraw();
 private slots:
     void captureville();
-
+    void attackunite();
 
 private:
     Gameobject gameobject[22][18];
@@ -31,6 +31,7 @@ private:
     QAction *attack;
     int z;
     int e;
+    int unitpos;
 
 
 };
