@@ -395,11 +395,52 @@ void Map::mousePressEvent(QMouseEvent *ev)
                     menu.exec(ev->globalPos());
                    }
             }
+            /**std::vector<Unites> uni = game.getUnites();
+            unsigned int i = 0;
+            bool found = false;
+            while( i < sizeof(uni)){
+                if(uni[i].getPosX() == z && uni[i].getPosY() == e){
+                    found = true;
+                }
+                i++;
+
+            }i--;
+            if(found){
+                QMenu menu(this);
+                attack =new QAction("Attack", this);
+                menu.addAction(attack);
+
+                QObject::connect(attack, SIGNAL(triggered()), this, SLOT(attack()));
+                menu.exec(ev->globalPos());
+            }**/
+
 
 
         }
+        else if(gameobject[z][e].getType() == 1998){
+            Game& game=Game::Instance();
+            std::vector<Unites> unite =game.getUnites();
+            for(std::vector<Unites>::size_type i = 0; i != unite.size(); i++){
 
-    }
+
+                if(unite[i].getPosX()==z &&unite[i].getPosY()==e &&  unite[i].getTeam()==0){
+                    QMenu menu(this);
+                    attack =new QAction("Attaquer", this);
+                    menu.addAction(attack);
+                    wait =new QAction("Wait", this);
+                    menu.addAction(wait);
+                    QObject::connect(attack, SIGNAL(triggered()), this, SLOT(attack()));
+
+                    // Place the menu in the right position and show it.
+                    menu.exec(ev->globalPos());
+                   }
+            }
+
+
+    }}
+
+
+
 
 }
 

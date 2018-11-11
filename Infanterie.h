@@ -11,8 +11,9 @@ private:
 
 public:
     Infanterie(int InitX,int InitY,int InitTeam);
-
+    //~Infanterie();
     void capture();
+    void attack();
 
 };
 

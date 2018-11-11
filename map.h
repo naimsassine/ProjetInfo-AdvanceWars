@@ -28,6 +28,7 @@ private:
     QString filename;
     QAction *capture;
     QAction *wait;
+    QAction *attack;
     int z;
     int e;
 

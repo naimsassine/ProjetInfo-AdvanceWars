@@ -367,11 +367,34 @@ void Game::movearrow(int x, int y){
 void Game::createUnite(int x, int y,  int team ){
     Infanterie nom1(x,y,team);
 
-
     window->redraw();
     unites.push_back(nom1);
 
 }
+
+void Game::attack(int z, int e){
+
+    int unsigned i = 0;
+    bool found = false;
+    while(i<sizeof (unites) && !found){
+        if(unites[i].getPosX() == z && unites[i].getPosY() == e){
+            found = true;
+        }
+        i++;
+    }
+    i--; //décrement du i de la boucle while en trop
+    if(found){
+        unites[i].setDamage(unites[posXselec]);
+    }
+
+    if(unites[i].getvie() == 0){
+        unites.erase(unites.begin() + i);
+        //supprimer unites[i]
+    }
+
+
+   }
+
 
 void Game::capture(int z, int e)
 {   for(std::vector<Ville>::size_type i = 0; i != ville.size(); i++){
