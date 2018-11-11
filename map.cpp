@@ -243,6 +243,12 @@ void Map::captureville()
     game.capture(z,e);
 }
 
+void Map::attackunite()
+{
+    Game& game=Game::Instance();
+    game.attack(z,e,unitpos);
+}
+
 
 void Map::mousePressEvent(QMouseEvent *ev)
 {
@@ -337,19 +343,20 @@ void Map::mousePressEvent(QMouseEvent *ev)
 
 //unites[i].getType()==1998 && unites[i].getTeam()==2
         }
-        else if(gameobject[z][e].getType() == 1998){
+        else{
             Game& game=Game::Instance();
             std::vector<Unites> unite =game.getUnites();
             for(std::vector<Unites>::size_type i = 0; i != unite.size(); i++){
 
 
-                if(unite[i].getPosX()==z &&unite[i].getPosY()==e && unite[i].getUnitin() && unite[i].getTeam()==1){
+                if(unite[i].getPosX()==z &&unite[i].getPosY()==e && unite[i].getUnitin() && unite[i].getTeam()!=game.getTurn()){
                     QMenu menu(this);
                     attack =new QAction("Attaquer", this);
                     menu.addAction(attack);
                     wait =new QAction("Wait", this);
                     menu.addAction(wait);
-                    QObject::connect(attack, SIGNAL(triggered()), this, SLOT(attack()));
+                    unitpos=i;
+                    QObject::connect(attack, SIGNAL(triggered()), this, SLOT(attackunite()));
 
                     // Place the menu in the right position and show it.
                     menu.exec(ev->globalPos());
