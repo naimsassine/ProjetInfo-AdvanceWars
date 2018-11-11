@@ -79,8 +79,20 @@ void Game::move(int x,int y)
       if( unites[i].getPosX()==x && unites[i].getPosY()==y && unites[i].getTeam()==turn){
 
            posXselec=i;}
+      else if( unites[i].getPosX()==x+1 && unites[i].getPosY()==y && unites[i].getTeam()!=turn){
 
+           unites[i].setUnitin(true);}
+      else if( unites[i].getPosX()==x-1 && unites[i].getPosY()==y && unites[i].getTeam()!=turn){
+
+           unites[i].setUnitin(true);}
+      else if( unites[i].getPosX()==x && unites[i].getPosY()==y+1 && unites[i].getTeam()!=turn){
+
+           unites[i].setUnitin(true);}
+      else if( unites[i].getPosX()==x && unites[i].getPosY()==y-1 && unites[i].getTeam()!=turn){
+
+           unites[i].setUnitin(true);}
       }
+
     if(unites[posXselec].getTeam()==turn &&unites[posXselec].getSelected()&& unites[posXselec].getPosX()==x && unites[posXselec].getPosY()==y){
 
     unites[posXselec].setSelected(false);  // deslectionnner une unités deja selectionner //
@@ -382,10 +394,10 @@ void Game::createUnite(int x, int y,  int team ){
 
 }
 
-void Game::attack(int z, int e){
+void Game::attack(int z, int e,int i){
 
-    int unsigned i = 0;
-    bool found = false;
+
+   /* bool found = false;
     while(i<sizeof (unites) && !found){
         if(unites[i].getPosX() == z && unites[i].getPosY() == e){
             found = true;
@@ -395,13 +407,19 @@ void Game::attack(int z, int e){
     i--; //décrement du i de la boucle while en trop
     if(found){
         unites[i].setDamage(unites[posXselec]);
-    }
+    }*/
+    std::cout<<unites[i].getvie()<<std::endl;
+    if(unites[i].getvie()>0){
+        unites[i].setDamage(unites[posXselec]);
+        std::cout<<unites[i].getvie()<<std::endl;
+
 
     if(unites[i].getvie() == 0){
         unites.erase(unites.begin() + i);
         //supprimer unites[i]
+        window->redraw();
     }
-
+}
 
    }
 
