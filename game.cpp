@@ -19,6 +19,10 @@
 #include <QIcon>
 #include "Infanterie.h"
 #include "Terrain.h"
+#include "wood.h"
+#include "river.h"
+#include "shoal.h"
+#include "reef.h"
 Game Game::gameinst=Game();
 Game::Game()
 {
@@ -44,35 +48,44 @@ Player *Game::getPlayer() const
 
 void Game::moveable(int move, int x, int y)
 {
+    if(x<21 && x>-1 && y<17 && y>-1){
     if(move >= gameobject[x+1][y].getPtdemouvement() && (gameobject[x+1][y].getTeam()==turn || gameobject[x+1][y].getTeam()==0 )){
         gameobject[x+1][y].setMovable(true);
 
         int s = move-gameobject[x+1][y].getPtdemouvement();
+
         moveable(s,x+1,y);
-        if(move >= gameobject[x-1][y].getPtdemouvement()&& (gameobject[x-1][y].getTeam()==turn ||gameobject[x-1][y].getTeam()==0)){
+
+    }
+    if(move >= gameobject[x-1][y].getPtdemouvement()&& (gameobject[x-1][y].getTeam()==turn ||gameobject[x-1][y].getTeam()==0)){
         gameobject[x-1][y].setMovable(true);
 
         int s = move-gameobject[x-1][y].getPtdemouvement();
+
         moveable(s,x-1,y);
-        if(move >= gameobject[x][y+1].getPtdemouvement()&& (gameobject[x][y+1].getTeam()==turn || gameobject[x][y+1].getTeam()==0 )){
+    }
+    if(move >= gameobject[x][y+1].getPtdemouvement()&& (gameobject[x][y+1].getTeam()==turn || gameobject[x][y+1].getTeam()==0 )){
 
                 gameobject[x][y+1].setMovable(true);
 
                 int s = move-gameobject[x][y+1].getPtdemouvement();
+
                 moveable(s,x,y+1);
-                if(move >= gameobject[x][y-1].getPtdemouvement()&&( gameobject[x][y-1].getTeam()==turn|| gameobject[x][y-1].getTeam()==0)){
+    }
+    if(move >= gameobject[x][y-1].getPtdemouvement()&&( gameobject[x][y-1].getTeam()==turn|| gameobject[x][y-1].getTeam()==0)){
                         gameobject[x][y-1].setMovable(true);
 
                         int s = move-gameobject[x][y-1].getPtdemouvement();
+
                         moveable(s,x,y-1);
 
             }
-
 }
-    }
-    }
-
 }
+
+
+
+
 
 int Game::getTurn() const
 {
@@ -219,31 +232,31 @@ void Game::InitGame(MainWindow &wind,Player &InitPlayer1,Player &InitPlayer2){
                         gameobject[j][d]= Mountain(j,d);
                     }
                     if(c==3){
-                        gameobject[j][d]= Mountain(j,d);
-                        gameobject[j][d].setType(3);
+                        gameobject[j][d]= Wood(j,d);
+
                     }
                     if(c==4){
-                        gameobject[j][d]= Water(j,d);
+                        gameobject[j][d]= River(j,d);
                         gameobject[j][d].setType(4);
                     }
                     if(c==5){
-                        gameobject[j][d]= Water(j,d);
+                        gameobject[j][d]= River(j,d);
                         gameobject[j][d].setType(5);
                     }
                     if(c==6){
-                        gameobject[j][d]= Water(j,d);
+                        gameobject[j][d]= River(j,d);
                         gameobject[j][d].setType(c);
                     }
                     if(c==7){
-                        gameobject[j][d]= Water(j,d);
+                        gameobject[j][d]= River(j,d);
                         gameobject[j][d].setType(c);
                     }
                     if(c==8){
-                        gameobject[j][d]= Water(j,d);
+                        gameobject[j][d]= River(j,d);
                         gameobject[j][d].setType(c);
                     }
                     if(c==9){
-                        gameobject[j][d]= Water(j,d);
+                        gameobject[j][d]= River(j,d);
                         gameobject[j][d].setType(c);
                     }
                     if(c==104){
@@ -274,14 +287,12 @@ void Game::InitGame(MainWindow &wind,Player &InitPlayer1,Player &InitPlayer2){
                         ville.push_back(v);
                     }
                     if(c==30){
-                        gameobject[j][d]= Water(j,d);
-                        gameobject[j][d].setType(c);
+                        gameobject[j][d]= Shoal(j,d);
+
                     }
                     if(c==33){
-                        Ville e(j,d);
-                        gameobject[j][d]= e;
-                        gameobject[j][d].setType(34);
-                        ville.push_back(e);
+                        gameobject[j][d]= Reef(j,d);
+                        gameobject[j][d].setType(c);
                     }
                     if(c==19){
                         gameobject[j][d]= Road(j,d);
