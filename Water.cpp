@@ -6,4 +6,5 @@ Water::Water(int X,int Y)
     posY =Y;
     type =2;
     autorisation = 77;
+    ptdemouvement=1;
 }
