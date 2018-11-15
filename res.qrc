@@ -74,5 +74,6 @@
         <file>blue.png</file>
         <file>bluemooncity.gif</file>
         <file>orangestarcity.gif</file>
+        <file>Misc.png</file>
     </qresource>
 </RCC>
