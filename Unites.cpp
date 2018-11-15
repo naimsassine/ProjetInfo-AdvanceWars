@@ -6,6 +6,7 @@ Unites::Unites(){
    this->ptattack = 7;
    this->ptdefense = 3;
    this->defterrain = 1;
+    ptdeplacement=3;
    this->B = 65;
    vie=10;
 }
@@ -74,4 +75,14 @@ bool Unites::getUnitin() const
 void Unites::setUnitin(bool value)
 {
     unity = value;
+}
+
+int Unites::getPtdeplacement() const
+{
+    return ptdeplacement;
+}
+
+void Unites::setPtdeplacement(int value)
+{
+    ptdeplacement = value;
 }
