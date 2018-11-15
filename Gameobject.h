@@ -21,6 +21,12 @@ public:
     int getTeam() const;
     void setTeam(int value);
 
+    bool getMovable() const;
+    void setMovable(bool value);
+
+    int getPtdemouvement() const;
+    void setPtdemouvement(int value);
+
 protected:
     int posX;
     int posY;
@@ -29,6 +35,8 @@ protected:
     QString filename;
     int team=0;
     int autorisation;
+    bool movable=false;
+    int ptdemouvement=1;
 
 };
 #endif // Gameobject_H
