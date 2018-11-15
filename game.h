@@ -12,7 +12,7 @@ public:
     void move(int x,int y);
     void movearrow(int x,int y);
     void InitGame(MainWindow &wind,Player &InitPlayer1,Player &InitPlayer2);
-    Gameobject getgameobject(int x,int y);
+    Gameobject const& getgameobject(int x,int y) const;
     std::vector<Unites> getUnites() const;
     void endtour();
     int getTurn() const;
@@ -21,6 +21,7 @@ public:
     void attack(int z, int e ,int  i);
     void capture(int z,int e);
     Player *getPlayer() const;
+    void moveable(int move ,int x, int y);
 
     std::vector<Ville> getVille() const;
 
