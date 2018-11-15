@@ -418,43 +418,16 @@ void Map::mousePressEvent(QMouseEvent *ev)
 
 
 
-
-
-        if (gameobject[z][e].getAutorisation() == 77){
-            std::cout<< "Tu peux pas marcher sur l'eau"<< std::endl;
-        }
-        else if (gameobject[z][e].getType() == 35){
+        if (gameobject[z][e].getType() == 35){
             UsineWindow w;
 
             w.setX(z);
             w.setY(e);
             w.exec();
-            /*Game& game=Game::Instance();
-            int reponse = QMessageBox::question(this, "Création d'Infanterie", "Voulez-vous créer une unité d'infanterie ?", QMessageBox ::Yes | QMessageBox::No);
-
-                if (reponse == QMessageBox::Yes)
-                {
-                    if(game.getTurn()==1)
-                    {
-                        game.createUnite(z+1, e, 1);
-                        this->redraw();
-                    }
-                    else
-                    {
-                        game.createUnite(z+1, e, 2);
-                        this->redraw();
-                    }
-
-                }
-                else if( reponse == QMessageBox::No)
-                {
-                 game.move(z+1,e);
-                }*/
-
         }
 
 
-        else{
+        else if( z<21 && e<17) {
          game.move(z,e);
         }
 
