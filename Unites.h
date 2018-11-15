@@ -20,13 +20,16 @@ public:
     void setUnitin(bool value);
 
 
+    int getPtdeplacement() const;
+    void setPtdeplacement(int value);
+
 protected:
     int vie ;
     int prix;
     int ptattack;
     int ptdefense;
     int defterrain;
-    int ptdeplacement;
+    int ptdeplacement=3;
     int B;
     int damage;
     int numero;
