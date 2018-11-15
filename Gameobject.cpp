@@ -64,6 +64,26 @@ void Gameobject::setTeam(int value)
     team = value;
 }
 
+bool Gameobject::getMovable() const
+{
+    return movable;
+}
+
+void Gameobject::setMovable(bool value)
+{
+    movable = value;
+}
+
+int Gameobject::getPtdemouvement() const
+{
+    return ptdemouvement;
+}
+
+void Gameobject::setPtdemouvement(int value)
+{
+    ptdemouvement = value;
+}
+
 void Gameobject::setPosX(int value)
 {
     posX = value;
