@@ -9,4 +9,5 @@ Pipe::Pipe(int X, int Y)
     posX = X;
     posY = Y;
     type = 0;
+    ptdemouvement=100;
 }
