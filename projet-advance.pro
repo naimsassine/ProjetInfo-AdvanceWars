@@ -46,7 +46,12 @@ SOURCES += \
     Road.cpp \
     bouton.cpp \
     player.cpp \
-    usinewindow.cpp
+    usinewindow.cpp \
+    wood.cpp \
+    river.cpp \
+    shoal.cpp \
+    bridge.cpp \
+    reef.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -69,7 +74,12 @@ HEADERS += \
     Road.h \
     bouton.h \
     player.h \
-    usinewindow.h
+    usinewindow.h \
+    wood.h \
+    river.h \
+    shoal.h \
+    bridge.h \
+    reef.h
 
 FORMS += \
         mainwindow.ui \
