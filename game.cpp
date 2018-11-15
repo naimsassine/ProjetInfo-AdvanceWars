@@ -42,6 +42,38 @@ Player *Game::getPlayer() const
     }
 }
 
+void Game::moveable(int move, int x, int y)
+{
+    if(move >= gameobject[x+1][y].getPtdemouvement()){
+        gameobject[x+1][y].setMovable(true);
+
+        int s = move-gameobject[x+1][y].getPtdemouvement();
+        moveable(s,x+1,y);
+        if(move >= gameobject[x-1][y].getPtdemouvement()){
+        gameobject[x-1][y].setMovable(true);
+
+        int s = move-gameobject[x-1][y].getPtdemouvement();
+        moveable(s,x-1,y);
+        if(move >= gameobject[x][y+1].getPtdemouvement()){
+
+                gameobject[x][y+1].setMovable(true);
+
+                int s = move-gameobject[x][y+1].getPtdemouvement();
+                moveable(s,x,y+1);
+                if(move >= gameobject[x][y-1].getPtdemouvement()){
+                        gameobject[x][y-1].setMovable(true);
+
+                        int s = move-gameobject[x][y-1].getPtdemouvement();
+                        moveable(s,x,y-1);
+
+            }
+
+}
+    }
+    }
+
+}
+
 int Game::getTurn() const
 {
     return turn;
@@ -98,12 +130,15 @@ void Game::move(int x,int y)
     unites[posXselec].setSelected(false);  // deslectionnner une unités deja selectionner //
 
     }
-    else if(unites[posXselec].getTeam()==turn&&unites[posXselec].getSelected()){
+    else if(unites[posXselec].getTeam()==turn&&unites[posXselec].getSelected() && gameobject[x][y].getMovable()){
 
 
         unites[posXselec].setPosX(x);   // faire bouger l'unité //
         unites[posXselec].setPosY(y);
-
+        for(int i=0 ;i<21;i++){
+            for (int j=0; j <17 ;j++){
+                gameobject[i][j].setMovable(false);
+            }}
 
 
         if(gameobject[x][y].getType()==34){
@@ -139,8 +174,10 @@ void Game::move(int x,int y)
     else if(unites[posXselec].getTeam()==turn && !unites[posXselec].getSelected() &&unites[posXselec].getPosX()==x && unites[posXselec].getPosY()==y){
 
 
-            unites[posXselec].setSelected(true);  // selectionner unité  //
-
+            unites[posXselec].setSelected(true);
+            int c= unites[posXselec].getPtdeplacement();// selectionner unité  //
+            moveable(c,unites[posXselec].getPosX(),unites[posXselec].getPosY());
+            window->redraw();
      }
 
 
@@ -368,7 +405,7 @@ void Game::InitGame(MainWindow &wind,Player &InitPlayer1,Player &InitPlayer2){
 
 }
 
-Gameobject Game::getgameobject(int x, int y)
+Gameobject const& Game::getgameobject(int x, int y) const
 {
     return gameobject[x][y];
 
