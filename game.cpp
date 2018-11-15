@@ -44,23 +44,23 @@ Player *Game::getPlayer() const
 
 void Game::moveable(int move, int x, int y)
 {
-    if(move >= gameobject[x+1][y].getPtdemouvement()){
+    if(move >= gameobject[x+1][y].getPtdemouvement() && (gameobject[x+1][y].getTeam()==turn || gameobject[x+1][y].getTeam()==0 )){
         gameobject[x+1][y].setMovable(true);
 
         int s = move-gameobject[x+1][y].getPtdemouvement();
         moveable(s,x+1,y);
-        if(move >= gameobject[x-1][y].getPtdemouvement()){
+        if(move >= gameobject[x-1][y].getPtdemouvement()&& (gameobject[x-1][y].getTeam()==turn ||gameobject[x-1][y].getTeam()==0)){
         gameobject[x-1][y].setMovable(true);
 
         int s = move-gameobject[x-1][y].getPtdemouvement();
         moveable(s,x-1,y);
-        if(move >= gameobject[x][y+1].getPtdemouvement()){
+        if(move >= gameobject[x][y+1].getPtdemouvement()&& (gameobject[x][y+1].getTeam()==turn || gameobject[x][y+1].getTeam()==0 )){
 
                 gameobject[x][y+1].setMovable(true);
 
                 int s = move-gameobject[x][y+1].getPtdemouvement();
                 moveable(s,x,y+1);
-                if(move >= gameobject[x][y-1].getPtdemouvement()){
+                if(move >= gameobject[x][y-1].getPtdemouvement()&&( gameobject[x][y-1].getTeam()==turn|| gameobject[x][y-1].getTeam()==0)){
                         gameobject[x][y-1].setMovable(true);
 
                         int s = move-gameobject[x][y-1].getPtdemouvement();
@@ -130,7 +130,7 @@ void Game::move(int x,int y)
     unites[posXselec].setSelected(false);  // deslectionnner une unités deja selectionner //
 
     }
-    else if(unites[posXselec].getTeam()==turn&&unites[posXselec].getSelected() && gameobject[x][y].getMovable()){
+    else if(unites[posXselec].getTeam()==turn&&unites[posXselec].getSelected() && gameobject[x][y].getMovable()  ){
 
 
         unites[posXselec].setPosX(x);   // faire bouger l'unité //
