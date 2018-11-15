@@ -74,7 +74,7 @@ void MainWindow::InitMap()
 
 void MainWindow::redraw()
 {
-    map->setgameobject();
+   map->setgameobject();
     map->redraw();
 }
 
