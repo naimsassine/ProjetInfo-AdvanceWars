@@ -4,6 +4,7 @@
 #include "iostream"
 #include "Unites.h"
 #include "player.h"
+#include "Aeroport.h"
 #include "Ville.h"
 #include "Infanterie.h"
 class Game{
@@ -22,12 +23,14 @@ public:
     void capture(int z,int e);
     Player *getPlayer() const;
     void moveable(int move ,int x, int y);
+    std::vector<Aeroport> getAeroport() const;
 
     std::vector<Ville> getVille() const;
 
 private:
     Game();
     std::vector<Unites> unites;
+    std::vector<Aeroport> aeroport;
     std::vector<Ville> ville;
     static Game gameinst;
     MainWindow *window;

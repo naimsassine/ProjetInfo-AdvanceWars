@@ -1,5 +1,10 @@
 #include "game.h"
 #include"bouton.h"
+#include "Aerienne.h"
+#include"Aeroport.h"
+#include"bomber.h"
+#include"b_copter.h"
+#include"fighter.h"
 #include <iostream>
 #include <math.h>
 #include "Plain.h"
@@ -28,6 +33,10 @@ Game::Game()
 {
 
 
+}
+std::vector<Aeroport> Game::getAeroport() const
+{
+    return aeroport;
 }
 
 std::vector<Ville> Game::getVille() const
@@ -168,6 +177,19 @@ void Game::move(int x,int y)
                 }
             }
 
+        }
+
+        else if(gameobject[x][y].getType() == 36){
+            for(std::vector<Aeroport>::size_type i = 0; i != aeroport.size(); i++){
+
+                if(aeroport[i].getPosX()==x && aeroport[i].getPosY()==y){
+                    aeroport[i].setUnitin(true);
+                }
+                else{
+                    aeroport[i].setUnitin(false);
+                }
+
+            }
         }
 
 
@@ -365,8 +387,10 @@ void Game::InitGame(MainWindow &wind,Player &InitPlayer1,Player &InitPlayer2){
                         gameobject[j][d].setType(c);
                     }
                     if(c==36){
+                        Aeroport y(j,d);
                         gameobject[j][d]= Aeroport(j,d);
                         gameobject[j][d].setType(c);
+                        aeroport.push_back(y);
                     }
                     if (c==95){
                         Ville x(j,d);
@@ -447,10 +471,27 @@ void Game::movearrow(int x, int y){
 
 
 void Game::createUnite(int x, int y,  int team ){
-    Infanterie nom1(x,y,team);
+    if(unites[x].getType() == 1998){
+        Infanterie nom1(x,y,team);
 
-    window->redraw();
-    unites.push_back(nom1);
+        window->redraw();
+        unites.push_back(nom1);
+    }
+    else if(unites[x].getType() == 2000){
+        B_Copter copt1(x,y,team);
+        window->redraw();
+        unites.push_back(copt1);
+    }
+    else if(unites[x].getType() == 2001){
+        Bomber bomb1(x,y,team);
+        window->redraw();
+        unites.push_back(bomb1);
+    }
+    else if(unites[x].getType() == 2002){
+        Fighter fight1(x,y,team);
+        window->redraw();
+        unites.push_back(fight1);
+    }
 
 }
 
