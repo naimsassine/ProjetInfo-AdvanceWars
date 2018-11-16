@@ -51,7 +51,10 @@ SOURCES += \
     river.cpp \
     shoal.cpp \
     bridge.cpp \
-    reef.cpp
+    reef.cpp \
+    b_copter.cpp \
+    fighter.cpp \
+    bomber.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -79,7 +82,10 @@ HEADERS += \
     river.h \
     shoal.h \
     bridge.h \
-    reef.h
+    reef.h \
+    b_copter.h \
+    fighter.h \
+    bomber.h
 
 FORMS += \
         mainwindow.ui \
