@@ -21,6 +21,8 @@ public:
     void redraw();
 private slots:
     void captureville();
+    void captureusine();
+    void captureaeroport();
     void attackunite();
 
 private:

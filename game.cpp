@@ -23,6 +23,7 @@
 #include <QFont>
 #include <QIcon>
 #include "Infanterie.h"
+#include "Usine.h"
 #include "Terrain.h"
 #include "wood.h"
 #include "river.h"
@@ -37,6 +38,9 @@ Game::Game()
 std::vector<Aeroport> Game::getAeroport() const
 {
     return aeroport;
+}
+std::vector<Usine> Game::getUsine() const{
+    return usine;
 }
 
 std::vector<Ville> Game::getVille() const
@@ -184,6 +188,18 @@ void Game::move(int x,int y)
                 }
                 else{
                     aeroport[i].setUnitin(false);
+                }
+
+            }
+        }
+
+        else if(gameobject[x][y].getType() == 35){
+            for(std::vector<Usine>::size_type i = 0; i!= usine.size(); i++){
+                if(usine[i].getPosX()==x && usine[i].getPosY()==y){
+                    usine[i].setUnitin(true);
+                }
+                else{
+                    usine[i].setUnitin(false);
                 }
 
             }
@@ -546,5 +562,40 @@ void Game::capture(int z, int e)
 }
 
 
+void Game::capture_Usine(int z, int e)
+{
+    for(std::vector<Usine>::size_type i = 0; i != usine.size(); i++){
 
+
+    if(usine[i].getPosX()==z &&usine[i].getPosY()==e && unites[posXselec].getSelected() && unites[posXselec].getType() == 1998){
+
+        usine[i].setCapturepoint(unites[posXselec].getvie());
+        if(usine[i].getCapturepoint()==0){
+        gameobject[z][e].setTeam(turn);
+        usine[i].setTeam(turn);
+        window->redraw();
+}
+    }
+    }
+
+
+}
+void Game::capture_Aeroport(int z, int e)
+{
+    for(std::vector<Aeroport>::size_type i = 0; i != aeroport.size(); i++){
+
+
+    if(aeroport[i].getPosX()==z &&aeroport[i].getPosY()==e && unites[posXselec].getSelected() && unites[posXselec].getType() == 1998){
+
+        aeroport[i].setCapturepoint(unites[posXselec].getvie());
+        if(aeroport[i].getCapturepoint()==0){
+        gameobject[z][e].setTeam(turn);
+        aeroport[i].setTeam(turn);
+        window->redraw();
+}
+    }
+    }
+
+
+}
 

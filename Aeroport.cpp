@@ -64,7 +64,20 @@ void Aeroport::setUnitin(bool value)
     unitin = value;
 }
 
+int Aeroport::getCapturepoint() const
+{
+    return capturepoint;
+}
 
+void Aeroport::setCapturepoint(int value)
+{
+    capturepoint = capturepoint-value;
+    /*if capturepoint =0 setteam*/
+    if(capturepoint<0){
+        capturepoint=0;
+    }
+
+}
 
 
 

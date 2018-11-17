@@ -8,6 +8,7 @@ public:
     Buildings();
     Buildings(int X, int Y);
 
+
     //virtual void repair(Unites c);
     //virtual int getTeam() const;
     //virtual void setTeam(int value);

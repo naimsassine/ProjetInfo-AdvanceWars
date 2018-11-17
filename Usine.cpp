@@ -40,3 +40,33 @@ void Usine::setTeam(int value)
 {
     team = value;
 }
+
+bool Usine::getUnitin() const
+{
+    return unitin;
+}
+
+void Usine::setUnitin(bool value)
+{
+    unitin = value;
+}
+
+int Usine::getCapturepoint() const
+{
+    return capturepoint;
+}
+void Usine::initCapturePoint()
+{
+    capturepoint=20;
+}
+
+
+void Usine::setCapturepoint(int value)
+{
+    capturepoint = capturepoint-value;
+    /*if capturepoint =0 setteam*/
+    if(capturepoint<0){
+        capturepoint=0;
+    }
+
+}
