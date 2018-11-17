@@ -32,6 +32,11 @@ int Unites::getvie()
     return vie;
 }
 
+void Unites::setvie(int value)
+{
+    vie = value;
+}
+
 int Unites::getdamage()
 {
     return damage;

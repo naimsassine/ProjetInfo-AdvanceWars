@@ -10,6 +10,7 @@ public:
     void attend();
     void fusion();
     int getvie();
+    void setvie(int value);
     int getdamage();
     int getnumero();
     void initvie();

@@ -94,6 +94,7 @@ void Gameobject::setdefTerrain(int value)
     defTerrain = value;
 }
 
+
 void Gameobject::setPosX(int value)
 {
     posX = value;

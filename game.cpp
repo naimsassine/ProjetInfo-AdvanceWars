@@ -115,9 +115,28 @@ std::vector<Unites> Game::getUnites() const
 void Game::endtour()
 {
     if(turn==1){
+        for(std::vector<Unites>::size_type i = 0; i != unites.size(); i++)
+        {
+            for(int h=0 ;h<21;h++){
+                for (int j=0; j <17 ;j++){
+                    if(unites[i].getTeam()==turn && unites[i].getPosX() == h && unites[i].getPosY() == j && gameobject[h][j].getType() == 34 ){
+                        unites[i].setvie(12);
+                    }
+                }}
+        }
         turn=2;
+
     }
     else if(turn==2){
+        for(std::vector<Unites>::size_type i = 0; i != unites.size(); i++)
+        {
+            for(int h=0 ;h<21;h++){
+                for (int j=0; j <17 ;j++){
+                    if(unites[i].getTeam()==turn && unites[i].getPosX() == h && unites[i].getPosY() == j && gameobject[h][j].getType() == 34 ){
+                        unites[i].setvie(12);
+                    }
+                }}
+        }
         turn=1;
     }
 }
@@ -222,9 +241,11 @@ void Game::move(int x,int y)
 
 
             unites[posXselec].setSelected(true);
+            window->changeVieWindow(unites[posXselec]);
             int c= unites[posXselec].getPtdeplacement();// selectionner unité  //
             moveable(c,unites[posXselec].getPosX(),unites[posXselec].getPosY());
             window->redraw();
+
      }
 
 
