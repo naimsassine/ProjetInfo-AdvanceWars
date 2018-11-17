@@ -471,23 +471,24 @@ void Game::movearrow(int x, int y){
 
 
 void Game::createUnite(int x, int y,  int team ){
-    if(unites[x].getType() == 1998){
+    if(unites[posXselec].getSelected() && unites[posXselec].getType() == 1998){
         Infanterie nom1(x,y,team);
+        printf("big fat lol");
 
         window->redraw();
         unites.push_back(nom1);
     }
-    else if(unites[x].getType() == 2000){
+    else if(unites[posXselec].getSelected() && unites[posXselec].getType() == 2000){
         B_Copter copt1(x,y,team);
         window->redraw();
         unites.push_back(copt1);
     }
-    else if(unites[x].getType() == 2001){
+    else if(unites[posXselec].getSelected() && unites[posXselec].getType() == 2001){
         Bomber bomb1(x,y,team);
         window->redraw();
         unites.push_back(bomb1);
     }
-    else if(unites[x].getType() == 2002){
+    else if(unites[posXselec].getSelected() && unites[posXselec].getType() == 2002){
         Fighter fight1(x,y,team);
         window->redraw();
         unites.push_back(fight1);
