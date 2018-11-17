@@ -527,10 +527,11 @@ void Game::attack(int z, int e,int i){
 
 
 void Game::capture(int z, int e)
-{   for(std::vector<Ville>::size_type i = 0; i != ville.size(); i++){
+{
+    for(std::vector<Ville>::size_type i = 0; i != ville.size(); i++){
 
 
-    if(ville[i].getPosX()==z &&ville[i].getPosY()==e){
+    if(ville[i].getPosX()==z &&ville[i].getPosY()==e && unites[posXselec].getSelected() && unites[posXselec].getType() == 1998){
 
         ville[i].setCapturepoint(unites[posXselec].getvie());
         if(ville[i].getCapturepoint()==0){

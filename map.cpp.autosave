@@ -418,7 +418,7 @@ void Map::mousePressEvent(QMouseEvent *ev)
 
 
 
-        if (gameobject[z][e].getType() == 35 || gameobject[z][e].getType() == 36){
+        if (gameobject[z][e].getType() == 35 ){
             UsineWindow w;
 
             w.setX(z);
