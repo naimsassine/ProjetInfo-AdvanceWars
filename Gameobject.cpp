@@ -30,7 +30,7 @@ void Gameobject::setType(int value)
 }
 
 bool Gameobject::getSelected() const
-{
+{ 
     return selected;
 }
 

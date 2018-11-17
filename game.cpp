@@ -151,7 +151,6 @@ void Game::move(int x,int y)
     }
     else if(unites[posXselec].getTeam()==turn&&unites[posXselec].getSelected() && gameobject[x][y].getMovable()  ){
 
-
         unites[posXselec].setPosX(x);   // faire bouger l'unité //
         unites[posXselec].setPosY(y);
         for(int i=0 ;i<21;i++){

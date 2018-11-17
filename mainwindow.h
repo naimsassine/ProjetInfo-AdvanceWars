@@ -10,6 +10,7 @@
 #include"Gameobject.h"
 #include "map.h"
 #include <QLabel>
+#include "Unites.h"
 class Gameobject;
 namespace Ui {
 class MainWindow;
@@ -24,9 +25,11 @@ public:
     ~MainWindow();
     void InitMap();
     void redraw();
+    void changeVieWindow(Unites unite);
 
 private slots:
 void changeturn();
+//void changeMoneyWindow();//
 
 private:
     Ui::MainWindow *ui;
@@ -35,7 +38,8 @@ private:
     QLabel *lab;
     QLabel *lab2;
     QLabel *lab3;
-
+    QLabel *lab4;
+    QLabel *lab5;
 
 
 };

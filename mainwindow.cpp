@@ -55,6 +55,20 @@ MainWindow::MainWindow(QWidget *parent) :
    lab3->move(100, 100);
    lab3->show();
 
+   lab4= new QLabel("Vie : ",this);
+   lab4->setGeometry(60, 50, 180, 70);
+   QFont f3( "Arial", 16);
+   lab4->setFont( f3);
+   lab4->move(0, 150);
+   lab4->show();
+   lab5= new QLabel("0",this);
+   lab5->setGeometry(60, 50, 180, 70);
+   lab5->setFont(f3);
+   lab5->move(100, 150);
+   lab5->show();
+
+
+
 }
 
 MainWindow::~MainWindow()
@@ -62,6 +76,8 @@ MainWindow::~MainWindow()
     delete lab;
     delete lab2;
     delete lab3;
+    delete lab4;
+    delete lab5;
     delete ui;
     delete map;
 }
@@ -94,6 +110,13 @@ void MainWindow::changeturn()
 }
 
 
+void MainWindow::changeVieWindow(Unites unite)
+{
+    Game& game=Game::Instance();
+    int a = unite.getvie();
+    lab5->setNum(a);
+
+}
 
 
 
