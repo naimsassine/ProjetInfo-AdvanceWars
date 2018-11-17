@@ -3,6 +3,7 @@
 #include "mainwindow.h"
 #include "iostream"
 #include "Unites.h"
+#include "Usine.h"
 #include "player.h"
 #include "Aeroport.h"
 #include "Ville.h"
@@ -21,14 +22,19 @@ public:
     void createUnite(int x, int y, int team);
     void attack(int z, int e ,int  i);
     void capture(int z,int e);
+    void capture_Usine(int z, int e);
+    void capture_Aeroport(int z, int e);
     Player *getPlayer() const;
     void moveable(int move ,int x, int y);
+    void getcaptured() const;
+    void setcaptured() const;
     std::vector<Aeroport> getAeroport() const;
-
+    std::vector<Usine> getUsine() const;
     std::vector<Ville> getVille() const;
 
 private:
     Game();
+    std::vector<Usine> usine;
     std::vector<Unites> unites;
     std::vector<Aeroport> aeroport;
     std::vector<Ville> ville;

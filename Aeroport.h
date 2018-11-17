@@ -19,8 +19,8 @@ public:
     //partie similaire à ville//
     int getCapturepoint() const;
     void setCapturepoint(int value);
-    void initTeam();
     void initCapturePoint();
+    void initTeam();
     bool getUnitin() const;
     void setUnitin(bool value);
 

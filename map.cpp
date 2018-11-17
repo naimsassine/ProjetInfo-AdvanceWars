@@ -18,6 +18,7 @@
 #include <stdio.h>
 #include <QMenu>
 #include <QAction>
+#include "Usine.h"
 #include "usinewindow.h"
 Map::Map(QWidget *parent ) : QWidget(parent)
 {
@@ -400,6 +401,16 @@ void Map::captureville()
     game.capture(z,e);
 }
 
+void Map::captureusine()
+{
+    Game& game= Game::Instance();
+    game.capture_Usine(z,e);
+}
+void Map::captureaeroport()
+{
+    Game& game= Game::Instance();
+    game.capture_Aeroport(z,e);
+}
 void Map::attackunite()
 {
     Game& game=Game::Instance();
@@ -418,7 +429,7 @@ void Map::mousePressEvent(QMouseEvent *ev)
 
 
 
-        if (gameobject[z][e].getType() == 35 || gameobject[z][e].getType() == 36){
+        if ((gameobject[z][e].getType() == 35 || gameobject[z][e].getType() == 36) && gameobject[z][e].getTeam() != 0){
             UsineWindow w;
 
             w.setX(z);
@@ -453,6 +464,24 @@ void Map::mousePressEvent(QMouseEvent *ev)
             }
 
         }
+        else if(gameobject[z][e].getType()== 35){
+            Game& game = Game::Instance();
+            std::vector<Usine> usine = game.getUsine();
+            for(std::vector<Usine>::size_type i = 0; i!= usine.size(); i++){
+                if(usine[i].getPosX()==z &&usine[i].getPosY()==e && usine[i].getUnitin() && usine[i].getTeam()==0){
+                    QMenu menu(this);
+                    capture =new QAction("Capture", this);
+                    menu.addAction(capture);
+                    wait =new QAction("Wait", this);
+                    menu.addAction(wait);
+                    QObject::connect(capture, SIGNAL(triggered()), this, SLOT(capture_Usine()));
+
+                    // Place the menu in the right position and show it.
+                    menu.exec(ev->globalPos());
+                   }
+
+            }
+        }
 
         else if(gameobject[z][e].getType()== 36){
             Game& game = Game::Instance();
@@ -464,7 +493,7 @@ void Map::mousePressEvent(QMouseEvent *ev)
                     menu.addAction(capture);
                     wait =new QAction("Wait", this);
                     menu.addAction(wait);
-                    QObject::connect(capture, SIGNAL(triggered()), this, SLOT(captureville()));
+                    QObject::connect(capture, SIGNAL(triggered()), this, SLOT(capture_Aeroport()));
 
                     // Place the menu in the right position and show it.
                     menu.exec(ev->globalPos());
@@ -473,6 +502,7 @@ void Map::mousePressEvent(QMouseEvent *ev)
             }
 
         }
+
         else{
             Game& game=Game::Instance();
             std::vector<Unites> unite =game.getUnites();
