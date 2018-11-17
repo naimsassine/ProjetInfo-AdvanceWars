@@ -7,4 +7,5 @@ Shoal::Shoal(int X,int Y)
     posY =Y;
     type =30;
     ptdemouvement=1;
+    defTerrain = 0;
 }

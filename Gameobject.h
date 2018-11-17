@@ -27,6 +27,9 @@ public:
     int getPtdemouvement() const;
     void setPtdemouvement(int value);
 
+    int getdefTerrain() const;
+    void setdefTerrain(int value);
+
 protected:
     int posX;
     int posY;
@@ -37,6 +40,7 @@ protected:
     int autorisation;
     bool movable=false;
     int ptdemouvement=1;
+    int defTerrain;
 
 };
 #endif // Gameobject_H

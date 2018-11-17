@@ -6,4 +6,5 @@ Reef::Reef(int X,int Y)
         posY =Y;
         type =33;
         ptdemouvement=800;
+        defTerrain = 1;
 }

@@ -8,6 +8,7 @@ Unites::Unites(){
    this->defterrain = 1;
     ptdeplacement=3;
    this->B = 65;
+   this->defTerrain = 0;
    vie=10;
 }
 
@@ -36,10 +37,10 @@ int Unites::getdamage()
     return damage;
 }
 
-void Unites::setDamage(Unites A)
+void Unites::setDamage(Unites A, int defTerrain)
 {
     // B fournie dans la charte de dégats, comme on a qu'un seul type d'unité je met direct la valeur pour l'instant
-int degat = B * A.ptattack / 10 * (100 - defterrain * ptdefense) / 100;
+int degat = B * A.ptattack / 10 * (100 - defTerrain * ptdefense) / 100;
 std::cout<<degat<<std::endl;
 vie = vie - degat;
 if(vie<0){

@@ -7,4 +7,5 @@ Plain::Plain(int x, int y)
     posY=y;
     type = 1 ;
     ptdemouvement=1;
+    defTerrain = 1;
 }

@@ -6,4 +6,5 @@ Wood::Wood(int X,int Y)
     posY=Y;
     type=3;
     ptdemouvement=1;
+    defTerrain = 2;
 }

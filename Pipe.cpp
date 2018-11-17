@@ -10,4 +10,5 @@ Pipe::Pipe(int X, int Y)
     posY = Y;
     type = 0;
     ptdemouvement=100;
+    defTerrain = 0;
 }

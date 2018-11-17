@@ -84,6 +84,16 @@ void Gameobject::setPtdemouvement(int value)
     ptdemouvement = value;
 }
 
+int Gameobject::getdefTerrain() const
+{
+    return defTerrain;
+}
+
+void Gameobject::setdefTerrain(int value)
+{
+    defTerrain = value;
+}
+
 void Gameobject::setPosX(int value)
 {
     posX = value;

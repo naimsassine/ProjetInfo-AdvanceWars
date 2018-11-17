@@ -11,9 +11,6 @@ public:
 
 protected:
     int nbVie;
-
-
-
 };
 
 

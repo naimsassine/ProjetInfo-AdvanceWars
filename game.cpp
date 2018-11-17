@@ -58,13 +58,10 @@ Player *Game::getPlayer() const
 void Game::moveable(int move, int x, int y)
 {
     if(x<21 && x>-1 && y<17 && y>-1){
-    if(move >= gameobject[x+1][y].getPtdemouvement() && (gameobject[x+1][y].getTeam()==turn || gameobject[x+1][y].getTeam()==0 )){
-        gameobject[x+1][y].setMovable(true);
-
-        int s = move-gameobject[x+1][y].getPtdemouvement();
-
-        moveable(s,x+1,y);
-
+        if(move >= gameobject[x+1][y].getPtdemouvement() && (gameobject[x+1][y].getTeam()==turn || gameobject[x+1][y].getTeam()==0 )){
+            gameobject[x+1][y].setMovable(true);
+            int s = move-gameobject[x+1][y].getPtdemouvement();
+            moveable(s,x+1,y);
     }
     if(move >= gameobject[x-1][y].getPtdemouvement()&& (gameobject[x-1][y].getTeam()==turn ||gameobject[x-1][y].getTeam()==0)){
         gameobject[x-1][y].setMovable(true);
@@ -512,7 +509,10 @@ void Game::attack(int z, int e,int i){
     }*/
     std::cout<<unites[i].getvie()<<std::endl;
     if(unites[i].getvie()>0){
-        unites[i].setDamage(unites[posXselec]);
+        int x = unites[i].getPosX();
+        int y = unites[i].getPosY();
+        int defTerrain = gameobject[x][y].getdefTerrain();
+        unites[i].setDamage(unites[posXselec],defTerrain);
         std::cout<<unites[i].getvie()<<std::endl;
 
 

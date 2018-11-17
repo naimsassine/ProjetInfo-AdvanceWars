@@ -6,4 +6,5 @@ Mountain::Mountain(int X,int Y)
  posY=Y;
  type=2;
  ptdemouvement=2;
+ defTerrain = 4;
 }

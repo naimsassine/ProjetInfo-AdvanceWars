@@ -15,7 +15,7 @@ public:
     void initvie();
     int getTeam() const;
     void setTeam(int value);
-    void setDamage(Unites);
+    void setDamage(Unites, int defTerrain);
     bool getUnitin() const;
     void setUnitin(bool value);
 

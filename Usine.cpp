@@ -5,6 +5,7 @@ Usine::Usine(int X, int Y){
     posX = X;
     posY = Y;
     type = 0;
+    defTerrain = 3;
 
 }
 
@@ -15,6 +16,7 @@ Usine::Usine(int X, int Y, int t, int argent , int PC)
     t = 3 ;
     argent = 1000; //Argent qu'on fournit à chaque tour//
     PC = 20; //Points de capture//
+    defTerrain = 3;
 }
 
 
