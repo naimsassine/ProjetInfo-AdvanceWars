@@ -33,7 +33,6 @@ SOURCES += \
     Terrain.cpp \
     Unites.cpp \
     Infanterie.cpp \
-    NonInfanterie.cpp \
     Aerienne.cpp \
     Buildings.cpp \
     Ville.cpp \
@@ -54,7 +53,14 @@ SOURCES += \
     reef.cpp \
     b_copter.cpp \
     fighter.cpp \
-    bomber.cpp
+    bomber.cpp \
+    non_infanterie.cpp \
+    recon.cpp \
+    anti_air.cpp \
+    tank.cpp \
+    md_tank.cpp \
+    mega_tank.cpp \
+    neotank.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -64,7 +70,6 @@ HEADERS += \
     Terrain.h \
     Unites.h \
     Infanterie.h \
-    NonInfanterie.h \
     Aerienne.h \
     Buildings.h \
     Ville.h \
@@ -85,7 +90,14 @@ HEADERS += \
     reef.h \
     b_copter.h \
     fighter.h \
-    bomber.h
+    bomber.h \
+    non_infanterie.h \
+    recon.h \
+    anti_air.h \
+    tank.h \
+    md_tank.h \
+    mega_tank.h \
+    neotank.h
 
 FORMS += \
         mainwindow.ui \
