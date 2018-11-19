@@ -23,6 +23,15 @@
 #include <QFont>
 #include <QIcon>
 #include "Infanterie.h"
+#include "anti_air.h"
+#include "b_copter.h"
+#include "bomber.h"
+#include "fighter.h"
+#include "md_tank.h"
+#include "mega_tank.h"
+#include "neotank.h"
+#include "recon.h"
+#include "tank.h"
 #include "Usine.h"
 #include "Terrain.h"
 #include "wood.h"
@@ -376,9 +385,12 @@ void Game::InitGame(MainWindow &wind,Player &InitPlayer1,Player &InitPlayer2){
                         ville.push_back(p);
                     }
                     if(c==35){
+                        Usine u(j,d);
 
-                        gameobject[j][d]= Buildings(j,d);
+
+                        gameobject[j][d]= u;
                         gameobject[j][d].setType(35);
+                        usine.push_back(u);
 
                     }
                     if(c==109){
