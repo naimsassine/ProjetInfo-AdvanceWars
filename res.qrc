@@ -75,5 +75,18 @@
         <file>bluemooncity.gif</file>
         <file>orangestarcity.gif</file>
         <file>Misc.png</file>
+        <file>orangestarbase.gif</file>
+        <file>bomber.gif</file>
+        <file>fighter.gif</file>
+        <file>geb-copter.gif</file>
+        <file>bluemoonairport.gif</file>
+        <file>bluemoonbase.gif</file>
+        <file>orangestarairport.gif</file>
+        <file>geanti-air.gif</file>
+        <file>md.tank.gif</file>
+        <file>megatank.gif</file>
+        <file>neotank.gif</file>
+        <file>recon.gif</file>
+        <file>tank.gif</file>
     </qresource>
 </RCC>

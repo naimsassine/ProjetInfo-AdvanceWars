@@ -154,22 +154,7 @@ void Map::paintEvent(QPaintEvent *event)
                               painter.drawPixmap(c*40,j*40,40,40,pixmap);
                           }
            }
-           else if(gameobject[i][j].getType() == 34){
 
-               if(gameobject[i][j].getTeam()==0){
-               QPixmap pixmap(":/neutralcity.gif");
-               painter.drawPixmap(c*40,j*40,40,40,pixmap);}
-               if(gameobject[i][j].getTeam()==1){
-               QPixmap pixmap(":/orangestarcity.gif");
-               painter.drawPixmap(c*40,j*40,40,40,pixmap);}
-               if(gameobject[i][j].getTeam()==2){
-               QPixmap pixmap(":/bluemooncity.gif");
-               painter.drawPixmap(c*40,j*40,40,40,pixmap);}
-               if(gameobject[i][j].getMovable()){
-                              QPixmap pixmap(":/Misc.png");
-                              painter.drawPixmap(c*40,j*40,40,40,pixmap);
-                          }
-           }
            else if(gameobject[i][j].getType() == 30){
                QPixmap pixmap(":/hshoal.gif");
                painter.drawPixmap(c*40,j*40,40,40,pixmap);
@@ -234,9 +219,51 @@ void Map::paintEvent(QPaintEvent *event)
                               painter.drawPixmap(c*40,j*40,40,40,pixmap);
                           }
            }
+           else if(gameobject[i][j].getType() == 34){
+
+               if(gameobject[i][j].getTeam()==0){
+               QPixmap pixmap(":/neutralcity.gif");
+               painter.drawPixmap(c*40,j*40,40,40,pixmap);}
+               if(gameobject[i][j].getTeam()==1){
+               QPixmap pixmap(":/orangestarcity.gif");
+               painter.drawPixmap(c*40,j*40,40,40,pixmap);}
+               if(gameobject[i][j].getTeam()==2){
+               QPixmap pixmap(":/bluemooncity.gif");
+               painter.drawPixmap(c*40,j*40,40,40,pixmap);}
+               if(gameobject[i][j].getMovable()){
+                              QPixmap pixmap(":/Misc.png");
+                              painter.drawPixmap(c*40,j*40,40,40,pixmap);
+                          }
+           }
            else if(gameobject[i][j].getType() == 35){
+               if(gameobject[i][j].getTeam()==0){
                QPixmap pixmap(":/neutralbase.gif");
+               painter.drawPixmap(c*40,j*40,40,40,pixmap);}
+               if(gameobject[i][j].getTeam()==1){
+               QPixmap pixmap(":/orangestarbase.gif");
                painter.drawPixmap(c*40,j*40,40,40,pixmap);
+               if(gameobject[i][j].getTeam()==2){
+               QPixmap pixmap(":/bluemoonbase.gif");
+               painter.drawPixmap(c*40,j*40,40,40,pixmap);
+               }
+               }
+
+               if(gameobject[i][j].getMovable()){
+                              QPixmap pixmap(":/Misc.png");
+                              painter.drawPixmap(c*40,j*40,40,40,pixmap);
+                          }
+           }
+           else if(gameobject[i][j].getType() == 36){
+               QPixmap pixmap(":/neutralairport.gif");
+               painter.drawPixmap(c*40,j*40,40,40,pixmap);
+               if(gameobject[i][j].getTeam()==1){
+               QPixmap pixmap(":/orangestarairport.gif");
+               painter.drawPixmap(c*40,j*40,40,40,pixmap);
+               if(gameobject[i][j].getTeam()==2){
+               QPixmap pixmap(":/bluemoonairport.gif");
+               painter.drawPixmap(c*40,j*40,40,40,pixmap);
+               }
+               }
                if(gameobject[i][j].getMovable()){
                               QPixmap pixmap(":/Misc.png");
                               painter.drawPixmap(c*40,j*40,40,40,pixmap);
@@ -314,14 +341,7 @@ void Map::paintEvent(QPaintEvent *event)
                               painter.drawPixmap(c*40,j*40,40,40,pixmap);
                           }
            }
-           else if(gameobject[i][j].getType() == 36){
-               QPixmap pixmap(":/neutralairport.gif");
-               painter.drawPixmap(c*40,j*40,40,40,pixmap);
-               if(gameobject[i][j].getMovable()){
-                              QPixmap pixmap(":/Misc.png");
-                              painter.drawPixmap(c*40,j*40,40,40,pixmap);
-                          }
-           }
+
            else if(gameobject[i][j].getType() == 95){
                QPixmap pixmap(":/blackholehq.gif");
                painter.drawPixmap(c*40,j*40,40,40,pixmap);
