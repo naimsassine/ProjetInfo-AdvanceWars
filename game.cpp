@@ -609,7 +609,7 @@ void Game::capture(int z, int e)
     for(std::vector<Ville>::size_type i = 0; i != ville.size(); i++){
 
 
-    if(ville[i].getPosX()==z &&ville[i].getPosY()==e && unites[posXselec].getSelected() && unites[posXselec].getType() == 1998){
+    if(ville[i].getPosX()==z &&ville[i].getPosY()==e  && unites[posXselec].getType() == 1998){
 
         ville[i].setCapturepoint(unites[posXselec].getvie());
         if(ville[i].getCapturepoint()==0){
@@ -629,7 +629,7 @@ void Game::capture_Usine(int z, int e)
     for(std::vector<Usine>::size_type i = 0; i != usine.size(); i++){
 
 
-    if(usine[i].getPosX()==z &&usine[i].getPosY()==e && unites[posXselec].getSelected() && unites[posXselec].getType() == 1998){
+    if(usine[i].getPosX()==z &&usine[i].getPosY()==e  && unites[posXselec].getType() == 1998){
 
         usine[i].setCapturepoint(unites[posXselec].getvie());
         if(usine[i].getCapturepoint()==0){
@@ -647,7 +647,7 @@ void Game::capture_Aeroport(int z, int e)
     for(std::vector<Aeroport>::size_type i = 0; i != aeroport.size(); i++){
 
 
-    if(aeroport[i].getPosX()==z &&aeroport[i].getPosY()==e && unites[posXselec].getSelected() && unites[posXselec].getType() == 1998){
+    if(aeroport[i].getPosX()==z &&aeroport[i].getPosY()==e && unites[posXselec].getType() == 1998){
 
         aeroport[i].setCapturepoint(unites[posXselec].getvie());
         if(aeroport[i].getCapturepoint()==0){
