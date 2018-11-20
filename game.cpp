@@ -538,6 +538,36 @@ void Game::createUnite(int x, int y,  int team ){
         window->redraw();
         unites.push_back(fight1);
     }
+    else if(unites[posXselec].getSelected() && unites[posXselec].getType() == 3000){
+        Recon recon1(x,y,team);
+        window->redraw();
+        unites.push_back(recon1);
+    }
+    else if(unites[posXselec].getSelected() && unites[posXselec].getType() == 3001){
+        Anti_Air anti_air1(x,y,team);
+        window->redraw();
+        unites.push_back(anti_air1);
+    }
+    else if(unites[posXselec].getSelected() && unites[posXselec].getType() == 3002){
+        Tank tank1(x,y,team);
+        window->redraw();
+        unites.push_back(tank1);
+    }
+    else if(unites[posXselec].getSelected() && unites[posXselec].getType() == 3003){
+        MD_tank md_tank1(x,y,team);
+        window->redraw();
+        unites.push_back(md_tank1);
+    }
+    else if(unites[posXselec].getSelected() && unites[posXselec].getType() == 3004){
+        mega_tank mega_tank1(x,y,team);
+        window->redraw();
+        unites.push_back(mega_tank1);
+    }
+    else if(unites[posXselec].getSelected() && unites[posXselec].getType() == 3005){
+        Neotank neotank1(x,y,team);
+        window->redraw();
+        unites.push_back(neotank1);
+    }
 
 }
 
