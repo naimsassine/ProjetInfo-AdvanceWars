@@ -22,6 +22,7 @@
 #include <QWidget>
 #include <QFont>
 #include <QIcon>
+#include "bazooka.h"
 #include "Infanterie.h"
 #include "anti_air.h"
 #include "b_copter.h"
@@ -515,55 +516,60 @@ void Game::movearrow(int x, int y){
 
 
 
-void Game::createUnite(int x, int y,  int team ){
-    if(unites[posXselec].getSelected() && unites[posXselec].getType() == 1998){
+void Game::createUnite(int x, int y,  int team ,int type ){
+    if(type == 1998){
         Infanterie nom1(x,y,team);
         printf("big fat lol");
 
         window->redraw();
         unites.push_back(nom1);
     }
-    else if(unites[posXselec].getSelected() && unites[posXselec].getType() == 2000){
+    else if( type == 2000){
         B_Copter copt1(x,y,team);
         window->redraw();
         unites.push_back(copt1);
     }
-    else if(unites[posXselec].getSelected() && unites[posXselec].getType() == 2001){
+    else if( type == 2001){
         Bomber bomb1(x,y,team);
         window->redraw();
         unites.push_back(bomb1);
     }
-    else if(unites[posXselec].getSelected() && unites[posXselec].getType() == 2002){
+    else if( type == 2002){
         Fighter fight1(x,y,team);
         window->redraw();
         unites.push_back(fight1);
     }
-    else if(unites[posXselec].getSelected() && unites[posXselec].getType() == 3000){
+    else if( type == 2003){
+        Bazooka fight1(x,y,team);
+        window->redraw();
+        unites.push_back(fight1);
+    }
+    else if( type == 3000){
         Recon recon1(x,y,team);
         window->redraw();
         unites.push_back(recon1);
     }
-    else if(unites[posXselec].getSelected() && unites[posXselec].getType() == 3001){
+    else if( type == 3001){
         Anti_Air anti_air1(x,y,team);
         window->redraw();
         unites.push_back(anti_air1);
     }
-    else if(unites[posXselec].getSelected() && unites[posXselec].getType() == 3002){
+    else if( type== 3002){
         Tank tank1(x,y,team);
         window->redraw();
         unites.push_back(tank1);
     }
-    else if(unites[posXselec].getSelected() && unites[posXselec].getType() == 3003){
+    else if(type == 3003){
         MD_tank md_tank1(x,y,team);
         window->redraw();
         unites.push_back(md_tank1);
     }
-    else if(unites[posXselec].getSelected() && unites[posXselec].getType() == 3004){
+    else if(type == 3004){
         mega_tank mega_tank1(x,y,team);
         window->redraw();
         unites.push_back(mega_tank1);
     }
-    else if(unites[posXselec].getSelected() && unites[posXselec].getType() == 3005){
+    else if(type == 3005){
         Neotank neotank1(x,y,team);
         window->redraw();
         unites.push_back(neotank1);
