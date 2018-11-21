@@ -88,5 +88,26 @@
         <file>neotank.gif</file>
         <file>recon.gif</file>
         <file>tank.gif</file>
+        <file>bmanti-air.gif</file>
+        <file>bmb-copter.gif</file>
+        <file>bmbomber.gif</file>
+        <file>bmfighter.gif</file>
+        <file>bminfantry.gif</file>
+        <file>bmmd.tank.gif</file>
+        <file>bmmech.gif</file>
+        <file>bmmegatank.gif</file>
+        <file>bmneotank.gif</file>
+        <file>bmrecon.gif</file>
+        <file>bmtank.gif</file>
+        <file>osanti-air.gif</file>
+        <file>osb-copter.gif</file>
+        <file>osbomber.gif</file>
+        <file>osfighter.gif</file>
+        <file>osmd.tank.gif</file>
+        <file>osmech.gif</file>
+        <file>osmegatank.gif</file>
+        <file>osneotank.gif</file>
+        <file>osrecon.gif</file>
+        <file>ostank.gif</file>
     </qresource>
 </RCC>
