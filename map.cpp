@@ -400,11 +400,110 @@ void Map::paintEvent(QPaintEvent *event)
 
         }
         else if(unites[i].getType()==1998 && unites[i].getTeam()==2){
-            QPixmap pixmap(":/blue.png");
+            QPixmap pixmap(":/bminfantry.gif");
             painter.drawPixmap((unites[i].getPosX()+5)*40,unites[i].getPosY()*40,40,40,pixmap);
 
         }
+        else if(unites[i].getType()==3001 && unites[i].getTeam()==1){
+            QPixmap pixmap(":/osanti-air.gif");
+            painter.drawPixmap((unites[i].getPosX()+5)*40,unites[i].getPosY()*40,40,40,pixmap);
 
+        }
+        else if(unites[i].getType()==3001 && unites[i].getTeam()==2){
+            QPixmap pixmap(":/bmanti-air.gif");
+            painter.drawPixmap((unites[i].getPosX()+5)*40,unites[i].getPosY()*40,40,40,pixmap);
+
+        }
+        else if(unites[i].getType()==2003 && unites[i].getTeam()==1){
+            QPixmap pixmap(":/osmech.gif");
+            painter.drawPixmap((unites[i].getPosX()+5)*40,unites[i].getPosY()*40,40,40,pixmap);
+
+        }
+        else if(unites[i].getType()==2003 && unites[i].getTeam()==2){
+            QPixmap pixmap(":/bmmech.gif");
+            painter.drawPixmap((unites[i].getPosX()+5)*40,unites[i].getPosY()*40,40,40,pixmap);
+
+        }
+        else if(unites[i].getType()==3000 && unites[i].getTeam()==1){
+            QPixmap pixmap(":/osrecon.gif");
+            painter.drawPixmap((unites[i].getPosX()+5)*40,unites[i].getPosY()*40,40,40,pixmap);
+
+        }
+        else if(unites[i].getType()==3000 && unites[i].getTeam()==2){
+            QPixmap pixmap(":/bmrecon.gif");
+            painter.drawPixmap((unites[i].getPosX()+5)*40,unites[i].getPosY()*40,40,40,pixmap);
+
+        }
+        else if(unites[i].getType()==3002 && unites[i].getTeam()==1){
+            QPixmap pixmap(":/ostank.gif");
+            painter.drawPixmap((unites[i].getPosX()+5)*40,unites[i].getPosY()*40,40,40,pixmap);
+
+        }
+        else if(unites[i].getType()==3002 && unites[i].getTeam()==2){
+            QPixmap pixmap(":/bmtank.gif");
+            painter.drawPixmap((unites[i].getPosX()+5)*40,unites[i].getPosY()*40,40,40,pixmap);
+
+        }
+        else if(unites[i].getType()==3003 && unites[i].getTeam()==1){
+            QPixmap pixmap(":/osmd.tank.gif");
+            painter.drawPixmap((unites[i].getPosX()+5)*40,unites[i].getPosY()*40,40,40,pixmap);
+
+        }
+        else if(unites[i].getType()==3003 && unites[i].getTeam()==2){
+            QPixmap pixmap(":/bmmd.tank.gif");
+            painter.drawPixmap((unites[i].getPosX()+5)*40,unites[i].getPosY()*40,40,40,pixmap);
+
+        }
+        else if(unites[i].getType()==3004 && unites[i].getTeam()==1){
+            QPixmap pixmap(":/osmegatank.gif");
+            painter.drawPixmap((unites[i].getPosX()+5)*40,unites[i].getPosY()*40,40,40,pixmap);
+
+        }
+        else if(unites[i].getType()==3004 && unites[i].getTeam()==2){
+            QPixmap pixmap(":/bmmegatank.gif");
+            painter.drawPixmap((unites[i].getPosX()+5)*40,unites[i].getPosY()*40,40,40,pixmap);
+
+        }
+        else if(unites[i].getType()==3005 && unites[i].getTeam()==1){
+            QPixmap pixmap(":/osneotank.gif");
+            painter.drawPixmap((unites[i].getPosX()+5)*40,unites[i].getPosY()*40,40,40,pixmap);
+
+        }
+        else if(unites[i].getType()==3005 && unites[i].getTeam()==2){
+            QPixmap pixmap(":/bmneotank.gif");
+            painter.drawPixmap((unites[i].getPosX()+5)*40,unites[i].getPosY()*40,40,40,pixmap);
+
+        }
+        else if(unites[i].getType()==2000 && unites[i].getTeam()==1){
+            QPixmap pixmap(":/osb-copter.gif");
+            painter.drawPixmap((unites[i].getPosX()+5)*40,unites[i].getPosY()*40,40,40,pixmap);
+
+        }
+        else if(unites[i].getType()==2000 && unites[i].getTeam()==2){
+            QPixmap pixmap(":/bmb-copter.gif");
+            painter.drawPixmap((unites[i].getPosX()+5)*40,unites[i].getPosY()*40,40,40,pixmap);
+
+        }
+        else if(unites[i].getType()==2002 && unites[i].getTeam()==1){
+            QPixmap pixmap(":/osfighter.gif");
+            painter.drawPixmap((unites[i].getPosX()+5)*40,unites[i].getPosY()*40,40,40,pixmap);
+
+        }
+        else if(unites[i].getType()==2002 && unites[i].getTeam()==2){
+            QPixmap pixmap(":/bmfighter.gif");
+            painter.drawPixmap((unites[i].getPosX()+5)*40,unites[i].getPosY()*40,40,40,pixmap);
+
+        }
+        else if(unites[i].getType()==2001 && unites[i].getTeam()==1){
+            QPixmap pixmap(":/osbomber.gif");
+            painter.drawPixmap((unites[i].getPosX()+5)*40,unites[i].getPosY()*40,40,40,pixmap);
+
+        }
+        else if(unites[i].getType()==2001 && unites[i].getTeam()==2){
+            QPixmap pixmap(":/bmbomber.gif");
+            painter.drawPixmap((unites[i].getPosX()+5)*40,unites[i].getPosY()*40,40,40,pixmap);
+
+        }
 
     }
 
