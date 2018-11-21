@@ -60,7 +60,8 @@ SOURCES += \
     tank.cpp \
     md_tank.cpp \
     mega_tank.cpp \
-    neotank.cpp
+    neotank.cpp \
+    bazooka.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -97,7 +98,8 @@ HEADERS += \
     tank.h \
     md_tank.h \
     mega_tank.h \
-    neotank.h
+    neotank.h \
+    bazooka.h
 
 FORMS += \
         mainwindow.ui \
