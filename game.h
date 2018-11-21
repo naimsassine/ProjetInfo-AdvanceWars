@@ -19,7 +19,7 @@ public:
     void endtour();
     int getTurn() const;
     void setTurn(int value);
-    void createUnite(int x, int y, int team);
+    void createUnite(int x, int y, int team ,int type);
     void attack(int z, int e ,int  i);
     void capture(int z,int e);
     void capture_Usine(int z, int e);
