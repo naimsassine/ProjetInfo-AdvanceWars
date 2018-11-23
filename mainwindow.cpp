@@ -118,6 +118,20 @@ void MainWindow::changeVieWindow(Unites unite)
 
 }
 
+void MainWindow::synchro(Unites unite)
+{
+    Game& game = Game::Instance();
+    int vie= unite.getvie();
+        lab10= new QLabel("Point de vie infanterie : /vie",this);
+        lab10->setGeometry(60, 50, 180, 70);
+        QFont f10( "Arial", 16);
+        lab10->setFont( f10);
+        lab10->move(0, 200);
+        lab10->show();
+
+
+}
+
 
 
 

@@ -31,6 +31,7 @@ public:
     std::vector<Aeroport> getAeroport() const;
     std::vector<Usine> getUsine() const;
     std::vector<Ville> getVille() const;
+    void affichage();
 
 private:
     Game();

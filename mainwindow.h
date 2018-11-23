@@ -26,6 +26,7 @@ public:
     void InitMap();
     void redraw();
     void changeVieWindow(Unites unite);
+    void synchro(Unites unite);
 
 private slots:
 void changeturn();
@@ -40,7 +41,7 @@ private:
     QLabel *lab3;
     QLabel *lab4;
     QLabel *lab5;
-
+    QLabel *lab10;
 
 };
 

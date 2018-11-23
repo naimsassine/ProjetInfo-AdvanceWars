@@ -666,4 +666,11 @@ void Game::capture_Aeroport(int z, int e)
 
 
 }
+void Game::affichage(){
+    if(unites[posXselec].getSelected() && unites[posXselec].getType() == 1998){
+        window->synchro(unites[posXselec]);
+        window->redraw();
+
+    }
+}
 
