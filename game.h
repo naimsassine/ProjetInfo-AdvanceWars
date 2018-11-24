@@ -32,7 +32,7 @@ public:
     std::vector<Usine> getUsine() const;
     std::vector<Ville> getVille() const;
     void affichage();
-
+    bool samePos() const;
     bool getUnitincity() const;
     void setUnitincity(bool value);
 

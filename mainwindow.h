@@ -38,6 +38,7 @@ private:
     Map *map;
     QPushButton *bouton;
     QLabel *lab;
+    QLabel *lab1;
     QLabel *lab2;
     QLabel *lab3;
     QLabel *lab4;

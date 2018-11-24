@@ -736,3 +736,17 @@ void Game::affichage(){
     }
 }
 
+bool Game::samePos() const{
+    for(int i=0 ;i<21;i++){
+        for (int j=0; j <17 ;j++){
+    //int x =0;
+    //int y =0;
+
+    if(unites[posXselec].getPosX() == gameobject[i][j].getPosX() && unites[posYselec].getPosY() == gameobject[i][j].getPosY() ) {
+        return true;
+        }
+}
+    }
+
+}
+
