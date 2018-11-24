@@ -42,6 +42,8 @@ private:
     std::vector<Unites> unites;
     std::vector<Aeroport> aeroport;
     std::vector<Ville> ville;
+    int z=0;
+    int e=0;
     static Game gameinst;
     MainWindow *window;
     Gameobject gameobject[22][18];
