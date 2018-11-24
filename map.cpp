@@ -20,10 +20,12 @@
 #include <QAction>
 #include "Usine.h"
 #include "usinewindow.h"
+#include "case.h"
 Map::Map(QWidget *parent ) : QWidget(parent)
 {
 setFocusPolicy(Qt::StrongFocus);
-
+Case cas;
+casee=&cas;
 }
 
 Map::~Map()
@@ -506,6 +508,8 @@ void Map::paintEvent(QPaintEvent *event)
         }
 
     }
+    painter.drawRoundRect((casee->getPosX()+5)*40,casee->getPosY()*40,40,40,5,5);
+
 
 }
 
@@ -545,6 +549,9 @@ void Map::mousePressEvent(QMouseEvent *ev)
     float y=floorf(ev->y()/40); // fonction deja implementé //
     z= (int)x-5;
     e= (int)y;
+    casee->setPosX(z);
+    casee->setPosY(e);
+    redraw();
     if(ev->buttons() == Qt::LeftButton){
         Game& game=Game::Instance();
 
@@ -651,23 +658,29 @@ void Map::keyPressEvent(QKeyEvent *keyEvent)
         switch (keyEvent->key()) {
         case Qt::Key_Down:
 
-            game.movearrow(0,1);
+            casee->setPosY(casee->getPosY()+1);
             break;
         case Qt::Key_Left:
-            game.movearrow(-1,0);
+            casee->setPosX(casee->getPosX()-1);
             break;
         case Qt::Key_Right:
-            game.movearrow(1,0);
+            casee->setPosX(casee->getPosX()+1);
             break;
         case Qt::Key_Up:
-            game.movearrow(0,-1);
+            casee->setPosY(casee->getPosY()-1);
             break;
+        case Qt::Key_Enter:
+            game.move(casee->getPosX(),casee->getPosY());
         default:
             break;
         }
+        redraw();
 }
 
-
+void Map::ablatif(){
+    
+    
+}
 void Map::setgameobject()
 {   Game& game=Game::Instance();
     for(int i=0 ;i<21;i++){
