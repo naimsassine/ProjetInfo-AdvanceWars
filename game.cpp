@@ -743,7 +743,7 @@ bool Game::samePos() const{
     //int y =0;
 
     if(unites[posXselec].getPosX() == gameobject[i][j].getPosX() && unites[posYselec].getPosY() == gameobject[i][j].getPosY() ) {
-        return true;
+        return same;
         }
 }
     }

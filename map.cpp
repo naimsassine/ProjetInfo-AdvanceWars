@@ -259,7 +259,7 @@ void Map::paintEvent(QPaintEvent *event)
            else if(gameobject[i][j].getType() == 36){
                QPixmap pixmap(":/neutralairport.gif");
                painter.drawPixmap(c*40,j*40,40,40,pixmap);
-               if(gameobject[i][j].getSelected()== true){
+               if(game.samePos() || gameobject[i][j].getSelected()== true){
                    painter.drawPixmap(50,250,40,40,pixmap);
                }
                if(gameobject[i][j].getTeam()==1){

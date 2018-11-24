@@ -52,6 +52,7 @@ private:
     Player *player2;
     int turn=1;
     bool unitincity=false;
+    bool same = false;
 
 
     // NAim on te...//
