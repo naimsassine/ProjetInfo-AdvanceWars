@@ -13,6 +13,9 @@
 #include <QDockWidget>
 #include <QCoreApplication>
 #include <QSizePolicy>
+#include <string.h>
+#include <iostream>
+
 MainWindow::MainWindow(QWidget *parent) :
 
     QMainWindow(parent),
@@ -50,7 +53,6 @@ MainWindow::MainWindow(QWidget *parent) :
    lab2->show();
    lab3= new QLabel("1000",this);
    lab3->setGeometry(60, 50, 180, 70);
-
    lab3->setFont( f2);
    lab3->move(100, 100);
    lab3->show();
@@ -89,8 +91,9 @@ void MainWindow::InitMap()
 
 
 void MainWindow::redraw()
-{
-   map->setgameobject();
+{   Game& game=Game::Instance();
+    lab3->setText(QString::number(game.getPlayer()->getMoney()));
+    map->setgameobject();
     map->redraw();
 }
 
@@ -123,6 +126,7 @@ void MainWindow::synchro(Unites unite)
     Game& game = Game::Instance();
     int vie= unite.getvie();
     if(unite.getType() == 1998){
+        
 
         lab10= new QLabel("Point de vie infanterie : /vie",this);
         lab10->setGeometry(60, 50, 180, 70);
