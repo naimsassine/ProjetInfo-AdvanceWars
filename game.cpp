@@ -185,6 +185,14 @@ Game &Game::Instance()
 
 void Game::move(int x,int y)
 {
+    if(gameobject[x][y].getType()==34 ){
+        gameobject[x][y].setSelected(true);
+        window->redraw();
+    }
+    gameobject[z][e].setSelected(false);
+    z=x;
+    e=y;
+    window->redraw();
     for(std::vector<Ville>::size_type i = 0; i != ville.size(); i++){
         ville[i].setUnitin(false);
     }
