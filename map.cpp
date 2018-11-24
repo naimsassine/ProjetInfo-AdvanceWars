@@ -637,7 +637,7 @@ void Map::attackunite()
 
 
 void Map::mousePressEvent(QMouseEvent *ev)
-{
+{   gameobject[z][e].setSelected(false);
     float x=floorf(ev->x()/40);
     float y=floorf(ev->y()/40); // fonction deja implementé //
     z= (int)x-5;
@@ -655,6 +655,10 @@ void Map::mousePressEvent(QMouseEvent *ev)
 
         if( z<21 && e<17) {
          game.move(z,e);
+        }
+        if(gameobject[z][e].getType()==34 ){
+            gameobject[z][e].setSelected(true);
+            redraw();
         }
 
     }
