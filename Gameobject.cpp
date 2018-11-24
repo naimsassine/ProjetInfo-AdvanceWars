@@ -94,6 +94,16 @@ void Gameobject::setdefTerrain(int value)
     defTerrain = value;
 }
 
+bool Gameobject::getUnitin() const
+{
+    return unitin;
+}
+
+void Gameobject::setUnitin(bool value)
+{
+    unitin = value;
+}
+
 
 void Gameobject::setPosX(int value)
 {
