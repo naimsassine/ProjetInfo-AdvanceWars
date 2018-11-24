@@ -154,7 +154,7 @@ void Game::endtour()
         {
             for(int h=0 ;h<21;h++){
                 for (int j=0; j <17 ;j++){
-                    if(unites[i].getTeam()==turn && unites[i].getPosX() == h && unites[i].getPosY() == j && gameobject[h][j].getType() == 34 ){
+                    if(unites[i].getTeam()==turn && unites[i].getPosX() == h && unites[i].getPosY() == j && gameobject[h][j].getType() == 34 || 35  ){
                         unites[i].setvie(12);
                     }
                 }}
@@ -167,7 +167,7 @@ void Game::endtour()
         {
             for(int h=0 ;h<21;h++){
                 for (int j=0; j <17 ;j++){
-                    if(unites[i].getTeam()==turn && unites[i].getPosX() == h && unites[i].getPosY() == j && gameobject[h][j].getType() == 34 ){
+                    if(unites[i].getTeam()==turn && unites[i].getPosX() == h && unites[i].getPosY() == j && gameobject[h][j].getType() == 34 || 35 ){
                         unites[i].setvie(12);
                     }
                 }}
