@@ -452,8 +452,8 @@ void Game::InitGame(MainWindow &wind,Player &InitPlayer1,Player &InitPlayer2){
 
                         gameobject[j][d]= ublue;
                         gameobject[j][d].setType(44);
-                        gameobject[j][d].setTeam(1);
-                        ublue.setTeam(1);
+                        gameobject[j][d].setTeam(2);
+                        ublue.setTeam(2);
                         usine.push_back(ublue);
                     }
                     if(c==109){
