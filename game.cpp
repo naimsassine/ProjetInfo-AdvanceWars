@@ -45,6 +45,16 @@ Game::Game()
 
 
 }
+
+bool Game::getUnitincity() const
+{
+    return unitincity;
+}
+
+void Game::setUnitincity(bool value)
+{
+    unitincity = value;
+}
 std::vector<Aeroport> Game::getAeroport() const
 {
     return aeroport;
@@ -70,21 +80,36 @@ Player *Game::getPlayer() const
 }
 
 void Game::moveable(int move, int x, int y)
-{
+{   for (Unites & u : unites) {
+         if( u.getPosX()==x+1 && u.getPosY()==y ){
+
+             gameobject[x+1][y].setUnitin(true);}
+        else if( u.getPosX()==x-1 && u.getPosY()==y ){
+
+             gameobject[x-1][y].setUnitin(true);}
+        else if( u.getPosX()==x && u.getPosY()==y+1 ){
+
+             gameobject[x][y+1].setUnitin(true);}
+        else if( u.getPosX()==x && u.getPosY()==y-1 ){
+
+             gameobject[x][y-1].setUnitin(true);}
+        }
+
     if(x<21 && x>-1 && y<17 && y>-1){
-        if(move >= gameobject[x+1][y].getPtdemouvement() && (gameobject[x+1][y].getTeam()==turn || gameobject[x+1][y].getTeam()==0 )){
+
+        if(move >= gameobject[x+1][y].getPtdemouvement() &&!gameobject[x+1][y].getUnitin() && (gameobject[x+1][y].getTeam()==turn || gameobject[x+1][y].getTeam()==0 )){
             gameobject[x+1][y].setMovable(true);
             int s = move-gameobject[x+1][y].getPtdemouvement();
             moveable(s,x+1,y);
     }
-    if(move >= gameobject[x-1][y].getPtdemouvement()&& (gameobject[x-1][y].getTeam()==turn ||gameobject[x-1][y].getTeam()==0)){
+    if(move >= gameobject[x-1][y].getPtdemouvement()&& !gameobject[x-1][y].getUnitin()&&(gameobject[x-1][y].getTeam()==turn ||gameobject[x-1][y].getTeam()==0)){
         gameobject[x-1][y].setMovable(true);
 
         int s = move-gameobject[x-1][y].getPtdemouvement();
 
         moveable(s,x-1,y);
     }
-    if(move >= gameobject[x][y+1].getPtdemouvement()&& (gameobject[x][y+1].getTeam()==turn || gameobject[x][y+1].getTeam()==0 )){
+    if(move >= gameobject[x][y+1].getPtdemouvement()&&!gameobject[x][y+1].getUnitin()&& (gameobject[x][y+1].getTeam()==turn || gameobject[x][y+1].getTeam()==0 )){
 
                 gameobject[x][y+1].setMovable(true);
 
@@ -92,7 +117,7 @@ void Game::moveable(int move, int x, int y)
 
                 moveable(s,x,y+1);
     }
-    if(move >= gameobject[x][y-1].getPtdemouvement()&&( gameobject[x][y-1].getTeam()==turn|| gameobject[x][y-1].getTeam()==0)){
+    if(move >= gameobject[x][y-1].getPtdemouvement()&& !gameobject[x][y-1].getUnitin()&&( gameobject[x][y-1].getTeam()==turn|| gameobject[x][y-1].getTeam()==0)){
                         gameobject[x][y-1].setMovable(true);
 
                         int s = move-gameobject[x][y-1].getPtdemouvement();
@@ -158,7 +183,9 @@ Game &Game::Instance()
 
 void Game::move(int x,int y)
 {
-
+    for(std::vector<Ville>::size_type i = 0; i != ville.size(); i++){
+        ville[i].setUnitin(false);
+    }
     for(std::vector<Unites>::size_type i = 0; i != unites.size(); i++){
       if( unites[i].getPosX()==x && unites[i].getPosY()==y && unites[i].getTeam()==turn){
 
@@ -179,7 +206,13 @@ void Game::move(int x,int y)
 
     if(unites[posXselec].getTeam()==turn &&unites[posXselec].getSelected()&& unites[posXselec].getPosX()==x && unites[posXselec].getPosY()==y){
 
-    unites[posXselec].setSelected(false);  // deslectionnner une unités deja selectionner //
+    unites[posXselec].setSelected(false);
+    for(int i=0 ;i<21;i++){
+        for (int j=0; j <17 ;j++){
+            gameobject[i][j].setMovable(false);
+            gameobject[i][j].setUnitin(false);
+        }}
+    window->redraw();// deslectionnner une unités deja selectionner //
 
     }
     else if(unites[posXselec].getTeam()==turn&&unites[posXselec].getSelected() && gameobject[x][y].getMovable()  ){
@@ -189,6 +222,7 @@ void Game::move(int x,int y)
         for(int i=0 ;i<21;i++){
             for (int j=0; j <17 ;j++){
                 gameobject[i][j].setMovable(false);
+                gameobject[i][j].setUnitin(false);
             }}
 
 
@@ -199,9 +233,11 @@ void Game::move(int x,int y)
                 if(ville[i].getPosX()==x &&ville[i].getPosY()==y){
                     ville[i].setUnitin(true);
 
+
                 }
                 else{
                     ville[i].setUnitin(false);
+
 
                 }
             }
