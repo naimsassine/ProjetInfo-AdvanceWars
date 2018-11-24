@@ -17,6 +17,7 @@ public:
     void mousePressEvent(QMouseEvent *e);
     void keyPressEvent(QKeyEvent *keyEvent);
     void setgameobject();
+    void ablatif();
 
     void redraw();
 private slots:

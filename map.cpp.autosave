@@ -667,7 +667,10 @@ void Map::keyPressEvent(QKeyEvent *keyEvent)
         }
 }
 
-
+void Map::ablatif(){
+    
+    
+}
 void Map::setgameobject()
 {   Game& game=Game::Instance();
     for(int i=0 ;i<21;i++){
