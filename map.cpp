@@ -39,6 +39,9 @@ void Map::paintEvent(QPaintEvent *event)
     QPainter painter(this);
     for(int i=0 ;i<21;i++){
         int c=i+5;
+        Game& game=Game::Instance();
+        std::vector<Unites> unite =game.getUnites();
+        for(std::vector<Unites>::size_type h = 0; h != unite.size(); h++){
         for (int j=0; j <17 ;j++){
 
 
@@ -49,6 +52,7 @@ void Map::paintEvent(QPaintEvent *event)
                                  QPixmap pixmap(":/Misc.png");
                                  painter.drawPixmap(c*40,j*40,40,40,pixmap);
                              }
+
            }
 
 
@@ -226,7 +230,11 @@ void Map::paintEvent(QPaintEvent *event)
 
                if(gameobject[i][j].getTeam()==0){
                QPixmap pixmap(":/neutralcity.gif");
-               painter.drawPixmap(c*40,j*40,40,40,pixmap);}
+               painter.drawPixmap(c*40,j*40,40,40,pixmap);
+               if((gameobject[i][j].getSelected()==true)  || (unite[h].getPosX() == gameobject[i][j].getPosX() && unite[h].getPosY() == gameobject[i][j].getPosY())){
+                    painter.drawPixmap(50,250,40,40,pixmap);
+
+               }}
                if(gameobject[i][j].getTeam()==1){
                QPixmap pixmap(":/orangestarcity.gif");
                painter.drawPixmap(c*40,j*40,40,40,pixmap);}
@@ -259,9 +267,6 @@ void Map::paintEvent(QPaintEvent *event)
            else if(gameobject[i][j].getType() == 36){
                QPixmap pixmap(":/neutralairport.gif");
                painter.drawPixmap(c*40,j*40,40,40,pixmap);
-               if(game.samePos() || gameobject[i][j].getSelected()== true){
-                   painter.drawPixmap(50,250,40,40,pixmap);
-               }
                if(gameobject[i][j].getTeam()==1){
                QPixmap pixmap(":/orangestarairport.gif");
                painter.drawPixmap(c*40,j*40,40,40,pixmap);
@@ -598,7 +603,7 @@ void Map::paintEvent(QPaintEvent *event)
     }
     painter.drawRoundRect((casee->getPosX()+5)*40,casee->getPosY()*40,40,40,5,5);
 
-
+}
 }
 
 void Map::redraw()
