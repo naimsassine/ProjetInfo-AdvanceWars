@@ -30,11 +30,15 @@ public:
     int getdefTerrain() const;
     void setdefTerrain(int value);
 
+    bool getUnitin() const;
+    void setUnitin(bool value);
+
 protected:
     int posX;
     int posY;
     int type;
     bool selected=false;
+    bool unitin=false;
     QString filename;
     int team=0;
     int autorisation;
