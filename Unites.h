@@ -24,6 +24,9 @@ public:
     int getPtdeplacement() const;
     void setPtdeplacement(int value);
 
+    int getPrix() const;
+    void setPrix(int value);
+
 protected:
     int vie ;
     int prix;
