@@ -7,6 +7,7 @@
 #include"Gameobject.h"
 #include <QString>
 #include <QKeyEvent>
+#include "case.h"
 class Map : public QWidget{
     Q_OBJECT
 public:
@@ -32,6 +33,7 @@ private:
     QAction *capture;
     QAction *wait;
     QAction *attack;
+    Case  *casee;
     int z;
     int e;
     int unitpos;
