@@ -45,6 +45,10 @@ private:
     QLabel *lab5;
     QLabel *lab10;
 
+    QLabel *don;
+    QLabel *don1;
+    QLabel *don2;
+
 };
 
 #endif // MAINWINDOW_H

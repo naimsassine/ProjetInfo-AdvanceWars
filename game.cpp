@@ -213,6 +213,7 @@ void Game::move(int x,int y)
         for (int j=0; j <17 ;j++){
             gameobject[i][j].setMovable(false);
             gameobject[i][j].setUnitin(false);
+            gameobject[i][j].setSelected(false);
         }}
     window->redraw();// deslectionnner une unités deja selectionner //
 
@@ -225,6 +226,8 @@ void Game::move(int x,int y)
             for (int j=0; j <17 ;j++){
                 gameobject[i][j].setMovable(false);
                 gameobject[i][j].setUnitin(false);
+                gameobject[i][j].setSelected(false);
+
             }}
 
 
@@ -234,11 +237,13 @@ void Game::move(int x,int y)
 
                 if(ville[i].getPosX()==x &&ville[i].getPosY()==y){
                     ville[i].setUnitin(true);
+                    ville[i].setSelected(true);
 
 
                 }
                 else{
                     ville[i].setUnitin(false);
+                    ville[i].setSelected(false);
 
 
                 }

@@ -85,6 +85,9 @@ MainWindow::~MainWindow()
     delete lab3;
     delete lab4;
     delete lab5;
+    delete don;
+    delete don1;
+    delete don2;
     delete ui;
     delete map;
 }
