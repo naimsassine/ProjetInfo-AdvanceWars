@@ -154,8 +154,9 @@ void Game::endtour()
         {
             for(int h=0 ;h<21;h++){
                 for (int j=0; j <17 ;j++){
-                    if(unites[i].getTeam()==turn && unites[i].getPosX() == h && unites[i].getPosY() == j && gameobject[h][j].getType() == 34 || 35  ){
+                    if(unites[i].getTeam()==turn && unites[i].getPosX() == h && unites[i].getPosY() == j && (gameobject[h][j].getType() == 34 || gameobject[h][j].getType() == 35) ){
                         unites[i].setvie(12);
+                        //printf("codition verifieé1");//
                     }
                 }}
         }
@@ -167,8 +168,9 @@ void Game::endtour()
         {
             for(int h=0 ;h<21;h++){
                 for (int j=0; j <17 ;j++){
-                    if(unites[i].getTeam()==turn && unites[i].getPosX() == h && unites[i].getPosY() == j && gameobject[h][j].getType() == 34 || 35 ){
+                    if(unites[i].getTeam()==turn && unites[i].getPosX() == h && unites[i].getPosY() == j && gameobject[h][j].getType() == 34){
                         unites[i].setvie(12);
+                        //printf("codition verifieé2");//
                     }
                 }}
         }
@@ -433,7 +435,26 @@ void Game::InitGame(MainWindow &wind,Player &InitPlayer1,Player &InitPlayer2){
                         gameobject[j][d]= u;
                         gameobject[j][d].setType(35);
                         usine.push_back(u);
+                    }
+                    if(c==39){
+                        Usine uorange(j,d);
 
+
+                        gameobject[j][d]= uorange;
+                        gameobject[j][d].setType(39);
+                        gameobject[j][d].setTeam(1);
+                        uorange.setTeam(1);
+                        usine.push_back(uorange);
+                    }
+                    if(c==44){
+                        Usine ublue(j,d);
+
+
+                        gameobject[j][d]= ublue;
+                        gameobject[j][d].setType(44);
+                        gameobject[j][d].setTeam(1);
+                        ublue.setTeam(1);
+                        usine.push_back(ublue);
                     }
                     if(c==109){
                         gameobject[j][d]= Pipe(j,d);

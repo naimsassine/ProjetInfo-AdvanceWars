@@ -279,6 +279,22 @@ void Map::paintEvent(QPaintEvent *event)
                               painter.drawPixmap(c*40,j*40,40,40,pixmap);
                           }
            }
+           else if(gameobject[i][j].getType() == 39){
+               QPixmap pixmap(":/orangestarbase.gif");
+               painter.drawPixmap(c*40,j*40,40,40,pixmap);
+               if(gameobject[i][j].getMovable()){
+                              QPixmap pixmap(":/Misc.png");
+                              painter.drawPixmap(c*40,j*40,40,40,pixmap);
+                              }
+           }
+           else if(gameobject[i][j].getType() == 44){
+               QPixmap pixmap(":/bluemoonbase.gif");
+               painter.drawPixmap(c*40,j*40,40,40,pixmap);
+               if(gameobject[i][j].getMovable()){
+                               QPixmap pixmap(":/Misc.png");
+                               painter.drawPixmap(c*40,j*40,40,40,pixmap);
+                              }
+           }
            else if(gameobject[i][j].getType() == 123){
                QPixmap pixmap(":/jadesunbase.gif");
                painter.drawPixmap(c*40,j*40,40,40,pixmap);
