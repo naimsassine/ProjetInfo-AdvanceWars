@@ -122,16 +122,21 @@ void MainWindow::synchro(Unites unite)
 {
     Game& game = Game::Instance();
     int vie= unite.getvie();
+    if(unite.getType() == 1998){
+
         lab10= new QLabel("Point de vie infanterie : /vie",this);
         lab10->setGeometry(60, 50, 180, 70);
         QFont f10( "Arial", 16);
         lab10->setFont( f10);
-        lab10->move(0, 200);
-        lab10->show();
+        lab10->move(1200, 100);
+        lab10->show();}
 
 
 }
-
+/*void MainWindow::dessin(QLabel *p,char c, int x, int y){
+    p = NULL;
+    p= new QLabel(char c, this);
+}*/
 
 
 

@@ -27,6 +27,7 @@ public:
     void redraw();
     void changeVieWindow(Unites unite);
     void synchro(Unites unite);
+   // void dessin(QLabel *p, char c, int x, int y);
 
 private slots:
 void changeturn();

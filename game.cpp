@@ -257,6 +257,11 @@ void Game::move(int x,int y)
             window->redraw();
 
      }
+    if(unites[posXselec].getTeam()==turn&&unites[posXselec].getSelected() && gameobject[x][y].getMovable() ){
+        unites[posXselec].setSelected(true);
+        window->synchro(unites[posXselec]);
+        window->redraw();
+    }
 
 
     }
@@ -667,7 +672,7 @@ void Game::capture_Aeroport(int z, int e)
 
 }
 void Game::affichage(){
-    if(unites[posXselec].getSelected() && unites[posXselec].getType() == 1998){
+    if(unites[posXselec].getTeam()==turn && unites[posXselec].getSelected()== true){
         window->synchro(unites[posXselec]);
         window->redraw();
 
