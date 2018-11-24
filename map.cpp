@@ -582,7 +582,9 @@ void Map::mousePressEvent(QMouseEvent *ev)
 
     }
     else if(ev->buttons() == Qt::RightButton){
-        if ((gameobject[z][e].getType() == 35 || gameobject[z][e].getType() == 36) && gameobject[z][e].getTeam() != 0){
+       Game& game=Game::Instance();
+       std::cout<< gameobject[z][e].getTeam();
+        if ((gameobject[z][e].getType() == 44 ||gameobject[z][e].getType() == 39 || gameobject[z][e].getType() == 35 || gameobject[z][e].getType() == 36) && gameobject[z][e].getTeam() == game.getTurn() ){
             UsineWindow w;
 
             w.setX(z);
