@@ -92,3 +92,13 @@ void Unites::setPtdeplacement(int value)
 {
     ptdeplacement = value;
 }
+
+int Unites::getPrix() const
+{
+    return prix;
+}
+
+void Unites::setPrix(int value)
+{
+    prix = value;
+}
