@@ -33,6 +33,9 @@ public:
     std::vector<Ville> getVille() const;
     void affichage();
 
+    bool getUnitincity() const;
+    void setUnitincity(bool value);
+
 private:
     Game();
     std::vector<Usine> usine;
@@ -48,6 +51,7 @@ private:
     Player *player1;
     Player *player2;
     int turn=1;
+    bool unitincity=false;
 
 
     // NAim on te...//
