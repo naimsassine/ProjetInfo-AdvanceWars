@@ -11,6 +11,7 @@
 #include "map.h"
 #include <QLabel>
 #include "Unites.h"
+#include "Ville.h";
 class Gameobject;
 namespace Ui {
 class MainWindow;
@@ -26,6 +27,7 @@ public:
     void InitMap();
     void redraw();
     void changeVieWindow(Unites unite);
+    void changeCaptWindow(Ville ville);
     void synchro(Unites unite);
    // void dessin(QLabel *p, char c, int x, int y);
 
@@ -37,12 +39,14 @@ private:
     Ui::MainWindow *ui;
     Map *map;
     QPushButton *bouton;
+    QLabel *labC1;
     QLabel *lab;
     QLabel *lab1;
     QLabel *lab2;
     QLabel *lab3;
     QLabel *lab4;
     QLabel *lab5;
+    QLabel *lab6;
     QLabel *lab10;
 
     QLabel *don;

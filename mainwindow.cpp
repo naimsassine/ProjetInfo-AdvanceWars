@@ -74,12 +74,25 @@ MainWindow::MainWindow(QWidget *parent) :
    lab5->move(100, 150);
    lab5->show();
 
+   lab6= new QLabel("Point de capture : ", this);
+   lab6->setGeometry(60, 50, 180, 70);
+   QFont f6( "Arial", 16);
+   lab6->setFont( f6);
+   lab6->move(0, 300);
+   lab6->show();
+   labC1= new QLabel("20",this);
+   labC1->setGeometry(60, 50, 180, 70);
+   labC1->setFont(f6);
+   labC1->move(170, 300);
+   labC1->show();
+
 
 
 }
 
 MainWindow::~MainWindow()
 {   delete bouton;
+    delete labC1;
     delete lab;
     delete lab2;
     delete lab3;
@@ -123,6 +136,14 @@ void MainWindow::changeVieWindow(Unites unite)
     Game& game=Game::Instance();
     int a = unite.getvie();
     lab5->setNum(a);
+
+}
+
+void MainWindow::changeCaptWindow(Ville ville)
+{
+    Game& game = Game::Instance();
+    int b = ville.getCapturepoint();
+    labC1->setNum(b);
 
 }
 

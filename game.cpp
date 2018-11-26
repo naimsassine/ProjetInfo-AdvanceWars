@@ -246,6 +246,7 @@ void Game::move(int x,int y)
                 if(ville[i].getPosX()==x &&ville[i].getPosY()==y){
                     ville[i].setUnitin(true);
                     ville[i].setSelected(true);
+                    window->changeCaptWindow(ville[i]);
 
 
                 }
