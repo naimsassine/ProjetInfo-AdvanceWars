@@ -42,6 +42,7 @@ private:
     std::vector<Unites> unites;
     std::vector<Aeroport> aeroport;
     std::vector<Ville> ville;
+    std::vector<Terrain> terrain;
     int z=0;
     int e=0;
     static Game gameinst;

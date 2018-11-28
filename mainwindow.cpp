@@ -3,6 +3,8 @@
 #include "game.h"
 #include <string.h>
 #include"bouton.h"
+#include "Usine.h"
+
 #include "ui_mainwindow.h"
 #include <QPushButton>
 #include <QWidget>
@@ -86,6 +88,18 @@ MainWindow::MainWindow(QWidget *parent) :
    labC1->move(170, 300);
    labC1->show();
 
+   lab7= new QLabel("Défense terrain : ", this);
+   lab7->setGeometry(60, 50, 180, 70);
+   QFont f7( "Arial", 16);
+   lab7->setFont( f6);
+   lab7->move(0, 350);
+   lab6->show();
+   labT1= new QLabel("0",this);
+   labT1->setGeometry(60, 50, 180, 70);
+   labT1->setFont(f7);
+   labT1->move(170, 350);
+   labT1->show();
+
 
 
 }
@@ -93,11 +107,14 @@ MainWindow::MainWindow(QWidget *parent) :
 MainWindow::~MainWindow()
 {   delete bouton;
     delete labC1;
+    delete labT1;
     delete lab;
     delete lab2;
     delete lab3;
     delete lab4;
     delete lab5;
+    delete lab6;
+    delete lab7;
     delete ui;
     delete map;
 }
@@ -145,6 +162,27 @@ void MainWindow::changeCaptWindow(Ville ville)
     int b = ville.getCapturepoint();
     labC1->setNum(b);
 
+}
+void MainWindow::changeCaptWindow(Usine usine)
+{
+    Game& game = Game::Instance();
+    int b = usine.getCapturepoint();
+    labC1->setNum(b);
+
+}
+void MainWindow::changeCaptWindow(Aeroport aeroport)
+{
+    Game& game = Game::Instance();
+    int b = aeroport.getCapturepoint();
+    labC1->setNum(b);
+
+}
+
+void MainWindow::changeDefWindow(Terrain terrain)
+{
+    Game& game = Game::Instance();
+    int c = terrain.getdefTerrain();
+    labT1->setNum(c);
 }
 
 void MainWindow::synchro(Unites unite)

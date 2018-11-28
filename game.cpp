@@ -185,9 +185,13 @@ Game &Game::Instance()
 
 void Game::move(int x,int y)
 {
-    if(gameobject[x][y].getType()==34 ){
+    if(gameobject[x][y].getType()==34 || gameobject[x][y].getType() == 35 || gameobject[x][y].getType()==36 ||gameobject[x][y].getType()==39){
         gameobject[x][y].setSelected(true);
         window->redraw();
+    }
+    if(gameobject[x][y].getType() != 700){
+        gameobject[x][y].setSelected(true);
+        window-> redraw();
     }
     gameobject[z][e].setSelected(false);
     z=x;
@@ -195,6 +199,15 @@ void Game::move(int x,int y)
     window->redraw();
     for(std::vector<Ville>::size_type i = 0; i != ville.size(); i++){
         ville[i].setUnitin(false);
+    }
+    for(std::vector<Usine>::size_type i = 0; i != usine.size(); i++){
+        usine[i].setUnitin(false);
+    }
+    for(std::vector<Aeroport>::size_type i = 0; i != aeroport.size(); i++){
+        aeroport[i].setUnitin(false);
+    }
+    for(std::vector<Terrain>::size_type i = 0; i != terrain.size(); i++){
+        terrain[i].setUnitin(false);
     }
     for(std::vector<Unites>::size_type i = 0; i != unites.size(); i++){
       if( unites[i].getPosX()==x && unites[i].getPosY()==y && unites[i].getTeam()==turn){
@@ -265,8 +278,12 @@ void Game::move(int x,int y)
 
                 if(aeroport[i].getPosX()==x && aeroport[i].getPosY()==y){
                     aeroport[i].setUnitin(true);
+                    aeroport[i].setUnitin(true);
+                    window->changeCaptWindow(aeroport[i]);
+
                 }
                 else{
+                    aeroport[i].setUnitin(false);
                     aeroport[i].setUnitin(false);
                 }
 
@@ -277,11 +294,27 @@ void Game::move(int x,int y)
             for(std::vector<Usine>::size_type i = 0; i!= usine.size(); i++){
                 if(usine[i].getPosX()==x && usine[i].getPosY()==y){
                     usine[i].setUnitin(true);
+                    usine[i].setSelected(true);
+                    window->changeCaptWindow(usine[i]);
                 }
                 else{
                     usine[i].setUnitin(false);
+                    usine[i].setSelected(false);
                 }
 
+            }
+        }
+        else if(gameobject[x][y].getType() != 700){
+            for(std::vector<Terrain>::size_type i = 0; i!= terrain.size(); i++){
+                if(terrain[i].getPosX()==x && terrain[i].getPosY()==y){
+                    terrain[i].setUnitin(true);
+                    terrain[i].setSelected(true);
+                    window->changeDefWindow(terrain[i]);
+                }
+                else{
+                    terrain[i].setUnitin(false);
+                    terrain[i].setSelected(false);
+                }
             }
         }
 

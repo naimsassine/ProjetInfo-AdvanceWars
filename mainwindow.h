@@ -11,7 +11,10 @@
 #include "map.h"
 #include <QLabel>
 #include "Unites.h"
+#include "Usine.h"
+#include "Aeroport.h"
 #include "Ville.h";
+#include "Terrain.h"
 class Gameobject;
 namespace Ui {
 class MainWindow;
@@ -28,6 +31,10 @@ public:
     void redraw();
     void changeVieWindow(Unites unite);
     void changeCaptWindow(Ville ville);
+    void changeCaptWindow(Usine usine);
+    void changeCaptWindow(Aeroport aeroport);
+    void changeDefWindow(Terrain terrain);
+
     void synchro(Unites unite);
    // void dessin(QLabel *p, char c, int x, int y);
 
@@ -40,6 +47,7 @@ private:
     Map *map;
     QPushButton *bouton;
     QLabel *labC1;
+    QLabel *labT1;
     QLabel *lab;
     QLabel *lab1;
     QLabel *lab2;
@@ -47,6 +55,7 @@ private:
     QLabel *lab4;
     QLabel *lab5;
     QLabel *lab6;
+    QLabel *lab7;
     QLabel *lab10;
 
     QLabel *don;
