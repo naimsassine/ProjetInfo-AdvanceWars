@@ -687,19 +687,6 @@ void Game::createUnite(int x, int y,  int team ,int type ){
 }
 
 void Game::attack(int z, int e,int i){
-
-
-   /* bool found = false;
-    while(i<sizeof (unites) && !found){
-        if(unites[i].getPosX() == z && unites[i].getPosY() == e){
-            found = true;
-        }
-        i++;
-    }
-    i--; //décrement du i de la boucle while en trop
-    if(found){
-        unites[i].setDamage(unites[posXselec]);
-    }*/
     std::cout<<unites[i].getvie()<<std::endl;
     if(unites[i].getvie()>0){
         int x = unites[i].getPosX();
@@ -717,7 +704,38 @@ void Game::attack(int z, int e,int i){
 }
 
    }
+void Game::fusion(int z, int e, Unites u1, Unites u2){
+    u1.getPosX() == z;
+    u1.getPosY() == e;
 
+    if(u1.getTeam() == u2.getTeam() && u1.getType() == u2.getType()){
+        if(u1.getvie() < 10 && u2.getvie() < 10){
+            if(u1.getSelected() == true){
+              if(u1.getvie() + u2.getvie() <= 10){
+
+                    u1.getvie() == u1.getvie() + u2.getvie();
+              }
+              else
+              {
+                  u1.getvie() == 10;
+              }
+            }
+            else if(u2.getSelected() == true){
+                if(u1.getvie() + u2.getvie() <= 10){
+
+                      u2.getvie() == u2.getvie() + u1.getvie();
+                }
+                else
+                {
+                    u2.getvie() == 10;
+                }
+
+            }
+
+        }
+
+    }
+}
 
 void Game::capture(int z, int e)
 {

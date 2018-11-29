@@ -21,6 +21,7 @@ public:
     void setTurn(int value);
     void createUnite(int x, int y, int team ,int type);
     void attack(int z, int e ,int  i);
+    void fusion(int z, int e, Unites u1, Unites u2);
     void capture(int z,int e);
     void capture_Usine(int z, int e);
     void capture_Aeroport(int z, int e);
