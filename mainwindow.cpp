@@ -32,7 +32,21 @@ MainWindow::MainWindow(QWidget *parent) :
     /*QSize size(1040,600);
     this->setFixedSize(size);*/
     // Gestions des boutons sur la map//
-
+    bouton = nullptr;
+    labC1 = nullptr;
+    labT1 = nullptr;
+    lab = nullptr;
+    lab1 = nullptr;
+    lab2 = nullptr;
+    lab3 = nullptr;
+    lab4 = nullptr;
+    lab5 = nullptr;
+    lab6 = nullptr;
+    lab7 = nullptr;
+    lab10 = nullptr;
+    don = nullptr;
+    don1 = nullptr;
+    don2 = nullptr;
 
 
 
@@ -64,7 +78,7 @@ MainWindow::MainWindow(QWidget *parent) :
    lab3->move(100, 100);
    lab3->show();
 
-   lab4 = new QLabel("Vie : ",this);
+   /*lab4 = new QLabel("Vie : ",this);
    lab4->setGeometry(60, 50, 180, 70);
    QFont f3( "Arial", 16);
    lab4->setFont( f3);
@@ -98,7 +112,7 @@ MainWindow::MainWindow(QWidget *parent) :
    labT1->setGeometry(60, 50, 180, 70);
    labT1->setFont(f7);
    labT1->move(170, 350);
-   labT1->show();
+   labT1->show();*/
 
 
 
@@ -163,36 +177,36 @@ void MainWindow::changeVieWindow(Unites unite)
 
 void MainWindow::changeCaptWindow(Ville ville)
 {
-    Game& game = Game::Instance();
+    /*Game& game = Game::Instance();
     int b = ville.getCapturepoint();
-    labC1->setNum(b);
+    labC1->setNum(b);*/
 
 }
 void MainWindow::changeCaptWindow(Usine usine)
 {
-    Game& game = Game::Instance();
+    /*QGame& game = Game::Instance();
     int b = usine.getCapturepoint();
-    labC1->setNum(b);
+    labC1->setNum(b);*/
 
 }
 void MainWindow::changeCaptWindow(Aeroport aeroport)
 {
-    Game& game = Game::Instance();
+    /*Game& game = Game::Instance();
     int b = aeroport.getCapturepoint();
-    labC1->setNum(b);
+    labC1->setNum(b);*/
 
 }
 
 void MainWindow::changeDefWindow(Terrain terrain)
 {
-    Game& game = Game::Instance();
+   /* Game& game = Game::Instance();
     int c = terrain.getdefTerrain();
-    labT1->setNum(c);
+    labT1->setNum(c);*/
 }
 
 void MainWindow::synchro(Unites unite)
 {
-    Game& game = Game::Instance();
+   /* Game& game = Game::Instance();
     int vie= unite.getvie();
     if(unite.getType() == 1998){
         
@@ -202,7 +216,7 @@ void MainWindow::synchro(Unites unite)
         QFont f10( "Arial", 16);
         lab10->setFont( f10);
         lab10->move(1200, 100);
-        lab10->show();}
+        lab10->show();}*/
 
 
 }
