@@ -62,7 +62,8 @@ SOURCES += \
     mega_tank.cpp \
     neotank.cpp \
     bazooka.cpp \
-    case.cpp
+    case.cpp \
+    menu.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -101,11 +102,13 @@ HEADERS += \
     mega_tank.h \
     neotank.h \
     bazooka.h \
-    case.h
+    case.h \
+    menu.h
 
 FORMS += \
         mainwindow.ui \
-    usinewindow.ui
+    usinewindow.ui \
+    menu.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
