@@ -47,7 +47,7 @@ private:
     int z=0;
     int e=0;
     static Game gameinst;
-    MainWindow *window;
+    MainWindow *window = nullptr;
     Gameobject gameobject[22][18];
     Gameobject set;
     int posXselec=0;

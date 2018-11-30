@@ -356,9 +356,9 @@ void Game::move(int x,int y)
 
 
 void Game::InitGame(MainWindow &wind,Player &InitPlayer1,Player &InitPlayer2){
-    window = &wind ;
-    player1=&InitPlayer1;
-    player2=&InitPlayer2;
+    window = &wind;
+    player1 = &InitPlayer1;
+    player2 = &InitPlayer2;
 
 
     int c;
@@ -366,241 +366,232 @@ void Game::InitGame(MainWindow &wind,Player &InitPlayer1,Player &InitPlayer2){
 
      if (!df.open(QIODevice::ReadOnly | QIODevice::Text)) {
 
-                }
+     }
 
-                QTextStream txStream(&df);
-                int d=0;
+    QTextStream txStream(&df);
+    int d=0;
 
-                while (!txStream.atEnd()) {
+    while (!txStream.atEnd()) {
 
-                    QString text = txStream.readLine();
-                    QStringList s=text.split(",");
-                    for(int j =0 ;j<21 ;j++){
-                    c = s[j].toInt();
+        QString text = txStream.readLine();
+        QStringList s=text.split(",");
+        for(int j =0 ;j<21 ;j++){
+            c = s[j].toInt();
 
-                    if(c==1){
-                        gameobject[j][d]= Plain(j,d);
-
-
-                    }
-                    if(c==2){
-                        gameobject[j][d]= Mountain(j,d);
-                    }
-                    if(c==3){
-                        gameobject[j][d]= Wood(j,d);
-
-                    }
-                    if(c==4){
-                        gameobject[j][d]= River(j,d);
-                        gameobject[j][d].setType(4);
-                    }
-                    if(c==5){
-                        gameobject[j][d]= River(j,d);
-                        gameobject[j][d].setType(5);
-                    }
-                    if(c==6){
-                        gameobject[j][d]= River(j,d);
-                        gameobject[j][d].setType(c);
-                    }
-                    if(c==7){
-                        gameobject[j][d]= River(j,d);
-                        gameobject[j][d].setType(c);
-                    }
-                    if(c==8){
-                        gameobject[j][d]= River(j,d);
-                        gameobject[j][d].setType(c);
-                    }
-                    if(c==9){
-                        gameobject[j][d]= River(j,d);
-                        gameobject[j][d].setType(c);
-                    }
-                    if(c==104){
-                        gameobject[j][d]= Pipe(j,d);
-                        gameobject[j][d].setType(c);
-                    }
-                    if(c==102){
-                        gameobject[j][d]= Pipe(j,d);
-                        gameobject[j][d].setType(c);
-                    }
-                    if(c==108){
-                        gameobject[j][d]= Pipe(j,d);
-                        gameobject[j][d].setType(c);
-                    }
-                    if(c==18){
-                        gameobject[j][d]= Road(j,d);
-                        gameobject[j][d].setType(c);
-                    }
-                    if(c==15){
-                        gameobject[j][d]= Road(j,d);
-                        gameobject[j][d].setType(c);
-                    }
-                    if(c==34){
-                        Ville v(j,d);
-
-                        gameobject[j][d]= v;
-                        gameobject[j][d].setType(34);
-                        ville.push_back(v);
-                    }
-                    if(c==30){
-                        gameobject[j][d]= Shoal(j,d);
-
-                    }
-                    if(c==33){
-                        gameobject[j][d]= Reef(j,d);
-                        gameobject[j][d].setType(c);
-                    }
-                    if(c==19){
-                        gameobject[j][d]= Road(j,d);
-                        gameobject[j][d].setType(c);
-                    }
-                    if(c==106){
-                        gameobject[j][d]= Pipe(j,d);
-                        gameobject[j][d].setType(c);
-                    }
-                    if(c==24){
-                        gameobject[j][d]= Road(j,d);
-                        gameobject[j][d].setType(c);
-                    }
-                    if(c==22){
-                        gameobject[j][d]= Road(j,d);
-                        gameobject[j][d].setType(c);
-                    }
-                    if(c==101){
-                        gameobject[j][d]= Pipe(j,d);
-                        gameobject[j][d].setType(c);
-                    }
-                    if(c==125){
-                        Ville p(j,d);
-                        gameobject[j][d]= p;
-                        gameobject[j][d].setType(34);
-                        ville.push_back(p);
-                    }
-                    if(c==35){
-                        Usine u(j,d);
+            if(c==1){
+                gameobject[j][d]= Plain(j,d);
 
 
-                        gameobject[j][d]= u;
-                        gameobject[j][d].setType(35);
-                        usine.push_back(u);
-                    }
-                    if(c==39){
-                        Usine uorange(j,d);
+            }
+            if(c==2){
+                gameobject[j][d]= Mountain(j,d);
+            }
+            if(c==3){
+                gameobject[j][d]= Wood(j,d);
+
+            }
+            if(c==4){
+                gameobject[j][d]= River(j,d);
+                gameobject[j][d].setType(4);
+            }
+            if(c==5){
+                gameobject[j][d]= River(j,d);
+                gameobject[j][d].setType(5);
+            }
+            if(c==6){
+                gameobject[j][d]= River(j,d);
+                gameobject[j][d].setType(c);
+            }
+            if(c==7){
+                gameobject[j][d]= River(j,d);
+                gameobject[j][d].setType(c);
+            }
+            if(c==8){
+                gameobject[j][d]= River(j,d);
+                gameobject[j][d].setType(c);
+            }
+            if(c==9){
+                gameobject[j][d]= River(j,d);
+                gameobject[j][d].setType(c);
+            }
+            if(c==104){
+                gameobject[j][d]= Pipe(j,d);
+                gameobject[j][d].setType(c);
+            }
+            if(c==102){
+                gameobject[j][d]= Pipe(j,d);
+                gameobject[j][d].setType(c);
+            }
+            if(c==108){
+                gameobject[j][d]= Pipe(j,d);
+                gameobject[j][d].setType(c);
+            }
+            if(c==18){
+                gameobject[j][d]= Road(j,d);
+                gameobject[j][d].setType(c);
+            }
+            if(c==15){
+                gameobject[j][d]= Road(j,d);
+                gameobject[j][d].setType(c);
+            }
+            if(c==34){
+                Ville v(j,d);
+
+                gameobject[j][d]= v;
+                gameobject[j][d].setType(34);
+                ville.push_back(v);
+            }
+            if(c==30){
+                gameobject[j][d]= Shoal(j,d);
+
+            }
+            if(c==33){
+                gameobject[j][d]= Reef(j,d);
+                gameobject[j][d].setType(c);
+            }
+            if(c==19){
+                gameobject[j][d]= Road(j,d);
+                gameobject[j][d].setType(c);
+            }
+            if(c==106){
+                gameobject[j][d]= Pipe(j,d);
+                gameobject[j][d].setType(c);
+            }
+            if(c==24){
+                gameobject[j][d]= Road(j,d);
+                gameobject[j][d].setType(c);
+            }
+            if(c==22){
+                gameobject[j][d]= Road(j,d);
+                gameobject[j][d].setType(c);
+            }
+            if(c==101){
+                gameobject[j][d]= Pipe(j,d);
+                gameobject[j][d].setType(c);
+            }
+            if(c==125){
+                Ville p(j,d);
+                gameobject[j][d]= p;
+                gameobject[j][d].setType(34);
+                ville.push_back(p);
+            }
+            if(c==35){
+                Usine u(j,d);
 
 
-                        gameobject[j][d]= uorange;
-                        gameobject[j][d].setType(39);
-                        gameobject[j][d].setTeam(1);
-                        uorange.setTeam(1);
-                        usine.push_back(uorange);
-                    }
-                    if(c==44){
-                        Usine ublue(j,d);
+                gameobject[j][d]= u;
+                gameobject[j][d].setType(35);
+                usine.push_back(u);
+            }
+            if(c==39){
+                Usine uorange(j,d);
 
 
-                        gameobject[j][d]= ublue;
-                        gameobject[j][d].setType(44);
-                        gameobject[j][d].setTeam(2);
-                        ublue.setTeam(2);
-                        usine.push_back(ublue);
-                    }
-                    if(c==109){
-                        gameobject[j][d]= Pipe(j,d);
-                        gameobject[j][d].setType(c);
-                    }
-                    if(c==123){
-                        Ville r(j,d);
-                        gameobject[j][d]= r;
-                        gameobject[j][d].setType(34);
-                        ville.push_back(r);
-                    }
-                    if(c==23){
-                        gameobject[j][d]= Road(j,d);
-                        gameobject[j][d].setType(c);
-                    }
-                    if(c==21){
-                        gameobject[j][d]= Road(j,d);
-                        gameobject[j][d].setType(c);
-                    }
-                    if(c==16){
-                        gameobject[j][d]= Road(j,d);
-                        gameobject[j][d].setType(c);
-                    }
-                    if(c==26){
-                        gameobject[j][d]= Road(j,d);
-                        gameobject[j][d].setType(c);
-                    }
-                    if(c==29){
-                        gameobject[j][d]= Plain(j,d);
-                        gameobject[j][d].setType(c);
-                    }
-                    if(c==20){
-                        gameobject[j][d]= Road(j,d);
-                        gameobject[j][d].setType(c);
-                    }
-                    if(c==110){
-                        gameobject[j][d]= Pipe(j,d);
-                        gameobject[j][d].setType(c);
-                    }
-                    if(c==36){
-                        Aeroport y(j,d);
-                        gameobject[j][d]= Aeroport(j,d);
-                        gameobject[j][d].setType(c);
-                        aeroport.push_back(y);
-                    }
-                    if (c==95){
-                        Ville x(j,d);
-                        gameobject[j][d]= x;
-                        gameobject[j][d].setType(34);
-                        ville.push_back(x);
-                    }
-                    if (c==92){
-                        Ville f(j,d);
-                        gameobject[j][d]= f;
-                        gameobject[j][d].setType(34);
-                        ville.push_back(f);
-
-                    }
-                    if (c==107){
-                        gameobject[j][d]= Pipe(j,d);
-                        gameobject[j][d].setType(c);
-                    }
-                    if (c==25){
-                        gameobject[j][d]= Road(j,d);
-                        gameobject[j][d].setType(c);
-                    }
-                    if (c==10){
-                        gameobject[j][d]= Water(j,d);
-                        gameobject[j][d].setType(c);
-                    }
+                gameobject[j][d]= uorange;
+                gameobject[j][d].setType(39);
+                gameobject[j][d].setTeam(1);
+                uorange.setTeam(1);
+                usine.push_back(uorange);
+            }
+            if(c==44){
+                Usine ublue(j,d);
 
 
-                    }
-                    d++;
+                gameobject[j][d]= ublue;
+                gameobject[j][d].setType(44);
+                gameobject[j][d].setTeam(2);
+                ublue.setTeam(2);
+                usine.push_back(ublue);
+            }
+            if(c==109){
+                gameobject[j][d]= Pipe(j,d);
+                gameobject[j][d].setType(c);
+            }
+            if(c==123){
+                Ville r(j,d);
+                gameobject[j][d]= r;
+                gameobject[j][d].setType(34);
+                ville.push_back(r);
+            }
+            if(c==23){
+                gameobject[j][d]= Road(j,d);
+                gameobject[j][d].setType(c);
+            }
+            if(c==21){
+                gameobject[j][d]= Road(j,d);
+                gameobject[j][d].setType(c);
+            }
+            if(c==16){
+                gameobject[j][d]= Road(j,d);
+                gameobject[j][d].setType(c);
+            }
+            if(c==26){
+                gameobject[j][d]= Road(j,d);
+                gameobject[j][d].setType(c);
+            }
+            if(c==29){
+                gameobject[j][d]= Plain(j,d);
+                gameobject[j][d].setType(c);
+            }
+            if(c==20){
+                gameobject[j][d]= Road(j,d);
+                gameobject[j][d].setType(c);
+            }
+            if(c==110){
+                gameobject[j][d]= Pipe(j,d);
+                gameobject[j][d].setType(c);
+            }
+            if(c==36){
+                Aeroport y(j,d);
+                gameobject[j][d]= Aeroport(j,d);
+                gameobject[j][d].setType(c);
+                aeroport.push_back(y);
+            }
+            if (c==95){
+                Ville x(j,d);
+                gameobject[j][d]= x;
+                gameobject[j][d].setType(34);
+                ville.push_back(x);
+            }
+            if (c==92){
+                Ville f(j,d);
+                gameobject[j][d]= f;
+                gameobject[j][d].setType(34);
+                ville.push_back(f);
 
+            }
+            if (c==107){
+                gameobject[j][d]= Pipe(j,d);
+                gameobject[j][d].setType(c);
+            }
+            if (c==25){
+                gameobject[j][d]= Road(j,d);
+                gameobject[j][d].setType(c);
+            }
+            if (c==10){
+                gameobject[j][d]= Water(j,d);
+                gameobject[j][d].setType(c);
+            }
+        }
+        d++;
+    }
 
+    window->InitMap();
 
-                }
-                window->InitMap();
+    df.close();
+    Infanterie Play(5,10,1);
+    Infanterie Play2(10,10,2);
+    unites.push_back(Play);  // Attention copie (héritage perdu) (vidéo Héritage)
+    unites.push_back(Play2);
 
-            df.close();
-            Infanterie Play(5,10,1);
-            Infanterie Play2(10,10,2);
-            unites.push_back(Play);
-            unites.push_back(Play2);
-
-            window->redraw();
-
-
-
-
+    window->redraw();
 }
+
 
 Gameobject const& Game::getgameobject(int x, int y) const
 {
     return gameobject[x][y];
-
 }
-
 
 
 void Game::movearrow(int x, int y){
