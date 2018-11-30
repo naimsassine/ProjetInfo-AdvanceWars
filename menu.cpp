@@ -42,3 +42,8 @@ void Menu::setWindow(MainWindow *value)
     window = value;
 }
 
+
+void Menu::on_pushButton_2_clicked()
+{
+
+}
