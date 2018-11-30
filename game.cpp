@@ -148,7 +148,15 @@ std::vector<Unites> Game::getUnites() const
 }
 
 void Game::endtour()
-{
+{   int nbrebatiment=0;
+    for(int h=0 ;h<21;h++){
+        for (int j=0; j <17 ;j++){
+            if( (gameobject[h][j].getType() == 34|| gameobject[h][j].getType() == 35 || gameobject[h][j].getType() == 39 ||gameobject[h][j].getType() == 44) &&gameobject[h][j].getTeam()==turn){
+                nbrebatiment++;
+            }
+        }
+    }
+    getPlayer()->setMoney(getPlayer()->getMoney()+(1000*nbrebatiment));
     if(turn==1){
         for(std::vector<Unites>::size_type i = 0; i != unites.size(); i++)
         {
@@ -176,6 +184,7 @@ void Game::endtour()
         }
         turn=1;
     }
+
 }
 Game &Game::Instance()
 {
