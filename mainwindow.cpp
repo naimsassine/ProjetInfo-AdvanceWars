@@ -78,7 +78,7 @@ MainWindow::MainWindow(QWidget *parent) :
    lab3->move(100, 100);
    lab3->show();
 
-   /*lab4 = new QLabel("Vie : ",this);
+   lab4 = new QLabel("Vie : ",this);
    lab4->setGeometry(60, 50, 180, 70);
    QFont f3( "Arial", 16);
    lab4->setFont( f3);
@@ -112,7 +112,7 @@ MainWindow::MainWindow(QWidget *parent) :
    labT1->setGeometry(60, 50, 180, 70);
    labT1->setFont(f7);
    labT1->move(170, 350);
-   labT1->show();*/
+   labT1->show();
 
 
 
