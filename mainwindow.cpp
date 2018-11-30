@@ -50,7 +50,7 @@ MainWindow::MainWindow(QWidget *parent) :
    lab->show();
 
 
-   lab2= new QLabel("Money : ",this);
+   lab2 = new QLabel("Money : ",this);
    lab2->setGeometry(60, 50, 180, 70);
    QFont f2( "Arial", 16);
    lab2->setFont( f2);
@@ -58,13 +58,13 @@ MainWindow::MainWindow(QWidget *parent) :
    lab2->show();
 
 
-   lab3= new QLabel("1000",this);
+   lab3 = new QLabel("1000",this);
    lab3->setGeometry(60, 50, 180, 70);
    lab3->setFont( f2);
    lab3->move(100, 100);
    lab3->show();
 
-   lab4= new QLabel("Vie : ",this);
+   lab4 = new QLabel("Vie : ",this);
    lab4->setGeometry(60, 50, 180, 70);
    QFont f3( "Arial", 16);
    lab4->setFont( f3);
@@ -76,7 +76,7 @@ MainWindow::MainWindow(QWidget *parent) :
    lab5->move(100, 150);
    lab5->show();
 
-   lab6= new QLabel("Point de capture : ", this);
+   lab6 = new QLabel("Point de capture : ", this);
    lab6->setGeometry(60, 50, 180, 70);
    QFont f6( "Arial", 16);
    lab6->setFont( f6);
@@ -88,7 +88,7 @@ MainWindow::MainWindow(QWidget *parent) :
    labC1->move(170, 300);
    labC1->show();
 
-   lab7= new QLabel("Défense terrain : ", this);
+   lab7 = new QLabel("Défense terrain : ", this);
    lab7->setGeometry(60, 50, 180, 70);
    QFont f7( "Arial", 16);
    lab7->setFont( f6);
@@ -109,14 +109,19 @@ MainWindow::~MainWindow()
     delete labC1;
     delete labT1;
     delete lab;
+    delete lab1;
     delete lab2;
     delete lab3;
     delete lab4;
     delete lab5;
     delete lab6;
     delete lab7;
+    delete lab10;
     delete ui;
     delete map;
+    delete don;
+    delete don1;
+    delete don2;
 }
 
 void MainWindow::InitMap()
@@ -192,7 +197,7 @@ void MainWindow::synchro(Unites unite)
     if(unite.getType() == 1998){
         
 
-        lab10= new QLabel("Point de vie infanterie : /vie",this);
+        lab10 = new QLabel("Point de vie infanterie : /vie",this);
         lab10->setGeometry(60, 50, 180, 70);
         QFont f10( "Arial", 16);
         lab10->setFont( f10);

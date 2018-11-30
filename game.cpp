@@ -595,23 +595,19 @@ Gameobject const& Game::getgameobject(int x, int y) const
 
 
 void Game::movearrow(int x, int y){
-    if(unites[posXselec].getSelected()&& unites[posXselec].getTeam()==turn){
-        int PX = 0;
-        int PY = 0;
-
-
-        PX=unites[posXselec].getPosX()+x;
-        PY=unites[posXselec].getPosY()+y;
+    if(unites[posXselec].getSelected() && unites[posXselec].getTeam() == turn) {
+        int PX = unites[posXselec].getPosX() + x;
+        int PY = unites[posXselec].getPosY() + y;
         if (gameobject[PX][PY].getAutorisation() == 77){
             std::cout<< "Tu peux pas marcher sur l'eau"<< std::endl;
         }
         else {
             unites[posXselec].setPosX(PX);
             unites[posXselec].setPosY(PY);
-
         }
 
-        window->redraw();}
+        window->redraw();
+    }
 }
 
 

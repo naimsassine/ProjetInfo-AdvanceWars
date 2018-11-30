@@ -43,24 +43,23 @@ void changeturn();
 //void changeMoneyWindow();//
 
 private:
-    Ui::MainWindow *ui;
-    Map *map;
-    QPushButton *bouton;
-    QLabel *labC1;
-    QLabel *labT1;
-    QLabel *lab;
-    QLabel *lab1;
-    QLabel *lab2;
-    QLabel *lab3;
-    QLabel *lab4;
-    QLabel *lab5;
-    QLabel *lab6;
-    QLabel *lab7;
-    QLabel *lab10;
-
-    QLabel *don;
-    QLabel *don1;
-    QLabel *don2;
+    Ui::MainWindow *ui = nullptr;
+    Map *map = nullptr;
+    QPushButton *bouton = nullptr;
+    QLabel *labC1 = nullptr;
+    QLabel *labT1 = nullptr;
+    QLabel *lab = nullptr;
+    QLabel *lab1 = nullptr;
+    QLabel *lab2 = nullptr;
+    QLabel *lab3 = nullptr;
+    QLabel *lab4 = nullptr;
+    QLabel *lab5 = nullptr;
+    QLabel *lab6 = nullptr;
+    QLabel *lab7 = nullptr;
+    QLabel *lab10 = nullptr;
+    QLabel *don = nullptr;
+    QLabel *don1 = nullptr;
+    QLabel *don2 = nullptr;
 
 };
 
