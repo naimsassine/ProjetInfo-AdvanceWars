@@ -27,7 +27,7 @@ public:
     int getPtdemouvement() const;
     void setPtdemouvement(int value);
 
-    int getdefTerrain() const;
+    int getdefTerrain(int typet ,int typeu) ;
     void setdefTerrain(int value);
 
     bool getUnitin() const;
