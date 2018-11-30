@@ -153,16 +153,15 @@ void MainWindow::redraw()
 
 void MainWindow::changeturn()
 {
-    Game& game=Game::Instance();
+    Game& game = Game::Instance();
     game.endtour();
-    if(game.getTurn()==1){
+    if (game.getTurn() == 1) {
         lab->setText("Player 1");
-
     }
-    else{
+    else {
         lab->setText("Player 2");
     }
-    Player *player=game.getPlayer();
+    Player *player = game.getPlayer();
     lab3->setText(QString::number(player->getMoney()));
 }
 
