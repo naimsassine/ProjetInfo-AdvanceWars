@@ -687,7 +687,7 @@ void Game::attack(int z, int e,int i){
     if(unites[i].getvie()>0){
         int x = unites[i].getPosX();
         int y = unites[i].getPosY();
-        int defTerrain = gameobject[x][y].getdefTerrain();
+        int defTerrain = gameobject[x][y].getdefTerrain(gameobject[x][y].getType(),unites[i].getType());
         unites[i].setDamage(unites[posXselec],defTerrain,unites[i]);
         std::cout<<unites[i].getvie()<<std::endl;
 
