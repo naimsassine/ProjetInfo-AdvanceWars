@@ -717,7 +717,7 @@ void Map::mousePressEvent(QMouseEvent *ev)
                     redraw();
                     std::cout << "LOL 67 "<< std::endl;
                 }
-
+                std::cout << "LOL 183 "<< std::endl;
             }
             else if(ev->buttons() == Qt::RightButton){
                Game& game=Game::Instance();
@@ -818,8 +818,9 @@ void Map::mousePressEvent(QMouseEvent *ev)
 
 
             }}
-
+               std::cout << "LOL 134 "<< std::endl;
     }
+
     }
 void Map::keyPressEvent(QKeyEvent *keyEvent)
 {
