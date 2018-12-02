@@ -19,6 +19,15 @@ void Gameobject::setPosY(int value)
     posY = value;
 }
 
+void Gameobject::setPos(int x, int y) {
+    setPosX(x);
+    setPosY(y);
+}
+
+bool Gameobject::isAtPos(int x, int y) const {
+    return getPosX() == x && getPosY() == y;
+}
+
 int Gameobject::getType() const
 {
     return type;
@@ -36,7 +45,7 @@ bool Gameobject::getSelected() const
 
 void Gameobject::setSelected(bool value)
 {
-    selected = value;
+    selected = value; // apparemmebt une segfault ici
 }
 
 QString Gameobject::getFilename() const

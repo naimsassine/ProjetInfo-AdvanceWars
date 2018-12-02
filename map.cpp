@@ -687,7 +687,12 @@ void Map::attackunite()
 
 
 void Map::mousePressEvent(QMouseEvent *ev)
-{   gameobject[z][e].setSelected(false);
+{
+    if(!(0 <= z && z < 22 && 0 <= e && e < 18)) { // bing bing, z et e ne sont pas définis, ils valent n'importe quoi
+        std::cout << "LOL, on a " << z << ", " << e << std::endl;
+        std::cerr << "LOL" << std::endl;
+    }
+    gameobject[z][e].setSelected(false); // apelé ici, donc je suspecte que z ou e soit hors borne
     float x=floorf(ev->x()/40);
     float y=floorf(ev->y()/40); // fonction deja implementé //
     z= (int)x-5;

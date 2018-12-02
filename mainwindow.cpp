@@ -166,7 +166,7 @@ void MainWindow::changeturn()
 }
 
 
-void MainWindow::changeVieWindow(Unites unite)
+void MainWindow::changeVieWindow(Unites unite)  // copyyyyy
 {
     Game& game=Game::Instance();
     int a = unite.getvie();
@@ -174,21 +174,21 @@ void MainWindow::changeVieWindow(Unites unite)
 
 }
 
-void MainWindow::changeCaptWindow(Ville ville)
+void MainWindow::changeCaptWindow(Ville ville)  // copyyyyyyyy
 {
     /*Game& game = Game::Instance();
     int b = ville.getCapturepoint();
     labC1->setNum(b);*/
 
 }
-void MainWindow::changeCaptWindow(Usine usine)
+void MainWindow::changeCaptWindow(Usine usine)  // ocpyyyy
 {
     /*QGame& game = Game::Instance();
     int b = usine.getCapturepoint();
     labC1->setNum(b);*/
 
 }
-void MainWindow::changeCaptWindow(Aeroport aeroport)
+void MainWindow::changeCaptWindow(Aeroport aeroport)  //copy (regarder la vidéo ssur l'héritage)
 {
     /*Game& game = Game::Instance();
     int b = aeroport.getCapturepoint();

@@ -13,7 +13,7 @@ public:
     static Game& Instance();
     void move(int x,int y);
     void movearrow(int x,int y);
-    void InitGame(MainWindow &wind,Player &InitPlayer1,Player &InitPlayer2);
+    void InitGame(MainWindow *wind,Player *InitPlayer1,Player *InitPlayer2);
     Gameobject const& getgameobject(int x,int y) const;
     std::vector<Unites> getUnites() const;
     void endtour();

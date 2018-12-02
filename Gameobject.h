@@ -10,10 +10,17 @@ public:
     void setPosX(int value);
     int getPosY() const;
     void setPosY(int value);
+
+    void setPos(int x, int y);
+    bool isAtPos(int x, int y) const;
+
     int getType() const;
     void setType(int value);
+
     bool getSelected() const;
+    bool isSelected() const { return getSelected(); }
     void setSelected(bool value);
+
     QString getFilename() const;
     void setAutorisation(int value);
     int getAutorisation();
@@ -22,6 +29,7 @@ public:
     void setTeam(int value);
 
     bool getMovable() const;
+    bool isMovable() const { return getMovable(); }
     void setMovable(bool value);
 
     int getPtdemouvement() const;
