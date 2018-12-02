@@ -25,7 +25,9 @@ Map::Map(QWidget *parent ) : QWidget(parent)
 {
 setFocusPolicy(Qt::StrongFocus);
 Case cas;
-casee=&cas;
+casee=cas;
+casee.setPosX(0);
+casee.setPosY(0);
 z=0;
 e=0;
 }
@@ -649,7 +651,7 @@ void Map::paintEvent(QPaintEvent *event)
         }
 
     }
-    painter.drawRoundRect((casee->getPosX()+5)*40,casee->getPosY()*40,40,40,5,5);
+    painter.drawRoundRect((casee.getPosX()+5)*40,casee.getPosY()*40,40,40,5,5);
 
 }
 }
@@ -702,8 +704,8 @@ void Map::mousePressEvent(QMouseEvent *ev)
             float y=floorf(ev->y()/40); // fonction deja implementé //
             z= (int)x-5;
             e= (int)y;
-            casee->setPosX(z);
-            casee->setPosY(e);
+            casee.setPosX(z);
+            casee.setPosY(e);
             std::cout << "LOL 2 "<< std::endl;
             redraw();
             if(ev->buttons() == Qt::LeftButton){
@@ -830,19 +832,24 @@ void Map::keyPressEvent(QKeyEvent *keyEvent)
         switch (keyEvent->key()) {
         case Qt::Key_Down:
 
-            casee->setPosY(casee->getPosY()+1);
+            casee.setPosY(casee.getPosY()+1);
             break;
         case Qt::Key_Left:
-            casee->setPosX(casee->getPosX()-1);
+            casee.setPosX(casee.getPosX()-1);
             break;
         case Qt::Key_Right:
-            casee->setPosX(casee->getPosX()+1);
+            casee.setPosX(casee.getPosX()+1);
             break;
         case Qt::Key_Up:
-            casee->setPosY(casee->getPosY()-1);
+            casee.setPosY(casee.getPosY()-1);
             break;
         case Qt::Key_Enter:
-            game.move(casee->getPosX(),casee->getPosY());
+            std::cout << "LOL, on a " << casee.getPosX() << ", " << casee.getPosY() << std::endl;
+            if(gameobject[casee.getPosX()][casee.getPosY()].getSelected()){
+            game.move(casee.getPosX(),casee.getPosY());}
+            else{
+                gameobject[casee.getPosX()][casee.getPosY()].setSelected(true);
+            }
         default:
             break;
         }
