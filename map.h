@@ -35,7 +35,7 @@ private:
     QAction *wait;
     QAction *attack;
     QAction *fusion;
-    Case  *casee;
+    Case  casee;
     int z;
     int e;
     int v;
