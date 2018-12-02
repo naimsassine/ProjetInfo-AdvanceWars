@@ -26,6 +26,7 @@ private slots:
     void captureusine();
     void captureaeroport();
     void attackunite();
+    void fusionunite();
 
 private:
     Gameobject gameobject[22][18];
@@ -33,9 +34,13 @@ private:
     QAction *capture;
     QAction *wait;
     QAction *attack;
+    QAction *fusion;
     Case  *casee;
     int z;
     int e;
+    int v;
+    int w;
+    int type;
     int unitpos;
 
 

@@ -663,7 +663,11 @@ void Map::captureville()
     game.capture(z,e);
 }
 
-
+void Map::fusionunite()
+{
+    Game& game = Game::Instance();
+    game.fusion(z, e, type, v, w);
+}
 
 void Map::captureusine()
 {
@@ -791,7 +795,18 @@ void Map::mousePressEvent(QMouseEvent *ev)
                     QObject::connect(attack, SIGNAL(triggered()), this, SLOT(attackunite()));
 
                     // Place the menu in the right position and show it.
-                    menu.exec(ev->globalPos());      }
+                    menu.exec(ev->globalPos());
+                }
+                else if(unite[i].getPosX() == z && unite[i].getPosY()==e && unite[i].getUnitin() && unite[i].getTeam() == game.getTurn()){
+                    QMenu menu(this);
+                    fusion = new QAction("Fusion", this);
+                    menu.addAction(fusion);
+                    wait = new QAction("Wait", this);
+                    menu.addAction(wait);
+                    unitpos = i;
+                    QObject::connect(fusion, SIGNAL(triggered()), this, SLOT(fusionunite()));
+                    menu.exec(ev->globalPos());
+                }
             }
 
 

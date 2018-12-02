@@ -700,7 +700,36 @@ void Game::attack(int z, int e,int i){
 }
 
    }
-void Game::fusion(int z, int e, Unites u1, Unites u2){
+void Game::fusion(int z, int e, int type, int v, int w){
+    if(unites[v].getTeam() == unites[w].getTeam() && unites[v].getType() == unites[w].getType()){
+        if(unites[v].getvie() < 10 && unites[w].getvie() <10){
+            if(unites[v].getSelected() == true){
+                if((unites[v].getvie() + unites[w].getvie() ) <= 10){
+                unites[v].getvie() == unites[v].getvie() + unites[w].getvie();
+                unites.erase(unites.begin() + w);
+            }
+            else {
+                unites[v].getvie() == 10;
+                unites.erase(unites.begin() + w);
+            }
+        }
+        else if(unites[w].getSelected() == true){
+            if((unites[v].getvie() + unites[w].getvie() ) <= 10){
+                 unites[w].getvie() == unites[v].getvie() + unites[w].getvie();
+                 unites.erase(unites.begin() + v);
+            }
+            else {
+                unites[w].getvie() == 10;
+                unites.erase(unites.begin() + v);
+            }
+
+        }
+
+    }}
+
+
+}
+/*void Game::fusion(int z, int e, Unites u1, Unites u2){
     u1.getPosX() == z;
     u1.getPosY() == e;
 
@@ -731,7 +760,9 @@ void Game::fusion(int z, int e, Unites u1, Unites u2){
         }
 
     }
-}
+}*/
+
+
 
 void Game::capture(int z, int e)
 {
