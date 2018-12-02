@@ -26,6 +26,8 @@ Map::Map(QWidget *parent ) : QWidget(parent)
 setFocusPolicy(Qt::StrongFocus);
 Case cas;
 casee=&cas;
+z=0;
+e=0;
 }
 
 Map::~Map()
