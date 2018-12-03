@@ -705,21 +705,21 @@ void Game::fusion(int z, int e, int type, int v, int w){
         if(a.getvie() < 10 && b.getvie() < 10) {
             if(a.getSelected() == true){
                 if(a.getvie() + b.getvie() <= 10){
-                    a.getvie() == a.getvie() + b.getvie();  // == ? Probablement on voulait appeler setVie non ?
+                    a.setvie(a.getvie() + b.getvie()) ;  // == ? Probablement on voulait appeler setVie non ?
                     unites.erase(unites.begin() + w);
                 }
                 else {
-                    a.getvie() == 10;  // wtf
+                    a.setvie(10) ;  // wtf
                     unites.erase(unites.begin() + w);
                 }
             }
             else if(b.getSelected() == true){
                 if(a.getvie() + b.getvie() <= 10){
-                     b.getvie() == a.getvie() + b.getvie();
+                     b.setvie(a.getvie() + b.getvie()) ;
                      unites.erase(unites.begin() + v);
                 }
                 else {
-                    b.getvie() == 10;
+                    b.setvie(10);
                     unites.erase(unites.begin() + v);
                 }
             }
