@@ -11,7 +11,7 @@ Infanterie::Infanterie(int InitX, int InitY, int InitTeam)
     Team = InitTeam;
     vie=10;
     ptdeplacement = 3;
-
+    prix = 1000;
 
 
 }

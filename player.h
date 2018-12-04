@@ -8,7 +8,7 @@ public:
     int getTeam() const;   
     void minusMoney(int value);
 private:
-    int money;
+    int money = 0;
     int Team;
 };
 #endif // PLAYER_H
