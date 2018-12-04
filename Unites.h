@@ -28,12 +28,12 @@ public:
     void setPrix(int value);
 
 protected:
-    int vie ;
+    int vie;
     int prix;
     int ptattack;
     int ptdefense;
     int defterrain;
-    int ptdeplacement=3;
+    int ptdeplacement = 3;
     int B;
     int damage;
     int numero;

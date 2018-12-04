@@ -9,6 +9,11 @@ void Player::setMoney(int value)
     money = value;
 }
 
+void Player::minusMoney(int value)
+{
+    money = money-value;
+}
+
 int Player::getTeam() const
 {
     return Team;

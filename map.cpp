@@ -694,11 +694,8 @@ void Map::mousePressEvent(QMouseEvent *ev)
 {
     if(!(0 <= z && z < 22 && 0 <= e && e < 18)) { // bing bing, z et e ne sont pas définis, ils valent n'importe quoi
         std::cout << "LOL, on a " << z << ", " << e << std::endl;
-
-        std::cerr << "LOlllllL" << std::endl;
     }
     else {
-        std::cout << "LOL 1 "<< std::endl;
             gameobject[z][e].setSelected(false); // apelé ici, donc je suspecte que z ou e soit hors borne
             float x=floorf(ev->x()/40);
             float y=floorf(ev->y()/40); // fonction deja implementé //
@@ -706,22 +703,16 @@ void Map::mousePressEvent(QMouseEvent *ev)
             e= (int)y;
             casee.setPosX(z);
             casee.setPosY(e);
-            std::cout << "LOL 2 "<< std::endl;
             redraw();
             if(ev->buttons() == Qt::LeftButton){
                 Game& game=Game::Instance();
-                std::cout << "LOL 3 "<< std::endl;
                 if( z<21 && e<17) {
                  game.move(z,e);
                 }
                 if(gameobject[z][e].getType()==34 ){
-                    std::cout << "LOL 65 "<< std::endl;
                     gameobject[z][e].setSelected(true);
-                    std::cout << "LOL 66 "<< std::endl;
                     redraw();
-                    std::cout << "LOL 67 "<< std::endl;
                 }
-                std::cout << "LOL 183 "<< std::endl;
             }
             else if(ev->buttons() == Qt::RightButton){
                Game& game=Game::Instance();
@@ -822,7 +813,6 @@ void Map::mousePressEvent(QMouseEvent *ev)
 
 
             }}
-               std::cout << "LOL 134 "<< std::endl;
     }
 
     }

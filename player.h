@@ -5,9 +5,8 @@ public:
     Player(int Initmoney,int InitTeam);
     int getMoney() const;
     void setMoney(int value);
-
-    int getTeam() const;
-
+    int getTeam() const;   
+    void minusMoney(int value);
 private:
     int money;
     int Team;

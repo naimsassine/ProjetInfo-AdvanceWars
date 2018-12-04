@@ -148,37 +148,44 @@ std::vector<Unites> Game::getUnites() const
 }
 
 void Game::endtour()
-{   int nbrebatiment=0;
-    for(int h=0 ;h<21;h++){
-        for (int j=0; j <17 ;j++){
-            if( (gameobject[h][j].getType() == 34|| gameobject[h][j].getType() == 35 || gameobject[h][j].getType() == 39 ||gameobject[h][j].getType() == 44) &&gameobject[h][j].getTeam()==turn){
+{   int nbrebatiment = 0;
+    for (int h = 0 ;h < 21;h++) {
+        for (int j=0; j <17 ;j++) {
+            if ( (gameobject[h][j].getType() == 34 || gameobject[h][j].getType() == 35 || gameobject[h][j].getType() == 39 ||gameobject[h][j].getType() == 44) &&gameobject[h][j].getTeam()==turn) {
                 nbrebatiment++;
             }
         }
     }
     getPlayer()->setMoney(getPlayer()->getMoney()+(1000*nbrebatiment));
-    if(turn==1){
+    if (turn==1) {
         for(std::vector<Unites>::size_type i = 0; i != unites.size(); i++)
         {
             for(int h=0 ;h<21;h++){
                 for (int j=0; j <17 ;j++){
-                    if(unites[i].getTeam()==turn && unites[i].getPosX() == h && unites[i].getPosY() == j && (gameobject[h][j].getType() == 34 || gameobject[h][j].getType() == 35) ){
-                        unites[i].setvie(12);
-                        //printf("codition verifieé1");//
+                    int y = unites[i].getvie();
+                    if( unites[i].getTeam()==turn && unites[i].getPosX() == h && unites[i].getPosY() == j && y<10 && (gameobject[h][j].getType() == 34 || gameobject[h][j].getType() == 35 || gameobject[h][j].getType() == 39 ) ){
+                        double x = unites[i].getPrix();
+                        unites[i].setvie(10);
+                        getPlayer()->minusMoney(100);
+                        std::cout<< "Tu peux pas marcher sur l'eau"<< std::endl;
+
                     }
                 }}
         }
         turn=2;
 
     }
-    else if(turn==2){
-        for(std::vector<Unites>::size_type i = 0; i != unites.size(); i++)
+    else if (turn==2) {
+        for (std::vector<Unites>::size_type i = 0; i != unites.size(); i++)
         {
             for(int h=0 ;h<21;h++){
                 for (int j=0; j <17 ;j++){
-                    if(unites[i].getTeam()==turn && unites[i].getPosX() == h && unites[i].getPosY() == j && gameobject[h][j].getType() == 34){
-                        unites[i].setvie(12);
-                        //printf("codition verifieé2");//
+                    int y = unites[i].getvie();
+                    if( unites[i].getTeam()==turn && unites[i].getPosX() == h && unites[i].getPosY() == j && y<10 && (gameobject[h][j].getType() == 34 || gameobject[h][j].getType() == 35 || gameobject[h][j].getType() == 44 ) ){
+                        double x = unites[i].getPrix();
+                        getPlayer()->minusMoney(100);
+                        unites[i].setvie(10);
+                        printf("codition verifieé1");
                     }
                 }}
         }
@@ -206,17 +213,14 @@ void Game::move(int x,int y)
         gameobject[x][y].setSelected(true);
         window->redraw();
     }
-    std::cout << "moving to " << x << ", " << y << std::endl;
     gameobject[z][e].setSelected(false);
     z = x;
     e = y;
-    std::cout << "(2) moving to " << x << ", " << y << std::endl;
 
     window->redraw();
     for (Ville& v : ville) {  // plus joli quand mme
         v.setUnitin(false);
     }
-    std::cout << "(3) moving to " << x << ", " << y << std::endl;
     for (std::vector<Usine>::size_type i = 0; i != usine.size(); i++){
         usine[i].setUnitin(false);
     }
@@ -241,8 +245,6 @@ void Game::move(int x,int y)
         }
     }
 
-    std::cout << "(4) moving to " << x << ", " << y << std::endl;
-    std::cout << "having posXselec to " << posXselec << std::endl;
     Unites& u = unites[posXselec];
 
     if (u.getTeam()==turn && u.isSelected() && u.isAtPos(x, y)) {
