@@ -665,6 +665,7 @@ void Map::captureville()
 {
     Game& game=Game::Instance();
     game.capture(z,e);
+
 }
 
 void Map::fusionunite()
