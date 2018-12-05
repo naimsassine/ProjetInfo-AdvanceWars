@@ -766,16 +766,21 @@ void Game::fusion(int z, int e, int type, int v, int w){
 
 void Game::capture(int z, int e)
 {
+
+
     for(std::vector<Ville>::size_type i = 0; i != ville.size(); i++){
 
 
     if(ville[i].getPosX()==z &&ville[i].getPosY()==e  && unites[posXselec].getType() == 1998){
 
         ville[i].setCapturepoint(unites[posXselec].getvie());
+        window->changeCaptWindow(ville[i]);
+        window->redraw();
         if(ville[i].getCapturepoint()==0){
         gameobject[z][e].setTeam(turn);
         ville[i].setTeam(turn);
         window->redraw();
+
 }
     }
     }
