@@ -166,7 +166,7 @@ void MainWindow::changeturn()
 }
 
 
-void MainWindow::changeVieWindow(Unites unite)  // copyyyyy
+void MainWindow::changeVieWindow(Unites& unite)  // copyyyyy
 {
     Game& game=Game::Instance();
     int a = unite.getvie();
@@ -174,21 +174,24 @@ void MainWindow::changeVieWindow(Unites unite)  // copyyyyy
 
 }
 
-void MainWindow::changeCaptWindow(Ville ville)  // copyyyyyyyy
+void MainWindow::changeCaptWindow(Ville& ville)  // copyyyyyyyy
 {
-    /*Game& game = Game::Instance();
-    int b = ville.getCapturepoint();
-    labC1->setNum(b);*/
+    Game& game = Game::Instance();
+    if(ville.getCapturepoint() < 20){
+        int b = ville.getCapturepoint();
+        labC1->setNum(b);
+    }
+
 
 }
-void MainWindow::changeCaptWindow(Usine usine)  // ocpyyyy
+void MainWindow::changeCaptWindow(Usine& usine)  // ocpyyyy
 {
-    /*QGame& game = Game::Instance();
+    Game& game = Game::Instance();
     int b = usine.getCapturepoint();
-    labC1->setNum(b);*/
+    labC1->setNum(b);
 
 }
-void MainWindow::changeCaptWindow(Aeroport aeroport)  //copy (regarder la vidéo ssur l'héritage)
+void MainWindow::changeCaptWindow(Aeroport& aeroport)  //copy (regarder la vidéo ssur l'héritage)
 {
     /*Game& game = Game::Instance();
     int b = aeroport.getCapturepoint();
@@ -196,7 +199,7 @@ void MainWindow::changeCaptWindow(Aeroport aeroport)  //copy (regarder la vidéo
 
 }
 
-void MainWindow::changeDefWindow(Terrain terrain)
+void MainWindow::changeDefWindow(Terrain& terrain)
 {
    /* Game& game = Game::Instance();
     int c = terrain.getdefTerrain();

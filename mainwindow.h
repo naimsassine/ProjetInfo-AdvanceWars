@@ -29,11 +29,11 @@ public:
     ~MainWindow();
     void InitMap();
     void redraw();
-    void changeVieWindow(Unites unite);
-    void changeCaptWindow(Ville ville);
-    void changeCaptWindow(Usine usine);
-    void changeCaptWindow(Aeroport aeroport);
-    void changeDefWindow(Terrain terrain);
+    void changeVieWindow(Unites& unite);
+    void changeCaptWindow(Ville& ville);
+    void changeCaptWindow(Usine& usine);
+    void changeCaptWindow(Aeroport& aeroport);
+    void changeDefWindow(Terrain& terrain);
 
     void synchro(Unites unite);
    // void dessin(QLabel *p, char c, int x, int y);

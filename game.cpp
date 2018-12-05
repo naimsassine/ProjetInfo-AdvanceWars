@@ -274,10 +274,15 @@ void Game::move(int x,int y)
                     ville[i].setUnitin(true);
                     ville[i].setSelected(true);
                     window->changeCaptWindow(ville[i]);
+                    window->update();
+                    window->redraw();
+
                 }
                 else {
                     ville[i].setUnitin(false);
                     ville[i].setSelected(false);
+                   // window->changeCaptWindow(ville[i]);
+                   // window->redraw();
                 }
             }
 
