@@ -163,12 +163,11 @@ void Game::endtour()
             for(int h=0 ;h<21;h++){
                 for (int j=0; j <17 ;j++){
                     if( unites[i].getTeam()==turn && unites[i].getPosX() == h && unites[i].getPosY() == j && unites[i].getvie() < 10 && (gameobject[h][j].getType() == 34 || gameobject[h][j].getType() == 35 || gameobject[h][j].getType() == 39 ) ){
-                        int x = unites[i].getPrix();
-                        std::cout<< x << "prix x" << std::endl;
+                        int x = int(0.01*(unites[i].getPrix()));
+                        std::cout<< x << std::endl;
                         unites[i].setvie(10);
-                        getPlayer()->setMoney(getPlayer()->getMoney()-0.01*(x));
-                        std::cout<< "Tu peux pas marcher sur l'eau"<< std::endl;
-
+                        getPlayer()->setMoney(getPlayer()->getMoney()-(x));
+                        printf("codition verifieé1");
                     }
 
                 }}
@@ -186,7 +185,7 @@ void Game::endtour()
                         std::cout<< x << std::endl;
                         unites[i].setvie(10);
                         getPlayer()->setMoney(getPlayer()->getMoney()-(x));
-                        printf("codition verifieé1");
+                        printf("codition verifieé2");
                     }
                 }}
         }
