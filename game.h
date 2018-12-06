@@ -38,6 +38,12 @@ public:
     bool getUnitincity() const;
     void setUnitincity(bool value);
 
+
+
+    Ville *getActville() const;
+
+    void setActville(Ville *value);
+
 private:
     Game();
     std::vector<Usine> usine;
@@ -47,6 +53,7 @@ private:
     std::vector<Terrain> terrain;
     int z=0;
     int e=0;
+    Ville *actville;
     static Game gameinst;
     MainWindow *window = nullptr;
     Gameobject gameobject[22][18];
