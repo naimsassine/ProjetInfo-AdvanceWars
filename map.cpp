@@ -692,25 +692,26 @@ void Map::attackunite()
 
 
 void Map::mousePressEvent(QMouseEvent *ev)
-{
+{   std::cout << "mousein "<< std::endl;
     if(!(0 <= z && z < 22 && 0 <= e && e < 18)) { // bing bing, z et e ne sont pas définis, ils valent n'importe quoi
         std::cout << "LOL, on a " << z << ", " << e << std::endl;
     }
     else {
+
             gameobject[z][e].setSelected(false); // apelé ici, donc je suspecte que z ou e soit hors borne
             float x=floorf(ev->x()/40);
             float y=floorf(ev->y()/40); // fonction deja implementé //
             z= (int)x-5;
             e= (int)y;
+            std::cout << "mouse1 " << z << ", " << e << std::endl;
             casee.setPosX(z);
             casee.setPosY(e);
-            redraw();
+             std::cout << "mouse1 " << z << ", " << e << std::endl;
             if(ev->buttons() == Qt::LeftButton){
                 Game& game=Game::Instance();
                 game.setActville(nullptr);
-                if( z<21 && e<17) {
                  game.move(z,e);
-                }
+
                 if(gameobject[z][e].getType()==34 ){
                     gameobject[z][e].setSelected(true);
                     std::vector<Ville> ville =game.getVille();
