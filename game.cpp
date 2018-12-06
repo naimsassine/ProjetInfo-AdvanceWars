@@ -291,7 +291,6 @@ void Game::move(int x,int y)
                 if(ville[i].getPosX()==x &&ville[i].getPosY()==y) {
                     ville[i].setUnitin(true);
                     ville[i].setSelected(true);
-                    actville = &ville[i];
                     window->changeCaptWindow(ville[i]);
                     window->update();
                     window->redraw();
