@@ -177,10 +177,10 @@ void MainWindow::changeVieWindow(Unites& unite)  // copyyyyy
 void MainWindow::changeCaptWindow(Ville& ville)  // copyyyyyyyy
 {
     Game& game = Game::Instance();
-    if(ville.getCapturepoint() < 20){
+    //if(ville.getSelected() == true){
         int b = ville.getCapturepoint();
         labC1->setNum(b);
-    }
+    //}
 
 
 }

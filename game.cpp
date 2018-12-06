@@ -203,6 +203,7 @@ void Game::move(int x,int y)
         || gameobject[x][y].getType() == 39)
     {
         gameobject[x][y].setSelected(true);
+        window->update();
         window->redraw();
     }
     if (gameobject[x][y].getType() != 700) {
@@ -779,14 +780,30 @@ void Game::capture(int z, int e)
         if(ville[i].getCapturepoint()==0){
         gameobject[z][e].setTeam(turn);
         ville[i].setTeam(turn);
+        window->update();
+
         window->redraw();
 
 }
     }
+    else if((ville[i].getPosX() !=z || ville[i].getPosY()!=e ) && unites[posXselec].getType() != 1998 && ville[i].getCapturepoint() >0){
+        ville[i].setCapturepoint(20);
+        window->changeCaptWindow(ville[i]);
+
+        window->redraw();
+
+        ville[i].setTeam(turn);
+        window->update();
+
+        window->redraw();
+
+}
+
+    }
     }
 
 
-}
+
 
 
 void Game::capture_Usine(int z, int e)
