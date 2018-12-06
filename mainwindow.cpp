@@ -149,6 +149,10 @@ void MainWindow::redraw()
     lab3->setText(QString::number(game.getPlayer()->getMoney()));
     map->setgameobject();
     map->redraw();
+    Ville *tville=game.getActville();
+    if (tville != nullptr){
+    labC1->setText(QString::number(tville->getCapturepoint()));
+    }
 }
 
 void MainWindow::changeturn()
