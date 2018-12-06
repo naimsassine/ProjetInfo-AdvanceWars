@@ -712,6 +712,11 @@ void Map::mousePressEvent(QMouseEvent *ev)
                 }
                 if(gameobject[z][e].getType()==34 ){
                     gameobject[z][e].setSelected(true);
+                    std::vector<Ville> ville =game.getVille();
+                    for(std::vector<Ville>::size_type i = 0; i != ville.size(); i++){
+                        if(ville[i].getPosX()==z &&ville[i].getPosY()==e) {
+                            game.setActville(&ville[i]);
+                        }}
                     redraw();
                 }
             }
