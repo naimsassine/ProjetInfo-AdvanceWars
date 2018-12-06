@@ -46,6 +46,11 @@ actville = nullptr;
 
 }
 
+MainWindow *Game::getWindow() const
+{
+    return window;
+}
+
 void Game::setActville(Ville *value)
 {
     actville = value;
@@ -228,6 +233,7 @@ void Game::move(int x,int y)
     window->redraw();
     for (Ville& v : ville) {  // plus joli quand mme
         v.setUnitin(false);
+
     }
     for (std::vector<Usine>::size_type i = 0; i != usine.size(); i++){
         usine[i].setUnitin(false);
@@ -462,6 +468,7 @@ void Game::InitGame(MainWindow *wind,Player *InitPlayer1,Player *InitPlayer2){
 
                 gameobject[j][d]= v;
                 gameobject[j][d].setType(34);
+                v.setType(34);
                 ville.push_back(v);
             }
             if(c==30){
@@ -495,6 +502,7 @@ void Game::InitGame(MainWindow *wind,Player *InitPlayer1,Player *InitPlayer2){
             if(c==125){
                 Ville p(j,d);
                 gameobject[j][d]= p;
+                p.setType(34);
                 gameobject[j][d].setType(34);
                 ville.push_back(p);
             }
@@ -533,6 +541,7 @@ void Game::InitGame(MainWindow *wind,Player *InitPlayer1,Player *InitPlayer2){
             if(c==123){
                 Ville r(j,d);
                 gameobject[j][d]= r;
+                r.setType(34);
                 gameobject[j][d].setType(34);
                 ville.push_back(r);
             }
@@ -573,12 +582,14 @@ void Game::InitGame(MainWindow *wind,Player *InitPlayer1,Player *InitPlayer2){
             if (c==95){
                 Ville x(j,d);
                 gameobject[j][d]= x;
+                x.setType(34);
                 gameobject[j][d].setType(34);
                 ville.push_back(x);
             }
             if (c==92){
                 Ville f(j,d);
                 gameobject[j][d]= f;
+                f.setType(34);
                 gameobject[j][d].setType(34);
                 ville.push_back(f);
 
@@ -788,7 +799,8 @@ void Game::capture(int z, int e)
 
         ville[i].setCapturepoint(unites[posXselec].getvie());
         window->changeCaptWindow(ville[i]);
-
+        ville[i].setUnite(&unites[posXselec]);
+        actville=&ville[i];
         window->redraw();
         if(ville[i].getCapturepoint()==0){
         gameobject[z][e].setTeam(turn);
