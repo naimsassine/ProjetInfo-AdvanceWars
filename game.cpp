@@ -776,6 +776,7 @@ void Game::capture(int z, int e)
 
         ville[i].setCapturepoint(unites[posXselec].getvie());
         window->changeCaptWindow(ville[i]);
+
         window->redraw();
         if(ville[i].getCapturepoint()==0){
         gameobject[z][e].setTeam(turn);
@@ -783,21 +784,27 @@ void Game::capture(int z, int e)
         window->update();
 
         window->redraw();
+        if( unites[posXselec].getPosX() != z || unites[posXselec].getPosY() != e && ville[i].getCapturepoint() > 0){
+            ville[i].setCapturepoint(20);
+            window->update();
+            window->redraw();
+
+        }
 
 }
     }
-    else if((ville[i].getPosX() !=z || ville[i].getPosY()!=e ) && unites[posXselec].getType() != 1998 && ville[i].getCapturepoint() >0){
+   /* else if((gameobject[z][e].getType()!= 34 && unites[posXselec].getType() == 1998 ) && unites[posXselec].getPosX() != z && unites[posXselec].getPosY() != e){
+        if(ville[i].getCapturepoint() >0){
         ville[i].setCapturepoint(20);
         window->changeCaptWindow(ville[i]);
 
-        window->redraw();
 
-        ville[i].setTeam(turn);
         window->update();
 
         window->redraw();
+        }
 
-}
+}*/
 
     }
     }
