@@ -17,10 +17,14 @@ public:
     bool getUnitin() const;
     void setUnitin(bool value);
 
+    Unites *getUnite() const;
+    void setUnite(Unites *value);
+
 private:
     int capturepoint;
     int team;
     bool unitin=false;
+    Unites *unite;
    /*team =1 red team =2 blue*/
 };
 
