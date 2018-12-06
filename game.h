@@ -44,6 +44,8 @@ public:
 
     void setActville(Ville *value);
 
+    MainWindow *getWindow() const;
+
 private:
     Game();
     std::vector<Usine> usine;
