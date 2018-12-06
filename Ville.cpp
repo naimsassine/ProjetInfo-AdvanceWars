@@ -1,5 +1,5 @@
 #include "Ville.h"
-
+#include "game.h"
 
 Ville::Ville(int X, int Y ,int Z,int T)
 {
@@ -9,6 +9,7 @@ Ville::Ville(int X, int Y ,int Z,int T)
     capturepoint=Z;
     team=T;
     defTerrain = 3;
+    unite=nullptr;
 }
 
 int Ville::getCapturepoint() const
@@ -59,5 +60,22 @@ bool Ville::getUnitin() const
 
 void Ville::setUnitin(bool value)
 {
+    if(unite!=nullptr&& capturepoint!=0 && (unite->getPosX()!=posX || unite->getPosY()!=posY)){
+        Game& game = Game::Instance();
+        capturepoint=20;
+        game.setActville(this);
+        game.getWindow()->redraw();
+
+    }
     unitin = value;
+}
+
+Unites *Ville::getUnite() const
+{
+    return unite;
+}
+
+void Ville::setUnite(Unites *value)
+{
+    unite = value;
 }
