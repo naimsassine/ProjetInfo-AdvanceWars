@@ -707,6 +707,7 @@ void Map::mousePressEvent(QMouseEvent *ev)
             redraw();
             if(ev->buttons() == Qt::LeftButton){
                 Game& game=Game::Instance();
+                game.setActville(nullptr);
                 if( z<21 && e<17) {
                  game.move(z,e);
                 }
