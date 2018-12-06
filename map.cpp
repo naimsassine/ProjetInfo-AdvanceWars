@@ -717,7 +717,7 @@ void Map::mousePressEvent(QMouseEvent *ev)
                         if(ville[i].getPosX()==z &&ville[i].getPosY()==e) {
                             game.setActville(&ville[i]);
                         }}
-                    redraw();
+                    game.getWindow()->redraw();
                 }
             }
             else if(ev->buttons() == Qt::RightButton){
