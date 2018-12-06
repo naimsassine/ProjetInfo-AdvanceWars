@@ -63,7 +63,7 @@ void Ville::setUnitin(bool value)
     if(unite!=nullptr&& capturepoint!=0 && (unite->getPosX()!=posX || unite->getPosY()!=posY)){
         Game& game = Game::Instance();
         capturepoint=20;
-        game.setActville(this);
+        game.setActville(nullptr);
         game.getWindow()->redraw();
 
     }
