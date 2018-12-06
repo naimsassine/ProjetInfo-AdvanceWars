@@ -116,29 +116,54 @@ void Game::moveable(int move, int x, int y)
         if(move >= gameobject[x+1][y].getPtdemouvement() &&!gameobject[x+1][y].getUnitin() && (gameobject[x+1][y].getTeam()==turn || gameobject[x+1][y].getTeam()==0 )){
             gameobject[x+1][y].setMovable(true);
             int s = move-gameobject[x+1][y].getPtdemouvement();
+            if(gameobject[x+1][y].getPtdemouvement()==0){
+
+                 gameobject[x+1][y].setMovable(false);
+            }
+            else{
             moveable(s,x+1,y);
+            }
     }
     if(move >= gameobject[x-1][y].getPtdemouvement()&& !gameobject[x-1][y].getUnitin()&&(gameobject[x-1][y].getTeam()==turn ||gameobject[x-1][y].getTeam()==0)){
         gameobject[x-1][y].setMovable(true);
 
         int s = move-gameobject[x-1][y].getPtdemouvement();
+        if(gameobject[x-1][y].getPtdemouvement()==0){
 
+             gameobject[x-1][y].setMovable(false);
+        }
+        else{
         moveable(s,x-1,y);
+        }
+
     }
     if(move >= gameobject[x][y+1].getPtdemouvement()&&!gameobject[x][y+1].getUnitin()&& (gameobject[x][y+1].getTeam()==turn || gameobject[x][y+1].getTeam()==0 )){
 
                 gameobject[x][y+1].setMovable(true);
 
                 int s = move-gameobject[x][y+1].getPtdemouvement();
+                if(gameobject[x][y+1].getPtdemouvement()==0){
 
+                     gameobject[x][y+1].setMovable(false);
+                }
+                else{
                 moveable(s,x,y+1);
+                }
+
     }
     if(move >= gameobject[x][y-1].getPtdemouvement()&& !gameobject[x][y-1].getUnitin()&&( gameobject[x][y-1].getTeam()==turn|| gameobject[x][y-1].getTeam()==0)){
                         gameobject[x][y-1].setMovable(true);
 
                         int s = move-gameobject[x][y-1].getPtdemouvement();
 
+                        if(gameobject[x][y-1].getPtdemouvement()==0){
+
+                             gameobject[x][y-1].setMovable(false);
+                        }
+                        else{
                         moveable(s,x,y-1);
+                        }
+
 
             }
 }
@@ -212,7 +237,7 @@ Game &Game::Instance()
 
 
 void Game::move(int x,int y)
-{
+{   std::cout << "move " << x << ", " << y << std::endl;
     if (gameobject[x][y].getType() == 34
         || gameobject[x][y].getType() == 35
         || gameobject[x][y].getType() == 36
@@ -260,7 +285,7 @@ void Game::move(int x,int y)
     }
 
     Unites& u = unites[posXselec];
-
+    std::cout<<"posx "<<u.getPosX()<<" posy " <<u.getPosY()<<"team "<<u.getTeam()<<"selected "<<u.getSelected()<<"movable "<<gameobject[x][y].getMovable()<<std::endl;
     if (u.getTeam()==turn && u.isSelected() && u.isAtPos(x, y)) {
         unites[posXselec].setSelected(false);
         for (int i=0 ;i<21;i++) {
@@ -273,10 +298,12 @@ void Game::move(int x,int y)
         window->redraw();// deslectionnner une unités deja selectionner //
 
     }
+
     else if (u.getTeam() == turn
             && u.getSelected()  // should rename "getSelected" to "isSelected"
             && gameobject[x][y].getMovable())
     {
+        std::cout<<" la position en x "<<x<<"la position en y "<<y<<std::endl;
         u.setPos(x, y);   // faire bouger l'unité
         for (int i=0 ;i<21;i++) {
             for (int j=0; j <17 ;j++) {
