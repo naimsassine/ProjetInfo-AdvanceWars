@@ -153,6 +153,9 @@ void MainWindow::redraw()
     if (tville != nullptr){
     labC1->setText(QString::number(tville->getCapturepoint()));
     }
+    else{
+        labC1->setText(" ");
+    }
 }
 
 void MainWindow::changeturn()
