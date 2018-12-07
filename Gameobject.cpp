@@ -83,9 +83,9 @@ void Gameobject::setMovable(bool value)
     movable = value;
 }
 
-int Gameobject::getPtdemouvement() const
+int Gameobject::getPtdemouvement(int typeu) const
 {
-    return ptdemouvement;
+    return ldemouvement[typeu];
 }
 
 void Gameobject::setPtdemouvement(int value)
@@ -93,18 +93,12 @@ void Gameobject::setPtdemouvement(int value)
     ptdemouvement = value;
 }
 
-int Gameobject::getdefTerrain(int typet ,int typeu)
-{   if(typet==34 ||typet==35 || typet==39 || typet==44 ||  typet==36 ||typeu==2000|| typeu ==2001 || typeu==2002 ||typeu==20003 ){
-        defTerrain=1;
-
-    }
-    return defTerrain;
-}
-
-void Gameobject::setdefTerrain(int value)
+int Gameobject::getdefTerrain(int typet)
 {
-    defTerrain = value;
+    return defTerrain[typet];
 }
+
+
 
 bool Gameobject::getUnitin() const
 {
@@ -114,6 +108,11 @@ bool Gameobject::getUnitin() const
 void Gameobject::setUnitin(bool value)
 {
     unitin = value;
+}
+
+int Gameobject::getPosdef() const
+{
+    return posdef;
 }
 
 
