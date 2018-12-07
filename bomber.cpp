@@ -10,5 +10,6 @@ Bomber::Bomber(int InitX, int InitY, int InitTeam)
     Team = InitTeam;
     vie=10;
     ptdeplacement = 7;
+    typeu=4;
 
 }
