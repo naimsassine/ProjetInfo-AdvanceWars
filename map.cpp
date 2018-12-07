@@ -23,7 +23,7 @@
 #include "case.h"
 Map::Map(QWidget *parent ) : QWidget(parent)
 {
-setFocusPolicy(Qt::StrongFocus);
+
 Case cas;
 casee=cas;
 casee.setPosX(0);
@@ -691,7 +691,7 @@ void Map::attackunite()
 }
 
 
-void Map::mousePressEvent(QMouseEvent *ev)
+void Map::mousePress(QMouseEvent *ev)
 {   std::cout << "mousein "<< std::endl;
     if(!(0 <= z && z < 22 && 0 <= e && e < 18)) { // bing bing, z et e ne sont pas définis, ils valent n'importe quoi
         std::cout << "LOL, on a " << z << ", " << e << std::endl;
@@ -735,11 +735,13 @@ void Map::mousePressEvent(QMouseEvent *ev)
                 else if (gameobject[z][e].getType() == 34){
                     Game& game=Game::Instance();
                     std::vector<Ville> ville =game.getVille();
+                    std::vector<Unites> unite =game.getUnites();
                     for(std::vector<Ville>::size_type i = 0; i != ville.size(); i++){
+                        if(unite[game.getPosXselec()].getComptcapture()){
 
-
-                        if(ville[i].getPosX()==z &&ville[i].getPosY()==e && ville[i].getUnitin() && ville[i].getTeam()==0){
+                        if(ville[i].getPosX()==z &&ville[i].getPosY()==e && ville[i].getUnitin() ){
                             QMenu menu(this);
+                            game.setComptcapture();
                             capture =new QAction("Capture", this);
                             menu.addAction(capture);
                             wait =new QAction("Wait", this);
@@ -749,7 +751,7 @@ void Map::mousePressEvent(QMouseEvent *ev)
                             // Place the menu in the right position and show it.
                             menu.exec(ev->globalPos());
                            }
-                    }
+                    }}
 
                 }
                 else if(gameobject[z][e].getType()== 35){
