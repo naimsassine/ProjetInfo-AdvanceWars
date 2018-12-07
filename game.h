@@ -27,7 +27,7 @@ public:
     void capture_Usine(int z, int e);
     void capture_Aeroport(int z, int e);
     Player *getPlayer() const;
-    void moveable(int move ,int x, int y);
+    void moveable(int move ,int x, int y,int typeu);
     void getcaptured() const;
     void setcaptured() const;
     std::vector<Aeroport> getAeroport() const;
