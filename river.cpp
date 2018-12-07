@@ -7,5 +7,8 @@ River::River(int X,int Y)
     posY =Y;
     type =2;
     ptdemouvement=2;
-    defTerrain = 0;
+    posdef=3;
+    ldemouvement[0]=2;
+    ldemouvement[2]=0;
+    ldemouvement[3]=0;
 }
