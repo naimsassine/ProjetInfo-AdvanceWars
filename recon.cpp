@@ -10,4 +10,5 @@ Recon::Recon(int InitX, int InitY, int InitTeam)
     Team = InitTeam;
     vie=10;
     ptdeplacement = 8;
+    typeu=3;
 }
