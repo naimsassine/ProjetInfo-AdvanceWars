@@ -8,7 +8,7 @@ Ville::Ville(int X, int Y ,int Z,int T)
     type = 0;
     capturepoint=Z;
     team=T;
-    defTerrain = 3;
+    posdef=8;
     unite=nullptr;
 }
 
