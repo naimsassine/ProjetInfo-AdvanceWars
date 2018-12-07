@@ -10,4 +10,5 @@ Fighter::Fighter(int InitX, int InitY, int InitTeam)
     Team = InitTeam;
     vie=10;
     ptdeplacement = 9;
+    typeu=4;
 }
