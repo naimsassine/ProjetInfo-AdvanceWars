@@ -26,10 +26,6 @@ void Menu::on_pushButton_clicked()
 
 
 
-
-
-
-
 }
 
 MainWindow *Menu::getWindow() const
