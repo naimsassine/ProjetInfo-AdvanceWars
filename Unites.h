@@ -16,7 +16,7 @@ public:
     void initvie();
     int getTeam() const;
     void setTeam(int value);
-    void setDamage(Unites, int defTerrain,Unites);
+    void setDamage(Unites,Unites,int defterrainb);
     bool getUnitin() const;
     void setUnitin(bool value);
 
@@ -27,6 +27,8 @@ public:
     int getPrix() const;
     void setPrix(int value);
 
+    int getTypeu() const;
+
 protected:
     int vie;
     int prix;
@@ -34,6 +36,7 @@ protected:
     int ptdefense;
     int defterrain;
     int ptdeplacement = 3;
+    int typeu;
     int B;
     int damage;
     int numero;
