@@ -796,19 +796,22 @@ void Map::mousePressEvent(QMouseEvent *ev)
                     std::vector<Unites> unite =game.getUnites();
                     for(std::vector<Unites>::size_type i = 0; i != unite.size(); i++){
 
-                        if(unite[i].getPosX()==z &&unite[i].getPosY()==e && unite[i].getUnitin() && unite[i].getTeam()!=game.getTurn()){
+                        if(unite[game.getPosXselec()].getComptattack()){
+
+                        if(unite[i].getPosX()==z  &&unite[i].getPosY()==e && unite[i].getUnitin() && unite[i].getTeam()!=game.getTurn()){
                             QMenu menu(this);
                             attack =new QAction("Attaquer", this);
                             menu.addAction(attack);
                             wait =new QAction("Wait", this);
                             menu.addAction(wait);
-                            unite[i].setComptattack(false);
+                            game.setComptattack();
                             unitpos=i;
                             QObject::connect(attack, SIGNAL(triggered()), this, SLOT(attackunite()));
 
                             // Place the menu in the right position and show it.
                             menu.exec(ev->globalPos());
                         }
+                    }
                         else if(unite[i].getPosX() == z && unite[i].getPosY()==e && unite[i].getUnitin() && unite[i].getTeam() == game.getTurn()){
                             QMenu menu(this);
                             fusion = new QAction("Fusion", this);
