@@ -35,11 +35,15 @@ public:
     void changeCaptWindow(Aeroport& aeroport);
     void changeDefWindow(Terrain& terrain);
 
+    void mousePressEvent(QMouseEvent *e);
+
     void synchro(Unites unite);
    // void dessin(QLabel *p, char c, int x, int y);
 
+    Map *getMap() const;
+
 private slots:
-void changeturn();
+    void changeturn();
 //void changeMoneyWindow();//
 
 private:
