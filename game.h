@@ -38,7 +38,7 @@ public:
     bool getUnitincity() const;
     void setUnitincity(bool value);
     void setComptattack();
-
+    void setComptcapture();
 
     Ville *getActville() const;
 
