@@ -6,5 +6,9 @@ Reef::Reef(int X,int Y)
         posY =Y;
         type =33;
         ptdemouvement=800;
-        defTerrain = 1;
+        posdef=7;
+        ldemouvement[0]=0;
+        ldemouvement[1]=0;
+        ldemouvement[2]=0;
+        ldemouvement[3]=0;
 }
