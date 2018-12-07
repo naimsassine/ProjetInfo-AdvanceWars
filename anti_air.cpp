@@ -10,4 +10,5 @@ Anti_Air::Anti_Air(int InitX, int InitY, int InitTeam)
     Team = InitTeam;
     vie=10;
     ptdeplacement = 6;
+    typeu=2;
 }
