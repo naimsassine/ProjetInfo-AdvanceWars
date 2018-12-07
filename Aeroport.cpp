@@ -9,7 +9,7 @@ Aeroport::Aeroport(int X, int Y)
     posX = X;
     posY = Y;
     type = 0;
-    defTerrain = 3;
+    posdef=10;
 
 }
 Aeroport::Aeroport(int X, int Y, int t, int argent , int PC)
