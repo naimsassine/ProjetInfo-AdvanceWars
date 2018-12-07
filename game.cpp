@@ -201,6 +201,9 @@ void Game::endtour()
     if (turn==1) {
         for(std::vector<Unites>::size_type i = 0; i != unites.size(); i++)
         {
+            unites[i].setComptattack(true);
+            unites[i].setComptcapture(true);
+            unites[i].setComptmouvement(true);
             for(int h=0 ;h<21;h++){
                 for (int j=0; j <17 ;j++){
                     if( unites[i].getTeam()==turn && unites[i].getPosX() == h && unites[i].getPosY() == j && unites[i].getvie() < 10 && (gameobject[h][j].getType() == 34 || gameobject[h][j].getType() == 35 || gameobject[h][j].getType() == 39 ) ){
@@ -213,10 +216,14 @@ void Game::endtour()
         }
         turn=2;
 
+
     }
     else if (turn==2) {
         for (std::vector<Unites>::size_type i = 0; i != unites.size(); i++)
         {
+            unites[i].setComptattack(true);
+            unites[i].setComptcapture(true);
+            unites[i].setComptmouvement(true);
             for(int h=0 ;h<21;h++){
                 for (int j=0; j <17 ;j++){
                     if( unites[i].getTeam()==turn && unites[i].getPosX() == h && unites[i].getPosY() == j && unites[i].getvie() < 10 && (gameobject[h][j].getType() == 34 || gameobject[h][j].getType() == 35 || gameobject[h][j].getType() == 44 ) ){
@@ -301,10 +308,13 @@ void Game::move(int x,int y)
 
     else if (u.getTeam() == turn
             && u.getSelected()  // should rename "getSelected" to "isSelected"
-            && gameobject[x][y].getMovable())
+            && gameobject[x][y].getMovable()
+            && u.getComptmouvement())
     {
         std::cout<<" la position en x "<<x<<"la position en y "<<y<<std::endl;
         u.setPos(x, y);   // faire bouger l'unité
+        u.setComptmouvement(false);
+        // Afficher un message tu dois plus bouger
         for (int i=0 ;i<21;i++) {
             for (int j=0; j <17 ;j++) {
                 gameobject[i][j].setMovable(false);
@@ -392,7 +402,7 @@ void Game::move(int x,int y)
         unites[posXselec].setSelected(false);
         window->redraw();
     }
-    else if(unites[posXselec].getTeam()==turn && !unites[posXselec].getSelected() &&unites[posXselec].getPosX()==x && unites[posXselec].getPosY()==y){
+    else if(unites[posXselec].getTeam()==turn && !unites[posXselec].getSelected() &&unites[posXselec].getPosX()==x && unites[posXselec].getPosY()==y && u.getComptmouvement()){
 
 
             unites[posXselec].setSelected(true);
@@ -735,18 +745,18 @@ void Game::createUnite(int x, int y,  int team ,int type ){
 
 void Game::attack(int z, int e,int i){
     std::cout<<unites[i].getvie()<<std::endl;
-    if(unites[i].getvie()>0){
+    if(unites[i].getvie()>0 && unites[posXselec].getComptattack()){
         int x = unites[i].getPosX();
         int y = unites[i].getPosY();
         int defTerrain1 = gameobject[x][y].getdefTerrain(gameobject[x][y].getPosdef());
         unites[i].setDamage(unites[posXselec],unites[i],defTerrain1);
         std::cout<<unites[i].getvie()<<std::endl;
+        unites[posXselec].setComptattack(false);
 
-
-    if(unites[i].getvie() == 0){
-        unites.erase(unites.begin() + i);
-        //supprimer unites[i]
-        window->redraw();
+        if(unites[i].getvie() == 0){
+             unites.erase(unites.begin() + i);
+            //supprimer unites[i]
+             window->redraw();
     }
 }
 
