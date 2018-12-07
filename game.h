@@ -37,7 +37,7 @@ public:
     bool samePos() const;
     bool getUnitincity() const;
     void setUnitincity(bool value);
-
+    void setComptattack();
 
 
     Ville *getActville() const;
@@ -45,6 +45,8 @@ public:
     void setActville(Ville *value);
 
     MainWindow *getWindow() const;
+
+    int getPosXselec() const;
 
 private:
     Game();
