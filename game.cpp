@@ -46,6 +46,11 @@ actville = nullptr;
 
 }
 
+int Game::getPosXselec() const
+{
+    return posXselec;
+}
+
 MainWindow *Game::getWindow() const
 {
     return window;
@@ -70,6 +75,11 @@ bool Game::getUnitincity() const
 void Game::setUnitincity(bool value)
 {
     unitincity = value;
+}
+
+void Game::setComptattack()
+{
+    unites[posXselec].setComptattack(false);
 }
 std::vector<Aeroport> Game::getAeroport() const
 {
