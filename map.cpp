@@ -795,12 +795,14 @@ void Map::mousePressEvent(QMouseEvent *ev)
                     Game& game=Game::Instance();
                     std::vector<Unites> unite =game.getUnites();
                     for(std::vector<Unites>::size_type i = 0; i != unite.size(); i++){
+                        if((unite[i].getPosX()==z+1 &&unite[i].getPosY()==e &&  unite[i].getComptattack() )|| (unite[i].getPosX()==z-1 &&unite[i].getPosY()==e &&  unite[i].getComptattack() )||(unite[i].getPosX()==z &&unite[i].getPosY()==e-1 &&  unite[i].getComptattack() ) || (unite[i].getPosX()==z &&unite[i].getPosY()==e+1 &&  unite[i].getComptattack() )  )
                         if(unite[i].getPosX()==z &&unite[i].getPosY()==e && unite[i].getUnitin() && unite[i].getTeam()!=game.getTurn()){
                             QMenu menu(this);
                             attack =new QAction("Attaquer", this);
                             menu.addAction(attack);
                             wait =new QAction("Wait", this);
                             menu.addAction(wait);
+                            unite[i].setComptattack(false);
                             unitpos=i;
                             QObject::connect(attack, SIGNAL(triggered()), this, SLOT(attackunite()));
 
@@ -817,13 +819,13 @@ void Map::mousePressEvent(QMouseEvent *ev)
                             QObject::connect(fusion, SIGNAL(triggered()), this, SLOT(fusionunite()));
                             menu.exec(ev->globalPos());
                         }
-                    }
+                    } }
 
 
             }}
     }
 
-    }
+
 void Map::keyPressEvent(QKeyEvent *keyEvent)
 {
     Game& game=Game::Instance();
