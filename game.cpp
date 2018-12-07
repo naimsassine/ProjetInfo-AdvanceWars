@@ -81,6 +81,11 @@ void Game::setComptattack()
 {
     unites[posXselec].setComptattack(false);
 }
+
+void Game::setComptcapture()
+{
+ unites[posXselec].setComptcapture(false);
+}
 std::vector<Aeroport> Game::getAeroport() const
 {
     return aeroport;
