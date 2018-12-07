@@ -10,7 +10,6 @@ public:
     void setPosX(int value);
     int getPosY() const;
     void setPosY(int value);
-
     void setPos(int x, int y);
     bool isAtPos(int x, int y) const;
 
@@ -32,14 +31,15 @@ public:
     bool isMovable() const { return getMovable(); }
     void setMovable(bool value);
 
-    int getPtdemouvement() const;
+    int getPtdemouvement(int typeu) const;
     void setPtdemouvement(int value);
 
-    int getdefTerrain(int typet ,int typeu) ;
-    void setdefTerrain(int value);
+    int getdefTerrain(int typeu) ;
 
     bool getUnitin() const;
     void setUnitin(bool value);
+
+    int getPosdef() const;
 
 protected:
     int posX;
@@ -50,9 +50,11 @@ protected:
     QString filename;
     int team=0;
     int autorisation;
+    int posdef=11;
     bool movable=false;
     int ptdemouvement=1;
-    int defTerrain;
+    int ldemouvement[5]={1,1,1,1,1};
+    int defTerrain[12]={1,4,2,0,0,0,0,1,3,3,3,0};
 
 };
 #endif // Gameobject_H
