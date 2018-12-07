@@ -109,3 +109,33 @@ int Unites::getTypeu() const
 {
     return typeu;
 }
+
+bool Unites::getComptattack() const
+{
+    return comptattack;
+}
+
+void Unites::setComptattack(bool value)
+{
+    comptattack = value;
+}
+
+bool Unites::getComptcapture() const
+{
+    return comptcapture;
+}
+
+void Unites::setComptcapture(bool value)
+{
+    comptcapture = value;
+}
+
+bool Unites::getComptmouvement() const
+{
+    return comptmouvement;
+}
+
+void Unites::setComptmouvement(bool value)
+{
+    comptmouvement = value;
+}
