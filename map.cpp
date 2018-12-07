@@ -793,11 +793,12 @@ void Map::mousePress(QMouseEvent *ev)
 
                 }
 
-                else{
-                    Game& game=Game::Instance();
+
+
+                    std::cout<<"salma"<<std::endl;
                     std::vector<Unites> unite =game.getUnites();
                     for(std::vector<Unites>::size_type i = 0; i != unite.size(); i++){
-
+                        std::cout<<unite[i].getPosX()<<" "<<unite[i].getPosY()<<" "<<unite[i].getUnitin()<<std::endl;
                         if(unite[game.getPosXselec()].getComptattack()){
 
                         if(unite[i].getPosX()==z  &&unite[i].getPosY()==e && unite[i].getUnitin() && unite[i].getTeam()!=game.getTurn()){
@@ -828,7 +829,7 @@ void Map::mousePress(QMouseEvent *ev)
 }
 
             }}
-    }
+
 
 
 void Map::keyPressEvent(QKeyEvent *keyEvent)
