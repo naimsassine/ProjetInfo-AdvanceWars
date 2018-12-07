@@ -21,6 +21,7 @@ public:
     void setUnitin(bool value);
 
 
+
     int getPtdeplacement() const;
     void setPtdeplacement(int value);
 
@@ -28,6 +29,15 @@ public:
     void setPrix(int value);
 
     int getTypeu() const;
+
+    bool getComptattack() const;
+    void setComptattack(bool value);
+
+    bool getComptcapture() const;
+    void setComptcapture(bool value);
+
+    bool getComptmouvement() const;
+    void setComptmouvement(bool value);
 
 protected:
     int vie;
@@ -42,6 +52,9 @@ protected:
     int numero;
     int Team;
     bool unity =false;
+    bool comptattack = true;
+    bool comptcapture = true;
+    bool comptmouvement = true;
 };
 
 
