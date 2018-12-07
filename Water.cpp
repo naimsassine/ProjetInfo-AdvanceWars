@@ -7,5 +7,9 @@ Water::Water(int X,int Y)
     type =2;
     autorisation = 77;
     ptdemouvement=1;
-    defTerrain = 0;
+    posdef=5;
+    ldemouvement[0]=0;
+    ldemouvement[1]=0;
+    ldemouvement[2]=0;
+    ldemouvement[3]=0;
 }
