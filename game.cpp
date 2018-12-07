@@ -95,7 +95,7 @@ Player *Game::getPlayer() const
     }
 }
 
-void Game::moveable(int move, int x, int y)
+void Game::moveable(int move, int x, int y ,int typeu)
 {   for (Unites & u : unites) {
          if( u.getPosX()==x+1 && u.getPosY()==y ){
 
@@ -112,56 +112,56 @@ void Game::moveable(int move, int x, int y)
         }
 
     if(x<21 && x>-1 && y<17 && y>-1){
-
-        if(move >= gameobject[x+1][y].getPtdemouvement() &&!gameobject[x+1][y].getUnitin() && (gameobject[x+1][y].getTeam()==turn || gameobject[x+1][y].getTeam()==0 )){
+        if(move >= gameobject[x+1][y].getPtdemouvement(typeu) &&!gameobject[x+1][y].getUnitin() && (gameobject[x+1][y].getTeam()==turn || gameobject[x+1][y].getTeam()==0 )){
             gameobject[x+1][y].setMovable(true);
-            int s = move-gameobject[x+1][y].getPtdemouvement();
-            if(gameobject[x+1][y].getPtdemouvement()==0){
+            int s = move-gameobject[x+1][y].getPtdemouvement(typeu);
+
+            if(gameobject[x+1][y].getPtdemouvement(typeu)==0){
 
                  gameobject[x+1][y].setMovable(false);
             }
             else{
-            moveable(s,x+1,y);
+            moveable(s,x+1,y,typeu);
             }
     }
-    if(move >= gameobject[x-1][y].getPtdemouvement()&& !gameobject[x-1][y].getUnitin()&&(gameobject[x-1][y].getTeam()==turn ||gameobject[x-1][y].getTeam()==0)){
+    if(move >= gameobject[x-1][y].getPtdemouvement(typeu)&& !gameobject[x-1][y].getUnitin()&&(gameobject[x-1][y].getTeam()==turn ||gameobject[x-1][y].getTeam()==0)){
         gameobject[x-1][y].setMovable(true);
 
-        int s = move-gameobject[x-1][y].getPtdemouvement();
-        if(gameobject[x-1][y].getPtdemouvement()==0){
+        int s = move-gameobject[x-1][y].getPtdemouvement(typeu);
+        if(gameobject[x-1][y].getPtdemouvement(typeu)==0){
 
              gameobject[x-1][y].setMovable(false);
         }
         else{
-        moveable(s,x-1,y);
+        moveable(s,x-1,y,typeu);
         }
 
     }
-    if(move >= gameobject[x][y+1].getPtdemouvement()&&!gameobject[x][y+1].getUnitin()&& (gameobject[x][y+1].getTeam()==turn || gameobject[x][y+1].getTeam()==0 )){
+    if(move >= gameobject[x][y+1].getPtdemouvement(typeu)&&!gameobject[x][y+1].getUnitin()&& (gameobject[x][y+1].getTeam()==turn || gameobject[x][y+1].getTeam()==0 )){
 
                 gameobject[x][y+1].setMovable(true);
 
-                int s = move-gameobject[x][y+1].getPtdemouvement();
-                if(gameobject[x][y+1].getPtdemouvement()==0){
+                int s = move-gameobject[x][y+1].getPtdemouvement(typeu);
+                if(gameobject[x][y+1].getPtdemouvement(typeu)==0){
 
                      gameobject[x][y+1].setMovable(false);
                 }
                 else{
-                moveable(s,x,y+1);
+                moveable(s,x,y+1,typeu);
                 }
 
     }
-    if(move >= gameobject[x][y-1].getPtdemouvement()&& !gameobject[x][y-1].getUnitin()&&( gameobject[x][y-1].getTeam()==turn|| gameobject[x][y-1].getTeam()==0)){
+    if(move >= gameobject[x][y-1].getPtdemouvement(typeu)&& !gameobject[x][y-1].getUnitin()&&( gameobject[x][y-1].getTeam()==turn|| gameobject[x][y-1].getTeam()==0)){
                         gameobject[x][y-1].setMovable(true);
 
-                        int s = move-gameobject[x][y-1].getPtdemouvement();
+                        int s = move-gameobject[x][y-1].getPtdemouvement(typeu);
 
-                        if(gameobject[x][y-1].getPtdemouvement()==0){
+                        if(gameobject[x][y-1].getPtdemouvement(typeu)==0){
 
                              gameobject[x][y-1].setMovable(false);
                         }
                         else{
-                        moveable(s,x,y-1);
+                        moveable(s,x,y-1,typeu);
                         }
 
 
@@ -398,7 +398,7 @@ void Game::move(int x,int y)
             unites[posXselec].setSelected(true);
             window->changeVieWindow(unites[posXselec]);
             int c= unites[posXselec].getPtdeplacement();// selectionner unité  //
-            moveable(c,unites[posXselec].getPosX(),unites[posXselec].getPosY());
+            moveable(c,unites[posXselec].getPosX(),unites[posXselec].getPosY(),unites[posXselec].getTypeu());
             window->redraw();
 
     }
@@ -738,8 +738,8 @@ void Game::attack(int z, int e,int i){
     if(unites[i].getvie()>0){
         int x = unites[i].getPosX();
         int y = unites[i].getPosY();
-        int defTerrain = gameobject[x][y].getdefTerrain(gameobject[x][y].getType(),unites[i].getType());
-        unites[i].setDamage(unites[posXselec],defTerrain,unites[i]);
+        int defTerrain1 = gameobject[x][y].getdefTerrain(gameobject[x][y].getPosdef());
+        unites[i].setDamage(unites[posXselec],unites[i],defTerrain1);
         std::cout<<unites[i].getvie()<<std::endl;
 
 
