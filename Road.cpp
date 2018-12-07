@@ -12,6 +12,6 @@ Road::Road(int X, int Y)
     posY = Y;
     type = 0;
     ptdemouvement=1;
-    defTerrain = 0;
+    posdef=4;
 
 }
