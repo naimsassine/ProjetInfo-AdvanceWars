@@ -172,6 +172,11 @@ void MainWindow::changeturn()
     lab3->setText(QString::number(player->getMoney()));
 }
 
+Map *MainWindow::getMap() const
+{
+    return map;
+}
+
 
 void MainWindow::changeVieWindow(Unites& unite)  // copyyyyy
 {
@@ -211,6 +216,11 @@ void MainWindow::changeDefWindow(Terrain& terrain)
    /* Game& game = Game::Instance();
     int c = terrain.getdefTerrain();
     labT1->setNum(c);*/
+}
+
+void MainWindow::mousePressEvent(QMouseEvent *e)
+{
+    map->mousePress(e);
 }
 
 void MainWindow::synchro(Unites unite)
