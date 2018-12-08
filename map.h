@@ -15,7 +15,7 @@ public:
     explicit Map(QWidget *parent = 0) ;
     ~Map();
     void paintEvent(QPaintEvent *event);
-    void mousePress(QMouseEvent *e);
+    void mousePress(int x , int y , QMouseEvent *ev);
     void keyPressEvent(QKeyEvent *keyEvent);
     void setgameobject();
     void ablatif();
