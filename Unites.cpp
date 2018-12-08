@@ -47,9 +47,10 @@ void Unites::setDamage(Unites A,Unites C ,int defTerrainc)
     if(C.getType()==2000 || C.getType()==2001 || C.getType()==2002){
         defTerrainc=0;
     }
-float degat = B * A.getvie() / 10 * (100 - defTerrainc * C.getvie()) / 100;
+    B=Bin[A.getPosBin()][C.getPosBin()];
+double degat = B * A.getvie() / 10 * (100 - defTerrainc * C.getvie()) / 100;
 std::cout<<degat<<std::endl;
-vie = vie -int(degat/10);
+vie = vie -int(round(degat/10));
 if(vie<0){
     vie=0;
 }
@@ -138,4 +139,19 @@ bool Unites::getComptmouvement() const
 void Unites::setComptmouvement(bool value)
 {
     comptmouvement = value;
+}
+
+bool Unites::getComptfusion() const
+{
+    return comptfusion;
+}
+
+void Unites::setComptfusion(bool value)
+{
+    comptfusion = value;
+}
+
+int Unites::getPosBin() const
+{
+    return posBin;
 }
