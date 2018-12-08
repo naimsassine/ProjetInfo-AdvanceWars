@@ -18,11 +18,15 @@ public:
     bool getUnitin() const;
     void setUnitin(bool value);
 
+    bool getComptproduction() const;
+    void setComptproduction(bool value);
+
 private:
     int capturepoint=20;
     int team=0;
 
-     bool unitin=false;
+    bool unitin=false;
+     bool comptproduction=true;
     /*team =1 red team =2 blue*/
 };
 
