@@ -49,6 +49,7 @@ private:
     Ui::UsineWindow *ui;
     int x;
     int y;
+    bool comptachat =true ;
 };
 
 #endif // USINEWINDOW_H
