@@ -51,6 +51,16 @@ void Usine::setUnitin(bool value)
     unitin = value;
 }
 
+bool Usine::getComptproduction() const
+{
+    return comptproduction;
+}
+
+void Usine::setComptproduction(bool value)
+{
+    comptproduction = value;
+}
+
 int Usine::getCapturepoint() const
 {
     return capturepoint;
