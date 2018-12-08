@@ -22,7 +22,7 @@ public:
     void createUnite(int x, int y, int team ,int type);
     void attack(int z, int e ,int  i);
    // void fusion(int z, int e, Unites u1, Unites u2);
-    void fusion(int z, int e, int type, int v, int w);
+    void fusion( int v, int w);
     void capture(int z,int e);
     void capture_Usine(int z, int e);
     void capture_Aeroport(int z, int e);
@@ -39,6 +39,9 @@ public:
     void setUnitincity(bool value);
     void setComptattack();
     void setComptcapture();
+    void setComptfusion();
+    void setComptproduction(int x,int y);
+
 
     Ville *getActville() const;
 
