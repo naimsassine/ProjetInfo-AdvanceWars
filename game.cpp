@@ -84,7 +84,21 @@ void Game::setComptattack()
 
 void Game::setComptcapture()
 {
- unites[posXselec].setComptcapture(false);
+    unites[posXselec].setComptcapture(false);
+}
+
+void Game::setComptfusion()
+{
+    unites[posXselec].setComptfusion(false);
+}
+
+void Game::setComptproduction(int x, int y)
+{
+    for(Usine& u : usine){
+        if(u.getPosX()==x && u.getPosY()==y){
+            u.setComptproduction(false);
+        }
+    }
 }
 std::vector<Aeroport> Game::getAeroport() const
 {
@@ -212,6 +226,10 @@ void Game::endtour()
             }
         }
     }
+    for(Usine& u :usine){
+        u.setComptproduction(true);
+
+    }
     getPlayer()->setMoney(getPlayer()->getMoney()+(1000*nbrebatiment));
     if (turn==1) {
         for(std::vector<Unites>::size_type i = 0; i != unites.size(); i++)
@@ -219,6 +237,7 @@ void Game::endtour()
             unites[i].setComptattack(true);
             unites[i].setComptcapture(true);
             unites[i].setComptmouvement(true);
+            unites[i].setComptfusion(true);
             for(int h=0 ;h<21;h++){
                 for (int j=0; j <17 ;j++){
                     if( unites[i].getTeam()==turn && unites[i].getPosX() == h && unites[i].getPosY() == j && unites[i].getvie() < 10 && (gameobject[h][j].getType() == 34 || gameobject[h][j].getType() == 35 || gameobject[h][j].getType() == 39 ) ){
@@ -239,6 +258,7 @@ void Game::endtour()
             unites[i].setComptattack(true);
             unites[i].setComptcapture(true);
             unites[i].setComptmouvement(true);
+            unites[i].setComptfusion(true);
             for(int h=0 ;h<21;h++){
                 for (int j=0; j <17 ;j++){
                     if( unites[i].getTeam()==turn && unites[i].getPosX() == h && unites[i].getPosY() == j && unites[i].getvie() < 10 && (gameobject[h][j].getType() == 34 || gameobject[h][j].getType() == 35 || gameobject[h][j].getType() == 44 ) ){
@@ -259,7 +279,7 @@ Game &Game::Instance()
 
 
 void Game::move(int x,int y)
-{   std::cout << "move " << x << ", " << y << std::endl;
+{
     if (gameobject[x][y].getType() == 34
         || gameobject[x][y].getType() == 35
         || gameobject[x][y].getType() == 36
@@ -278,36 +298,53 @@ void Game::move(int x,int y)
     e = y;
 
     window->redraw();
-    for (Ville& v : ville) {  // plus joli quand mme
-        v.setUnitin(false);
 
-    }
-    for (std::vector<Usine>::size_type i = 0; i != usine.size(); i++){
-        usine[i].setUnitin(false);
-    }
-
-    for(std::vector<Aeroport>::size_type i = 0; i != aeroport.size(); i++){
-        aeroport[i].setUnitin(false);
-    }
-    for (std::vector<Terrain>::size_type i = 0; i != terrain.size(); i++){
-        terrain[i].setUnitin(false);
-    }
     for (std::vector<Unites>::size_type i = 0; i != unites.size(); i++) {
         if (unites[i].isAtPos(x, y) && unites[i].getTeam() == turn) {
             posXselec = static_cast<int>(i);
-        } else if (unites[i].isAtPos(x+1, y) && unites[i].getTeam() != turn) {
+        } else if (unites[i].isAtPos(x+1, y) ) {
             unites[i].setUnitin(true);
-        } else if (unites[i].isAtPos(x-1, y) && unites[i].getTeam() != turn) {
+        } else if (unites[i].isAtPos(x-1, y) ) {
             unites[i].setUnitin(true);
-        } else if (unites[i].isAtPos(x, y+1) && unites[i].getTeam() != turn) {
+        } else if (unites[i].isAtPos(x, y+1) ) {
             unites[i].setUnitin(true);
-        } else if (unites[i].isAtPos(x, y-1) && unites[i].getTeam() != turn) {
+        } else if (unites[i].isAtPos(x, y-1) ) {
             unites[i].setUnitin(true);
+        }
+        else{
+             unites[i].setUnitin(false);
         }
     }
 
     Unites& u = unites[posXselec];
-    std::cout<<"posx "<<u.getPosX()<<" posy " <<u.getPosY()<<"team "<<u.getTeam()<<"selected "<<u.getSelected()<<"movable "<<gameobject[x][y].getMovable()<<std::endl;
+    for (Ville& v : ville) {  // plus joli quand mme
+
+       if(v.getTeam()==turn){
+        v.setUnitin(false);}
+       if(u.isAtPos(v.getPosX(),v.getPosY())){
+           v.setUnitin(true);
+       }
+
+    }
+    for (Usine& v :usine){
+        if(v.getTeam()==turn){
+         v.setUnitin(false);}
+        if(u.isAtPos(v.getPosX(),v.getPosY())){
+            v.setUnitin(true);
+        }
+    }
+
+    for(Aeroport& v : aeroport){
+        if(v.getTeam()==turn){
+         v.setUnitin(false);}
+        if(u.isAtPos(v.getPosX(),v.getPosY())){
+            v.setUnitin(true);
+        }
+    }
+    for (std::vector<Terrain>::size_type i = 0; i != terrain.size(); i++){
+        terrain[i].setUnitin(false);
+    }
+
     if (u.getTeam()==turn && u.isSelected() && u.isAtPos(x, y)) {
         unites[posXselec].setSelected(false);
         for (int i=0 ;i<21;i++) {
@@ -326,7 +363,7 @@ void Game::move(int x,int y)
             && gameobject[x][y].getMovable()
             && u.getComptmouvement())
     {
-        std::cout<<" la position en x "<<x<<"la position en y "<<y<<std::endl;
+
         u.setPos(x, y);   // faire bouger l'unité
         u.setComptmouvement(false);
         // Afficher un message tu dois plus bouger
@@ -340,7 +377,7 @@ void Game::move(int x,int y)
 
         if(gameobject[x][y].getType()==34){
             for(std::vector<Ville>::size_type i = 0; i != ville.size(); i++){
-                if(ville[i].getPosX()==x &&ville[i].getPosY()==y) {
+                if(ville[i].getPosX()==u.getPosX() &&ville[i].getPosY()==u.getPosY()) {
                     ville[i].setUnitin(true);
                     ville[i].setSelected(true);
                     window->changeCaptWindow(ville[i]);
@@ -684,8 +721,7 @@ void Game::movearrow(int x, int y){
         int PX = unites[posXselec].getPosX() + x;
         int PY = unites[posXselec].getPosY() + y;
         if (gameobject[PX][PY].getAutorisation() == 77){
-            std::cout<< "Tu peux pas marcher sur l'eau"<< std::endl;
-        }
+           }
         else {
             unites[posXselec].setPosX(PX);
             unites[posXselec].setPosY(PY);
@@ -759,50 +795,57 @@ void Game::createUnite(int x, int y,  int team ,int type ){
 }
 
 void Game::attack(int z, int e,int i){
-    std::cout<<unites[i].getvie()<<std::endl;
-    if(unites[i].getvie()>0 && unites[posXselec].getComptattack()){
+
+    if(unites[i].getvie()>0){
         int x = unites[i].getPosX();
         int y = unites[i].getPosY();
+        int r = unites[posXselec].getPosX();
+        int s = unites[posXselec].getPosY();
         int defTerrain1 = gameobject[x][y].getdefTerrain(gameobject[x][y].getPosdef());
+        int defTerrain2 = gameobject[r][s].getdefTerrain(gameobject[r][s].getPosdef());
         unites[i].setDamage(unites[posXselec],unites[i],defTerrain1);
-        std::cout<<unites[i].getvie()<<std::endl;
-        unites[posXselec].setComptattack(false);
+        unites[posXselec].setDamage(unites[i],unites[posXselec],defTerrain2);
+
+
 
         if(unites[i].getvie() == 0){
              unites.erase(unites.begin() + i);
             //supprimer unites[i]
              window->redraw();
-    }
+        }
+        if(unites[posXselec].getvie() == 0){
+             unites.erase(unites.begin() + posXselec);
+            //supprimer unites[i]
+             window->redraw();
+        }
 }
 
    }
-void Game::fusion(int z, int e, int type, int v, int w){
+void Game::fusion( int v, int w){
     Unites& a = unites[v];  // attention, vien ^^etre sur que ya pas de out_of_range
     Unites& b = unites[w];
-    if(a.getTeam() == b.getTeam() && a.getType() == b.getType()) {
-        if(a.getvie() < 10 && b.getvie() < 10) {
-            if(a.getSelected() == true){
-                if(a.getvie() + b.getvie() <= 10){
-                    a.setvie(a.getvie() + b.getvie()) ;  // == ? Probablement on voulait appeler setVie non ?
-                    unites.erase(unites.begin() + w);
-                }
-                else {
-                    a.setvie(10) ;  // wtf
-                    unites.erase(unites.begin() + w);
-                }
-            }
-            else if(b.getSelected() == true){
-                if(a.getvie() + b.getvie() <= 10){
-                     b.setvie(a.getvie() + b.getvie()) ;
-                     unites.erase(unites.begin() + v);
-                }
-                else {
-                    b.setvie(10);
-                    unites.erase(unites.begin() + v);
-                }
-            }
+    if(a.getSelected() == true){
+        unites.erase(unites.begin() + v);
+        unites[w].setUnitin(false);
+        if(a.getvie()+b.getvie()>=10){
+            unites[w].setvie(10);
+        }
+        if(a.getvie()+b.getvie()<10){
+           unites[w].setvie(a.getvie()+b.getvie());
         }
     }
+    else{
+        unites.erase(unites.begin() + w);
+        unites[v].setUnitin(false);
+        if(a.getvie()+b.getvie()>=10){
+            unites[v].setvie(10);
+        }
+        if(a.getvie()+b.getvie()<10){
+           unites[v].setvie(a.getvie()+b.getvie());
+        }
+    }
+    window->redraw();
+
 }
 /*void Game::fusion(int z, int e, Unites u1, Unites u2){
     u1.getPosX() == z;
