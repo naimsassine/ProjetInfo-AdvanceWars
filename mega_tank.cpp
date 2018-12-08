@@ -11,4 +11,5 @@ mega_tank::mega_tank(int InitX,int InitY,int InitTeam)
     vie = 10;
     ptdeplacement = 4;
     typeu=2;
+    posBin=6;
 }
