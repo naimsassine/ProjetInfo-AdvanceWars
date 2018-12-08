@@ -12,5 +12,6 @@ Neotank::Neotank(int InitX,int InitY,int InitTeam)
     ptdeplacement = 6;
     ptattack=85;
     typeu=2;
+    posBin=7;
 
 }
