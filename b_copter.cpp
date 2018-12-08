@@ -9,4 +9,5 @@ B_Copter::B_Copter(int InitX, int InitY, int InitTeam)
     vie=10;
     ptdeplacement = 6;
     typeu=4;
+    posBin=8;
 }
