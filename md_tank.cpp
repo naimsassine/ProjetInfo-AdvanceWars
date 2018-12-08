@@ -11,4 +11,5 @@ MD_tank::MD_tank(int InitX,int InitY,int InitTeam)
     vie=10;
     ptdeplacement = 5;
     typeu=2;
+    posBin=5;
 }
