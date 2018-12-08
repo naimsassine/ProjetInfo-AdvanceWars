@@ -665,48 +665,49 @@ void Map::captureville()
 {
     Game& game=Game::Instance();
     game.capture(z,e);
+    game.setComptcapture();
 
 }
 
 void Map::fusionunite()
 {
     Game& game = Game::Instance();
-    game.fusion(z, e, type, v, w);
+    game.fusion(unitpos,game.getPosXselec());
+    game.setComptfusion();
 }
 
 void Map::captureusine()
 {
     Game& game= Game::Instance();
     game.capture_Usine(z,e);
+    game.setComptcapture();
 }
 void Map::captureaeroport()
 {
     Game& game= Game::Instance();
     game.capture_Aeroport(z,e);
+    game.setComptcapture();
 }
 void Map::attackunite()
 {
     Game& game=Game::Instance();
     game.attack(z,e,unitpos);
+    game.setComptattack();
 }
 
 
-void Map::mousePress(QMouseEvent *ev)
-{   std::cout << "mousein "<< std::endl;
-    if(!(0 <= z && z < 22 && 0 <= e && e < 18)) { // bing bing, z et e ne sont pas définis, ils valent n'importe quoi
-        std::cout << "LOL, on a " << z << ", " << e << std::endl;
-    }
-    else {
+void Map::mousePress(int x ,int y , QMouseEvent *ev)
+{
+
 
             gameobject[z][e].setSelected(false); // apelé ici, donc je suspecte que z ou e soit hors borne
-            float x=floorf(ev->x()/40);
-            float y=floorf(ev->y()/40); // fonction deja implementé //
+             // fonction deja implementé //
             z= (int)x-5;
             e= (int)y;
-            std::cout << "mouse1 " << z << ", " << e << std::endl;
+
             casee.setPosX(z);
             casee.setPosY(e);
-             std::cout << "mouse1 " << z << ", " << e << std::endl;
+
             if(ev->buttons() == Qt::LeftButton){
                 Game& game=Game::Instance();
                 game.setActville(nullptr);
@@ -724,24 +725,32 @@ void Map::mousePress(QMouseEvent *ev)
             }
             else if(ev->buttons() == Qt::RightButton){
                Game& game=Game::Instance();
-               std::cout<< gameobject[z][e].getTeam();
-                if ((gameobject[z][e].getType() == 44 ||gameobject[z][e].getType() == 39 || gameobject[z][e].getType() == 35 || gameobject[z][e].getType() == 36) && gameobject[z][e].getTeam() == game.getTurn() ){
-                    UsineWindow w;
 
-                    w.setX(z);
-                    w.setY(e);
-                    w.exec();
+                if ((gameobject[z][e].getType() == 44 ||gameobject[z][e].getType() == 39 || gameobject[z][e].getType() == 35 || gameobject[z][e].getType() == 36) && gameobject[z][e].getTeam() == game.getTurn() ){
+                    std::vector<Usine> usine = game.getUsine();
+                    for(Usine& u : usine){
+                        if(u.getPosX()==z && u.getPosY()==e && u.getTeam() ==game.getTurn() && u.getComptproduction()){
+                            UsineWindow w;
+
+                            w.setX(z);
+                            w.setY(e);
+                            w.exec();
+                        }
+                    }
+
                 }
-                else if (gameobject[z][e].getType() == 34){
+                 if (gameobject[z][e].getType() == 34){
                     Game& game=Game::Instance();
                     std::vector<Ville> ville =game.getVille();
                     std::vector<Unites> unite =game.getUnites();
+                    if(unite[game.getPosXselec()].getComptcapture()){
                     for(std::vector<Ville>::size_type i = 0; i != ville.size(); i++){
-                        if(unite[game.getPosXselec()].getComptcapture()){
 
-                        if(ville[i].getPosX()==z &&ville[i].getPosY()==e && ville[i].getUnitin() ){
+
+                        if(ville[i].getPosX()==unite[game.getPosXselec()].getPosX() &&ville[i].getPosY()==unite[game.getPosXselec()].getPosY() && ville[i].getUnitin() && unite[game.getPosXselec()].getTeam()==game.getTurn()  ){
+
                             QMenu menu(this);
-                            game.setComptcapture();
+
                             capture =new QAction("Capture", this);
                             menu.addAction(capture);
                             wait =new QAction("Wait", this);
@@ -754,11 +763,13 @@ void Map::mousePress(QMouseEvent *ev)
                     }}
 
                 }
-                else if(gameobject[z][e].getType()== 35){
+                if(gameobject[z][e].getType()== 35){
                     Game& game = Game::Instance();
                     std::vector<Usine> usine = game.getUsine();
+                    std::vector<Unites> unite =game.getUnites();
+                    if(unite[game.getPosXselec()].getComptcapture()){
                     for(std::vector<Usine>::size_type i = 0; i!= usine.size(); i++){
-                        if(usine[i].getPosX()==z &&usine[i].getPosY()==e && usine[i].getUnitin() && usine[i].getTeam()==0){
+                        if(usine[i].getPosX()==unite[game.getPosXselec()].getPosX() &&usine[i].getPosY()==unite[game.getPosXselec()].getPosY() && usine[i].getUnitin() && unite[game.getPosXselec()].getTeam()==game.getTurn() ){
                             QMenu menu(this);
                             capture =new QAction("Capture", this);
                             menu.addAction(capture);
@@ -771,13 +782,16 @@ void Map::mousePress(QMouseEvent *ev)
                            }
 
                     }
+                    }
                 }
 
-                else if(gameobject[z][e].getType()== 36){
+                if(gameobject[z][e].getType()== 36){
                     Game& game = Game::Instance();
                     std::vector<Aeroport> aeroport = game.getAeroport();
+                    std::vector<Unites> unite =game.getUnites();
+                    if(unite[game.getPosXselec()].getComptcapture()){
                     for(std::vector<Aeroport>::size_type i = 0; i!= aeroport.size(); i++){
-                        if(aeroport[i].getPosX() == z && aeroport[i].getPosY()==e && aeroport[i].getUnitin() && aeroport[i].getTeam()==0){
+                        if(aeroport[i].getPosX()==unite[game.getPosXselec()].getPosX() &&aeroport[i].getPosY()==unite[game.getPosXselec()].getPosY() && aeroport[i].getUnitin() && unite[game.getPosXselec()].getTeam()==game.getTurn() ){
                             QMenu menu(this);
                             capture =new QAction("Capture", this);
                             menu.addAction(capture);
@@ -789,16 +803,17 @@ void Map::mousePress(QMouseEvent *ev)
                             menu.exec(ev->globalPos());
 
                         }
-                    }
+                    }}
 
                 }
 
 
 
-                    std::cout<<"salma"<<std::endl;
+
                     std::vector<Unites> unite =game.getUnites();
                     for(std::vector<Unites>::size_type i = 0; i != unite.size(); i++){
-                        std::cout<<unite[i].getPosX()<<" "<<unite[i].getPosY()<<" "<<unite[i].getUnitin()<<std::endl;
+
+
                         if(unite[game.getPosXselec()].getComptattack()){
 
                         if(unite[i].getPosX()==z  &&unite[i].getPosY()==e && unite[i].getUnitin() && unite[i].getTeam()!=game.getTurn()){
@@ -807,7 +822,6 @@ void Map::mousePress(QMouseEvent *ev)
                             menu.addAction(attack);
                             wait =new QAction("Wait", this);
                             menu.addAction(wait);
-                            game.setComptattack();
                             unitpos=i;
                             QObject::connect(attack, SIGNAL(triggered()), this, SLOT(attackunite()));
 
@@ -815,20 +829,22 @@ void Map::mousePress(QMouseEvent *ev)
                             menu.exec(ev->globalPos());
                         }
                     }
-                        else if(unite[i].getPosX() == z && unite[i].getPosY()==e && unite[i].getUnitin() && unite[i].getTeam() == game.getTurn()){
+                        if(unite[game.getPosXselec()].getComptfusion()){
+                        if(unite[i].getPosX() == z && unite[i].getType()==unite[game.getPosXselec()].getType() && unite[i].getPosY()==e && unite[game.getPosXselec()].getUnitin() && unite[i].getTeam() == game.getTurn()){
                             QMenu menu(this);
                             fusion = new QAction("Fusion", this);
                             menu.addAction(fusion);
+                            type = unite[i].getType();
                             wait = new QAction("Wait", this);
                             menu.addAction(wait);
                             unitpos = i;
                             QObject::connect(fusion, SIGNAL(triggered()), this, SLOT(fusionunite()));
                             menu.exec(ev->globalPos());
                         }
-                    }
+                    }}
 }
 
-            }}
+            }
 
 
 
@@ -850,7 +866,7 @@ void Map::keyPressEvent(QKeyEvent *keyEvent)
             casee.setPosY(casee.getPosY()-1);
             break;
         case Qt::Key_Enter:
-            std::cout << "LOL, on a " << casee.getPosX() << ", " << casee.getPosY() << std::endl;
+
             if(gameobject[casee.getPosX()][casee.getPosY()].getSelected()){
             game.move(casee.getPosX(),casee.getPosY());}
             else{
