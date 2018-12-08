@@ -74,12 +74,16 @@ UsineWindow::~UsineWindow()
 void UsineWindow::on_pushButton_clicked()
 {
     Game& game=Game::Instance();
-    int c =game.getPlayer()->getMoney();
-    if(c>=1000){
-     game.getPlayer()->setMoney(game.getPlayer()->getMoney()-1000);
-    game.createUnite(x+1,y,game.getTurn(),1998);
-   }
+    if(comptachat){
+        int c =game.getPlayer()->getMoney();
+        if(c>=1000){
 
+            game.getPlayer()->setMoney(game.getPlayer()->getMoney()-1000);
+            game.createUnite(x,y,game.getTurn(),1998);
+            game.setComptproduction(x,y);
+            comptachat=false;
+         }
+    }
 }
 
 int UsineWindow::getY() const
@@ -105,19 +109,28 @@ void UsineWindow::setX(int value)
 void UsineWindow::on_pushButton_2_clicked()
 {
     Game& game=Game::Instance();
-    int c =game.getPlayer()->getMoney();
-    if(c>=3000){
-        game.getPlayer()->setMoney(game.getPlayer()->getMoney()-3000);
-    game.createUnite(x+1,y,game.getTurn(),2003);}
+    if(comptachat){
+        int c =game.getPlayer()->getMoney();
+        if(c>=3000){
+            game.getPlayer()->setMoney(game.getPlayer()->getMoney()-3000);
+            game.createUnite(x,y,game.getTurn(),2003);
+            game.setComptproduction(x,y);
+            comptachat=false;
+    }   }
 }
 
 void UsineWindow::on_pushButton_3_clicked()
 {
     Game& game=Game::Instance();
-    int c =game.getPlayer()->getMoney();
-    if(c>=4000){
-        game.getPlayer()->setMoney(game.getPlayer()->getMoney()-4000);
-    game.createUnite(x+1,y,game.getTurn(),3000);}
+    if(comptachat){
+        int c =game.getPlayer()->getMoney();
+        if(c>=4000){
+            game.getPlayer()->setMoney(game.getPlayer()->getMoney()-4000);
+            game.createUnite(x,y,game.getTurn(),3000);
+            game.setComptproduction(x,y);
+            comptachat=false;
+        }
+    }
 
 
 }
@@ -125,79 +138,115 @@ void UsineWindow::on_pushButton_3_clicked()
 void UsineWindow::on_pushButton_5_clicked()
 {
     Game& game=Game::Instance();
-    int c =game.getPlayer()->getMoney();
-    if(c>=8000){
-        game.getPlayer()->setMoney(game.getPlayer()->getMoney()-8000);
-    game.createUnite(x+1,y,game.getTurn(),3002);}
+    if(comptachat){
+        int c =game.getPlayer()->getMoney();
+        if(c>=8000){
+            game.getPlayer()->setMoney(game.getPlayer()->getMoney()-8000);
+            game.createUnite(x,y,game.getTurn(),3002);
+            game.setComptproduction(x,y);
+            comptachat=false;
+
+        }
+
+    }
 
 }
 
 void UsineWindow::on_pushButton_6_clicked()
 {
     Game& game=Game::Instance();
-    int c =game.getPlayer()->getMoney();
-    if(c>=7000){
-        game.getPlayer()->setMoney(game.getPlayer()->getMoney()-7000);
-    game.createUnite(x+1,y,game.getTurn(),3003);}
-
+    if(comptachat){
+        int c =game.getPlayer()->getMoney();
+        if(c>=7000){
+            game.getPlayer()->setMoney(game.getPlayer()->getMoney()-7000);
+            game.createUnite(x,y,game.getTurn(),3003);
+            game.setComptproduction(x,y);
+            comptachat=false;
+        }
+    }
 }
 
 void UsineWindow::on_pushButton_4_clicked()
-{ Game& game=Game::Instance();
-    int c =game.getPlayer()->getMoney();
-    if(c>=8000){
-        game.getPlayer()->setMoney(game.getPlayer()->getMoney()-8000);
-    game.createUnite(x+1,y,game.getTurn(),3001);}
-
-
+{   Game& game=Game::Instance();
+    if(comptachat){
+        int c =game.getPlayer()->getMoney();
+        if(c>=8000){
+            game.getPlayer()->setMoney(game.getPlayer()->getMoney()-8000);
+            game.createUnite(x,y,game.getTurn(),3001);
+            game.setComptproduction(x,y);
+            comptachat=false;
+        }
+    }
 }
 
 void UsineWindow::on_pushButton_7_clicked()
 {
     Game& game=Game::Instance();
-    int c =game.getPlayer()->getMoney();
-    if(c>=28000){
-        game.getPlayer()->setMoney(game.getPlayer()->getMoney()-28000);
-    game.createUnite(x+1,y,game.getTurn(),3004);}
-
+    if(comptachat){
+        int c =game.getPlayer()->getMoney();
+        if(c>=28000){
+            game.getPlayer()->setMoney(game.getPlayer()->getMoney()-28000);
+            game.createUnite(x,y,game.getTurn(),3004);
+            game.setComptproduction(x,y);
+            comptachat=false;
+        }
+    }
 }
 
 void UsineWindow::on_pushButton_8_clicked()
 {
     Game& game=Game::Instance();
-    int c =game.getPlayer()->getMoney();
-    if(c>=22000){
-        game.getPlayer()->setMoney(game.getPlayer()->getMoney()-22000);
-    game.createUnite(x+1,y,game.getTurn(),3005);}
-
+    if(comptachat){
+        int c =game.getPlayer()->getMoney();
+        if(c>=22000){
+            game.getPlayer()->setMoney(game.getPlayer()->getMoney()-22000);
+            game.createUnite(x,y,game.getTurn(),3005);
+            game.setComptproduction(x,y);
+            comptachat=false;
+        }
+    }
 }
 
 void UsineWindow::on_pushButton_9_clicked()
-{Game& game=Game::Instance();
-    int c =game.getPlayer()->getMoney();
-    if(c>=9000){
-        game.getPlayer()->setMoney(game.getPlayer()->getMoney()-9000);
-    game.createUnite(x+1,y,game.getTurn(),2000);}
-
+{   Game& game=Game::Instance();
+    if(comptachat){
+        int c =game.getPlayer()->getMoney();
+        if(c>=9000){
+            game.getPlayer()->setMoney(game.getPlayer()->getMoney()-9000);
+            game.createUnite(x,y,game.getTurn(),2000);
+            game.setComptproduction(x,y);
+            comptachat=false;
+        }
+    }
 
 }
 
 void UsineWindow::on_pushButton_10_clicked()
 {
     Game& game=Game::Instance();
-    int c =game.getPlayer()->getMoney();
-    if(c>=20000){
-        game.getPlayer()->setMoney(game.getPlayer()->getMoney()-20000);
-    game.createUnite(x+1,y,game.getTurn(),2002);}
+    if(comptachat){
+        int c =game.getPlayer()->getMoney();
+        if(c>=20000){
+            game.getPlayer()->setMoney(game.getPlayer()->getMoney()-20000);
+            game.createUnite(x,y,game.getTurn(),2002);
+            game.setComptproduction(x,y);
+            comptachat =false;
+        }
+    }
 
 }
 
 void UsineWindow::on_pushButton_11_clicked()
 {
     Game& game=Game::Instance();
-    int c =game.getPlayer()->getMoney();
-    if(c>=22000){
-        game.getPlayer()->setMoney(game.getPlayer()->getMoney()-22000);
-    game.createUnite(x+1,y,game.getTurn(),2001);}
+    if(comptachat){
+        int c =game.getPlayer()->getMoney();
+        if(c>=22000){
+            game.getPlayer()->setMoney(game.getPlayer()->getMoney()-22000);
+            game.createUnite(x,y,game.getTurn(),2001);
+            game.setComptproduction(x,y);
+            comptachat=false;
+        }
+    }
 
 }
