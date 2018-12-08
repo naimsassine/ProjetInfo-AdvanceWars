@@ -9,4 +9,5 @@ Bazooka::Bazooka(int InitX, int InitY, int InitTeam)
     vie=10;
     ptdeplacement = 2;
     typeu=1;
+    posBin=1;
 }
