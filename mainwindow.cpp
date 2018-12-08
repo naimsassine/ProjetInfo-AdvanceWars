@@ -27,6 +27,7 @@ MainWindow::MainWindow(QWidget *parent) :
 {
 
     ui->setupUi(this);
+
     map = new Map(this);
     MainWindow::setCentralWidget(map);
     /*QSize size(1040,600);
@@ -219,8 +220,10 @@ void MainWindow::changeDefWindow(Terrain& terrain)
 }
 
 void MainWindow::mousePressEvent(QMouseEvent *e)
-{
-    map->mousePress(e);
+{   int r=int(floorf(e->x()/40));
+    int s=int(floorf(e->y()/40));
+    if(r>= 5 && r<27 && s>=0 && s<18 ){
+    map->mousePress(r,s ,e);}
 }
 
 void MainWindow::synchro(Unites unite)
