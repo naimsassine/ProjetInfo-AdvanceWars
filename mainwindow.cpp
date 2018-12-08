@@ -4,6 +4,7 @@
 #include <string.h>
 #include"bouton.h"
 #include "Usine.h"
+#include "math.h"
 
 #include "ui_mainwindow.h"
 #include <QPushButton>
