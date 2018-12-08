@@ -11,4 +11,6 @@ Tank::Tank(int InitX,int InitY,int InitTeam)
     vie=10;
     ptdeplacement = 6;
     typeu=2;
+    posBin=4;
+
 }
