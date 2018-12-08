@@ -13,6 +13,7 @@ Infanterie::Infanterie(int InitX, int InitY, int InitTeam)
     ptdeplacement = 3;
     prix = 1000;
     typeu= 0;
+    posBin=0;
 
 
 }
