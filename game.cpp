@@ -291,6 +291,7 @@ void Game::move(int x,int y)
     }
     if (gameobject[x][y].getType() != 700) {
         gameobject[x][y].setSelected(true);
+        window->update();
         window->redraw();
     }
     gameobject[z][e].setSelected(false);
@@ -453,17 +454,17 @@ void Game::move(int x,int y)
             }
         }
         else if(gameobject[x][y].getType() != 700){
-            for(std::vector<Terrain>::size_type i = 0; i!= terrain.size(); i++){
-                if(terrain[i].getPosX()==x && terrain[i].getPosY()==y){
-                    terrain[i].setUnitin(true);
-                    terrain[i].setSelected(true);
-                    window->changeDefWindow(terrain[i]);
+            //for(std::vector<Terrain>::size_type i = 0; i!= terrain.size(); i++){
+                if(gameobject[x][y].getPosX()==x && gameobject[x][y].getPosY()==y){
+                    gameobject[x][y].setUnitin(true);
+                    gameobject[x][y].setSelected(true);
+                    window->changeDefWindow(gameobject[x][y]);
                 }
                 else{
-                    terrain[i].setUnitin(false);
-                    terrain[i].setSelected(false);
+                    gameobject[x][y].setUnitin(false);
+                    gameobject[x][y].setSelected(false);
                 }
-            }
+
         }
 
 

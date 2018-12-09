@@ -207,16 +207,16 @@ void MainWindow::changeCaptWindow(Usine& usine)  // ocpyyyy
 }
 void MainWindow::changeCaptWindow(Aeroport& aeroport)  //copy (regarder la vidéo ssur l'héritage)
 {
-    /*Game& game = Game::Instance();
+    Game& game = Game::Instance();
     int b = aeroport.getCapturepoint();
-    labC1->setNum(b);*/
+    labC1->setNum(b);
 
 }
 
-void MainWindow::changeDefWindow(Terrain& terrain)
+void MainWindow::changeDefWindow(Gameobject& gameobject)
 {
    /* Game& game = Game::Instance();
-    int c = terrain.getdefTerrain();
+    int c = gameobject.getdefTerrain(typet);
     labT1->setNum(c);*/
 }
 

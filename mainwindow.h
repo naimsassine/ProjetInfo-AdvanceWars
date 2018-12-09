@@ -9,6 +9,7 @@
 #include <QMainWindow>
 #include"Gameobject.h"
 #include "map.h"
+#include "Gameobject.h"
 #include <QLabel>
 #include "Unites.h"
 #include "Usine.h"
@@ -34,6 +35,7 @@ public:
     void changeCaptWindow(Usine& usine);
     void changeCaptWindow(Aeroport& aeroport);
     void changeDefWindow(Terrain& terrain);
+    void changeDefWindow(Gameobject& gameobject);
 
     void mousePressEvent(QMouseEvent *e);
 
@@ -64,6 +66,7 @@ private:
     QLabel *don = nullptr;
     QLabel *don1 = nullptr;
     QLabel *don2 = nullptr;
+    int typet;
 
 };
 
