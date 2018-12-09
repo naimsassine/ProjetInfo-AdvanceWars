@@ -58,6 +58,19 @@ MainWindow::MainWindow(QWidget *parent) :
    QObject::connect(bouton, SIGNAL(clicked()), this, SLOT(changeturn()));
    bouton->show();
 
+
+   labD = new QLabel("Dégâts",this);
+   labD->setGeometry(60, 50, 180, 70);
+   QFont fd( "Arial", 20, QFont::Bold);
+   labD->setFont( fd);
+   labD->move(0, 600);
+   labD->show();
+   labD1 = new QLabel("0", this);
+   labD1->setGeometry(60,50,180,70);
+   labD1->setFont( fd);
+   labD1->move(100, 600);
+   labD1->show();
+
    lab = new QLabel("Player 1 ",this);
    lab->setGeometry(60, 50, 180, 70);
    QFont f( "Arial", 20, QFont::Bold);
@@ -124,6 +137,7 @@ MainWindow::~MainWindow()
 {   delete bouton;
     delete labC1;
     delete labT1;
+    delete labD1;
     delete lab;
     delete lab1;
     delete lab2;
@@ -211,6 +225,11 @@ void MainWindow::changeCaptWindow(Aeroport& aeroport)  //copy (regarder la vidé
     int b = aeroport.getCapturepoint();
     labC1->setNum(b);
 
+}
+void MainWindow::changeDammageWindow(Unites& unite){
+    Game& game = Game::Instance();
+    int d = unite.getdamage();
+    labD1->setNum(d);
 }
 
 void MainWindow::changeDefWindow(Gameobject& gameobject)

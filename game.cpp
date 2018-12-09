@@ -486,6 +486,7 @@ void Game::move(int x,int y)
 
             unites[posXselec].setSelected(true);
             window->changeVieWindow(unites[posXselec]);
+            window->changeDammageWindow(unites[posXselec]);
             int c= unites[posXselec].getPtdeplacement();// selectionner unité  //
             moveable(c,unites[posXselec].getPosX(),unites[posXselec].getPosY(),unites[posXselec].getTypeu());
             window->redraw();

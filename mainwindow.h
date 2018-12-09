@@ -36,6 +36,7 @@ public:
     void changeCaptWindow(Aeroport& aeroport);
     void changeDefWindow(Terrain& terrain);
     void changeDefWindow(Gameobject& gameobject);
+    void changeDammageWindow(Unites& unite);
 
     void mousePressEvent(QMouseEvent *e);
 
@@ -54,6 +55,8 @@ private:
     QPushButton *bouton = nullptr;
     QLabel *labC1 = nullptr;
     QLabel *labT1 = nullptr;
+    QLabel *labD1 = nullptr;
+    QLabel *labD = nullptr;
     QLabel *lab = nullptr;
     QLabel *lab1 = nullptr;
     QLabel *lab2 = nullptr;
