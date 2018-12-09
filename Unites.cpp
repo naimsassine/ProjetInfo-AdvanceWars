@@ -49,6 +49,7 @@ void Unites::setDamage(Unites A,Unites C ,int defTerrainc)
     }
     B=Bin[A.getPosBin()][C.getPosBin()];
 double degat = B * A.getvie() / 10 * (100 - defTerrainc * C.getvie()) / 100;
+damage = degat;
 std::cout<<degat<<std::endl;
 vie = vie -int(round(degat/10));
 if(vie<0){

@@ -54,7 +54,7 @@ protected:
     int ptdeplacement = 3;
     int typeu;
     int B;
-    int damage;
+    int damage =0;
     int numero;
     int Team;
     int posBin;
