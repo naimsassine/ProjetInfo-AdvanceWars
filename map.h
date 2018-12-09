@@ -41,6 +41,7 @@ private:
     int v;
     int w;
     int type;
+    int turn ;
     int unitpos;
 
 

@@ -87,6 +87,9 @@ int Gameobject::getPtdemouvement(int typeu) const
 {
     return ldemouvement[typeu];
 }
+int Gameobject::getPTMvt() const{
+    return ptdemouvement;
+}
 
 void Gameobject::setPtdemouvement(int value)
 {

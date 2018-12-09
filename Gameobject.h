@@ -32,6 +32,7 @@ public:
     void setMovable(bool value);
 
     int getPtdemouvement(int typeu) const;
+    int getPTMvt() const;
     void setPtdemouvement(int value);
 
     int getdefTerrain(int typeu) ;

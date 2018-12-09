@@ -66,7 +66,8 @@ private:
     QLabel *don = nullptr;
     QLabel *don1 = nullptr;
     QLabel *don2 = nullptr;
-    int typet;
+    int typet= 0;
+
 
 };
 

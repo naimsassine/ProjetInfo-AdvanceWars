@@ -70,14 +70,14 @@ MainWindow::MainWindow(QWidget *parent) :
    lab2->setGeometry(60, 50, 180, 70);
    QFont f2( "Arial", 16);
    lab2->setFont( f2);
-   lab2->move(0, 100);
+   lab2->move(0, 200);
    lab2->show();
 
 
    lab3 = new QLabel("1000",this);
    lab3->setGeometry(60, 50, 180, 70);
    lab3->setFont( f2);
-   lab3->move(100, 100);
+   lab3->move(100, 200);
    lab3->show();
 
    lab4 = new QLabel("Vie : ",this);
@@ -108,12 +108,12 @@ MainWindow::MainWindow(QWidget *parent) :
    lab7->setGeometry(60, 50, 180, 70);
    QFont f7( "Arial", 16);
    lab7->setFont( f6);
-   lab7->move(0, 350);
+   lab7->move(0, 400);
    lab6->show();
    labT1= new QLabel("0",this);
    labT1->setGeometry(60, 50, 180, 70);
    labT1->setFont(f7);
-   labT1->move(170, 350);
+   labT1->move(170, 400);
    labT1->show();
 
 
@@ -216,7 +216,7 @@ void MainWindow::changeCaptWindow(Aeroport& aeroport)  //copy (regarder la vidé
 void MainWindow::changeDefWindow(Gameobject& gameobject)
 {
     Game& game = Game::Instance();
-    int c = gameobject.getdefTerrain(gameobject.getType());
+    int c = (gameobject.getPTMvt());
     labT1->setNum(c);
 }
 

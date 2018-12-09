@@ -63,8 +63,8 @@ void Map::paintEvent(QPaintEvent *event)
            else if(gameobject[i][j].getType() == 2){
                QPixmap pixmap(":/mountain.gif");
                painter.drawPixmap(c*40,j*40,40,40,pixmap);
-               if((gameobject[i][j].getSelected()==true)  || (unite[h].getPosX() == gameobject[i][j].getPosX() && unite[h].getPosY() == gameobject[i][j].getPosY())){
-                    painter.drawPixmap(50,400,40,40,pixmap);}
+               if(( (unite[h].getPosX() == gameobject[i][j].getPosX() && unite[h].getPosY() == gameobject[i][j].getPosY())) && unite[h].getTeam() == turn){
+                    painter.drawPixmap(50,350,40,40,pixmap);}
                if(gameobject[i][j].getMovable()){
                               QPixmap pixmap(":/Misc.png");
                               painter.drawPixmap(c*40,j*40,40,40,pixmap);
@@ -475,7 +475,7 @@ void Map::paintEvent(QPaintEvent *event)
             QPixmap pixmap(":/osinfantry.gif");
             painter.drawPixmap((unites[i].getPosX()+5)*40,unites[i].getPosY()*40,40,40,pixmap);
             if(unites[i].getSelected()==true){
-                painter.drawPixmap(50, 200, 40,40, pixmap);
+                painter.drawPixmap(75, 115, 40,40, pixmap);
 
             }
 
@@ -484,7 +484,7 @@ void Map::paintEvent(QPaintEvent *event)
             QPixmap pixmap(":/bminfantry.gif");
             painter.drawPixmap((unites[i].getPosX()+5)*40,unites[i].getPosY()*40,40,40,pixmap);
             if(unites[i].getSelected()==true){
-                painter.drawPixmap(50, 200, 40,40, pixmap);
+                painter.drawPixmap(75, 115, 40,40, pixmap);
             }
 
         }
@@ -492,7 +492,7 @@ void Map::paintEvent(QPaintEvent *event)
             QPixmap pixmap(":/osanti-air.gif");
             painter.drawPixmap((unites[i].getPosX()+5)*40,unites[i].getPosY()*40,40,40,pixmap);
             if(unites[i].getSelected()==true){
-                painter.drawPixmap(50, 200, 40,40, pixmap);
+                painter.drawPixmap(75, 115, 40,40, pixmap);
             }
 
         }
@@ -500,7 +500,7 @@ void Map::paintEvent(QPaintEvent *event)
             QPixmap pixmap(":/bmanti-air.gif");
             painter.drawPixmap((unites[i].getPosX()+5)*40,unites[i].getPosY()*40,40,40,pixmap);
             if(unites[i].getSelected()==true){
-                painter.drawPixmap(50, 200, 40,40, pixmap);
+                painter.drawPixmap(75, 115, 40,40, pixmap);
             }
 
         }
@@ -508,7 +508,7 @@ void Map::paintEvent(QPaintEvent *event)
             QPixmap pixmap(":/osmech.gif");
             painter.drawPixmap((unites[i].getPosX()+5)*40,unites[i].getPosY()*40,40,40,pixmap);
             if(unites[i].getSelected()==true){
-                painter.drawPixmap(50, 200, 40,40, pixmap);
+                painter.drawPixmap(75, 115, 40,40, pixmap);
             }
 
         }
@@ -516,7 +516,7 @@ void Map::paintEvent(QPaintEvent *event)
             QPixmap pixmap(":/bmmech.gif");
             painter.drawPixmap((unites[i].getPosX()+5)*40,unites[i].getPosY()*40,40,40,pixmap);
             if(unites[i].getSelected()==true){
-                painter.drawPixmap(50, 200, 40,40, pixmap);
+                painter.drawPixmap(75, 115, 40,40, pixmap);
             }
 
         }
@@ -524,7 +524,7 @@ void Map::paintEvent(QPaintEvent *event)
             QPixmap pixmap(":/osrecon.gif");
             painter.drawPixmap((unites[i].getPosX()+5)*40,unites[i].getPosY()*40,40,40,pixmap);
             if(unites[i].getSelected()==true){
-                painter.drawPixmap(50, 200, 40,40, pixmap);
+                painter.drawPixmap(75, 115, 40,40, pixmap);
             }
 
         }
@@ -532,7 +532,7 @@ void Map::paintEvent(QPaintEvent *event)
             QPixmap pixmap(":/bmrecon.gif");
             painter.drawPixmap((unites[i].getPosX()+5)*40,unites[i].getPosY()*40,40,40,pixmap);
             if(unites[i].getSelected()==true){
-                painter.drawPixmap(50, 200, 40,40, pixmap);
+                painter.drawPixmap(75, 115, 40,40, pixmap);
             }
 
         }
@@ -540,7 +540,7 @@ void Map::paintEvent(QPaintEvent *event)
             QPixmap pixmap(":/ostank.gif");
             painter.drawPixmap((unites[i].getPosX()+5)*40,unites[i].getPosY()*40,40,40,pixmap);
             if(unites[i].getSelected()==true){
-                painter.drawPixmap(50, 200, 40,40, pixmap);
+                painter.drawPixmap(75, 115, 40,40, pixmap);
             }
 
         }
@@ -548,7 +548,7 @@ void Map::paintEvent(QPaintEvent *event)
             QPixmap pixmap(":/bmtank.gif");
             painter.drawPixmap((unites[i].getPosX()+5)*40,unites[i].getPosY()*40,40,40,pixmap);
             if(unites[i].getSelected()==true){
-                painter.drawPixmap(50, 200, 40,40, pixmap);
+                painter.drawPixmap(75, 115, 40,40, pixmap);
             }
 
         }
@@ -556,7 +556,7 @@ void Map::paintEvent(QPaintEvent *event)
             QPixmap pixmap(":/osmd.tank.gif");
             painter.drawPixmap((unites[i].getPosX()+5)*40,unites[i].getPosY()*40,40,40,pixmap);
             if(unites[i].getSelected()==true){
-                painter.drawPixmap(50, 200, 40,40, pixmap);
+                painter.drawPixmap(75, 115, 40,40, pixmap);
             }
 
         }
@@ -564,7 +564,7 @@ void Map::paintEvent(QPaintEvent *event)
             QPixmap pixmap(":/bmmd.tank.gif");
             painter.drawPixmap((unites[i].getPosX()+5)*40,unites[i].getPosY()*40,40,40,pixmap);
             if(unites[i].getSelected()==true){
-                painter.drawPixmap(50, 200, 40,40, pixmap);
+                painter.drawPixmap(75, 115, 40,40, pixmap);
             }
 
         }
@@ -572,7 +572,7 @@ void Map::paintEvent(QPaintEvent *event)
             QPixmap pixmap(":/osmegatank.gif");
             painter.drawPixmap((unites[i].getPosX()+5)*40,unites[i].getPosY()*40,40,40,pixmap);
             if(unites[i].getSelected()==true){
-                painter.drawPixmap(50, 200, 40,40, pixmap);
+                painter.drawPixmap(75, 115, 40,40, pixmap);
             }
 
         }
@@ -580,7 +580,7 @@ void Map::paintEvent(QPaintEvent *event)
             QPixmap pixmap(":/bmmegatank.gif");
             painter.drawPixmap((unites[i].getPosX()+5)*40,unites[i].getPosY()*40,40,40,pixmap);
             if(unites[i].getSelected()==true){
-                painter.drawPixmap(50, 200, 40,40, pixmap);
+                painter.drawPixmap(75 ,115, 40,40, pixmap);
             }
 
         }
@@ -588,7 +588,7 @@ void Map::paintEvent(QPaintEvent *event)
             QPixmap pixmap(":/osneotank.gif");
             painter.drawPixmap((unites[i].getPosX()+5)*40,unites[i].getPosY()*40,40,40,pixmap);
             if(unites[i].getSelected()==true){
-                painter.drawPixmap(50, 200, 40,40, pixmap);
+                painter.drawPixmap(75, 115, 40,40, pixmap);
             }
 
         }
@@ -596,7 +596,7 @@ void Map::paintEvent(QPaintEvent *event)
             QPixmap pixmap(":/bmneotank.gif");
             painter.drawPixmap((unites[i].getPosX()+5)*40,unites[i].getPosY()*40,40,40,pixmap);
             if(unites[i].getSelected()==true){
-                painter.drawPixmap(50, 200, 40,40, pixmap);
+                painter.drawPixmap(75, 115, 40,40, pixmap);
             }
 
         }
@@ -604,7 +604,7 @@ void Map::paintEvent(QPaintEvent *event)
             QPixmap pixmap(":/osb-copter.gif");
             painter.drawPixmap((unites[i].getPosX()+5)*40,unites[i].getPosY()*40,40,40,pixmap);
             if(unites[i].getSelected()==true){
-                painter.drawPixmap(50, 200, 40,40, pixmap);
+                painter.drawPixmap(75, 115, 40,40, pixmap);
             }
 
         }
@@ -612,7 +612,7 @@ void Map::paintEvent(QPaintEvent *event)
             QPixmap pixmap(":/bmb-copter.gif");
             painter.drawPixmap((unites[i].getPosX()+5)*40,unites[i].getPosY()*40,40,40,pixmap);
             if(unites[i].getSelected()==true){
-                painter.drawPixmap(50, 200, 40,40, pixmap);
+                painter.drawPixmap(75, 115, 40,40, pixmap);
             }
 
         }
@@ -620,7 +620,7 @@ void Map::paintEvent(QPaintEvent *event)
             QPixmap pixmap(":/osfighter.gif");
             painter.drawPixmap((unites[i].getPosX()+5)*40,unites[i].getPosY()*40,40,40,pixmap);
             if(unites[i].getSelected()==true){
-                painter.drawPixmap(50, 200, 40,40, pixmap);
+                painter.drawPixmap(75, 115, 40,40, pixmap);
             }
 
         }
@@ -628,7 +628,7 @@ void Map::paintEvent(QPaintEvent *event)
             QPixmap pixmap(":/bmfighter.gif");
             painter.drawPixmap((unites[i].getPosX()+5)*40,unites[i].getPosY()*40,40,40,pixmap);
             if(unites[i].getSelected()==true){
-                painter.drawPixmap(50, 200, 40,40, pixmap);
+                painter.drawPixmap(75, 115, 40,40, pixmap);
             }
 
         }
@@ -636,7 +636,7 @@ void Map::paintEvent(QPaintEvent *event)
             QPixmap pixmap(":/osbomber.gif");
             painter.drawPixmap((unites[i].getPosX()+5)*40,unites[i].getPosY()*40,40,40,pixmap);
             if(unites[i].getSelected()==true){
-                painter.drawPixmap(50, 200, 40,40, pixmap);
+                painter.drawPixmap(75, 115, 40,40, pixmap);
             }
 
         }
@@ -644,7 +644,7 @@ void Map::paintEvent(QPaintEvent *event)
             QPixmap pixmap(":/bmbomber.gif");
             painter.drawPixmap((unites[i].getPosX()+5)*40,unites[i].getPosY()*40,40,40,pixmap);
             if(unites[i].getSelected()==true){
-                painter.drawPixmap(50, 200, 40,40, pixmap);
+                painter.drawPixmap(75, 115, 40,40, pixmap);
             }
 
 
