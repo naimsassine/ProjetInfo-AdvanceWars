@@ -215,9 +215,9 @@ void MainWindow::changeCaptWindow(Aeroport& aeroport)  //copy (regarder la vidé
 
 void MainWindow::changeDefWindow(Gameobject& gameobject)
 {
-   /* Game& game = Game::Instance();
-    int c = gameobject.getdefTerrain(typet);
-    labT1->setNum(c);*/
+    Game& game = Game::Instance();
+    int c = gameobject.getdefTerrain(gameobject.getType());
+    labT1->setNum(c);
 }
 
 void MainWindow::mousePressEvent(QMouseEvent *e)
