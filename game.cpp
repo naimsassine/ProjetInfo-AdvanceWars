@@ -300,19 +300,27 @@ void Game::move(int x,int y)
     window->redraw();
 
     for (std::vector<Unites>::size_type i = 0; i != unites.size(); i++) {
+        int count=0;
         if (unites[i].isAtPos(x, y) && unites[i].getTeam() == turn) {
             posXselec = static_cast<int>(i);
         } else if (unites[i].isAtPos(x+1, y) ) {
+            count=1;
             unites[i].setUnitin(true);
         } else if (unites[i].isAtPos(x-1, y) ) {
+            count=1;
             unites[i].setUnitin(true);
         } else if (unites[i].isAtPos(x, y+1) ) {
+            count=1;
             unites[i].setUnitin(true);
         } else if (unites[i].isAtPos(x, y-1) ) {
+            count=1;
             unites[i].setUnitin(true);
         }
         else{
              unites[i].setUnitin(false);
+        }
+        if(count==1){
+            unites[posXselec].setUnitin(true);
         }
     }
 
@@ -488,20 +496,27 @@ void Game::move(int x,int y)
         window->redraw();
     }
     for (std::vector<Unites>::size_type i = 0; i != unites.size(); i++) {
+        int count=0;
         if (unites[i].isAtPos(x, y) && unites[i].getTeam() == turn) {
             posXselec = static_cast<int>(i);
-            unites[i].setUnitin(true);
         } else if (unites[i].isAtPos(x+1, y) ) {
+            count=1;
             unites[i].setUnitin(true);
         } else if (unites[i].isAtPos(x-1, y) ) {
+            count=1;
             unites[i].setUnitin(true);
         } else if (unites[i].isAtPos(x, y+1) ) {
+            count=1;
             unites[i].setUnitin(true);
         } else if (unites[i].isAtPos(x, y-1) ) {
+            count=1;
             unites[i].setUnitin(true);
         }
         else{
              unites[i].setUnitin(false);
+        }
+        if(count==1){
+            unites[posXselec].setUnitin(true);
         }
     }
 }
