@@ -503,8 +503,6 @@ void Game::move(int x,int y)
         else{
              unites[i].setUnitin(false);
         }
-        std::cout<<unites[i].getUnitin()<<std::endl;
-        std::cout<<unites[i].getPosX()<<"  "<<unites[i].getPosY()<<std::endl;
     }
 }
 
