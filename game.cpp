@@ -141,7 +141,7 @@ void Game::moveable(int move, int x, int y ,int typeu)
         }
 
     if(x<21 && x>-1 && y<17 && y>-1){
-        if(move >= gameobject[x+1][y].getPtdemouvement(typeu) &&!gameobject[x+1][y].getUnitin() && (gameobject[x+1][y].getTeam()==turn || gameobject[x+1][y].getTeam()==0 )){
+        if(move >= gameobject[x+1][y].getPtdemouvement(typeu) &&!gameobject[x+1][y].getUnitin() ){
             gameobject[x+1][y].setMovable(true);
             int s = move-gameobject[x+1][y].getPtdemouvement(typeu);
 
@@ -153,7 +153,7 @@ void Game::moveable(int move, int x, int y ,int typeu)
             moveable(s,x+1,y,typeu);
             }
     }
-    if(move >= gameobject[x-1][y].getPtdemouvement(typeu)&& !gameobject[x-1][y].getUnitin()&&(gameobject[x-1][y].getTeam()==turn ||gameobject[x-1][y].getTeam()==0)){
+    if(move >= gameobject[x-1][y].getPtdemouvement(typeu)&& !gameobject[x-1][y].getUnitin()){
         gameobject[x-1][y].setMovable(true);
 
         int s = move-gameobject[x-1][y].getPtdemouvement(typeu);
@@ -166,7 +166,7 @@ void Game::moveable(int move, int x, int y ,int typeu)
         }
 
     }
-    if(move >= gameobject[x][y+1].getPtdemouvement(typeu)&&!gameobject[x][y+1].getUnitin()&& (gameobject[x][y+1].getTeam()==turn || gameobject[x][y+1].getTeam()==0 )){
+    if(move >= gameobject[x][y+1].getPtdemouvement(typeu)&&!gameobject[x][y+1].getUnitin()){
 
                 gameobject[x][y+1].setMovable(true);
 
@@ -180,7 +180,7 @@ void Game::moveable(int move, int x, int y ,int typeu)
                 }
 
     }
-    if(move >= gameobject[x][y-1].getPtdemouvement(typeu)&& !gameobject[x][y-1].getUnitin()&&( gameobject[x][y-1].getTeam()==turn|| gameobject[x][y-1].getTeam()==0)){
+    if(move >= gameobject[x][y-1].getPtdemouvement(typeu)&& !gameobject[x][y-1].getUnitin()){
                         gameobject[x][y-1].setMovable(true);
 
                         int s = move-gameobject[x][y-1].getPtdemouvement(typeu);
@@ -341,6 +341,24 @@ void Game::move(int x,int y)
             v.setUnitin(true);
         }
     }
+    for (std::vector<Unites>::size_type i = 0; i != unites.size(); i++) {
+        if (unites[i].isAtPos(x, y) && unites[i].getTeam() == turn) {
+            posXselec = static_cast<int>(i);
+        } else if (unites[i].isAtPos(x+1, y) ) {
+            unites[i].setUnitin(true);
+        } else if (unites[i].isAtPos(x-1, y) ) {
+            unites[i].setUnitin(true);
+        } else if (unites[i].isAtPos(x, y+1) ) {
+            unites[i].setUnitin(true);
+        } else if (unites[i].isAtPos(x, y-1) ) {
+            unites[i].setUnitin(true);
+        }
+        else{
+             unites[i].setUnitin(false);
+        }
+        std::cout<<unites[i].getUnitin()<<std::endl;
+    }
+
     for (std::vector<Terrain>::size_type i = 0; i != terrain.size(); i++){
         terrain[i].setUnitin(false);
     }
@@ -468,6 +486,25 @@ void Game::move(int x,int y)
         unites[posXselec].setSelected(true);
         window->synchro(unites[posXselec]);
         window->redraw();
+    }
+    for (std::vector<Unites>::size_type i = 0; i != unites.size(); i++) {
+        if (unites[i].isAtPos(x, y) && unites[i].getTeam() == turn) {
+            posXselec = static_cast<int>(i);
+            unites[i].setUnitin(true);
+        } else if (unites[i].isAtPos(x+1, y) ) {
+            unites[i].setUnitin(true);
+        } else if (unites[i].isAtPos(x-1, y) ) {
+            unites[i].setUnitin(true);
+        } else if (unites[i].isAtPos(x, y+1) ) {
+            unites[i].setUnitin(true);
+        } else if (unites[i].isAtPos(x, y-1) ) {
+            unites[i].setUnitin(true);
+        }
+        else{
+             unites[i].setUnitin(false);
+        }
+        std::cout<<unites[i].getUnitin()<<std::endl;
+        std::cout<<unites[i].getPosX()<<"  "<<unites[i].getPosY()<<std::endl;
     }
 }
 
@@ -824,9 +861,10 @@ void Game::attack(int z, int e,int i){
 void Game::fusion( int v, int w){
     Unites& a = unites[v];  // attention, vien ^^etre sur que ya pas de out_of_range
     Unites& b = unites[w];
+    unites[w].setUnitin(false);
+    unites[v].setUnitin(false);
     if(a.getSelected() == true){
         unites.erase(unites.begin() + v);
-        unites[w].setUnitin(false);
         if(a.getvie()+b.getvie()>=10){
             unites[w].setvie(10);
         }
@@ -836,7 +874,6 @@ void Game::fusion( int v, int w){
     }
     else{
         unites.erase(unites.begin() + w);
-        unites[v].setUnitin(false);
         if(a.getvie()+b.getvie()>=10){
             unites[v].setvie(10);
         }
@@ -898,6 +935,7 @@ void Game::capture(int z, int e)
         window->redraw();
         if(ville[i].getCapturepoint()==0){
         gameobject[z][e].setTeam(turn);
+        ville[i].setCapturepoint(20);
         ville[i].setTeam(turn);
         window->update();
 
