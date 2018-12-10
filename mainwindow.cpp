@@ -132,6 +132,111 @@ MainWindow::MainWindow(QWidget *parent) :
 
 
 }
+void MainWindow::sendJson(QJsonObject obj) {
+    QByteArray data = QJsonDocument(obj).toJson();
+    QDataStream out(other);
+    out << (quint32) data.length();
+    other->write(data);
+
+    std::cout << "Sending " << data.toStdString() << std::endl;
+}
+
+void MainWindow::setMyTurn(bool value)
+{
+    myTurn = value;
+}
+
+
+
+void MainWindow::online()
+{
+    server = new QTcpServer();
+    local=false;
+    if(! server->listen(QHostAddress::Any, 8123)) {
+        std::cout << "I am a client" << std::endl;
+        other = new QTcpSocket();
+        connect(other, SIGNAL(connected()), this, SLOT(onConnected()));
+        other->connectToHost("127.0.0.1", 8123);
+        connect(other, SIGNAL(disconnected()), this, SLOT(onDisconnected()));
+    } else {
+        std::cout << "I am the server" << std::endl;
+        other = nullptr;
+    }
+
+    connect(server, SIGNAL(newConnection()), this, SLOT(onNewConnection()));
+}
+
+void MainWindow::onNewConnection() {
+    std::cout << "A new client is connecting !" << std::endl;
+    other = server->nextPendingConnection();
+    connect(other, SIGNAL(disconnected()), this, SLOT(onDisconnected()));
+    connect(other, SIGNAL(readyRead()), this, SLOT(onData()));
+
+    QJsonObject info;
+    posX = 0;
+    posY = 0;
+    info["x"] = posX;
+    info["y"] = posY;
+
+    isConfigured = true;
+    myTurn = false;
+
+    sendJson(info);
+    update();
+}
+
+void MainWindow::onConnected() {
+    std::cout << "I am connected" << std::endl;
+    connect(other, SIGNAL(readyRead()), this, SLOT(onData()));
+}
+
+void MainWindow::onDisconnected() {
+    std::cout << "The other guy just disconnected" << std::endl;
+}
+
+void MainWindow::onData() {
+    std::cout << "Some data !" << std::endl;
+    if(currentSize == 0) {
+        if(other->bytesAvailable() < 4)
+            return;
+
+        QDataStream in(other);
+        in >> currentSize;
+    }
+
+    if(other->bytesAvailable() < currentSize)
+        return;
+
+    QByteArray data = other->read(currentSize);
+    std::cout << data.toStdString() << std::endl;
+    currentSize = 0;
+
+    QJsonDocument doc = QJsonDocument::fromJson(data);
+    QJsonObject json = doc.object();
+
+    if(! isConfigured) {
+        posX = json["x"].toInt();
+        posY = json["y"].toInt();
+        update();
+        isConfigured = true;
+        myTurn = true;
+    } else {
+        int oldX = json["oldX"].toInt();
+        int oldY = json["oldY"].toInt();
+        int newX = json["newX"].toInt();
+        int newY = json["newY"].toInt();
+
+        if(!(posX == oldX && posY == oldY)) {
+            std::cerr << "ERROR" << std::endl;
+            destroy();
+            return;
+        }
+
+        posX = newX;
+        posY = newY;
+        myTurn = true;
+        update();
+    }}
 
 MainWindow::~MainWindow()
 {   delete bouton;
@@ -176,6 +281,17 @@ void MainWindow::redraw()
 
 void MainWindow::changeturn()
 {
+    if(! myTurn && !local )
+            return;
+    if(!local){
+
+    QJsonObject move;
+    move["newX"] = posX;
+    move["newY"] = posY;
+
+    sendJson(move);
+    update();
+    myTurn = false;}
     Game& game = Game::Instance();
     game.endtour();
     if (game.getTurn() == 1) {
@@ -240,10 +356,26 @@ void MainWindow::changeDefWindow(Gameobject& gameobject)
 }
 
 void MainWindow::mousePressEvent(QMouseEvent *e)
-{   int r=int(floorf(e->x()/40));
+{   if(! myTurn && !local )
+        return;
+    int r=int(floorf(e->x()/40));
     int s=int(floorf(e->y()/40));
     if(r>= 5 && r<27 && s>=0 && s<18 ){
     map->mousePress(r,s ,e);}
+    if(!local){
+    int oldX = posX;
+    int oldY = posY;
+    posX = e->x();
+    posY = e->y();
+
+    QJsonObject move;
+    move["oldX"] = oldX;
+    move["oldY"] = oldY;
+    move["newX"] = posX;
+    move["newY"] = posY;
+
+
+   }
 }
 
 void MainWindow::synchro(Unites unite)
