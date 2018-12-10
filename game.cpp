@@ -873,13 +873,22 @@ void Game::attack(int z, int e,int i){
                  }
              }
              if(nombreunites==0){
-
+                 int nombreville = 0;
+                 for(int unsigned j=0;j<ville.size();j++){
+                     if(unites[j].getTeam()==T){
+                        nombreville = nombreville+1;
+                     }
+                 }
+                 if(nombreville==0){
+                     //lancer fonction end game
+                 }
              }
         }
         if(unites[posXselec].getvie() == 0){
-             unites.erase(unites.begin() + posXselec);
+            int T = unites[posXselec].getTeam();
+            unites.erase(unites.begin() + posXselec);
             //supprimer unites[i]
-             window->redraw();
+            window->redraw();
         }
 }
 
