@@ -889,6 +889,24 @@ void Game::attack(int z, int e,int i){
             unites.erase(unites.begin() + posXselec);
             //supprimer unites[i]
             window->redraw();
+            int nombreunites = 0;
+            for(int unsigned j=0;j<unites.size();j++)
+            {
+                if(unites[j].getTeam()==T){
+                   nombreunites = nombreunites+1;
+                }
+            }
+            if(nombreunites==0){
+                int nombreville = 0;
+                for(int unsigned j=0;j<ville.size();j++){
+                    if(unites[j].getTeam()==T){
+                       nombreville = nombreville+1;
+                    }
+                }
+                if(nombreville==0){
+                    //lancer fonction end game
+                }
+            }
         }
 }
 
@@ -961,7 +979,7 @@ void Game::capture(int z, int e)
     for(std::vector<Ville>::size_type i = 0; i != ville.size(); i++){
 
 
-    if(ville[i].getPosX()==z &&ville[i].getPosY()==e  && unites[posXselec].getType() == 1998){
+    if(ville[i].getPosX()==z && ville[i].getPosY()==e  && unites[posXselec].getType() == 1998){
 
         ville[i].setCapturepoint(unites[posXselec].getvie());
         window->changeCaptWindow(ville[i]);
@@ -1006,18 +1024,52 @@ void Game::capture(int z, int e)
 
 void Game::capture_Usine(int z, int e)
 {
+    int nombreusines1 = 0;
+    int nombreusines2 = 0;
     for(std::vector<Usine>::size_type i = 0; i != usine.size(); i++){
 
 
     if(usine[i].getPosX()==z &&usine[i].getPosY()==e  && unites[posXselec].getType() == 1998){
 
         usine[i].setCapturepoint(unites[posXselec].getvie());
+        int T = usine[i].getTeam();
         if(usine[i].getCapturepoint()==0){
-        gameobject[z][e].setTeam(turn);
-        usine[i].setTeam(turn);
-        window->redraw();
-}
+            if (T == 1) {
+                nombreusines1 = nombreusines1 + 1;
+            }
+            else {
+                nombreusines2 = nombreusines2 + 1;
+            }
+            gameobject[z][e].setTeam(turn);
+            usine[i].setTeam(turn);
+            window->redraw();
+           }
+
     }
+    }
+    if (nombreusines1 == 0) {
+        int nombreunites = 0;
+        for(int unsigned j=0;j<unites.size();j++)
+        {
+            if(unites[j].getTeam() == 1){
+               nombreunites = nombreunites+1;
+            }
+        }
+        if (nombreunites==0) {
+            //appel de la fonction end game
+        }
+    }
+    else if (nombreusines2 == 0) {
+        int nombreunites = 0;
+                for(int unsigned j=0;j<unites.size();j++)
+                {
+                    if(unites[j].getTeam() == 2){
+                       nombreunites = nombreunites+1;
+                    }
+                }
+                if (nombreunites==0) {
+                    //appel de la fonction end game
+                }
     }
 
 
