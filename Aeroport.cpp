@@ -64,6 +64,16 @@ void Aeroport::setUnitin(bool value)
     unitin = value;
 }
 
+bool Aeroport::getComptproduction() const
+{
+    return comptproduction;
+}
+
+void Aeroport::setComptproduction(bool value)
+{
+    comptproduction = value;
+}
+
 int Aeroport::getCapturepoint() const
 {
     return capturepoint;

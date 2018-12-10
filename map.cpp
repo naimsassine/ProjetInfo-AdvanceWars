@@ -21,6 +21,7 @@
 #include "Usine.h"
 #include "usinewindow.h"
 #include "case.h"
+#include "aerowindow.h"
 Map::Map(QWidget *parent ) : QWidget(parent)
 {
 
@@ -49,7 +50,7 @@ void Map::paintEvent(QPaintEvent *event)
         for (int j=0; j <17 ;j++){
 
 
-           if(gameobject[i][j].getType() == 1){
+           if(gameobject[i][j].getType() == 1 ){
                   QPixmap pixmap(":/plain.gif");
                   painter.drawPixmap(c*40,j*40,40,40,pixmap);
                   if(gameobject[i][j].getMovable()){
@@ -61,6 +62,8 @@ void Map::paintEvent(QPaintEvent *event)
 
 
            else if(gameobject[i][j].getType() == 2){
+               QPixmap pixmap1(":/plain.gif");
+               painter.drawPixmap(c*40,j*40,40,40,pixmap1);
                QPixmap pixmap(":/mountain.gif");
                painter.drawPixmap(c*40,j*40,40,40,pixmap);
                if(( (unite[h].getPosX() == gameobject[i][j].getPosX() && unite[h].getPosY() == gameobject[i][j].getPosY())) && unite[h].getTeam() == turn){
@@ -233,7 +236,8 @@ void Map::paintEvent(QPaintEvent *event)
                           }
            }
            else if(gameobject[i][j].getType() == 34){
-
+               QPixmap pixmap1(":/plain.gif");
+               painter.drawPixmap(c*40,j*40,40,40,pixmap1);
                if(gameobject[i][j].getTeam()==0){
                QPixmap pixmap(":/neutralcity.gif");
                painter.drawPixmap(c*40,j*40,40,40,pixmap);
@@ -261,6 +265,8 @@ void Map::paintEvent(QPaintEvent *event)
                           }
            }
            else if(gameobject[i][j].getType() == 35){
+               QPixmap pixmap1(":/plain.gif");
+               painter.drawPixmap(c*40,j*40,40,40,pixmap1);
                if(gameobject[i][j].getTeam()==0){
                QPixmap pixmap(":/neutralbase.gif");
                painter.drawPixmap(c*40,j*40,40,40,pixmap);
@@ -275,6 +281,7 @@ void Map::paintEvent(QPaintEvent *event)
                     painter.drawPixmap(50,250,40,40,pixmap);
 
                }
+               }
                if(gameobject[i][j].getTeam()==2){
                QPixmap pixmap(":/bluemoonbase.gif");
                painter.drawPixmap(c*40,j*40,40,40,pixmap);
@@ -282,9 +289,9 @@ void Map::paintEvent(QPaintEvent *event)
                     painter.drawPixmap(50,250,40,40,pixmap);
 
                }
-               painter.drawPixmap(c*40,j*40,40,40,pixmap);
+
                }
-               }
+
 
                if(gameobject[i][j].getMovable()){
                               QPixmap pixmap(":/Misc.png");
@@ -727,7 +734,7 @@ void Map::mousePress(int x ,int y , QMouseEvent *ev)
             else if(ev->buttons() == Qt::RightButton){
                Game& game=Game::Instance();
 
-                if ((gameobject[z][e].getType() == 44 ||gameobject[z][e].getType() == 39 || gameobject[z][e].getType() == 35 || gameobject[z][e].getType() == 36) && gameobject[z][e].getTeam() == game.getTurn() ){
+                if ( gameobject[z][e].getType() == 35  && gameobject[z][e].getTeam() == game.getTurn() ){
                     std::vector<Usine> usine = game.getUsine();
                     for(Usine& u : usine){
                         if(u.getPosX()==z && u.getPosY()==e && u.getTeam() ==game.getTurn() && u.getComptproduction()){
@@ -740,6 +747,20 @@ void Map::mousePress(int x ,int y , QMouseEvent *ev)
                     }
 
                 }
+                if ( gameobject[z][e].getType() == 36 && gameobject[z][e].getTeam() == game.getTurn() ){
+                    std::vector<Aeroport> aeroport = game.getAeroport();
+                    for(Aeroport& u : aeroport){
+                        if(u.getPosX()==z && u.getPosY()==e && u.getTeam() ==game.getTurn() && u.getComptproduction()){
+                            aerowindow w;
+
+                            w.setX(z);
+                            w.setY(e);
+                            w.exec();
+
+                        }
+                    }
+
+                }
                  if (gameobject[z][e].getType() == 34){
                     Game& game=Game::Instance();
                     std::vector<Ville> ville =game.getVille();
@@ -748,7 +769,7 @@ void Map::mousePress(int x ,int y , QMouseEvent *ev)
                     for(std::vector<Ville>::size_type i = 0; i != ville.size(); i++){
 
 
-                        if(ville[i].getPosX()==unite[game.getPosXselec()].getPosX() &&ville[i].getPosY()==unite[game.getPosXselec()].getPosY() && ville[i].getUnitin() && unite[game.getPosXselec()].getTeam()==game.getTurn()  ){
+                        if(ville[i].getPosX()==unite[game.getPosXselec()].getPosX()&& unite[game.getPosXselec()].getTeam()!=ville[i].getTeam() &&ville[i].getPosY()==unite[game.getPosXselec()].getPosY() && ville[i].getUnitin() && unite[game.getPosXselec()].getTeam()==game.getTurn()  ){
 
                             QMenu menu(this);
 
@@ -770,7 +791,7 @@ void Map::mousePress(int x ,int y , QMouseEvent *ev)
                     std::vector<Unites> unite =game.getUnites();
                     if(unite[game.getPosXselec()].getComptcapture()){
                     for(std::vector<Usine>::size_type i = 0; i!= usine.size(); i++){
-                        if(usine[i].getPosX()==unite[game.getPosXselec()].getPosX() &&usine[i].getPosY()==unite[game.getPosXselec()].getPosY() && usine[i].getUnitin() && unite[game.getPosXselec()].getTeam()==game.getTurn() ){
+                        if(usine[i].getPosX()==unite[game.getPosXselec()].getPosX() &&usine[i].getPosY()==unite[game.getPosXselec()].getPosY() && usine[i].getUnitin() && unite[game.getPosXselec()].getTeam()!=usine[i].getTeam() && unite[game.getPosXselec()].getTeam()==game.getTurn() ){
                             QMenu menu(this);
                             capture =new QAction("Capture", this);
                             menu.addAction(capture);
@@ -792,7 +813,7 @@ void Map::mousePress(int x ,int y , QMouseEvent *ev)
                     std::vector<Unites> unite =game.getUnites();
                     if(unite[game.getPosXselec()].getComptcapture()){
                     for(std::vector<Aeroport>::size_type i = 0; i!= aeroport.size(); i++){
-                        if(aeroport[i].getPosX()==unite[game.getPosXselec()].getPosX() &&aeroport[i].getPosY()==unite[game.getPosXselec()].getPosY() && aeroport[i].getUnitin() && unite[game.getPosXselec()].getTeam()==game.getTurn() ){
+                        if(aeroport[i].getPosX()==unite[game.getPosXselec()].getPosX() &&aeroport[i].getPosY()==unite[game.getPosXselec()].getPosY() && unite[game.getPosXselec()].getTeam()!=aeroport[i].getTeam()&& aeroport[i].getUnitin() && unite[game.getPosXselec()].getTeam()==game.getTurn() ){
                             QMenu menu(this);
                             capture =new QAction("Capture", this);
                             menu.addAction(capture);

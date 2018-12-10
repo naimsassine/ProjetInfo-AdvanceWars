@@ -41,6 +41,8 @@ public:
     void setComptcapture();
     void setComptfusion();
     void setComptproduction(int x,int y);
+    void setComptaeroport(int x,int y);
+
 
 
     Ville *getActville() const;

@@ -100,6 +100,15 @@ void Game::setComptproduction(int x, int y)
         }
     }
 }
+
+void Game::setComptaeroport(int x, int y)
+{
+    for(Aeroport& u : aeroport){
+        if(u.getPosX()==x && u.getPosY()==y){
+            u.setComptproduction(false);
+        }
+    }
+}
 std::vector<Aeroport> Game::getAeroport() const
 {
     return aeroport;
@@ -230,6 +239,10 @@ void Game::endtour()
         u.setComptproduction(true);
 
     }
+    for(Aeroport& u :aeroport){
+        u.setComptproduction(true);
+
+    }
     getPlayer()->setMoney(getPlayer()->getMoney()+(1000*nbrebatiment));
     if (turn==1) {
         for(std::vector<Unites>::size_type i = 0; i != unites.size(); i++)
@@ -322,6 +335,9 @@ void Game::move(int x,int y)
         }
         if(count==1){
             unites[posXselec].setUnitin(true);
+        }
+        else{
+             unites[posXselec].setUnitin(false);
         }
     }
 
