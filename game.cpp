@@ -659,7 +659,7 @@ void Game::InitGame(MainWindow *wind,Player *InitPlayer1,Player *InitPlayer2){
 
 
                 gameobject[j][d]= uorange;
-                gameobject[j][d].setType(39);
+                gameobject[j][d].setType(35);
                 gameobject[j][d].setTeam(1);
                 uorange.setTeam(1);
                 usine.push_back(uorange);
@@ -669,7 +669,7 @@ void Game::InitGame(MainWindow *wind,Player *InitPlayer1,Player *InitPlayer2){
 
 
                 gameobject[j][d]= ublue;
-                gameobject[j][d].setType(44);
+                gameobject[j][d].setType(35);
                 gameobject[j][d].setTeam(2);
                 ublue.setTeam(2);
                 usine.push_back(ublue);
@@ -875,11 +875,11 @@ void Game::attack(int z, int e,int i){
              if(nombreunites==0){
                  int nombreusine = 0;
                  for(int unsigned j=0;j<usine.size();j++){
-                     if(unites[j].getTeam()==T){
-                        nombreusine = nombreusine+1;
+                     if(usine[j].getTeam()==T){
+                        nombreusine = nombreusine + 1;
                      }
                  }
-                 if(nombreusine==0){
+                 if(nombreusine == 0){
                      std::cout<<"end of game "<<std::endl;
                  }
              }
@@ -893,17 +893,17 @@ void Game::attack(int z, int e,int i){
             for(int unsigned j=0;j<unites.size();j++)
             {
                 if(unites[j].getTeam()==T){
-                   nombreunites = nombreunites+1;
+                   nombreunites = nombreunites + 1;
                 }
             }
             if(nombreunites==0){
-                int nombreville = 0;
-                for(int unsigned j=0;j<ville.size();j++){
-                    if(unites[j].getTeam()==T){
-                       nombreville = nombreville+1;
+                int nombreusine = 0;
+                for(int unsigned j=0;j<usine.size();j++){
+                    if(usine[j].getTeam()==T){
+                       nombreusine = nombreusine + 1;
                     }
                 }
-                if(nombreville==0){
+                if(nombreusine == 0){
                     //lancer fonction end game
                 }
             }
