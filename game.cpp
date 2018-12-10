@@ -381,7 +381,7 @@ void Game::move(int x,int y)
         else{
              unites[i].setUnitin(false);
         }
-        std::cout<<unites[i].getUnitin()<<std::endl;
+        //std::cout<<unites[i].getUnitin()<<std::endl;
     }
 
     for (std::vector<Terrain>::size_type i = 0; i != terrain.size(); i++){
@@ -888,7 +888,7 @@ void Game::attack(int z, int e,int i){
                     nombreunites = nombreunites+1;
                  }
              }
-             if(nombreunites==0){
+             if(nombreunites == 0){
                  int nombreusine = 0;
                  for(int unsigned j=0;j<usine.size();j++){
                      if(usine[j].getTeam()==T){
@@ -920,7 +920,7 @@ void Game::attack(int z, int e,int i){
                     }
                 }
                 if(nombreusine == 0){
-                    //lancer fonction end game
+                    std::cout<<"end game 1"<<std::endl;
                 }
             }
         }
@@ -1072,7 +1072,7 @@ void Game::capture_Usine(int z, int e)
             }
         }
         if (nombreunites==0) {
-            //appel de la fonction end game
+            std::cout<<"end game2"<<std::endl;
         }
     }
     else if (nombreusines2 == 0) {
@@ -1084,7 +1084,7 @@ void Game::capture_Usine(int z, int e)
                     }
                 }
                 if (nombreunites==0) {
-                    //appel de la fonction end game
+                     std::cout<<"end game3"<<std::endl;
                 }
     }
 
