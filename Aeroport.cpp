@@ -76,6 +76,9 @@ void Aeroport::setCapturepoint(int value)
     if(capturepoint<0){
         capturepoint=0;
     }
+    if(value==20){
+       capturepoint=20;
+    }
 
 }
 
