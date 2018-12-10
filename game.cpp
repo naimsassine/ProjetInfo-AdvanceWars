@@ -1066,9 +1066,9 @@ void Game::capture_Usine(int z, int e)
     }
     if (nombreusines1 == 0) {
         int nombreunites = 0;
-        for(int unsigned j=0;j<unites.size();j++)
+        for(int unsigned j=0;j<usine.size();j++)
         {
-            if(unites[j].getTeam() == 1){
+            if(usine[j].getTeam() == 1){
                nombreunites = nombreunites+1;
             }
         }
@@ -1078,9 +1078,9 @@ void Game::capture_Usine(int z, int e)
     }
     else if (nombreusines2 == 0) {
         int nombreunites = 0;
-                for(int unsigned j=0;j<unites.size();j++)
+                for(int unsigned j=0;j<usine.size();j++)
                 {
-                    if(unites[j].getTeam() == 2){
+                    if(usine[j].getTeam() == 2){
                        nombreunites = nombreunites+1;
                     }
                 }
