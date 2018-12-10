@@ -21,7 +21,6 @@ Menu::~Menu()
 void Menu::on_pushButton_clicked()
 {
     this->close();
-
     window->show();
 
 
@@ -40,6 +39,6 @@ void Menu::setWindow(MainWindow *value)
 
 
 void Menu::on_pushButton_2_clicked()
-{
-
+{   window->online();
+    window->show();
 }
