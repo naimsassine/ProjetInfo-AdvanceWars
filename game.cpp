@@ -861,9 +861,20 @@ void Game::attack(int z, int e,int i){
 
 
         if(unites[i].getvie() == 0){
+             int T = unites[i].getTeam();
              unites.erase(unites.begin() + i);
-            //supprimer unites[i]
+             //supprimer unites[i]
              window->redraw();
+             int nombreunites = 0;
+             for(int unsigned j=0;j<unites.size();j++)
+             {
+                 if(unites[j].getTeam()==T){
+                    nombreunites = nombreunites+1;
+                 }
+             }
+             if(nombreunites==0){
+
+             }
         }
         if(unites[posXselec].getvie() == 0){
              unites.erase(unites.begin() + posXselec);
