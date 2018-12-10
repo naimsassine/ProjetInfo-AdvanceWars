@@ -21,7 +21,7 @@
 #include "Usine.h"
 #include "usinewindow.h"
 #include "case.h"
-#include "aerowindow.h"
+#include "aerwindow.h"
 Map::Map(QWidget *parent ) : QWidget(parent)
 {
 
@@ -751,7 +751,7 @@ void Map::mousePress(int x ,int y , QMouseEvent *ev)
                     std::vector<Aeroport> aeroport = game.getAeroport();
                     for(Aeroport& u : aeroport){
                         if(u.getPosX()==z && u.getPosY()==e && u.getTeam() ==game.getTurn() && u.getComptproduction()){
-                            aerowindow w;
+                            AerWindow w;
 
                             w.setX(z);
                             w.setY(e);
