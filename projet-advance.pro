@@ -67,7 +67,7 @@ SOURCES += \
     bazooka.cpp \
     case.cpp \
     menu.cpp \
-    aerowindow.cpp
+    aerwindow.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -108,14 +108,13 @@ HEADERS += \
     bazooka.h \
     case.h \
     menu.h \
-    aerowindow.h \
-    aerowindow.h
+    aerwindow.h
 
 FORMS += \
         mainwindow.ui \
     usinewindow.ui \
     menu.ui \
-    aerowindow.ui
+    aerwindow.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
