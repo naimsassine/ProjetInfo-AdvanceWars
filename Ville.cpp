@@ -20,10 +20,14 @@ int Ville::getCapturepoint() const
 
 void Ville::setCapturepoint(int value)
 {
+
     capturepoint = capturepoint-value;
     /*if capturepoint =0 setteam*/
     if(capturepoint<0){
         capturepoint=0;
+    }
+    if(value==20){
+       capturepoint=20;
     }
 
 }
