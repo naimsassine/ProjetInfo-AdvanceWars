@@ -277,6 +277,7 @@ void Map::paintEvent(QPaintEvent *event)
                }
                if(gameobject[i][j].getTeam()==2){
                QPixmap pixmap(":/bluemoonbase.gif");
+               painter.drawPixmap(c*40,j*40,40,40,pixmap);
                if((gameobject[i][j].getSelected()==true)  || (unite[h].getPosX() == gameobject[i][j].getPosX() && unite[h].getPosY() == gameobject[i][j].getPosY())){
                     painter.drawPixmap(50,250,40,40,pixmap);
 
