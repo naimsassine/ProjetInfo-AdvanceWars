@@ -14,7 +14,8 @@
 #include "Unites.h"
 #include "Usine.h"
 #include "Aeroport.h"
-#include "Ville.h";
+#include "Ville.h"
+#include "QtNetwork"
 #include "Terrain.h"
 class Gameobject;
 namespace Ui {
@@ -44,11 +45,19 @@ public:
    // void dessin(QLabel *p, char c, int x, int y);
 
     Map *getMap() const;
+    void online();
+
+    void setMyTurn(bool value);
 
 private slots:
     void changeturn();
+    void onNewConnection();
+    void onConnected();
+    void onData();
+    void onDisconnected();
 //void changeMoneyWindow();//
-
+private:
+    void sendJson(QJsonObject obj);
 private:
     Ui::MainWindow *ui = nullptr;
     Map *map = nullptr;
@@ -70,6 +79,13 @@ private:
     QLabel *don1 = nullptr;
     QLabel *don2 = nullptr;
     int typet= 0;
+    quint32 currentSize = 0;
+    bool isConfigured = false;
+    int posX = 100, posY = 150;
+    bool myTurn = false;
+    bool local=true;
+    QTcpServer* server = nullptr;
+    QTcpSocket* other = nullptr;
 
 
 };
