@@ -1037,7 +1037,6 @@ void Game::capture(int z, int e)
 
 
 
-
 void Game::capture_Usine(int z, int e)
 {
     int nombreusines1 = 0;
@@ -1048,20 +1047,21 @@ void Game::capture_Usine(int z, int e)
     if(usine[i].getPosX()==z &&usine[i].getPosY()==e  && unites[posXselec].getType() == 1998){
 
         usine[i].setCapturepoint(unites[posXselec].getvie());
-        int T = usine[i].getTeam();
         if(usine[i].getCapturepoint()==0){
-            if (T == 1) {
-                nombreusines1 = nombreusines1 + 1;
-            }
-            else {
-                nombreusines2 = nombreusines2 + 1;
-            }
             gameobject[z][e].setTeam(turn);
             usine[i].setTeam(turn);
             window->redraw();
            }
 
     }
+
+    if (usine[i].getTeam() == 1) {
+        nombreusines1 = nombreusines1 + 1;
+    }
+    else if (usine[i].getTeam() == 2) {
+     nombreusines2 = nombreusines2 + 1;
+    }
+
     }
     if (nombreusines1 == 0) {
         int nombreunites = 0;
