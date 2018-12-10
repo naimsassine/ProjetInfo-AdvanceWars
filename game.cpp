@@ -1050,6 +1050,7 @@ void Game::capture_Usine(int z, int e)
         if(usine[i].getCapturepoint()==0){
             gameobject[z][e].setTeam(turn);
             usine[i].setTeam(turn);
+            usine[i].setCapturepoint(20);
             window->redraw();
            }
 
@@ -1100,6 +1101,7 @@ void Game::capture_Aeroport(int z, int e)
         aeroport[i].setCapturepoint(unites[posXselec].getvie());
         if(aeroport[i].getCapturepoint()==0){
         gameobject[z][e].setTeam(turn);
+        aeroport[i].setCapturepoint(20);
         aeroport[i].setTeam(turn);
         window->redraw();
 }
