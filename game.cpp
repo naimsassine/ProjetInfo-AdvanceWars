@@ -873,14 +873,14 @@ void Game::attack(int z, int e,int i){
                  }
              }
              if(nombreunites==0){
-                 int nombreville = 0;
-                 for(int unsigned j=0;j<ville.size();j++){
+                 int nombreusine = 0;
+                 for(int unsigned j=0;j<usine.size();j++){
                      if(unites[j].getTeam()==T){
-                        nombreville = nombreville+1;
+                        nombreusine = nombreusine+1;
                      }
                  }
-                 if(nombreville==0){
-                     //lancer fonction end game
+                 if(nombreusine==0){
+                     std::cout<<"end of game "<<std::endl;
                  }
              }
         }
