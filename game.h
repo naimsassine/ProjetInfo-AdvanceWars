@@ -80,6 +80,7 @@ private:
     bool unitincity=false;
     bool same = false;
     int capturesend[4];
+    int creationunit[4];
 
 
     // NAim on te...//
