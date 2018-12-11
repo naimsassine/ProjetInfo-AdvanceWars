@@ -245,8 +245,7 @@ void Game::endtour()
     }
     getPlayer()->setMoney(getPlayer()->getMoney()+(1000*nbrebatiment));
     if (turn==1) {
-        for(std::vector<Unites>::size_type i = 0; i != unites.size(); i++)
-        {
+        for(std::vector<Unites>::size_type i = 0; i != unites.size(); i++) {
             unites[i].setComptattack(true);
             unites[i].setComptcapture(true);
             unites[i].setComptmouvement(true);
@@ -257,17 +256,10 @@ void Game::endtour()
                         int x = int(0.01*(unites[i].getPrix()));
                         unites[i].setvie(10);
                         getPlayer()->setMoney(getPlayer()->getMoney()-(x));
-                    }
+                    }}}}turn=2;}
 
-                }}
-        }
-        turn=2;
-
-
-    }
     else if (turn==2) {
-        for (std::vector<Unites>::size_type i = 0; i != unites.size(); i++)
-        {
+        for (std::vector<Unites>::size_type i = 0; i != unites.size(); i++) {
             unites[i].setComptattack(true);
             unites[i].setComptcapture(true);
             unites[i].setComptmouvement(true);
@@ -278,13 +270,8 @@ void Game::endtour()
                         int x = int(0.01*(unites[i].getPrix()));
                         unites[i].setvie(10);
                         getPlayer()->setMoney(getPlayer()->getMoney()-(x));
-                    }
-                }}
-        }
-        turn=1;
-    }
+                    }}}}turn=1;}}
 
-}
 Game &Game::Instance()
 {
     return gameinst;
