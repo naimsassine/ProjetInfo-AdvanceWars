@@ -20,7 +20,7 @@ public:
     int getTurn() const;
     void setTurn(int value);
     void createUnite(int x, int y, int team ,int type);
-    void attack(int z, int e ,int  i);
+    void attack(int z, int e ,int  i,int je);
    // void fusion(int z, int e, Unites u1, Unites u2);
     void fusion( int v, int w);
     void capture(int z,int e);
@@ -54,6 +54,8 @@ public:
     int getPosXselec() const;
     int getMoveSend(int a);
     int getCaptureSend(int a);
+    int getCreateunit(int a);
+    int getattackjs(int a);
     void changeposu(int i ,int newx ,int newy);
     void setcaptureonline(int type,int i ,int capturepoint ,int team);
 
@@ -81,6 +83,7 @@ private:
     bool same = false;
     int capturesend[4];
     int creationunit[4];
+    int attackjs[4];
 
 
     // NAim on te...//
