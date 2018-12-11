@@ -141,6 +141,11 @@ void MainWindow::sendJson(QJsonObject obj) {
     std::cout << "Sending " << data.toStdString() << std::endl;
 }
 
+bool MainWindow::getLocal() const
+{
+    return local;
+}
+
 void MainWindow::setMyTurn(bool value)
 {
     myTurn = value;
@@ -220,17 +225,52 @@ void MainWindow::onData() {
         update();
         isConfigured = true;
         myTurn = true;
-    } else {
+    }
+    else {
+        if(json["endtour"]==true){
+            Game& game = Game::Instance();
+            game.endtour();
+            if (game.getTurn() == 1) {
+                lab->setText("Player 1");
+            }
+            else {
+                lab->setText("Player 2");
+            }
+            Player *player = game.getPlayer();
+            lab3->setText(QString::number(player->getMoney()));
+
+        }
         int oldX = json["oldX"].toInt();
         int oldY = json["oldY"].toInt();
         int newX = json["newX"].toInt();
         int newY = json["newY"].toInt();
 
-        if(!(posX == oldX && posY == oldY)) {
+        if(oldX!=newX || oldY!=newY){
+             Game& game = Game::Instance();
+             std::vector<Unites> unite =game.getUnites();
+             for(int unsigned j=0;j<unite.size();j++){
+                 if(unite[j].getPosX()==oldX &&unite[j].getPosY()==oldY){
+                     game.changeposu(j,newX,newY);
+
+                 }
+             }
+
+
+        }
+        if(json["building"]==0 ||json["building"]==1 || json["building"]==2){
+            Game& game = Game::Instance();
+            int type = json["building"].toInt();
+            int i = json["i"].toInt();
+            int s = json["capturepoint"].toInt();
+            int r = json["team"].toInt();
+            game.setcaptureonline(type,i,s,r);
+        }
+
+       /* if(!(posX == oldX && posY == oldY)) {
             std::cerr << "ERROR" << std::endl;
             destroy();
             return;
-        }
+        }*/
 
         posX = newX;
         posY = newY;
@@ -285,11 +325,11 @@ void MainWindow::changeturn()
             return;
     if(!local){
 
-    QJsonObject move;
-    move["newX"] = posX;
-    move["newY"] = posY;
+    QJsonObject endtour;
+    endtour["endtour"] = true;
 
-    sendJson(move);
+
+    sendJson(endtour);
     update();
     myTurn = false;}
     Game& game = Game::Instance();
@@ -346,6 +386,30 @@ void MainWindow::changeDammageWindow(Unites& unite){
     Game& game = Game::Instance();
     int d = unite.getdamage();
     labD1->setNum(d);
+}
+
+void MainWindow::unitmoved()
+{
+    Game& game = Game::Instance();
+    QJsonObject move;
+    move["oldX"] = game.getMoveSend(0);
+    move["oldY"] = game.getMoveSend(1);
+    move["newX"] = game.getMoveSend(2);
+    move["newY"] = game.getMoveSend(3);
+    sendJson(move);
+
+
+}
+
+void MainWindow::unitcaptured()
+{
+    Game& game = Game::Instance();
+    QJsonObject capture;
+    capture["building"] = game.getCaptureSend(0);
+    capture["i"] = game.getCaptureSend(1);
+    capture["capturepoint"] = game.getCaptureSend(2);
+    capture["team"] = game.getCaptureSend(3);
+    sendJson(capture);
 }
 
 void MainWindow::changeDefWindow(Gameobject& gameobject)
