@@ -288,6 +288,7 @@ void Game::endtour()
             unites[i].setComptcapture(true);
             unites[i].setComptmouvement(true);
             unites[i].setComptfusion(true);
+            unites[i].setUnitin(false);
             for(int h=0 ;h<21;h++){
                 for (int j=0; j <17 ;j++){
                     if( unites[i].getTeam()==turn && unites[i].getPosX() == h && unites[i].getPosY() == j && unites[i].getvie() < 10 && (gameobject[h][j].getType() == 34 || gameobject[h][j].getType() == 35 || gameobject[h][j].getType() == 39 ) ){
@@ -832,6 +833,12 @@ void Game::movearrow(int x, int y){
 
 
 void Game::createUnite(int x, int y,  int team ,int type ){
+    if(!window->getLocal() ){
+        creationunit[0]=x;
+        creationunit[1]=y;
+        creationunit[2]=team;
+        creationunit[3]=type;
+    }
     if(type == 1998){
         Infanterie nom1(x,y,team);
         printf("big fat lol");
