@@ -855,14 +855,18 @@ void Map::mousePress(int x ,int y , QMouseEvent *ev)
                     }
                         if(unite[game.getPosXselec()].getComptfusion()){
                             //std::cout<<unite[game.getPosXselec()].getUnitin()<<std::endl;
-                        if(unite[i].getPosX() == z && unite[i].getType()==unite[game.getPosXselec()].getType() && unite[i].getPosY()==e && unite[game.getPosXselec()].getUnitin() && unite[i].getTeam() == game.getTurn()){
+                        if(unite[i].getPosX()==z  &&unite[i].getPosY()==e && unite[i].getUnitin() && unite[i].getTeam()==game.getTurn() && unite[game.getPosXselec()].getTeam() != game.getTurn())
+                                //unite[i].getPosX() == z && unite[i].getType()==unite[game.getPosXselec()].getType()
+                                //&& unite[i].getPosY()==e && unite[game.getPosXselec()].getUnitin()
+                              //  && unite[i].getTeam() == game.getTurn() && unite[game.getPosXselec()].getTeam() == game.getTurn() && unite[i].getUnitin() )
+                        {
                             QMenu menu(this);
                             fusion = new QAction("Fusion", this);
                             menu.addAction(fusion);
                             type = unite[i].getType();
                             wait = new QAction("Wait", this);
                             menu.addAction(wait);
-                            unitpos = i;
+                            unitpos = i ;
                             QObject::connect(fusion, SIGNAL(triggered()), this, SLOT(fusionunite()));
                             menu.exec(ev->globalPos());
                         }
