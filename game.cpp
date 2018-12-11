@@ -71,6 +71,8 @@ void Game::setcaptureonline(int type, int i, int capturepoint, int team)
     if(type ==0){
         ville[i].setCapturepoint(capturepoint);
         ville[i].setTeam(team);
+        gameobject[ville[i].getPosX()][ville[i].getPosY()].setTeam(team);
+        window->redraw();
 
     }
 }
