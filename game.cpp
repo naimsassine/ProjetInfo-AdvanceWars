@@ -61,6 +61,16 @@ int Game::getCaptureSend(int a)
     return capturesend[a];
 }
 
+int Game::getCreateunit(int a)
+{
+    return creationunit[a];
+}
+
+int Game::getattackjs(int a)
+{
+    return attackjs[a];
+}
+
 void Game::changeposu(int i, int newx, int newy)
 {
     unites[i].setPos(newx,newy);
@@ -288,7 +298,7 @@ void Game::endtour()
             unites[i].setComptcapture(true);
             unites[i].setComptmouvement(true);
             unites[i].setComptfusion(true);
-            unites[i].setUnitin(false);
+
             for(int h=0 ;h<21;h++){
                 for (int j=0; j <17 ;j++){
                     if( unites[i].getTeam()==turn && unites[i].getPosX() == h && unites[i].getPosY() == j && unites[i].getvie() < 10 && (gameobject[h][j].getType() == 34 || gameobject[h][j].getType() == 35 || gameobject[h][j].getType() == 39 ) ){
@@ -836,11 +846,13 @@ void Game::movearrow(int x, int y){
 
 
 void Game::createUnite(int x, int y,  int team ,int type ){
-    if(!window->getLocal() ){
+    if(!window->getLocal() && window->getMyTurn()){
         creationunit[0]=x;
         creationunit[1]=y;
         creationunit[2]=team;
         creationunit[3]=type;
+        window->createunit();
+
     }
     if(type == 1998){
         Infanterie nom1(x,y,team);
@@ -902,17 +914,32 @@ void Game::createUnite(int x, int y,  int team ,int type ){
 
 }
 
-void Game::attack(int z, int e,int i){
+void Game::attack(int z, int e,int i , int je){
+    if(!window->getLocal() && window->getMyTurn()){
+
+        attackjs[0]=z;
+        attackjs[1]=e;
+        attackjs[2]=i;
+        attackjs[3]=je;
+
+        window->attack();
+
+    }
 
     if(unites[i].getvie()>0){
         int x = unites[i].getPosX();
         int y = unites[i].getPosY();
-        int r = unites[posXselec].getPosX();
-        int s = unites[posXselec].getPosY();
+        int r = unites[je].getPosX();
+        int s = unites[je].getPosY();
         int defTerrain1 = gameobject[x][y].getdefTerrain(gameobject[x][y].getPosdef());
         int defTerrain2 = gameobject[r][s].getdefTerrain(gameobject[r][s].getPosdef());
-        unites[i].setDamage(unites[posXselec],unites[i],defTerrain1);
-        unites[posXselec].setDamage(unites[i],unites[posXselec],defTerrain2);
+
+        unites[i].setDamage(unites[je],unites[i],defTerrain1);
+        std::cout<<unites[i].getvie()<<std::endl;
+        std::cout<<unites[je].getvie()<<std::endl;
+        unites[je].setDamage(unites[i],unites[je],defTerrain2);
+        std::cout<<unites[i].getvie()<<std::endl;
+        std::cout<<unites[je].getvie()<<std::endl;
 
 
 
@@ -940,9 +967,9 @@ void Game::attack(int z, int e,int i){
                  }
              }
         }
-        if(unites[posXselec].getvie() == 0){
-            int T = unites[posXselec].getTeam();
-            unites.erase(unites.begin() + posXselec);
+        if(unites[je].getvie() == 0){
+            int T = unites[je].getTeam();
+            unites.erase(unites.begin() + je);
             //supprimer unites[i]
             window->redraw();
             int nombreunites = 0;
