@@ -972,6 +972,7 @@ void Game::fusion( int v, int w){
     Unites& b = unites[w];
     unites[w].setUnitin(false);
     unites[v].setUnitin(false);
+    //a.getTeam() == b.getTeam();
     if(a.getSelected() == true){
         unites.erase(unites.begin() + v);
         if(a.getvie()+b.getvie()>=10){
