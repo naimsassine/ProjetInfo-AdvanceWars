@@ -1017,7 +1017,7 @@ void Game::capture(int z, int e)
         }
 
 }
-    }
+      }
    /* else if((gameobject[z][e].getType()!= 34 && unites[posXselec].getType() == 1998 ) && unites[posXselec].getPosX() != z && unites[posXselec].getPosY() != e){
         if(ville[i].getCapturepoint() >0){
         ville[i].setCapturepoint(20);
