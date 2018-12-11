@@ -238,6 +238,7 @@ void MainWindow::onData() {
             }
             Player *player = game.getPlayer();
             lab3->setText(QString::number(player->getMoney()));
+            myTurn=true;
 
         }
         int oldX = json["oldX"].toInt();
@@ -274,7 +275,6 @@ void MainWindow::onData() {
 
         posX = newX;
         posY = newY;
-        myTurn = true;
         update();
     }}
 
