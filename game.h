@@ -52,6 +52,10 @@ public:
     MainWindow *getWindow() const;
 
     int getPosXselec() const;
+    int getMoveSend(int a);
+    int getCaptureSend(int a);
+    void changeposu(int i ,int newx ,int newy);
+    void setcaptureonline(int type,int i ,int capturepoint ,int team);
 
 private:
     Game();
@@ -60,6 +64,7 @@ private:
     std::vector<Aeroport> aeroport;
     std::vector<Ville> ville;
     std::vector<Terrain> terrain;
+    int movesend[4];
     int z=0;
     int e=0;
     Ville *actville;
@@ -74,6 +79,7 @@ private:
     int turn=1;
     bool unitincity=false;
     bool same = false;
+    int capturesend[4];
 
 
     // NAim on te...//
