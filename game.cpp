@@ -139,6 +139,7 @@ void Game::moveable(int move, int x, int y ,int typeu)
 
              gameobject[x+1][y].setUnitin(true);}
         else if( u.getPosX()==x-1 && u.getPosY()==y ){
+             //LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLl
 
              gameobject[x-1][y].setUnitin(true);}
         else if( u.getPosX()==x && u.getPosY()==y+1 ){
