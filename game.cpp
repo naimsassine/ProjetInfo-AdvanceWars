@@ -134,19 +134,14 @@ Player *Game::getPlayer() const
 }
 
 void Game::moveable(int move, int x, int y ,int typeu)
-{   for (Unites & u : unites) {       // Test ppour savoir si l unité est en place
-         if( u.getPosX()==x+1 && u.getPosY()==y ){
-
+{   for (Unites & u : unites) {       // Test pour savoir si une unité est en place
+        if( u.getPosX()==x+1 && u.getPosY()==y ){
              gameobject[x+1][y].setUnitin(true);}
         else if( u.getPosX()==x-1 && u.getPosY()==y ){
-             //LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLl
-
              gameobject[x-1][y].setUnitin(true);}
         else if( u.getPosX()==x && u.getPosY()==y+1 ){
-
              gameobject[x][y+1].setUnitin(true);}
         else if( u.getPosX()==x && u.getPosY()==y-1 ){
-
              gameobject[x][y-1].setUnitin(true);}
         }
 
@@ -158,6 +153,7 @@ void Game::moveable(int move, int x, int y ,int typeu)
             if(gameobject[x+1][y].getPtdemouvement(typeu)==0){
 
                  gameobject[x+1][y].setMovable(false);
+
             }
             else{
             moveable(s,x+1,y,typeu);
