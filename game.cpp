@@ -75,6 +75,20 @@ void Game::setcaptureonline(int type, int i, int capturepoint, int team)
         window->redraw();
 
     }
+    if(type ==1){
+        usine[i].setCapturepoint(capturepoint);
+        usine[i].setTeam(team);
+        gameobject[usine[i].getPosX()][usine[i].getPosY()].setTeam(team);
+        window->redraw();
+
+    }
+    if(type ==2){
+        aeroport[i].setCapturepoint(capturepoint);
+        aeroport[i].setTeam(team);
+        gameobject[aeroport[i].getPosX()][aeroport[i].getPosY()].setTeam(team);
+        window->redraw();
+
+    }
 }
 
 MainWindow *Game::getWindow() const
@@ -1014,6 +1028,7 @@ void Game::capture(int z, int e)
     if(ville[i].getPosX()==z && ville[i].getPosY()==e  && unites[posXselec].getType() == 1998){
 
         ville[i].setCapturepoint(unites[posXselec].getvie());
+        int c= unites[posXselec].getvie();
         window->changeCaptWindow(ville[i]);
         ville[i].setUnite(&unites[posXselec]);
         actville=&ville[i];
@@ -1021,22 +1036,17 @@ void Game::capture(int z, int e)
         if(ville[i].getCapturepoint()==0){
         gameobject[z][e].setTeam(turn);
         ville[i].setCapturepoint(20);
+        c=20;
         ville[i].setTeam(turn);
         window->update();
 
         window->redraw();
 
-        if( unites[posXselec].getPosX() != z || unites[posXselec].getPosY() != e && ville[i].getCapturepoint() > 0){
-            ville[i].setCapturepoint(20);
-            window->update();
-            window->redraw();
-
-        }
-}
+       }
         if(!window->getLocal()){
             capturesend[0]=0;
             capturesend[1]=i;
-            capturesend[2]=unites[posXselec].getvie();
+            capturesend[2]=c;
             capturesend[3]=ville[i].getTeam();
             window->unitcaptured();
         }
@@ -1069,14 +1079,22 @@ void Game::capture_Usine(int z, int e)
 
 
     if(usine[i].getPosX()==z &&usine[i].getPosY()==e  && unites[posXselec].getType() == 1998){
-
+        int c= unites[posXselec].getvie();
         usine[i].setCapturepoint(unites[posXselec].getvie());
         if(usine[i].getCapturepoint()==0){
             gameobject[z][e].setTeam(turn);
             usine[i].setTeam(turn);
             usine[i].setCapturepoint(20);
+            c=20;
             window->redraw();
            }
+        if(!window->getLocal()){
+            capturesend[0]=1;
+            capturesend[1]=i;
+            capturesend[2]=c;
+            capturesend[3]=usine[i].getTeam();
+            window->unitcaptured();
+        }
 
     }
 
@@ -1121,14 +1139,22 @@ void Game::capture_Aeroport(int z, int e)
 
 
     if(aeroport[i].getPosX()==z &&aeroport[i].getPosY()==e && unites[posXselec].getType() == 1998){
-
+        int c= unites[posXselec].getvie();
         aeroport[i].setCapturepoint(unites[posXselec].getvie());
         if(aeroport[i].getCapturepoint()==0){
         gameobject[z][e].setTeam(turn);
         aeroport[i].setCapturepoint(20);
+        c=20;
         aeroport[i].setTeam(turn);
         window->redraw();
-}
+        }
+        if(!window->getLocal()){
+            capturesend[0]=2;
+            capturesend[1]=i;
+            capturesend[2]=c;
+            capturesend[3]=aeroport[i].getTeam();
+            window->unitcaptured();
+        }
     }
     }
 
