@@ -302,8 +302,8 @@ void Game::endtour()
             unites[i].setComptattack(true);
             unites[i].setComptcapture(true);
             unites[i].setComptmouvement(true);
-            //unites[i].setComptfusion(false);
-             unites[i].setUnitin(true);
+            unites[i].setComptfusion(true);
+            // unites[i].setUnitin(true);
             for(int h=0 ;h<21;h++){
                 for (int j=0; j <17 ;j++){
                     if( unites[i].getTeam()==turn && unites[i].getPosX() == h && unites[i].getPosY() == j && unites[i].getvie() < 10 && (gameobject[h][j].getType() == 34 || gameobject[h][j].getType() == 35 || gameobject[h][j].getType() == 44 ) ){
