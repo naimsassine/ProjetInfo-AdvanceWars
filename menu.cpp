@@ -41,4 +41,5 @@ void Menu::setWindow(MainWindow *value)
 void Menu::on_pushButton_2_clicked()
 {   window->online();
     window->show();
+    this->close();
 }
