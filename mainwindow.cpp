@@ -141,6 +141,11 @@ void MainWindow::sendJson(QJsonObject obj) {
     std::cout << "Sending " << data.toStdString() << std::endl;
 }
 
+bool MainWindow::getMyTurn() const
+{
+    return myTurn;
+}
+
 bool MainWindow::getLocal() const
 {
     return local;
@@ -267,7 +272,26 @@ void MainWindow::onData() {
             game.setcaptureonline(type,i,s,r);
         }
 
-       /* if(!(posX == oldX && posY == oldY)) {
+        if(json["action"].toString()=="construire"){
+            Game& game = Game::Instance();
+            int x = json["x"].toInt();
+            int y = json["y"].toInt();
+            int team = json["team"].toInt();
+            int type = json["type"].toInt();
+            game.createUnite(x,y,team,type);
+        }
+        if(json["action"].toString()=="attack"){
+            Game& game = Game::Instance();
+            int posx=json["posx"].toInt();
+            int posy=json["posy"].toInt();
+            int unit=json["unit"].toInt();
+            int unit2=json["unit2"].toInt();
+            game.attack(posx,posy,unit,unit2);
+        }
+
+
+
+        /* if(!(posX == oldX && posY == oldY)) {
             std::cerr << "ERROR" << std::endl;
             destroy();
             return;
@@ -276,6 +300,7 @@ void MainWindow::onData() {
         posX = newX;
         posY = newY;
         update();
+        redraw();
     }}
 
 MainWindow::~MainWindow()
@@ -410,6 +435,31 @@ void MainWindow::unitcaptured()
     capture["capturepoint"] = game.getCaptureSend(2);
     capture["team"] = game.getCaptureSend(3);
     sendJson(capture);
+}
+
+void MainWindow::createunit()
+{
+    Game& game = Game::Instance();
+    QJsonObject createunit;
+    createunit["action"]= "construire";
+    createunit["x"] = game.getCreateunit(0);
+    createunit["y"] = game.getCreateunit(1);
+    createunit["team"] = game.getCreateunit(2);
+    createunit["type"] = game.getCreateunit(3);
+    sendJson(createunit);
+}
+
+void MainWindow::attack()
+{
+    Game& game = Game::Instance();
+    QJsonObject attack;
+    attack["action"]="attack";
+    attack["posx"] = game.getattackjs(0);
+    attack["posy"] = game.getattackjs(1);
+    attack["unit"] = game.getattackjs(2);
+    attack["unit2"] = game.getattackjs(3);
+
+    sendJson(attack);
 }
 
 void MainWindow::changeDefWindow(Gameobject& gameobject)
