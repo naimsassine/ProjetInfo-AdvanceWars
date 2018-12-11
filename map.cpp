@@ -701,7 +701,7 @@ void Map::captureaeroport()
 void Map::attackunite()
 {
     Game& game=Game::Instance();
-    game.attack(z,e,unitpos);
+    game.attack(z,e,unitpos,game.getPosXselec());
     game.setComptattack();
 }
 
