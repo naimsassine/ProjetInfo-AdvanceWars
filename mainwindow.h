@@ -40,6 +40,8 @@ public:
     void changeDammageWindow(Unites& unite);
     void unitmoved();
     void unitcaptured();
+    void createunit();
+    void attack();
 
     void mousePressEvent(QMouseEvent *e);
 
@@ -52,6 +54,8 @@ public:
     void setMyTurn(bool value);
 
     bool getLocal() const;
+
+    bool getMyTurn() const;
 
 private slots:
     void changeturn();
