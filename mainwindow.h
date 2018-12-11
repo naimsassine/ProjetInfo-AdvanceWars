@@ -38,6 +38,8 @@ public:
     void changeDefWindow(Terrain& terrain);
     void changeDefWindow(Gameobject& gameobject);
     void changeDammageWindow(Unites& unite);
+    void unitmoved();
+    void unitcaptured();
 
     void mousePressEvent(QMouseEvent *e);
 
@@ -48,6 +50,8 @@ public:
     void online();
 
     void setMyTurn(bool value);
+
+    bool getLocal() const;
 
 private slots:
     void changeturn();
