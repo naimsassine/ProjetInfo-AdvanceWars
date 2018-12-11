@@ -134,7 +134,7 @@ Player *Game::getPlayer() const
 }
 
 void Game::moveable(int move, int x, int y ,int typeu)
-{   for (Unites & u : unites) {
+{   for (Unites & u : unites) {       // Test ppour savoir si l unité est en place
          if( u.getPosX()==x+1 && u.getPosY()==y ){
 
              gameobject[x+1][y].setUnitin(true);}
