@@ -51,6 +51,30 @@ int Game::getPosXselec() const
     return posXselec;
 }
 
+int Game::getMoveSend(int a)
+{
+    return movesend[a];
+}
+
+int Game::getCaptureSend(int a)
+{
+    return capturesend[a];
+}
+
+void Game::changeposu(int i, int newx, int newy)
+{
+    unites[i].setPos(newx,newy);
+}
+
+void Game::setcaptureonline(int type, int i, int capturepoint, int team)
+{
+    if(type ==0){
+        ville[i].setCapturepoint(capturepoint);
+        ville[i].setTeam(team);
+
+    }
+}
+
 MainWindow *Game::getWindow() const
 {
     return window;
@@ -227,6 +251,7 @@ void Game::endtour()
 {   int nbrebatiment = 0;
     for (int h = 0 ;h < 21;h++) {
         for (int j=0; j <17 ;j++) {
+            gameobject[h][j].setMovable(false);
             if ( (gameobject[h][j].getType() == 34 || gameobject[h][j].getType() == 35 || gameobject[h][j].getType() == 39 ||gameobject[h][j].getType() == 44) &&gameobject[h][j].getTeam()==turn) {
                 nbrebatiment++;
             }
@@ -390,8 +415,13 @@ void Game::move(int x,int y)
             && gameobject[x][y].getMovable()
             && u.getComptmouvement())
     {
-
-        u.setPos(x, y);   // faire bouger l'unité
+        movesend[0]=u.getPosX();
+        movesend[1]=u.getPosY();
+        movesend[2]=x;
+        movesend[3]=y;
+        u.setPos(x, y);
+        if(!window->getLocal()){
+        window->unitmoved();}// faire bouger l'unité
         u.setComptmouvement(false);
         // Afficher un message tu dois plus bouger
         for (int i=0 ;i<21;i++) {
@@ -993,15 +1023,23 @@ void Game::capture(int z, int e)
         window->update();
 
         window->redraw();
+
         if( unites[posXselec].getPosX() != z || unites[posXselec].getPosY() != e && ville[i].getCapturepoint() > 0){
             ville[i].setCapturepoint(20);
             window->update();
             window->redraw();
 
         }
-
 }
+        if(!window->getLocal()){
+            capturesend[0]=0;
+            capturesend[1]=i;
+            capturesend[2]=unites[posXselec].getvie();
+            capturesend[3]=ville[i].getTeam();
+            window->unitcaptured();
+        }
       }
+
    /* else if((gameobject[z][e].getType()!= 34 && unites[posXselec].getType() == 1998 ) && unites[posXselec].getPosX() != z && unites[posXselec].getPosY() != e){
         if(ville[i].getCapturepoint() >0){
         ville[i].setCapturepoint(20);
