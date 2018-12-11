@@ -22,10 +22,10 @@
    <widget class="QPushButton" name="pushButton">
     <property name="geometry">
      <rect>
-      <x>310</x>
+      <x>280</x>
       <y>150</y>
-      <width>151</width>
-      <height>51</height>
+      <width>211</width>
+      <height>61</height>
      </rect>
     </property>
     <property name="font">
@@ -34,15 +34,15 @@
      </font>
     </property>
     <property name="text">
-     <string>Start</string>
+     <string>Player vs Player</string>
     </property>
    </widget>
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>250</x>
-      <y>50</y>
-      <width>301</width>
+      <x>300</x>
+      <y>60</y>
+      <width>171</width>
       <height>71</height>
      </rect>
     </property>
@@ -58,9 +58,9 @@
    <widget class="QLabel" name="label_2">
     <property name="geometry">
      <rect>
-      <x>210</x>
+      <x>280</x>
       <y>300</y>
-      <width>371</width>
+      <width>301</width>
       <height>151</height>
      </rect>
     </property>
@@ -79,11 +79,24 @@
       <x>280</x>
       <y>220</y>
       <width>211</width>
-      <height>71</height>
+      <height>61</height>
      </rect>
     </property>
     <property name="text">
      <string>Start Online</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_3">
+    <property name="geometry">
+     <rect>
+      <x>280</x>
+      <y>290</y>
+      <width>211</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Player vs IA</string>
     </property>
    </widget>
   </widget>
@@ -93,7 +106,7 @@
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>51</height>
+     <height>22</height>
     </rect>
    </property>
   </widget>
