@@ -12,4 +12,5 @@ Recon::Recon(int InitX, int InitY, int InitTeam)
     ptdeplacement = 8;
     typeu=3;
     posBin=2;
+    prix=15000;
 }
