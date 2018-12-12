@@ -84,8 +84,7 @@ private:
     int capturesend[4];
     int creationunit[4];
     int attackjs[4];
+    static int compteurfin;
 
-
-    // NAim on te...//
 };
 #endif // GAME_H

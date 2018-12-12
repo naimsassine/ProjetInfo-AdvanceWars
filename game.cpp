@@ -71,6 +71,10 @@ int Game::getattackjs(int a)
     return attackjs[a];
 }
 
+
+int Game::compteurfin = 0;
+
+
 void Game::changeposu(int i, int newx, int newy)
 {
     unites[i].setPos(newx,newy);
@@ -949,7 +953,7 @@ void Game::attack(int z, int e,int i , int je){
              //supprimer unites[i]
              window->redraw();
              int nombreunites = 0;
-             for(int unsigned j=0;j<unites.size();j++)
+             /*for(int unsigned j=0;j<unites.size();j++)
              {
                  if(unites[j].getTeam()==T){
                     nombreunites = nombreunites+1;
@@ -965,7 +969,7 @@ void Game::attack(int z, int e,int i , int je){
                  if(nombreusine == 0){
                      std::cout<<"end of game "<<std::endl;
                  }
-             }
+             }*/
         }
         if(unites[je].getvie() == 0){
             int T = unites[je].getTeam();
@@ -973,7 +977,7 @@ void Game::attack(int z, int e,int i , int je){
             //supprimer unites[i]
             window->redraw();
             int nombreunites = 0;
-            for(int unsigned j=0;j<unites.size();j++)
+            /*for(int unsigned j=0;j<unites.size();j++)
             {
                 if(unites[j].getTeam()==T){
                    nombreunites = nombreunites + 1;
@@ -989,7 +993,7 @@ void Game::attack(int z, int e,int i , int je){
                 if(nombreusine == 0){
                     std::cout<<"end game 1"<<std::endl;
                 }
-            }
+            }*/
         }
 }
 
@@ -1136,7 +1140,7 @@ void Game::capture_Usine(int z, int e)
 
     }
 
-    if (usine[i].getTeam() == 1) {
+   /*if (usine[i].getTeam() == 1) {
         nombreusines1 = nombreusines1 + 1;
     }
     else if (usine[i].getTeam() == 2) {
@@ -1146,8 +1150,7 @@ void Game::capture_Usine(int z, int e)
     }
     if (nombreusines1 == 0) {
         int nombreunites = 0;
-        for(int unsigned j=0;j<usine.size();j++)
-        {
+        for(int unsigned j=0;j<usine.size();j++) {
             if(usine[j].getTeam() == 1){
                nombreunites = nombreunites+1;
             }
@@ -1166,7 +1169,7 @@ void Game::capture_Usine(int z, int e)
                 }
                 if (nombreunites==0) {
                      std::cout<<"end game3"<<std::endl;
-                }
+                }*/
     }
 
 
