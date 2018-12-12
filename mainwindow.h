@@ -42,6 +42,7 @@ public:
     void unitcaptured();
     void createunit();
     void attack();
+    void fusion();
 
     void mousePressEvent(QMouseEvent *e);
 
