@@ -12,5 +12,6 @@ Bomber::Bomber(int InitX, int InitY, int InitTeam)
     ptdeplacement = 7;
     typeu=4;
     posBin=10;
+    prix=22000;
 
 }
