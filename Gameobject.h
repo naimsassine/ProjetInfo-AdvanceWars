@@ -29,7 +29,7 @@ public:
 
     bool getMovable() const;
     bool isMovable() const { return getMovable(); }
-    void setMovable(bool value);
+    void setMovable(bool value );
 
     int getPtdemouvement(int typeu) const;
     int getPTMvt() const;
@@ -42,10 +42,14 @@ public:
 
     int getPosdef() const;
 
+    bool getValue2() const;
+    void setValue2(bool value);
+
 protected:
     int posX;
     int posY;
     int type;
+    bool value2=false;
     bool selected=false;
     bool unitin=false;
     QString filename;
