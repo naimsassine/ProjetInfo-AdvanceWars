@@ -400,12 +400,12 @@ void Game::move(int x,int y)
         }
     }
 
-    Unites& u = unites[posXselec];
+    Unites *u = &unites[posXselec];
     for (Ville& v : ville) {  // plus joli quand mme
 
        if(v.getTeam()==turn){
         v.setUnitin(false);}
-       if(u.isAtPos(v.getPosX(),v.getPosY())){
+       if(u->isAtPos(v.getPosX(),v.getPosY())){
            v.setUnitin(true);
        }
 
@@ -413,7 +413,7 @@ void Game::move(int x,int y)
     for (Usine& v :usine){
         if(v.getTeam()==turn){
          v.setUnitin(false);}
-        if(u.isAtPos(v.getPosX(),v.getPosY())){
+        if(u->isAtPos(v.getPosX(),v.getPosY())){
             v.setUnitin(true);
         }
     }
@@ -421,33 +421,17 @@ void Game::move(int x,int y)
     for(Aeroport& v : aeroport){
         if(v.getTeam()==turn){
          v.setUnitin(false);}
-        if(u.isAtPos(v.getPosX(),v.getPosY())){
+        if(u->isAtPos(v.getPosX(),v.getPosY())){
             v.setUnitin(true);
         }
     }
-    for (std::vector<Unites>::size_type i = 0; i != unites.size(); i++) {
-        if (unites[i].isAtPos(x, y) && unites[i].getTeam() == turn) {
-            posXselec = static_cast<int>(i);
-        } else if (unites[i].isAtPos(x+1, y) ) {
-            unites[i].setUnitin(true);
-        } else if (unites[i].isAtPos(x-1, y) ) {
-            unites[i].setUnitin(true);
-        } else if (unites[i].isAtPos(x, y+1) ) {
-            unites[i].setUnitin(true);
-        } else if (unites[i].isAtPos(x, y-1) ) {
-            unites[i].setUnitin(true);
-        }
-        else{
-             unites[i].setUnitin(false);
-        }
-        //std::cout<<unites[i].getUnitin()<<std::endl;
-    }
+
 
     for (std::vector<Terrain>::size_type i = 0; i != terrain.size(); i++){
         terrain[i].setUnitin(false);
     }
-
-    if (u.getTeam()==turn && u.isSelected() && u.isAtPos(x, y)) {
+    std::cout<<u->isSelected()<<"  "<<u->isAtPos(x,y)<<"  "<<u->getTeam()<< "  "<<turn<<std::endl;
+    if (u->getTeam()==turn && u->isSelected() && u->isAtPos(x, y)) {
         unites[posXselec].setSelected(false);
         for (int i=0 ;i<21;i++) {
             for (int j=0; j <17 ;j++) {
@@ -458,24 +442,26 @@ void Game::move(int x,int y)
 
             }
         }
+        window->redraw();
         // deslectionnner une unités deja selectionner //
 
     }
 
-    else if (u.getTeam() == turn
-            && u.getSelected()  // should rename "getSelected" to "isSelected"
+    else if (u->getTeam() == turn
+            && u->getSelected()  // should rename "getSelected" to "isSelected"
             && gameobject[x][y].getMovable()
-            && u.getComptmouvement()
+            && u->getComptmouvement()
             )
     {
-        movesend[0]=u.getPosX();
-        movesend[1]=u.getPosY();
+        movesend[0]=u->getPosX();
+        movesend[1]=u->getPosY();
         movesend[2]=x;
         movesend[3]=y;
-        u.setPos(x, y);
+        u->setPos(x, y);
         if(!window->getLocal()){
-        window->unitmoved();}// faire bouger l'unité
-        u.setComptmouvement(false);
+            window->unitmoved();
+        }// faire bouger l'unité
+        u->setComptmouvement(false);
         // Afficher un message tu dois plus bouger
         for (int i=0 ;i<21;i++) {
             for (int j=0; j <17 ;j++) {
@@ -488,7 +474,7 @@ void Game::move(int x,int y)
 
         if(gameobject[x][y].getType()==34){
             for(std::vector<Ville>::size_type i = 0; i != ville.size(); i++){
-                if(ville[i].getPosX()==u.getPosX() &&ville[i].getPosY()==u.getPosY()) {
+                if(ville[i].getPosX()==u->getPosX() &&ville[i].getPosY()==u->getPosY()) {
                     ville[i].setUnitin(true);
                     ville[i].setSelected(true);
                     window->changeCaptWindow(ville[i]);
@@ -565,7 +551,7 @@ void Game::move(int x,int y)
         unites[posXselec].setSelected(false);
         window->redraw();
     }
-    else if(unites[posXselec].getTeam()==turn && !unites[posXselec].getSelected() &&unites[posXselec].getPosX()==x && unites[posXselec].getPosY()==y && u.getComptmouvement()){
+    else if(unites[posXselec].getTeam()==turn && !unites[posXselec].getSelected() &&unites[posXselec].getPosX()==x && unites[posXselec].getPosY()==y && u->getComptmouvement()){
 
 
             unites[posXselec].setSelected(true);
