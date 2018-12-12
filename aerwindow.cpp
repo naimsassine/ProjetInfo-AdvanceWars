@@ -23,7 +23,6 @@ AerWindow::AerWindow(QWidget *parent) :
         ui->label8->setPixmap(pix8.scaled(30,30));
         ui->label9->setPixmap(pix9.scaled(30,30));
         ui->label10->setPixmap(pix10.scaled(30,30));
-
     }
 }
 
