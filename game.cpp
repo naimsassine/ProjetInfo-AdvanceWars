@@ -43,6 +43,7 @@ Game Game::gameinst=Game();
 Game::Game()
 {
 actville = nullptr;
+actvie = nullptr;
 
 }
 
@@ -120,7 +121,15 @@ Ville *Game::getActville() const
 {
     return actville;
 }
+void Game::setActvie(Unites *value)
+{
+    actvie = value;
+}
 
+Unites *Game::getActvie() const
+{
+    return actvie;
+}
 
 bool Game::getUnitincity() const
 {
@@ -543,6 +552,11 @@ void Game::move(int x,int y)
 
             unites[posXselec].setSelected(true);
             window->changeVieWindow(unites[posXselec]);
+
+            for(std::vector<Unites>::size_type i = 0; i != unites.size(); i++){
+            unites[i].setUnitin(&unites[posXselec]);
+                    actvie=&unites[i];
+            }
             window->changeDammageWindow(unites[posXselec]);
             int c= unites[posXselec].getPtdeplacement();// selectionner unité  //
             moveable(c,unites[posXselec].getPosX(),unites[posXselec].getPosY(),unites[posXselec].getTypeu());

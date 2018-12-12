@@ -46,8 +46,10 @@ public:
 
 
     Ville *getActville() const;
-
     void setActville(Ville *value);
+
+    Unites *getActvie() const;
+    void setActvie(Unites *value);
 
     MainWindow *getWindow() const;
 
@@ -69,6 +71,7 @@ private:
     int movesend[4];
     int z=0;
     int e=0;
+    Unites *actvie;
     Ville *actville;
     static Game gameinst;
     MainWindow *window = nullptr;

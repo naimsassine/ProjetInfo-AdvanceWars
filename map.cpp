@@ -733,6 +733,18 @@ void Map::mousePress(int x ,int y , QMouseEvent *ev)
                     game.getWindow()->redraw();
                 }
             }
+            else if(ev->buttons() == Qt::LeftButton){
+                Game& game= Game::Instance();
+                game.setActvie(nullptr);
+                game.move(z,e);
+                std::vector<Unites> unites =game.getUnites();
+                for(std::vector<Unites>::size_type i = 0; i != unites.size(); i++){
+                    if(unites[i].getPosX()==z && unites[i].getPosY()==e){
+                        game.setActvie(&unites[i]);
+                    }
+                    game.getWindow()->redraw();
+                }
+            }
             else if(ev->buttons() == Qt::RightButton){
                Game& game=Game::Instance();
 
@@ -836,11 +848,13 @@ void Map::mousePress(int x ,int y , QMouseEvent *ev)
 
                     std::vector<Unites> unite =game.getUnites();
                     for(std::vector<Unites>::size_type i = 0; i != unite.size(); i++){
+                        game.setActvie(nullptr);
 
 
                         if(unite[game.getPosXselec()].getComptattack()){
 
                         if(unite[i].getPosX()==z  &&unite[i].getPosY()==e && unite[i].getUnitin() && unite[i].getTeam()!=game.getTurn()){
+                            game.setActvie(&unite[i]);
                             QMenu menu(this);
                             attack =new QAction("Attaquer", this);
                             menu.addAction(attack);

@@ -342,6 +342,13 @@ void MainWindow::redraw()
     else{
         labC1->setText(" ");
     }
+    Unites *tunite = game.getActvie();
+    if(tunite != nullptr){
+        lab5->setText(QString::number(tunite->getvie()));
+    }
+    else{
+        lab5->setText(" ");
+    }
 }
 
 void MainWindow::changeturn()

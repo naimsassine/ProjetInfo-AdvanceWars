@@ -2,7 +2,7 @@
 #define IA_H
 #include "player.h"
 
-class IA : public Player {
+class IA {
 public:
     IA();
 };
