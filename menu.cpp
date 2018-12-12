@@ -43,3 +43,8 @@ void Menu::on_pushButton_2_clicked()
     window->show();
     this->close();
 }
+
+void Menu::on_pushButton_3_clicked()
+{
+
+}
