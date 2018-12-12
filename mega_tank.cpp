@@ -12,4 +12,5 @@ mega_tank::mega_tank(int InitX,int InitY,int InitTeam)
     ptdeplacement = 4;
     typeu=2;
     posBin=6;
+    prix=28000;
 }
