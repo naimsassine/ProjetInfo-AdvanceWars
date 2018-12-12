@@ -10,4 +10,5 @@ B_Copter::B_Copter(int InitX, int InitY, int InitTeam)
     ptdeplacement = 6;
     typeu=4;
     posBin=8;
+    prix=9000;
 }
