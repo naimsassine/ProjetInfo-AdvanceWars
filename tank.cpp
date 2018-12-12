@@ -12,5 +12,6 @@ Tank::Tank(int InitX,int InitY,int InitTeam)
     ptdeplacement = 6;
     typeu=2;
     posBin=4;
+    prix=7000;
 
 }
