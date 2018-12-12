@@ -853,9 +853,9 @@ void Map::mousePress(int x ,int y , QMouseEvent *ev)
                         game.setActvie(nullptr);
 
 
-                        if(unite[game.getPosXselec()].getComptattack()){
+                        if(unite[game.getPosXselec()].getComptattack()&& unite[game.getPosXselec()].getTeam()==game.getTurn()){
 
-                        if(unite[i].getPosX()==z  &&unite[i].getPosY()==e && unite[i].getUnitin() && unite[i].getTeam()!=game.getTurn()){
+                        if(unite[i].getPosX()==z &&unite[i].getPosY()==e && unite[i].getUnitin() && unite[i].getTeam()!=game.getTurn()){
                             game.setActvie(&unite[i]);
                             QMenu menu(this);
                             attack =new QAction("Attaquer", this);
