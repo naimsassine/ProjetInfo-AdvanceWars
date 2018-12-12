@@ -12,4 +12,5 @@ Fighter::Fighter(int InitX, int InitY, int InitTeam)
     ptdeplacement = 9;
     typeu=4;
     posBin=9;
+    prix=20000;
 }
