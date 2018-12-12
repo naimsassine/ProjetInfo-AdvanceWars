@@ -553,10 +553,10 @@ void Game::move(int x,int y)
             unites[posXselec].setSelected(true);
             window->changeVieWindow(unites[posXselec]);
 
-            for(std::vector<Unites>::size_type i = 0; i != unites.size(); i++){
+           /* for(std::vector<Unites>::size_type i = 0; i != unites.size(); i++){
             unites[i].setUnitin(&unites[posXselec]);
                     actvie=&unites[i];
-            }
+            }*/
             window->changeDammageWindow(unites[posXselec]);
             int c= unites[posXselec].getPtdeplacement();// selectionner unité  //
             moveable(c,unites[posXselec].getPosX(),unites[posXselec].getPosY(),unites[posXselec].getTypeu());
@@ -949,6 +949,12 @@ void Game::attack(int z, int e,int i , int je){
         std::cout<<unites[i].getvie()<<std::endl;
         std::cout<<unites[je].getvie()<<std::endl;
         unites[je].setDamage(unites[i],unites[je],defTerrain2);
+        window->changeVieWindow(unites[posXselec]);
+        unites[i].setUnitin(&unites[posXselec]);
+                actvie=&unites[i];
+        unites[je].setUnitin(&unites[posXselec]);
+                actvie =&unites[je];
+
         std::cout<<unites[i].getvie()<<std::endl;
         std::cout<<unites[je].getvie()<<std::endl;
 
