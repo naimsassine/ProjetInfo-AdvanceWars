@@ -72,6 +72,11 @@ int Game::getattackjs(int a)
     return attackjs[a];
 }
 
+int Game::getfusionjs(int a)
+{
+    return fusionjs[a];
+}
+
 
 int Game::compteurfin1 = 0;
 int Game::compteurfin2 = 0;
@@ -435,6 +440,7 @@ void Game::move(int x,int y)
         unites[posXselec].setSelected(false);
         for (int i=0 ;i<21;i++) {
             for (int j=0; j <17 ;j++) {
+                gameobject[i][j].setValue2(false);
                 gameobject[i][j].setMovable(false);
                 gameobject[i][j].setUnitin(false);
                 gameobject[i][j].setSelected(false);
@@ -462,6 +468,7 @@ void Game::move(int x,int y)
         // Afficher un message tu dois plus bouger
         for (int i=0 ;i<21;i++) {
             for (int j=0; j <17 ;j++) {
+                gameobject[i][j].setValue2(false);
                 gameobject[i][j].setMovable(false);
                 gameobject[i][j].setUnitin(false);
                 gameobject[i][j].setSelected(false);
@@ -1020,6 +1027,13 @@ void Game::attack(int z, int e,int i , int je){
 
    }
 void Game::fusion( int v, int w){
+    if(!window->getLocal() && window->getMyTurn()){
+
+        fusionjs[0]=v;
+        fusionjs[1]=w;
+        window->fusion();
+
+    }
     Unites& a = unites[v];  // attention, vien ^^etre sur que ya pas de out_of_range
     Unites& b = unites[w];
     unites[w].setUnitin(false);
