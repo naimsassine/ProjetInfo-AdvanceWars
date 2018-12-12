@@ -12,4 +12,5 @@ Anti_Air::Anti_Air(int InitX, int InitY, int InitTeam)
     ptdeplacement = 6;
     typeu=2;
     posBin=3;
+    prix=8000;
 }
