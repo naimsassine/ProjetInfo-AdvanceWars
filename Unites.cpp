@@ -32,8 +32,12 @@ int Unites::getvie()
 }
 
 void Unites::setvie(int value)
-{
-    vie = value;
+{   if(value>10){
+       vie = 10;
+    }
+    else{
+        vie=value;
+    }
 }
 
 int Unites::getdamage()
