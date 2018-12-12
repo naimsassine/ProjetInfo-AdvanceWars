@@ -312,9 +312,14 @@ void Game::endtour()
 
             for(int h=0 ;h<21;h++){
                 for (int j=0; j <17 ;j++){
-                    if( unites[i].getTeam()==turn  &&unites[i].getPosX() == h && unites[i].getPosY() == j && unites[i].getvie() < 10 &&gameobject[h][j].getTeam() == unites[i].getTeam()&& (gameobject[h][j].getType() == 34 || gameobject[h][j].getType() == 35 || gameobject[h][j].getType() == 39 ) ){
+                    if(gameobject[h][j].getType()==36 && unites[i].getTeam()==turn && unites[i].getPosX() == h && unites[i].getPosY() == j && unites[i].getvie() < 10 &&gameobject[h][j].getTeam() == unites[i].getTeam() && (unites[i].getType()==2000 ||unites[i].getType()==2001||unites[i].getType()==2002) ){
                         int x = int(0.01*(unites[i].getPrix()));
-                        unites[i].setvie(10);
+                        unites[i].setvie(unites[i].getvie()+2);
+                        getPlayer()->setMoney(getPlayer()->getMoney()-(x));
+                    }
+                    else if( unites[i].getTeam()==turn  &&unites[i].getPosX() == h && unites[i].getPosY() == j && unites[i].getvie() < 10 &&gameobject[h][j].getTeam() == unites[i].getTeam()&& (gameobject[h][j].getType() == 34 || gameobject[h][j].getType() == 35 || gameobject[h][j].getType() == 39 ) ){
+                        int x = int(0.01*(unites[i].getPrix()));
+                        unites[i].setvie(unites[i].getvie()+2);
                         getPlayer()->setMoney(getPlayer()->getMoney()-(x));
                     }}}}turn=2;}
 
@@ -327,8 +332,14 @@ void Game::endtour()
             // unites[i].setUnitin(true);
             for(int h=0 ;h<21;h++){
                 for (int j=0; j <17 ;j++){
-                    if( unites[i].getTeam()==turn && unites[i].getPosX() == h && unites[i].getPosY() == j && unites[i].getvie() < 10 && (gameobject[h][j].getType() == 34 || gameobject[h][j].getType() == 35 || gameobject[h][j].getType() == 44 ) ){
+                    if(gameobject[h][j].getType()==36 && unites[i].getTeam()==turn && unites[i].getPosX() == h && unites[i].getPosY() == j && unites[i].getvie() < 10 &&gameobject[h][j].getTeam() == unites[i].getTeam() && (unites[i].getType()==2000 ||unites[i].getType()==2001||unites[i].getType()==2002) ){
                         int x = int(0.01*(unites[i].getPrix()));
+                        unites[i].setvie(unites[i].getvie()+2);
+                        getPlayer()->setMoney(getPlayer()->getMoney()-(x));
+                    }
+                    else if( unites[i].getTeam()==turn && unites[i].getPosX() == h && unites[i].getPosY() == j && unites[i].getvie() < 10 && gameobject[h][j].getTeam() == unites[i].getTeam() && (gameobject[h][j].getType() == 34 || gameobject[h][j].getType() == 35 || gameobject[h][j].getType() == 44 ) ){
+                        int x = int(0.01*(unites[i].getPrix()));
+                        unites[i].setvie(unites[i].getvie()+2);
                         unites[i].setvie(10);
                         getPlayer()->setMoney(getPlayer()->getMoney()-(x));
                     }}}}turn=1;}}
