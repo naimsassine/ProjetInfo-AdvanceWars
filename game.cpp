@@ -430,7 +430,7 @@ void Game::move(int x,int y)
     for (std::vector<Terrain>::size_type i = 0; i != terrain.size(); i++){
         terrain[i].setUnitin(false);
     }
-    std::cout<<u->isSelected()<<"  "<<u->isAtPos(x,y)<<"  "<<u->getTeam()<< "  "<<turn<<std::endl;
+
     if (u->getTeam()==turn && u->isSelected() && u->isAtPos(x, y)) {
         unites[posXselec].setSelected(false);
         for (int i=0 ;i<21;i++) {
