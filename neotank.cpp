@@ -13,5 +13,6 @@ Neotank::Neotank(int InitX,int InitY,int InitTeam)
     ptattack=85;
     typeu=2;
     posBin=7;
+    prix=22000;
 
 }
