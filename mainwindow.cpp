@@ -288,7 +288,13 @@ void MainWindow::onData() {
             int unit2=json["unit2"].toInt();
             game.attack(posx,posy,unit,unit2);
         }
+        if(json["action"].toString()=="fusion"){
+            Game& game = Game::Instance();
+            int unit1=json["unit1"].toInt();
+            int unit2=json["unit2"].toInt();
+            game.fusion(unit1,unit2);
 
+        }
 
 
         /* if(!(posX == oldX && posY == oldY)) {
@@ -467,6 +473,16 @@ void MainWindow::attack()
     attack["unit2"] = game.getattackjs(3);
 
     sendJson(attack);
+}
+
+void MainWindow::fusion()
+{
+    Game& game = Game::Instance();
+    QJsonObject fusion;
+    fusion["action"]="fusion";
+    fusion["unit1"] = game.getfusionjs(0);
+    fusion["unit2"] = game.getfusionjs(1);
+    sendJson(fusion);
 }
 
 void MainWindow::changeDefWindow(Gameobject& gameobject)
