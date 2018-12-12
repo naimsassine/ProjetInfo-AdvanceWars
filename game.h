@@ -84,7 +84,8 @@ private:
     int capturesend[4];
     int creationunit[4];
     int attackjs[4];
-    static int compteurfin;
+    static int compteurfin1;
+    static int compteurfin2;
 
 };
 #endif // GAME_H

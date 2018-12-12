@@ -72,7 +72,8 @@ int Game::getattackjs(int a)
 }
 
 
-int Game::compteurfin = 0;
+int Game::compteurfin1 = 0;
+int Game::compteurfin2 = 0;
 
 
 void Game::changeposu(int i, int newx, int newy)
@@ -251,15 +252,7 @@ void Game::moveable(int move, int x, int y ,int typeu)
                         }
                         else{
                         moveable(s,x,y-1,typeu);
-                        }
-
-
-            }
-}
-}
-
-
-
+                        }}}}
 
 
 int Game::getTurn() const
@@ -953,23 +946,16 @@ void Game::attack(int z, int e,int i , int je){
              //supprimer unites[i]
              window->redraw();
              int nombreunites = 0;
-             /*for(int unsigned j=0;j<unites.size();j++)
+             for(int unsigned j=0;j<unites.size();j++)
              {
                  if(unites[j].getTeam()==T){
                     nombreunites = nombreunites+1;
                  }
              }
              if(nombreunites == 0){
-                 int nombreusine = 0;
-                 for(int unsigned j=0;j<usine.size();j++){
-                     if(usine[j].getTeam()==T){
-                        nombreusine = nombreusine + 1;
-                     }
-                 }
-                 if(nombreusine == 0){
-                     std::cout<<"end of game "<<std::endl;
-                 }
-             }*/
+                 if(T==1){compteurfin1 = compteurfin1 + 1;}
+                 else if (T==2) {compteurfin2 = compteurfin2 + 1;}
+             }
         }
         if(unites[je].getvie() == 0){
             int T = unites[je].getTeam();
@@ -977,25 +963,19 @@ void Game::attack(int z, int e,int i , int je){
             //supprimer unites[i]
             window->redraw();
             int nombreunites = 0;
-            /*for(int unsigned j=0;j<unites.size();j++)
+            for(int unsigned j=0;j<unites.size();j++)
             {
                 if(unites[j].getTeam()==T){
                    nombreunites = nombreunites + 1;
                 }
             }
             if(nombreunites==0){
-                int nombreusine = 0;
-                for(int unsigned j=0;j<usine.size();j++){
-                    if(usine[j].getTeam()==T){
-                       nombreusine = nombreusine + 1;
-                    }
-                }
-                if(nombreusine == 0){
-                    std::cout<<"end game 1"<<std::endl;
-                }
-            }*/
+                if(T==1){compteurfin1 = compteurfin1 + 1;}
+                else if (T==2) {compteurfin2 = compteurfin2 + 1;}
+            }
         }
 }
+    if (compteurfin1>=3 || compteurfin2>=3){std::cout<<"end game"<<std::endl;}
 
    }
 void Game::fusion( int v, int w){
@@ -1140,39 +1120,22 @@ void Game::capture_Usine(int z, int e)
 
     }
 
-   /*if (usine[i].getTeam() == 1) {
+    if (usine[i].getTeam() == 1) {
         nombreusines1 = nombreusines1 + 1;
     }
     else if (usine[i].getTeam() == 2) {
-     nombreusines2 = nombreusines2 + 1;
+        nombreusines2 = nombreusines2 + 1;
     }
 
     }
     if (nombreusines1 == 0) {
-        int nombreunites = 0;
-        for(int unsigned j=0;j<usine.size();j++) {
-            if(usine[j].getTeam() == 1){
-               nombreunites = nombreunites+1;
-            }
-        }
-        if (nombreunites==0) {
-            std::cout<<"end game2"<<std::endl;
-        }
+        compteurfin1 = compteurfin1 + 1;
     }
     else if (nombreusines2 == 0) {
-        int nombreunites = 0;
-                for(int unsigned j=0;j<usine.size();j++)
-                {
-                    if(usine[j].getTeam() == 2){
-                       nombreunites = nombreunites+1;
-                    }
-                }
-                if (nombreunites==0) {
-                     std::cout<<"end game3"<<std::endl;
-                }*/
+        compteurfin2 = compteurfin2 + 1;
     }
 
-
+    if (compteurfin1>=3 || compteurfin2>=3){std::cout<<"end game"<<std::endl;}
 }
 void Game::capture_Aeroport(int z, int e)
 {
