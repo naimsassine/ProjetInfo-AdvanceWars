@@ -735,10 +735,12 @@ void Map::mousePress(int x ,int y , QMouseEvent *ev)
             }
             else if(ev->buttons() == Qt::LeftButton){
                 Game& game= Game::Instance();
+
                 game.setActvie(nullptr);
                 game.move(z,e);
                 std::vector<Unites> unites =game.getUnites();
                 for(std::vector<Unites>::size_type i = 0; i != unites.size(); i++){
+                    unites[i].setUnitin(true);
                     if(unites[i].getPosX()==z && unites[i].getPosY()==e){
                         game.setActvie(&unites[i]);
                     }

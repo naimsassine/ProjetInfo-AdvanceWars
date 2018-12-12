@@ -952,8 +952,10 @@ void Game::attack(int z, int e,int i , int je){
         window->changeVieWindow(unites[posXselec]);
         unites[i].setUnitin(&unites[posXselec]);
                 actvie=&unites[i];
-        unites[je].setUnitin(&unites[posXselec]);
-                actvie =&unites[je];
+        //unites[je].setUnitin(&unites[posXselec]);
+          //      actvie =&unites[je];
+               // window->update();
+        window->redraw();
 
         std::cout<<unites[i].getvie()<<std::endl;
         std::cout<<unites[je].getvie()<<std::endl;
