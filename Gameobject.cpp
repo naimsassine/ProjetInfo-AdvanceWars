@@ -78,9 +78,11 @@ bool Gameobject::getMovable() const
     return movable;
 }
 
-void Gameobject::setMovable(bool value)
-{
-    movable = value;
+void Gameobject::setMovable(bool value )
+{  if (value==true){
+      value2=true;
+    }
+    movable = value && value2;
 }
 
 int Gameobject::getPtdemouvement(int typeu) const
@@ -116,6 +118,16 @@ void Gameobject::setUnitin(bool value)
 int Gameobject::getPosdef() const
 {
     return posdef;
+}
+
+bool Gameobject::getValue2() const
+{
+    return value2;
+}
+
+void Gameobject::setValue2(bool value)
+{
+    value2 = value;
 }
 
 
