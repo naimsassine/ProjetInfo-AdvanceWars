@@ -58,6 +58,7 @@ public:
     int getCaptureSend(int a);
     int getCreateunit(int a);
     int getattackjs(int a);
+    int getfusionjs(int a);
     void changeposu(int i ,int newx ,int newy);
     void setcaptureonline(int type,int i ,int capturepoint ,int team);
 
@@ -87,6 +88,7 @@ private:
     int capturesend[4];
     int creationunit[4];
     int attackjs[4];
+    int fusionjs[2];
     static int compteurfin1;
     static int compteurfin2;
 
