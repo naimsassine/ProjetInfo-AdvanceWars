@@ -326,7 +326,9 @@ void Game::endtour()
             turn = 2;
             for(std::vector<Unites>::size_type i = 0; i != unites.size(); i++){
                 if (unites[i].getTeam() == 2){
-                   unites[i].setPos(4,4);
+                    int x = unites[i].getPosX() + 1;
+                    int y = unites[i].getPosY() + 1;
+                    unites[i].setPos(x,y);
                 }
             }
             window->redraw();
