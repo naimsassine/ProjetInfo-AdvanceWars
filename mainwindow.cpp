@@ -176,16 +176,21 @@ void MainWindow::setMyTurn(bool value)
 void MainWindow::online()
 {
     server = new QTcpServer();
+
     local=false;
+
     if(! server->listen(QHostAddress::Any, 8123)) {
         std::cout << "I am a client" << std::endl;
         other = new QTcpSocket();
         connect(other, SIGNAL(connected()), this, SLOT(onConnected()));
-        other->connectToHost("127.0.0.1", 8123);
+
+        other->connectToHost("172.19.3.110", 8123);
         connect(other, SIGNAL(disconnected()), this, SLOT(onDisconnected()));
     } else {
         std::cout << "I am the server" << std::endl;
         other = nullptr;
+
+
     }
 
     connect(server, SIGNAL(newConnection()), this, SLOT(onNewConnection()));
