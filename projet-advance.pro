@@ -67,8 +67,7 @@ SOURCES += \
     bazooka.cpp \
     case.cpp \
     menu.cpp \
-    aerwindow.cpp \
-    ia.cpp
+    aerwindow.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -109,8 +108,7 @@ HEADERS += \
     bazooka.h \
     case.h \
     menu.h \
-    aerwindow.h \
-    ia.h
+    aerwindow.h
 
 FORMS += \
         mainwindow.ui \

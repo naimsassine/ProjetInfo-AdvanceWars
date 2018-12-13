@@ -321,7 +321,19 @@ void Game::endtour()
                         int x = int(0.01*(unites[i].getPrix()));
                         unites[i].setvie(unites[i].getvie()+2);
                         getPlayer()->setMoney(getPlayer()->getMoney()-(x));
-                    }}}}turn=2;}
+                    }}}}
+        if (window->getisIA()){
+            turn = 2;
+            for(std::vector<Unites>::size_type i = 0; i != unites.size(); i++){
+                if (unites[i].getTeam() == 2){
+                   unites[i].setPos(4,4);
+                }
+            }
+            window->redraw();
+            this->endtour();
+        }
+        else { turn=2;}
+    }
 
     else if (turn==2) {
         for (std::vector<Unites>::size_type i = 0; i != unites.size(); i++) {
@@ -1187,6 +1199,7 @@ void Game::capture_Usine(int z, int e)
     }
     else if (nombreusines2 == 0) {
         compteurfin2 = compteurfin2 + 1;
+        std::cout<<"ALLE"<<std::endl;
     }
     for(std::vector<Aeroport>::size_type i = 0; i != aeroport.size(); i++){
         if (aeroport[i].getTeam() == 1) {
@@ -1200,7 +1213,8 @@ void Game::capture_Usine(int z, int e)
              if (compteurfin1>=2){std::cout<<"end game1"<<std::endl;}
          }
         else if (nombreaerop2 == 0) {
-             if (compteurfin2>=2){std::cout<<"end game2"<<std::endl;}
+            std::cout<<"end game1"<<std::endl;
+            if (compteurfin2>=2){std::cout<<"end game2"<<std::endl;}
     }
 }
 void Game::capture_Aeroport(int z, int e)

@@ -46,5 +46,7 @@ void Menu::on_pushButton_2_clicked()
 
 void Menu::on_pushButton_3_clicked()
 {
-
+    window->IA();
+    window->show();
+    this->close();
 }

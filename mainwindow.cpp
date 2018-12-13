@@ -146,6 +146,21 @@ bool MainWindow::getMyTurn() const
     return myTurn;
 }
 
+void MainWindow::IA()
+{
+    this->setisIA(true);
+}
+
+void MainWindow::setisIA(bool value)
+{
+    isIA = value;
+}
+
+bool MainWindow::getisIA()
+{
+    return isIA;
+}
+
 bool MainWindow::getLocal() const
 {
     return local;

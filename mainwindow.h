@@ -51,12 +51,12 @@ public:
 
     Map *getMap() const;
     void online();
-
     void setMyTurn(bool value);
-
     bool getLocal() const;
-
     bool getMyTurn() const;
+    void IA();
+    void setisIA(bool value);
+    bool getisIA();
 
 private slots:
     void changeturn();
@@ -95,6 +95,7 @@ private:
     bool local=true;
     QTcpServer* server = nullptr;
     QTcpSocket* other = nullptr;
+    bool isIA = false;
 
 
 };
