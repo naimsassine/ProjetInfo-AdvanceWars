@@ -98,6 +98,7 @@ private:
     bool isIA = false;
 
 
+
 };
 
 #endif // MAINWINDOW_H
