@@ -184,7 +184,7 @@ void MainWindow::online()
         other = new QTcpSocket();
         connect(other, SIGNAL(connected()), this, SLOT(onConnected()));
 
-        other->connectToHost("172.19.3.110", 8123);
+        other->connectToHost("127.0.0.1", 8123);
         connect(other, SIGNAL(disconnected()), this, SLOT(onDisconnected()));
     } else {
         std::cout << "I am the server" << std::endl;
