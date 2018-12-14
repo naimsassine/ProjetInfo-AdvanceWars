@@ -1,11 +1,12 @@
 #include "mainwindow.h"
 #include "Gameobject.h"
 #include "game.h"
+#include "player.h"
 #include <string.h>
 #include"bouton.h"
 #include "Usine.h"
 #include "math.h"
-
+#include <QMessageBox>
 #include "ui_mainwindow.h"
 #include <QPushButton>
 #include <QWidget>
@@ -49,7 +50,21 @@ MainWindow::MainWindow(QWidget *parent) :
     don = nullptr;
     don1 = nullptr;
     don2 = nullptr;
-
+Game& game = Game::Instance();
+if(game.getEndGame()== true)
+{
+    int reponse = QMessageBox::question(this, "Fin de partie !", "Voulez-vous recommencer une partie ?", QMessageBox::Yes | QMessageBox::No);
+    if (reponse == QMessageBox::Yes)
+        { MainWindow w;
+        Player player1(1000, 1);
+        Player player2(1000, 2);
+           game.InitGame(&w, &player1, &player2);
+        }
+        else if (reponse == QMessageBox::No)
+        {
+          this->close();
+        }
+}
 
 
    bouton = new QPushButton("End Turn !", this);
