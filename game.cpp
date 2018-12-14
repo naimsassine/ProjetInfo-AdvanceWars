@@ -1312,6 +1312,16 @@ Gameobject Game::Trouve_min(Gameobject start)
     return s;
 }
 
+void Game::maj_distances(Gameobject s1, Gameobject s2)
+{
+    if (s2.getDistance() > s1.getDistance() + s2.getPTMvt()){
+        s2.setDistance(s1.getDistance() + s2.getPTMvt());
+        s2.setAntecedantX(s1.getPosX());
+        s2.setAntecedantY(s1.getPosY());
+
+    }
+}
+
 
 
 void Game::pathfinding(Gameobject start, Gameobject end)

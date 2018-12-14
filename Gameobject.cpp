@@ -170,6 +170,16 @@ void Gameobject::setAntecedantY(int value)
     antecedantY = value;
 }
 
+int Gameobject::getDistance() const
+{
+    return distance;
+}
+
+void Gameobject::setDistance(int value)
+{
+    distance = value;
+}
+
 /*void Gameobject::pathfinding(int x, int y)
 {
     this->setDejaparc(true);
