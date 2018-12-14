@@ -511,6 +511,7 @@ void Game::move(int x,int y)
                 if(ville[i].getPosX()==u->getPosX() &&ville[i].getPosY()==u->getPosY()) {
                     ville[i].setUnitin(true);
                     ville[i].setSelected(true);
+
                     window->changeCaptWindow(ville[i]);
                     window->update();
                     window->redraw();
@@ -593,6 +594,7 @@ void Game::move(int x,int y)
             actvie=&unites[posXselec];
 
             window->changeVieWindow(unites[posXselec]);
+
 
          window->changeDammageWindow(unites[posXselec]);
             int c= unites[posXselec].getPtdeplacement();// selectionner unité  //
@@ -983,6 +985,7 @@ void Game::attack(int z, int e,int i , int je){
         int defTerrain2 = gameobject[r][s].getdefTerrain(gameobject[r][s].getPosdef());
 
         unites[i].setDamage(unites[je],unites[i],defTerrain1);
+
         std::cout<<unites[i].getvie()<<std::endl;
         std::cout<<unites[je].getvie()<<std::endl;
         unites[je].setDamage(unites[i],unites[je],defTerrain2);
@@ -1050,10 +1053,13 @@ void Game::attack(int z, int e,int i , int je){
         }
         }
         if (nombreaerop1 == 0) {
-             if (compteurfin1>=2){std::cout<<"end game4"<<std::endl;}
+             if (compteurfin1>=2){std::cout<<"end game4"<<std::endl;
+             setEndGame(true);}
+
          }
         else if (nombreaerop2 == 0) {
-             if (compteurfin2>=2){std::cout<<"end game5"<<std::endl;}
+             if (compteurfin2>=2){std::cout<<"end game5"<<std::endl;
+             setEndGame(true);}
     }
 
    }

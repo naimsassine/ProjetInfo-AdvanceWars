@@ -6,6 +6,7 @@
 #include"bouton.h"
 #include "Usine.h"
 #include "math.h"
+#include "menu.h"
 #include <QMessageBox>
 #include "ui_mainwindow.h"
 #include <QPushButton>
@@ -58,12 +59,19 @@ if(game.getEndGame()== true)
         { MainWindow w;
         Player player1(1000, 1);
         Player player2(1000, 2);
+        Menu menu;
+        menu.setWindow(&w);
+        menu.show();
            game.InitGame(&w, &player1, &player2);
+
+           //update();
+           //redraw();
         }
         else if (reponse == QMessageBox::No)
         {
           this->close();
         }
+    this->show();
 }
 
 
@@ -147,6 +155,7 @@ if(game.getEndGame()== true)
 
 
 }
+
 void MainWindow::sendJson(QJsonObject obj) {
     QByteArray data = QJsonDocument(obj).toJson();
     QDataStream out(other);
