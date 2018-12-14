@@ -130,6 +130,51 @@ void Gameobject::setValue2(bool value)
     value2 = value;
 }
 
+int Gameobject::getPoids() const
+{
+    return poids;
+}
+
+void Gameobject::setPoids(int value)
+{
+    poids = value;
+}
+
+bool Gameobject::getDejaparc() const
+{
+    return dejaparc;
+}
+
+void Gameobject::setDejaparc(bool value)
+{
+    dejaparc = value;
+}
+
+int Gameobject::getAntecedantX() const
+{
+    return antecedantX;
+}
+
+void Gameobject::setAntecedantX(int value)
+{
+    antecedantX = value;
+}
+
+int Gameobject::getAntecedantY() const
+{
+    return antecedantY;
+}
+
+void Gameobject::setAntecedantY(int value)
+{
+    antecedantY = value;
+}
+
+void Gameobject::pathfinding(int x, int y)
+{
+
+}
+
 
 void Gameobject::setPosX(int value)
 {

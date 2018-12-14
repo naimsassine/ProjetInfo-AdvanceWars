@@ -45,6 +45,20 @@ public:
     bool getValue2() const;
     void setValue2(bool value);
 
+    int getPoids() const;
+    void setPoids(int value);
+
+    bool getDejaparc() const;
+    void setDejaparc(bool value);
+
+    int getAntecedantX() const;
+    void setAntecedantX(int value);
+
+    int getAntecedantY() const;
+    void setAntecedantY(int value);
+
+    void pathfinding(int x, int y);
+
 protected:
     int posX;
     int posY;
@@ -60,6 +74,11 @@ protected:
     int ptdemouvement=1;
     int ldemouvement[5]={1,1,1,1,1};
     int defTerrain[12]={1,4,2,0,0,0,0,1,3,3,3,0};
+    int poids;
+    bool dejaparc;
+    int antecedantX;
+    int antecedantY;
+
 
 };
 #endif // Gameobject_H
