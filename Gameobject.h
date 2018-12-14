@@ -57,8 +57,6 @@ public:
     int getAntecedantY() const;
     void setAntecedantY(int value);
 
-    void pathfinding(int x, int y);
-
 protected:
     int posX;
     int posY;
@@ -74,8 +72,8 @@ protected:
     int ptdemouvement=1;
     int ldemouvement[5]={1,1,1,1,1};
     int defTerrain[12]={1,4,2,0,0,0,0,1,3,3,3,0};
-    int poids;
-    bool dejaparc;
+    int poids = -1;
+    bool dejaparc = false;
     int antecedantX;
     int antecedantY;
 

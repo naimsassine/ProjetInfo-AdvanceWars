@@ -170,10 +170,14 @@ void Gameobject::setAntecedantY(int value)
     antecedantY = value;
 }
 
-void Gameobject::pathfinding(int x, int y)
+/*void Gameobject::pathfinding(int x, int y)
 {
+    this->setDejaparc(true);
+    int posX = this->getPosX();
+    int posY = this->getPosY();
+    if (Gameobject[posX+1][posY+1].get)
 
-}
+}*/
 
 
 void Gameobject::setPosX(int value)

@@ -91,6 +91,7 @@ private:
     int fusionjs[2];
     static int compteurfin1;
     static int compteurfin2;
+    void pathfinding(Gameobject start, Gameobject end);
 
 };
 #endif // GAME_H

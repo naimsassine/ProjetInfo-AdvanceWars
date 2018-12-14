@@ -1275,7 +1275,6 @@ bool Game::samePos() const{
         return same;
         }
 }
-    }
-
+    }    
 }
 
