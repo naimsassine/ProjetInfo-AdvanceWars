@@ -39,6 +39,12 @@
 #include "river.h"
 #include "shoal.h"
 #include "reef.h"
+#include <iostream>
+#include <vector>
+#include <string>
+using namespace std;
+typedef vector< tuple<int,int> > tuple_list;
+
 Game Game::gameinst=Game();
 Game::Game()
 {
@@ -46,6 +52,7 @@ actville = nullptr;
 actvie = nullptr;
 
 }
+
 
 int Game::getPosXselec() const
 {
@@ -1277,4 +1284,71 @@ bool Game::samePos() const{
 }
     }    
 }
+
+void Game::Initialisation(Gameobject start)
+{
+    for (int h = 0 ;h < 21;h++) {
+        for (int j=0; j <17 ;j++) {
+            gameobject[h][j].setDistance(10000000);}}
+    start.setDistance(0);
+}
+
+Gameobject Game::Trouve_min(Gameobject start)
+{
+    int mini = 10000000;
+    Gameobject s;
+    int x = start.getPosX();
+    int y = start.getPosY();
+    this->moveable(3, x, y, 0);
+    for (int h = 0 ;h < 21;h++) {
+                for (int j=0; j <17 ;j++) {
+                    if (gameobject[h][j].getMovable()){
+                        if(gameobject[h][j].getDistance()<mini){
+                            mini = gameobject[h][j].getDistance();
+                            s = gameobject[h][j];
+                        }
+
+    }}}
+    return s;
+}
+
+
+
+void Game::pathfinding(Gameobject start, Gameobject end)
+{
+
+
+
+
+
+    /*int minx = 0;
+    int miny = 0;
+    start.setPoids(0);
+    while (minx!=end.getPosX() && miny!=end.getPosY()){
+        //tuple_list antecedant;
+        int x = start.getPosX();
+        int y = start.getPosY();
+        start.setDejaparc(true);
+        this->moveable(3, x, y, 0);
+        for (int h = 0 ;h < 21;h++) {
+            for (int j=0; j <17 ;j++) {
+                if (gameobject[h][j].getMovable()){    ////c est un voisin
+
+                    if(gameobject[h][j].getDejaparc() == false && (gameobject[h][j].getPoids() == -1 || (start.getPoids() + gameobject[h][j].getPTMvt() < gameobject[h][j].getPoids()))){
+                        int zouz = start.getPoids() + gameobject[h][j].getPTMvt();
+                        gameobject[h][j].setPoids(zouz);
+                        gameobject[h][j].setAntecedantX(x);
+                        gameobject[h][j].setAntecedantY(y);
+                    }
+                }
+                if(gameobject[h][j].getPoids()<gameobject[minx][miny].getPoids()){
+                    minx = h;
+                    miny = j;
+                }
+                gameobject[h][j].setMovable(false);}}}*/
+
+}
+
+
+
 

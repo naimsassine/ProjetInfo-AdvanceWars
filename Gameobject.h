@@ -57,6 +57,9 @@ public:
     int getAntecedantY() const;
     void setAntecedantY(int value);
 
+    int getDistance() const;
+    void setDistance(int value);
+
 protected:
     int posX;
     int posY;
@@ -76,6 +79,7 @@ protected:
     bool dejaparc = false;
     int antecedantX;
     int antecedantY;
+    int distance;
 
 
 };

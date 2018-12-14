@@ -92,6 +92,9 @@ private:
     static int compteurfin1;
     static int compteurfin2;
     void pathfinding(Gameobject start, Gameobject end);
+    void Initialisation(Gameobject start);
+    Gameobject Trouve_min(Gameobject start);
+
 
 };
 #endif // GAME_H
