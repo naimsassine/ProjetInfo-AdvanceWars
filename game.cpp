@@ -45,6 +45,7 @@
 using namespace std;
 typedef vector< tuple<int,int> > tuple_list;
 
+
 Game Game::gameinst=Game();
 Game::Game()
 {
@@ -333,9 +334,10 @@ void Game::endtour()
             turn = 2;
             for(std::vector<Unites>::size_type i = 0; i != unites.size(); i++){
                 if (unites[i].getTeam() == 2){
-                    int x = unites[i].getPosX() + 1;
+                    this->pathfinding(unites[i]);
+                    /*int x = unites[i].getPosX() + 1;
                     int y = unites[i].getPosY() + 1;
-                    unites[i].setPos(x,y);
+                    unites[i].setPos(x,y);*/
                 }
             }
             window->redraw();
@@ -1291,6 +1293,7 @@ void Game::Initialisation(Gameobject start)
         for (int j=0; j <17 ;j++) {
             gameobject[h][j].setDistance(10000000);}}
     start.setDistance(0);
+    start.setDejaparc(true);
 }
 
 Gameobject Game::Trouve_min(Gameobject start)
@@ -1307,7 +1310,7 @@ Gameobject Game::Trouve_min(Gameobject start)
                             mini = gameobject[h][j].getDistance();
                             s = gameobject[h][j];
                         }
-
+                    gameobject[h][j].setMovable(false);
     }}}
     return s;
 }
@@ -1322,13 +1325,44 @@ void Game::maj_distances(Gameobject s1, Gameobject s2)
     }
 }
 
-
-
-void Game::pathfinding(Gameobject start, Gameobject end)
+bool Game::test_Q()
 {
+    int compteur = 0;
+    for (int h = 0 ;h < 21;h++) {
+        for (int j=0; j <17 ;j++) {
+            if(gameobject[h][j].getDejaparc() == false){
+                compteur = 1;
+            }
+        }
+    }
+    if(compteur == 0){
+        return true;
+    }
+    else {
+        return false;
+    }
+}
 
 
 
+void Game::pathfinding(Gameobject start)
+{
+    this->Initialisation(start);
+    for (int l = 0 ;l < 100;l++){
+                Gameobject s1;
+                s1 = this->Trouve_min(start);
+                s1.setDejaparc(true);
+                int x = s1.getPosX();
+                int y = s1.getPosY();
+                this->moveable(3, x, y, 0);
+                for (int z = 0 ;z < 21;z++) {
+                            for (int w=0; w <17 ;w++) {
+                                if (gameobject[z][w].getMovable()){
+                                    this->maj_distances(s1,gameobject[z][w]);
+                                }}}
+    }
+
+                    std::cout<< gameobject[5][5].getAntecedantX() <<std::endl;
 
 
     /*int minx = 0;
