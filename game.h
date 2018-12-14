@@ -42,6 +42,9 @@ public:
     void setComptfusion();
     void setComptproduction(int x,int y);
     void setComptaeroport(int x,int y);
+    bool getEndGame() const;
+    void setEndGame(bool value) ;
+    static Game& newGame();
 
 
 
@@ -83,6 +86,7 @@ private:
     Player *player1;
     Player *player2;
     int turn=1;
+    bool isEndGame = false;
     bool unitincity=false;
     bool same = false;
     int capturesend[4];
