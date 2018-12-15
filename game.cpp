@@ -1368,7 +1368,8 @@ void Game::pathfinding(Gameobject end, Unites &unit, bool compt) // A lancer ave
                                     unit.setPosY(gameobject[z][w].getPosY());
                                     if(gameobject[z][w].getType()==35 && (gameobject[z][w].getTeam() == 1 || gameobject[z][w].getTeam() == 0)){
                                         this->capture_Usine(posx,posy);
-                                        this->capture_Usine(posx,posy);}
+                                        this->capture_Usine(posx,posy);
+                                    }
                                     else if(gameobject[z][w].getType()==34 && (gameobject[z][w].getTeam() == 1 || gameobject[z][w].getTeam() == 0)){
                                         this->capture(posx,posy);
                                         this->capture(posx,posy);
