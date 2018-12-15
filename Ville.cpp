@@ -9,7 +9,8 @@ Ville::Ville(int X, int Y ,int Z,int T)
     capturepoint=Z;
     team=T;
     posdef=8;
-    unite=nullptr;
+    unite=-1;
+
 }
 
 int Ville::getCapturepoint() const
@@ -64,15 +65,23 @@ bool Ville::getUnitin() const
 
 void Ville::setUnitin(bool value)
 {
-    std::cout<<"salma prob"<<std::endl;
+    Game& game = Game::Instance();
+    std::vector<Unites> unites =game.getUnites();
     unitin = value;
-    if(unite!=nullptr&& capturepoint!=0 && (unite->getPosX()!=posX || unite->getPosY()!=posY)){
+    if(value==true){
+        unitin=true;
+
+    }
+    else if(unite !=-1&& capturepoint!=0 && (unites[unite].getPosX()!=posX || unites[unite].getPosY()!=posY)){
+
+       std::cout<<posX<<"  "<<posY<<std::endl;
+
         Game& game = Game::Instance();
         capturepoint=20;
         game.setActville(-1);
         game.getWindow()->redraw();
         unitin=false;
-        unite=nullptr;
+
 
     }
     else{
@@ -81,12 +90,14 @@ void Ville::setUnitin(bool value)
 
 }
 
-Unites *Ville::getUnite() const
+int Ville::getUnite() const
 {
     return unite;
 }
 
-void Ville::setUnite(Unites *value)
+void Ville::setUnite(int value)
 {
     unite = value;
+
+
 }
