@@ -64,14 +64,21 @@ bool Ville::getUnitin() const
 
 void Ville::setUnitin(bool value)
 {
+    std::cout<<"salma prob"<<std::endl;
+    unitin = value;
     if(unite!=nullptr&& capturepoint!=0 && (unite->getPosX()!=posX || unite->getPosY()!=posY)){
         Game& game = Game::Instance();
         capturepoint=20;
-        game.setActville(nullptr);
+        game.setActville(-1);
         game.getWindow()->redraw();
+        unitin=false;
+        unite=nullptr;
 
     }
-    unitin = value;
+    else{
+        unitin=true;
+    }
+
 }
 
 Unites *Ville::getUnite() const
