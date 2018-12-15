@@ -96,7 +96,8 @@ private:
     static int compteurfin1;
     static int compteurfin2;
     static bool compteurpathfind;
-    void pathfinding(Gameobject end, Unites &unite);
+    void pathfinding(Gameobject end, Unites &unite, bool compt);
     double calculdistance(Gameobject s1, Gameobject s2);
+    void greedy(Unites &unit);
 };
 #endif // GAME_H

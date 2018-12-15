@@ -354,7 +354,7 @@ void Game::endtour()
             for(std::vector<Unites>::size_type i = 0; i != unites.size(); i++){
                 if (unites[i].getTeam() == 2){
                     // code IA
-                    if(compteurpathfind==false){this->pathfinding(gameobject[4][15],unites[i]);}
+                    if(compteurpathfind==false){this->greedy(unites[i]);} // pour le IA pathfind il faut appele this->pathfinding avec l argument true et gameobject[4][15]
                     else if(compteurpathfind == true){
                         std::cout<<"il est deja en place"<<std::endl;
                     }
@@ -1350,10 +1350,7 @@ double Game::calculdistance(Gameobject s1, Gameobject s2)
     return x;
 }
 
-
-
-
-void Game::pathfinding(Gameobject end, Unites &unit)
+void Game::pathfinding(Gameobject end, Unites &unit, bool compt) // A lancer avec true si pathfinding, et false si greedy
 {
     double x = 0;
     double min = 1000;
@@ -1369,10 +1366,14 @@ void Game::pathfinding(Gameobject end, Unites &unit)
                                 if (min == 0){
                                     unit.setPosX(gameobject[z][w].getPosX());
                                     unit.setPosY(gameobject[z][w].getPosY());
-                                    if(gameobject[z][w].getType()==35 && gameobject[z][w].getTeam() == 1){
+                                    if(gameobject[z][w].getType()==35 && (gameobject[z][w].getTeam() == 1 || gameobject[z][w].getTeam() == 0)){
                                         this->capture_Usine(posx,posy);
                                         this->capture_Usine(posx,posy);}
-                                    compteurpathfind = true;
+                                    else if(gameobject[z][w].getType()==34 && (gameobject[z][w].getTeam() == 1 || gameobject[z][w].getTeam() == 0)){
+                                        this->capture(posx,posy);
+                                        this->capture(posx,posy);
+                                    }
+                                   compteurpathfind = compt;
                                 }
                                 else {
                                     unit.setPosX(gameobject[z][w].getPosX());
@@ -1380,3 +1381,42 @@ void Game::pathfinding(Gameobject end, Unites &unit)
                                 }
                             }
                             gameobject[z][w].setMovable(false);}}}}
+
+
+
+void Game::greedy(Unites &unit)
+{
+    int compt = 0;
+    double min = 1000;
+    double x = 0;
+    int posox;
+    int posoy;
+    this->moveable(3,unit.getPosX(),unit.getPosY(),0);
+    for (int z = 0 ;z < 21;z++) {
+                for (int w=0; w <17 ;w++) {
+                        if((gameobject[z][w].getTeam() == 1 || gameobject[z][w].getTeam() == 0) && compt == 0){
+                            if(gameobject[z][w].getType() == 35 || gameobject[z][w].getType() == 34){
+                                x = calculdistance(gameobject[z][w],unit);
+                                if(x<min){
+                                    min = x;
+                                    posox = z;
+                                    posoy = w;
+                                }}}
+                 gameobject[z][w].setMovable(false);
+
+                }}
+    this->pathfinding(gameobject[posox][posoy],unit , false);
+
+}
+/*x = calculdistance(gameobject[z][w],unit);
+if(x<min){
+    min = x;
+    posox = z;
+    posoy = w;
+}*/
+/*if(gameobject[z][w].getType() == 35 || gameobject[z][w].getType() == 34)
+                                unit.setPosX(gameobject[z][w].getPosX());
+                                unit.setPosY(gameobject[z][w].getPosY());
+                                this->capture(z,w);
+                                this->capture(z,w);
+                                compt = compt+1;*/
