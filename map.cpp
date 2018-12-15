@@ -718,24 +718,24 @@ void Map::mousePress(int x ,int y , QMouseEvent *ev)
             casee.setPosY(e);
             if(ev->buttons() == Qt::LeftButton){
                 Game& game=Game::Instance();
-                game.setActville(nullptr);
-                 game.move(z,e);
+                game.setActville(-1);
+                game.move(z,e);
 
                 if(gameobject[z][e].getType()==34 ){
                     gameobject[z][e].setSelected(true);
                     std::vector<Ville> ville =game.getVille();
                     for(std::vector<Ville>::size_type i = 0; i != ville.size(); i++){
                         if(ville[i].getPosX()==z &&ville[i].getPosY()==e) {
-                            game.setActville(&ville[i]);
+                            game.setActville(i);
                         }}
                     game.getWindow()->redraw();
                 }
-                game.setActvie(nullptr);
+                game.setActvie(-1);
                 std::vector<Unites> unites =game.getUnites();
                 for(std::vector<Unites>::size_type i = 0; i != unites.size(); i++){
 
                     if(unites[i].getPosX()==z && unites[i].getPosY()==e){
-                        game.setActvie(&unites[i]);
+                        game.setActvie(i);
 
                         game.getWindow()->redraw();
                     }}
@@ -843,13 +843,13 @@ void Map::mousePress(int x ,int y , QMouseEvent *ev)
 
                     std::vector<Unites> unite =game.getUnites();
                     for(std::vector<Unites>::size_type i = 0; i != unite.size(); i++){
-                        game.setActvie(nullptr);
+                        game.setActvie(-1);
 
 
                         if(unite[game.getPosXselec()].getComptattack()&& unite[game.getPosXselec()].getTeam()==game.getTurn()){
 
                         if(unite[i].getPosX()==z &&unite[i].getPosY()==e && unite[i].getUnitin() && unite[i].getTeam()!=game.getTurn()){
-                            game.setActvie(&unite[i]);
+                            game.setActvie(i);
                             QMenu menu(this);
                             attack =new QAction("Attaquer", this);
                             menu.addAction(attack);
