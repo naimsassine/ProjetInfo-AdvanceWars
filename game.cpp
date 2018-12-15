@@ -43,7 +43,6 @@
 #include <vector>
 #include <string>
 using namespace std;
-typedef vector< tuple<int,int> > tuple_list;
 
 
 Game Game::gameinst=Game();
@@ -96,6 +95,7 @@ int Game::getfusionjs(int a)
 
 int Game::compteurfin1 = 0;
 int Game::compteurfin2 = 0;
+bool Game::compteurpathfind = false;
 
 
 void Game::changeposu(int i, int newx, int newy)
@@ -343,7 +343,14 @@ void Game::endtour()
             for(std::vector<Unites>::size_type i = 0; i != unites.size(); i++){
                 if (unites[i].getTeam() == 2){
                     // code IA
-                    this->pathfinding(gameobject[15][15],unites[i]);
+                    if(compteurpathfind==false){this->pathfinding(gameobject[4][15],unites[i]);
+                        std::cout<<gameobject[4][15].getPosX()<<std::endl;
+                        std::cout<<gameobject[4][15].getPosY()<<std::endl;
+                        std::cout<<unites[i].getPosX()<<std::endl;
+                        std::cout<<unites[i].getPosY()<<std::endl;}
+                    else if(compteurpathfind == true){
+                        std::cout<<"il est deja en place"<<std::endl;
+                    }
                 }
             }
             window->redraw();
@@ -771,6 +778,8 @@ void Game::InitGame(MainWindow *wind,Player *InitPlayer1,Player *InitPlayer2){
                 gameobject[j][d].setTeam(1);
                 uorange.setTeam(1);
                 usine.push_back(uorange);
+                std::cout<<j<<std::endl;
+                std::cout<<d<<std::endl;
             }
             if(c==44){
                 Usine ublue(j,d);
@@ -1325,33 +1334,6 @@ bool Game::samePos() const{
     }    
 }
 
-void Game::Initialisation(Gameobject start)
-{
-    for (int h = 0 ;h < 21;h++) {
-        for (int j=0; j <17 ;j++) {
-            gameobject[h][j].setDistance(10000000);}}
-    start.setDistance(0);
-    start.setDejaparc(true);
-}
-
-Gameobject Game::Trouve_min(Gameobject start)
-{
-    int mini = 10000000;
-    Gameobject s;
-    int x = start.getPosX();
-    int y = start.getPosY();
-    this->moveable(3, x, y, 0);
-    for (int h = 0 ;h < 21;h++) {
-                for (int j=0; j <17 ;j++) {
-                    if (gameobject[h][j].getMovable()){
-                        if(gameobject[h][j].getDistance()<mini){
-                            mini = gameobject[h][j].getDistance();
-                            s = gameobject[h][j];
-                        }
-                    gameobject[h][j].setMovable(false);
-    }}}
-    return s;
-}
 
 double Game::calculdistance(Gameobject s1, Gameobject s2)
 {
@@ -1362,23 +1344,6 @@ double Game::calculdistance(Gameobject s1, Gameobject s2)
     return x;
 }
 
-bool Game::test_Q()
-{
-    int compteur = 0;
-    for (int h = 0 ;h < 21;h++) {
-        for (int j=0; j <17 ;j++) {
-            if(gameobject[h][j].getDejaparc() == false){
-                compteur = 1;
-            }
-        }
-    }
-    if(compteur == 0){
-        return true;
-    }
-    else {
-        return false;
-    }
-}
 
 
 
@@ -1391,16 +1356,29 @@ void Game::pathfinding(Gameobject end, Unites &unit)
                 for (int w=0; w <17 ;w++) {
                         if(gameobject[z][w].getMovable()){
                             x = calculdistance(end, gameobject[z][w]);
-                            if(x < min){
+                            std::cout<<"x"<<std::endl;
+                            std::cout<<x<<std::endl;
+                            if(x < min ){
                                 min = x;
-                                if(unit.getPosX()!=end.getPosX() && unit.getPosY()!=end.getPosY()){
-                                    unit.setPosX(z);
-                                    unit.setPosY(w);
+                                std::cout<<"min"<<std::endl;
+                                std::cout<<min<<std::endl;
+                                if (min == 0){
+                                    unit.setPosX(gameobject[z][w].getPosX());
+                                    unit.setPosY(gameobject[z][w].getPosY());
+                                    std::cout<<"we are here"<<std::endl;
+                                    this->capture_Usine(4,15);
+                                    this->capture_Usine(4,15);
+                                    compteurpathfind = true;
+                                }
+                                else {
+                                    unit.setPosX(gameobject[z][w].getPosX());
+                                    unit.setPosY(gameobject[z][w].getPosY());
                                 }
                             }
-
                             gameobject[z][w].setMovable(false);
                         }
+
+
 
                     }}
 

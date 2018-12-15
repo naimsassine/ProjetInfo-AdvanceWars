@@ -709,7 +709,6 @@ void Map::attackunite()
 void Map::mousePress(int x ,int y , QMouseEvent *ev)
 {
 
-
             gameobject[z][e].setSelected(false); // apelé ici, donc je suspecte que z ou e soit hors borne
              // fonction deja implementé //
             z= (int)x-5;
@@ -717,7 +716,6 @@ void Map::mousePress(int x ,int y , QMouseEvent *ev)
 
             casee.setPosX(z);
             casee.setPosY(e);
-
             if(ev->buttons() == Qt::LeftButton){
                 Game& game=Game::Instance();
                 game.setActville(nullptr);
@@ -757,7 +755,6 @@ void Map::mousePress(int x ,int y , QMouseEvent *ev)
                             w.exec();
                         }
                     }
-
                 }
                 if ( gameobject[z][e].getType() == 36 && gameobject[z][e].getTeam() == game.getTurn() ){
                     std::vector<Aeroport> aeroport = game.getAeroport();
