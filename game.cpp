@@ -451,7 +451,7 @@ void Game::move(int x,int y)
 
        if(u->isAtPos(v.getPosX(),v.getPosY())){
            v.setUnitin(true);
-           v.setUnite(&unites[posXselec]);
+           v.setUnite(posXselec);
        }
 
     }
@@ -521,6 +521,8 @@ void Game::move(int x,int y)
             for(std::vector<Ville>::size_type i = 0; i != ville.size(); i++){
                 if(ville[i].getPosX()==u->getPosX() &&ville[i].getPosY()==u->getPosY()) {
                     ville[i].setUnitin(true);
+                    std::cout<<unites[posXselec].getPosX()<<"  "<<unites[posXselec].getPosY()<<std::endl;
+                    ville[i].setUnite(posXselec);
                     ville[i].setSelected(true);
 
                     window->changeCaptWindow(ville[i]);
@@ -1158,7 +1160,7 @@ void Game::capture(int z, int e)
         ville[i].setCapturepoint(unites[posXselec].getvie());
         int c= unites[posXselec].getvie();
         window->changeCaptWindow(ville[i]);
-        ville[i].setUnite(&unites[posXselec]);
+        ville[i].setUnite(posXselec);
         actville=&ville[i];
         window->redraw();
         if(ville[i].getCapturepoint()==0){
