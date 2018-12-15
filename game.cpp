@@ -1377,15 +1377,4 @@ void Game::pathfinding(Gameobject end, Unites &unit)
                                     unit.setPosY(gameobject[z][w].getPosY());
                                 }
                             }
-                            gameobject[z][w].setMovable(false);
-                        }
-
-
-
-                    }}
-
-}
-
-
-
-
+                            gameobject[z][w].setMovable(false);}}}}
