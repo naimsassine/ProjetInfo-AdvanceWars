@@ -54,15 +54,7 @@ void Aeroport::initCapturePoint()
     capturepoint=20;
 }
 
-bool Aeroport::getUnitin() const
-{
-    return unitin;
-}
 
-void Aeroport::setUnitin(bool value)
-{
-    unitin = value;
-}
 
 bool Aeroport::getComptproduction() const
 {
@@ -74,23 +66,8 @@ void Aeroport::setComptproduction(bool value)
     comptproduction = value;
 }
 
-int Aeroport::getCapturepoint() const
-{
-    return capturepoint;
-}
 
-void Aeroport::setCapturepoint(int value)
-{
-    capturepoint = capturepoint-value;
-    /*if capturepoint =0 setteam*/
-    if(capturepoint<0){
-        capturepoint=0;
-    }
-    if(value==20){
-       capturepoint=20;
-    }
 
-}
 
 
 
