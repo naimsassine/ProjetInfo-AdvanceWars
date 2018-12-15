@@ -95,10 +95,10 @@ private:
     int fusionjs[2];
     static int compteurfin1;
     static int compteurfin2;
-    void pathfinding(Gameobject start);
+    void pathfinding(Gameobject end, Unites &unite);
     void Initialisation(Gameobject start);
     Gameobject Trouve_min(Gameobject start);
-    void maj_distances(Gameobject s1, Gameobject s2);
+    double calculdistance(Gameobject s1, Gameobject s2);
     bool test_Q();
 
 };
