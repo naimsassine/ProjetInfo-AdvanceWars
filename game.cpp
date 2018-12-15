@@ -1355,6 +1355,8 @@ void Game::pathfinding(Gameobject end, Unites &unit)
 {
     double x = 0;
     double min = 1000;
+    int posx = end.getPosX();
+    int posy = end.getPosY();
     this->moveable(3,unit.getPosX(),unit.getPosY(),0);
     for (int z = 0 ;z < 21;z++) {
                 for (int w=0; w <17 ;w++) {
@@ -1365,8 +1367,9 @@ void Game::pathfinding(Gameobject end, Unites &unit)
                                 if (min == 0){
                                     unit.setPosX(gameobject[z][w].getPosX());
                                     unit.setPosY(gameobject[z][w].getPosY());
-                                    this->capture_Usine(4,15);
-                                    this->capture_Usine(4,15);
+                                    if(gameobject[z][w].getType()==35 && gameobject[z][w].getTeam() == 1){
+                                        this->capture_Usine(posx,posy);
+                                        this->capture_Usine(posx,posy);}
                                     compteurpathfind = true;
                                 }
                                 else {
