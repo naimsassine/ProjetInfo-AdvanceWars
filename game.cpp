@@ -1054,12 +1054,15 @@ void Game::attack(int z, int e,int i , int je){
         }
         if (nombreaerop1 == 0) {
              if (compteurfin1>=2){std::cout<<"end game4"<<std::endl;
-             setEndGame(true);}
+             setEndGame(true);
+             window->redraw();}
 
          }
         else if (nombreaerop2 == 0) {
              if (compteurfin2>=2){std::cout<<"end game5"<<std::endl;
-             setEndGame(true);}
+             setEndGame(true);
+             window->redraw();
+             }
     }
 
    }
@@ -1224,6 +1227,7 @@ void Game::capture_Usine(int z, int e)
     }
     if (nombreusines1 == 0) {
         compteurfin1 = compteurfin1 + 1;
+        std::cout<<"ALLE"<<std::endl;
     }
     else if (nombreusines2 == 0) {
         compteurfin2 = compteurfin2 + 1;
@@ -1236,20 +1240,23 @@ void Game::capture_Usine(int z, int e)
         else if (aeroport[i].getTeam() == 2) {
             nombreaerop2 = nombreaerop2 + 1;
             setEndGame(true);
+            window->redraw();
         }
         }
         if (nombreaerop1 == 0) {
-             if (compteurfin1>=2){std::cout<<"end game1"<<std::endl;}
+             if (compteurfin1>=2){std::cout<<"end game1"<<std::endl;
             // Instance();
+             std::cout<<"ALLEs1"<<std::endl;
              setEndGame(true);
+             window->redraw();}
          }
         else if (nombreaerop2 == 0) {
             std::cout<<"end game1"<<std::endl;
-           // Instance();
-            setEndGame(true);
+
             if (compteurfin2>=2){std::cout<<"end game2"<<std::endl;
                 //Instance();
                 setEndGame(true);
+                window->redraw();
             }
     }
 }
@@ -1288,12 +1295,14 @@ void Game::capture_Aeroport(int z, int e)
         if (compteurfin1>=2){std::cout<<"end game7"<<std::endl;
             //Instance();
             setEndGame(true);
+            window->redraw();
         }
     }
     else if (nombreaerop2 == 0) {
         if (compteurfin2>=2){std::cout<<"end game8"<<std::endl;
             //Instance();
             setEndGame(true);
+            window->redraw();
         }
     }
 }
