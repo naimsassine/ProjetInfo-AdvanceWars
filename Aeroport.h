@@ -17,20 +17,14 @@ public:
     void createTeam(Unites c);
 
     //partie similaire à ville//
-    int getCapturepoint() const;
-    void setCapturepoint(int value);
     void initCapturePoint();
     void initTeam();
-    bool getUnitin() const;
-    void setUnitin(bool value);
 
     bool getComptproduction() const;
     void setComptproduction(bool value);
 
 protected:
-    int capturepoint=20;
     int team=0;
-    bool unitin=false;
     int def_terrain = 0;
     bool comptproduction=true;
 };
