@@ -6,8 +6,8 @@
 #include "player.h"
 #include "menu.h"
 int main(int argc, char *argv[])
-{
-    QApplication a(argc, argv);
+{    QApplication a(argc, argv);
+
     Menu menu;
 
     MainWindow w;
@@ -17,6 +17,7 @@ int main(int argc, char *argv[])
     game.InitGame(&w, &player1, &player2);  // je trouve ça plus clair
     menu.setWindow(&w);
     menu.show();
+
 
     return a.exec();
 
