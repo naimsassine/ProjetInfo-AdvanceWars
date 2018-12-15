@@ -22,7 +22,7 @@ public:
     void setCapturepoint(int value);
 
 protected :
-    int unite;
+    int unite=-1;
     bool unitin=false;
     int capturepoint;
 };

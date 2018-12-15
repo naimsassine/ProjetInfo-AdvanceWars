@@ -36,7 +36,7 @@ void Buildings::setUnitin(bool value)
         unitin=true;
 
     }
-    else if(unite !=-1&& capturepoint!=0 ){
+    else if(unite> 0&& capturepoint!=0 ){
 
         if(unites[unite].getPosX()!=posX || unites[unite].getPosY()!=posY){
 

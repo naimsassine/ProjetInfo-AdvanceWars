@@ -644,6 +644,7 @@ void Game::move(int x,int y)
             unites[posXselec].setUnitin(true);
         }
     }
+    std::cout<<"YES"<<std::endl;
 }
 
 
