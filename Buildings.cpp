@@ -6,7 +6,7 @@ Buildings::Buildings(){
 }
 Buildings::Buildings(int X, int Y)
 {
-    unite=0;
+    unite=-1;
     posX = X;
     posY = Y;
     type = 0;
@@ -36,15 +36,15 @@ void Buildings::setUnitin(bool value)
         unitin=true;
 
     }
-    else if(unite !=-1&& capturepoint!=0 && (unites[unite].getPosX()!=posX || unites[unite].getPosY()!=posY)){
+    else if(unite !=-1&& capturepoint!=0 ){
 
-
+        if(unites[unite].getPosX()!=posX || unites[unite].getPosY()!=posY){
 
         Game& game = Game::Instance();
         capturepoint=20;
         game.setActville(-1);
         game.getWindow()->redraw();
-        unitin=false;
+        unitin=false;}
 
 
     }
