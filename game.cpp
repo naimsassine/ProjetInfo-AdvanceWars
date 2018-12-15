@@ -343,11 +343,7 @@ void Game::endtour()
             for(std::vector<Unites>::size_type i = 0; i != unites.size(); i++){
                 if (unites[i].getTeam() == 2){
                     // code IA
-                    if(compteurpathfind==false){this->pathfinding(gameobject[4][15],unites[i]);
-                        std::cout<<gameobject[4][15].getPosX()<<std::endl;
-                        std::cout<<gameobject[4][15].getPosY()<<std::endl;
-                        std::cout<<unites[i].getPosX()<<std::endl;
-                        std::cout<<unites[i].getPosY()<<std::endl;}
+                    if(compteurpathfind==false){this->pathfinding(gameobject[4][15],unites[i]);}
                     else if(compteurpathfind == true){
                         std::cout<<"il est deja en place"<<std::endl;
                     }
@@ -778,8 +774,6 @@ void Game::InitGame(MainWindow *wind,Player *InitPlayer1,Player *InitPlayer2){
                 gameobject[j][d].setTeam(1);
                 uorange.setTeam(1);
                 usine.push_back(uorange);
-                std::cout<<j<<std::endl;
-                std::cout<<d<<std::endl;
             }
             if(c==44){
                 Usine ublue(j,d);
@@ -1356,16 +1350,11 @@ void Game::pathfinding(Gameobject end, Unites &unit)
                 for (int w=0; w <17 ;w++) {
                         if(gameobject[z][w].getMovable()){
                             x = calculdistance(end, gameobject[z][w]);
-                            std::cout<<"x"<<std::endl;
-                            std::cout<<x<<std::endl;
                             if(x < min ){
                                 min = x;
-                                std::cout<<"min"<<std::endl;
-                                std::cout<<min<<std::endl;
                                 if (min == 0){
                                     unit.setPosX(gameobject[z][w].getPosX());
                                     unit.setPosY(gameobject[z][w].getPosY());
-                                    std::cout<<"we are here"<<std::endl;
                                     this->capture_Usine(4,15);
                                     this->capture_Usine(4,15);
                                     compteurpathfind = true;
