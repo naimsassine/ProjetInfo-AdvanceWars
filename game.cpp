@@ -51,6 +51,7 @@ Game::Game()
 actville = nullptr;
 actvie = nullptr;
 
+
 }
 bool Game::getEndGame() const
 {
