@@ -133,18 +133,28 @@ MainWindow *Game::getWindow() const
     return window;
 }
 
-void Game::setActville(Ville *value)
+void Game::setActville(int i)
 {
-    actville = value;
+    if(i==-1){
+        actville=nullptr;
+    }
+    else{
+        actville = &ville[i];
+    }
+
 }
 
 Ville *Game::getActville() const
 {
     return actville;
 }
-void Game::setActvie(Unites *value)
-{
-    actvie = value;
+void Game::setActvie(int i)
+{   if(i==-1){
+        actvie=nullptr;
+    }
+    else{
+    actvie = &unites[i];
+    }
 }
 
 Unites *Game::getActvie() const
@@ -438,10 +448,10 @@ void Game::move(int x,int y)
     Unites *u = &unites[posXselec];
     for (Ville& v : ville) {  // plus joli quand mme
 
-       if(v.getTeam()==turn){
-        v.setUnitin(false);}
+
        if(u->isAtPos(v.getPosX(),v.getPosY())){
            v.setUnitin(true);
+           v.setUnite(&unites[posXselec]);
        }
 
     }
@@ -518,9 +528,10 @@ void Game::move(int x,int y)
                     window->redraw();
 
                 }
+
                 else {
-                    ville[i].setUnitin(false);
                     ville[i].setSelected(false);
+                    ville[i].setUnitin(false);
                    // window->changeCaptWindow(ville[i]);
                    // window->redraw();
                 }
@@ -908,59 +919,58 @@ void Game::createUnite(int x, int y,  int team ,int type ){
     if(type == 1998){
         Infanterie nom1(x,y,team);
         printf("big fat lol");
-
-        window->redraw();
         unites.push_back(nom1);
+        window->redraw();
     }
     else if( type == 2000){
         B_Copter copt1(x,y,team);
-        window->redraw();
         unites.push_back(copt1);
+        window->redraw();
     }
     else if( type == 2001){
         Bomber bomb1(x,y,team);
-        window->redraw();
         unites.push_back(bomb1);
+        window->redraw();
     }
     else if( type == 2002){
         Fighter fight1(x,y,team);
-        window->redraw();
         unites.push_back(fight1);
+        window->redraw();
     }
     else if( type == 2003){
         Bazooka fight1(x,y,team);
-        window->redraw();
         unites.push_back(fight1);
+        window->redraw();
     }
     else if( type == 3000){
         Recon recon1(x,y,team);
-        window->redraw();
         unites.push_back(recon1);
+        window->redraw();
     }
     else if( type == 3001){
         Anti_Air anti_air1(x,y,team);
-        window->redraw();
         unites.push_back(anti_air1);
+        window->redraw();
     }
     else if( type== 3002){
         Tank tank1(x,y,team);
-        window->redraw();
         unites.push_back(tank1);
+        window->redraw();
     }
     else if(type == 3003){
         MD_tank md_tank1(x,y,team);
-        window->redraw();
         unites.push_back(md_tank1);
+        window->redraw();
     }
     else if(type == 3004){
         mega_tank mega_tank1(x,y,team);
-        window->redraw();
         unites.push_back(mega_tank1);
+        window->redraw();
     }
     else if(type == 3005){
         Neotank neotank1(x,y,team);
-        window->redraw();
         unites.push_back(neotank1);
+        window->redraw();
     }
 
 }
