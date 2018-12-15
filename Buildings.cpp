@@ -6,7 +6,7 @@ Buildings::Buildings(){
 }
 Buildings::Buildings(int X, int Y)
 {
-    unite=-1;
+    unite=0;
     posX = X;
     posY = Y;
     type = 0;
