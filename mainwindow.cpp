@@ -20,6 +20,9 @@
 #include <QSizePolicy>
 #include <string.h>
 #include <iostream>
+#include <QApplication>
+#include <QProcess>
+
 
 MainWindow::MainWindow(QWidget *parent) :
 
@@ -51,28 +54,7 @@ MainWindow::MainWindow(QWidget *parent) :
     don = nullptr;
     don1 = nullptr;
     don2 = nullptr;
-Game& game = Game::Instance();
-if(game.getEndGame()== true)
-{
-    int reponse = QMessageBox::question(this, "Fin de partie !", "Voulez-vous recommencer une partie ?", QMessageBox::Yes | QMessageBox::No);
-    if (reponse == QMessageBox::Yes)
-        { MainWindow w;
-        Player player1(1000, 1);
-        Player player2(1000, 2);
-        Menu menu;
-        menu.setWindow(&w);
-        menu.show();
-           game.InitGame(&w, &player1, &player2);
 
-           //update();
-           //redraw();
-        }
-        else if (reponse == QMessageBox::No)
-        {
-          this->close();
-        }
-    this->show();
-}
 
 
    bouton = new QPushButton("End Turn !", this);
@@ -398,6 +380,25 @@ void MainWindow::redraw()
     }
     else{
         lab5->setText(" ");
+    }
+    if(game.getEndGame()== true)
+    {   QMessageBox msgBox;
+        msgBox.setWindowTitle("Fin de partie !");
+        msgBox.setText( "Voulez-vous recommencer une partie ?");
+        msgBox.setStandardButtons(QMessageBox::Yes);
+        msgBox.addButton(QMessageBox::No);
+        msgBox.setDefaultButton(QMessageBox::No);
+        if(msgBox.exec() == QMessageBox::Yes){
+            QProcess process;
+            QApplication::quit();
+            QProcess::startDetached(qApp->applicationFilePath(), QStringList());
+
+        }else {
+            QApplication::quit();
+            this->close();
+        }
+
+        this->show();
     }
 }
 
