@@ -49,10 +49,10 @@ public:
 
 
     Ville *getActville() const;
-    void setActville(Ville *value);
+    void setActville(int i);
 
     Unites *getActvie() const;
-    void setActvie(Unites *value);
+    void setActvie(int i );
 
     MainWindow *getWindow() const;
 
