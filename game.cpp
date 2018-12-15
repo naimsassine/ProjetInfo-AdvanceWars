@@ -456,18 +456,16 @@ void Game::move(int x,int y)
 
     }
     for (Usine& v :usine){
-        if(v.getTeam()==turn){
-         v.setUnitin(false);}
         if(u->isAtPos(v.getPosX(),v.getPosY())){
             v.setUnitin(true);
+            v.setUnite(posXselec);
         }
     }
 
     for(Aeroport& v : aeroport){
-        if(v.getTeam()==turn){
-         v.setUnitin(false);}
         if(u->isAtPos(v.getPosX(),v.getPosY())){
             v.setUnitin(true);
+            v.setUnite(posXselec);
         }
     }
 
@@ -521,12 +519,9 @@ void Game::move(int x,int y)
             for(std::vector<Ville>::size_type i = 0; i != ville.size(); i++){
                 if(ville[i].getPosX()==u->getPosX() &&ville[i].getPosY()==u->getPosY()) {
                     ville[i].setUnitin(true);
-                    std::cout<<unites[posXselec].getPosX()<<"  "<<unites[posXselec].getPosY()<<std::endl;
                     ville[i].setUnite(posXselec);
                     ville[i].setSelected(true);
-
                     window->changeCaptWindow(ville[i]);
-                    window->update();
                     window->redraw();
 
                 }
@@ -546,8 +541,10 @@ void Game::move(int x,int y)
 
                 if(aeroport[i].getPosX()==x && aeroport[i].getPosY()==y){
                     aeroport[i].setUnitin(true);
-                    aeroport[i].setUnitin(true);
+                    aeroport[i].setUnite(posXselec);
+                    aeroport[i].setSelected(true);
                     window->changeCaptWindow(aeroport[i]);
+                    window->redraw();
 
                 }
                 else{
@@ -562,6 +559,7 @@ void Game::move(int x,int y)
             for(std::vector<Usine>::size_type i = 0; i!= usine.size(); i++){
                 if(usine[i].getPosX()==x && usine[i].getPosY()==y){
                     usine[i].setUnitin(true);
+                    usine[i].setUnite(posXselec);
                     usine[i].setSelected(true);
                     window->changeCaptWindow(usine[i]);
                 }
