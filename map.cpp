@@ -44,9 +44,7 @@ void Map::paintEvent(QPaintEvent *event)
     QPainter painter(this);
     for(int i=0 ;i<21;i++){
         int c=i+5;
-        Game& game=Game::Instance();
-        std::vector<Unites> unite =game.getUnites();
-        for(std::vector<Unites>::size_type h = 0; h != unite.size(); h++){
+
         for (int j=0; j <17 ;j++){
 
 
@@ -57,6 +55,10 @@ void Map::paintEvent(QPaintEvent *event)
                                  QPixmap pixmap(":/Misc.png");
                                  painter.drawPixmap(c*40,j*40,40,40,pixmap);
                              }
+                  if((gameobject[i][j].getSelected()==true) ){
+                       painter.drawPixmap(50,250,40,40,pixmap);
+
+                  }
 
            }
 
@@ -66,12 +68,14 @@ void Map::paintEvent(QPaintEvent *event)
                painter.drawPixmap(c*40,j*40,40,40,pixmap1);
                QPixmap pixmap(":/mountain.gif");
                painter.drawPixmap(c*40,j*40,40,40,pixmap);
-               if(( (unite[h].getPosX() == gameobject[i][j].getPosX() && unite[h].getPosY() == gameobject[i][j].getPosY())) && unite[h].getTeam() == turn){
-                    painter.drawPixmap(50,350,40,40,pixmap);}
                if(gameobject[i][j].getMovable()){
                               QPixmap pixmap(":/Misc.png");
                               painter.drawPixmap(c*40,j*40,40,40,pixmap);
                           }
+               if((gameobject[i][j].getSelected()==true) ){
+                    painter.drawPixmap(50,250,40,40,pixmap);
+
+               }
            }
            else if(gameobject[i][j].getType() == 3){
                QPixmap pixmap(":/wood.gif");
@@ -80,6 +84,10 @@ void Map::paintEvent(QPaintEvent *event)
                               QPixmap pixmap(":/Misc.png");
                               painter.drawPixmap(c*40,j*40,40,40,pixmap);
                           }
+               if((gameobject[i][j].getSelected()==true) ){
+                    painter.drawPixmap(50,250,40,40,pixmap);
+
+               }
            }
            else if(gameobject[i][j].getType() == 4){
                QPixmap pixmap(":/hriver.gif");
@@ -88,6 +96,10 @@ void Map::paintEvent(QPaintEvent *event)
                               QPixmap pixmap(":/Misc.png");
                               painter.drawPixmap(c*40,j*40,40,40,pixmap);
                           }
+               if((gameobject[i][j].getSelected()==true) ){
+                    painter.drawPixmap(50,250,40,40,pixmap);
+
+               }
            }
            else if(gameobject[i][j].getType() == 5){
                QPixmap pixmap(":/vriver.gif");
@@ -96,6 +108,10 @@ void Map::paintEvent(QPaintEvent *event)
                               QPixmap pixmap(":/Misc.png");
                               painter.drawPixmap(c*40,j*40,40,40,pixmap);
                           }
+               if((gameobject[i][j].getSelected()==true) ){
+                    painter.drawPixmap(50,250,40,40,pixmap);
+
+               }
            }
            else if(gameobject[i][j].getType() == 6){
                QPixmap pixmap(":/criver.gif");
@@ -104,6 +120,10 @@ void Map::paintEvent(QPaintEvent *event)
                               QPixmap pixmap(":/Misc.png");
                               painter.drawPixmap(c*40,j*40,40,40,pixmap);
                           }
+               if((gameobject[i][j].getSelected()==true) ){
+                    painter.drawPixmap(50,250,40,40,pixmap);
+
+               }
            }
            else if(gameobject[i][j].getType() == 7){
                QPixmap pixmap(":/esriver.gif");
@@ -112,6 +132,10 @@ void Map::paintEvent(QPaintEvent *event)
                               QPixmap pixmap(":/Misc.png");
                               painter.drawPixmap(c*40,j*40,40,40,pixmap);
                           }
+               if((gameobject[i][j].getSelected()==true) ){
+                    painter.drawPixmap(50,250,40,40,pixmap);
+
+               }
            }
            else if(gameobject[i][j].getType() == 8){
                QPixmap pixmap(":/swriver.gif");
@@ -121,6 +145,10 @@ void Map::paintEvent(QPaintEvent *event)
                               painter.drawPixmap(c*40,j*40,40,40,pixmap);
 
                           }
+               if((gameobject[i][j].getSelected()==true) ){
+                    painter.drawPixmap(50,250,40,40,pixmap);
+
+               }
            }
            else if(gameobject[i][j].getType() == 9){
                QPixmap pixmap(":/wnriver.gif");
@@ -129,6 +157,10 @@ void Map::paintEvent(QPaintEvent *event)
                               QPixmap pixmap(":/Misc.png");
                               painter.drawPixmap(c*40,j*40,40,40,pixmap);
                           }
+               if((gameobject[i][j].getSelected()==true) ){
+                    painter.drawPixmap(50,250,40,40,pixmap);
+
+               }
            }
            else if(gameobject[i][j].getType() == 104){
                QPixmap pixmap(":/espipe.gif");
@@ -137,6 +169,10 @@ void Map::paintEvent(QPaintEvent *event)
                               QPixmap pixmap(":/Misc.png");
                               painter.drawPixmap(c*40,j*40,40,40,pixmap);
                           }
+               if((gameobject[i][j].getSelected()==true) ){
+                    painter.drawPixmap(50,250,40,40,pixmap);
+
+               }
            }
            else if(gameobject[i][j].getType() == 102){
                QPixmap pixmap(":/hpipe.gif");
@@ -145,6 +181,10 @@ void Map::paintEvent(QPaintEvent *event)
                               QPixmap pixmap(":/Misc.png");
                               painter.drawPixmap(c*40,j*40,40,40,pixmap);
                           }
+               if((gameobject[i][j].getSelected()==true) ){
+                    painter.drawPixmap(50,250,40,40,pixmap);
+
+               }
            }
            else if(gameobject[i][j].getType() == 108){
                QPixmap pixmap(":/epipeend.gif");
@@ -153,6 +193,10 @@ void Map::paintEvent(QPaintEvent *event)
                               QPixmap pixmap(":/Misc.png");
                               painter.drawPixmap(c*40,j*40,40,40,pixmap);
                           }
+               if((gameobject[i][j].getSelected()==true) ){
+                    painter.drawPixmap(50,250,40,40,pixmap);
+
+               }
            }
            else if(gameobject[i][j].getType() == 18){
                QPixmap pixmap(":/esroad.gif");
@@ -161,6 +205,10 @@ void Map::paintEvent(QPaintEvent *event)
                               QPixmap pixmap(":/Misc.png");
                               painter.drawPixmap(c*40,j*40,40,40,pixmap);
                           }
+               if((gameobject[i][j].getSelected()==true) ){
+                    painter.drawPixmap(50,250,40,40,pixmap);
+
+               }
            }
            else if(gameobject[i][j].getType() == 15){
                QPixmap pixmap(":/hroad.gif");
@@ -169,6 +217,10 @@ void Map::paintEvent(QPaintEvent *event)
                               QPixmap pixmap(":/Misc.png");
                               painter.drawPixmap(c*40,j*40,40,40,pixmap);
                           }
+               if((gameobject[i][j].getSelected()==true) ){
+                    painter.drawPixmap(50,250,40,40,pixmap);
+
+               }
            }
 
            else if(gameobject[i][j].getType() == 30){
@@ -178,6 +230,10 @@ void Map::paintEvent(QPaintEvent *event)
                               QPixmap pixmap(":/Misc.png");
                               painter.drawPixmap(c*40,j*40,40,40,pixmap);
                           }
+               if((gameobject[i][j].getSelected()==true) ){
+                    painter.drawPixmap(50,250,40,40,pixmap);
+
+               }
            }
            else if(gameobject[i][j].getType() == 33){
                QPixmap pixmap(":/reef.gif");
@@ -186,6 +242,10 @@ void Map::paintEvent(QPaintEvent *event)
                                       QPixmap pixmap(":/Misc.png");
                                       painter.drawPixmap(c*40,j*40,40,40,pixmap);
                                   }
+                       if((gameobject[i][j].getSelected()==true) ){
+                            painter.drawPixmap(50,250,40,40,pixmap);
+
+                       }
            }
            else if(gameobject[i][j].getType() == 19){
                QPixmap pixmap(":/swroad.gif");
@@ -194,6 +254,10 @@ void Map::paintEvent(QPaintEvent *event)
                               QPixmap pixmap(":/Misc.png");
                               painter.drawPixmap(c*40,j*40,40,40,pixmap);
                           }
+               if((gameobject[i][j].getSelected()==true) ){
+                    painter.drawPixmap(50,250,40,40,pixmap);
+
+               }
            }
            else if(gameobject[i][j].getType() == 106){
                QPixmap pixmap(":/wnpipe.gif");
@@ -202,6 +266,10 @@ void Map::paintEvent(QPaintEvent *event)
                               QPixmap pixmap(":/Misc.png");
                               painter.drawPixmap(c*40,j*40,40,40,pixmap);
                           }
+               if((gameobject[i][j].getSelected()==true) ){
+                    painter.drawPixmap(50,250,40,40,pixmap);
+
+               }
            }
            else if(gameobject[i][j].getType() == 24){
                QPixmap pixmap(":/wneroad.gif");
@@ -210,6 +278,10 @@ void Map::paintEvent(QPaintEvent *event)
                               QPixmap pixmap(":/Misc.png");
                               painter.drawPixmap(c*40,j*40,40,40,pixmap);
                           }
+               if((gameobject[i][j].getSelected()==true) ){
+                    painter.drawPixmap(50,250,40,40,pixmap);
+
+               }
            }
            else if(gameobject[i][j].getType() == 22){
                QPixmap pixmap(":/eswroad.gif");
@@ -218,6 +290,10 @@ void Map::paintEvent(QPaintEvent *event)
                               QPixmap pixmap(":/Misc.png");
                               painter.drawPixmap(c*40,j*40,40,40,pixmap);
                           }
+               if((gameobject[i][j].getSelected()==true) ){
+                    painter.drawPixmap(50,250,40,40,pixmap);
+
+               }
            }
            else if(gameobject[i][j].getType() == 101){
                QPixmap pixmap(":/vpipe.gif");
@@ -226,6 +302,10 @@ void Map::paintEvent(QPaintEvent *event)
                               QPixmap pixmap(":/Misc.png");
                               painter.drawPixmap(c*40,j*40,40,40,pixmap);
                           }
+               if((gameobject[i][j].getSelected()==true) ){
+                    painter.drawPixmap(50,250,40,40,pixmap);
+
+               }
            }
            else if(gameobject[i][j].getType() == 125){
                QPixmap pixmap(":/jadesunhq.gif");
@@ -234,6 +314,10 @@ void Map::paintEvent(QPaintEvent *event)
                               QPixmap pixmap(":/Misc.png");
                               painter.drawPixmap(c*40,j*40,40,40,pixmap);
                           }
+               if((gameobject[i][j].getSelected()==true) ){
+                    painter.drawPixmap(50,250,40,40,pixmap);
+
+               }
            }
            else if(gameobject[i][j].getType() == 34){
                QPixmap pixmap1(":/plain.gif");
@@ -241,21 +325,21 @@ void Map::paintEvent(QPaintEvent *event)
                if(gameobject[i][j].getTeam()==0){
                QPixmap pixmap(":/neutralcity.gif");
                painter.drawPixmap(c*40,j*40,40,40,pixmap);
-               if((gameobject[i][j].getSelected()==true)  || (unite[h].getPosX() == gameobject[i][j].getPosX() && unite[h].getPosY() == gameobject[i][j].getPosY())){
+               if((gameobject[i][j].getSelected()==true) ){
                     painter.drawPixmap(50,250,40,40,pixmap);
 
                }}
                if(gameobject[i][j].getTeam()==1){
                QPixmap pixmap(":/orangestarcity.gif");
                painter.drawPixmap(c*40,j*40,40,40,pixmap);
-               if((gameobject[i][j].getSelected()==true)  || (unite[h].getPosX() == gameobject[i][j].getPosX() && unite[h].getPosY() == gameobject[i][j].getPosY())){
+               if((gameobject[i][j].getSelected()==true)  ){
                     painter.drawPixmap(50,250,40,40,pixmap);
 
                }}
                if(gameobject[i][j].getTeam()==2){
                QPixmap pixmap(":/bluemooncity.gif");
                painter.drawPixmap(c*40,j*40,40,40,pixmap);
-               if((gameobject[i][j].getSelected()==true)  || (unite[h].getPosX() == gameobject[i][j].getPosX() && unite[h].getPosY() == gameobject[i][j].getPosY())){
+               if((gameobject[i][j].getSelected()==true)  ){
                     painter.drawPixmap(50,250,40,40,pixmap);
 
                }}
@@ -270,14 +354,14 @@ void Map::paintEvent(QPaintEvent *event)
                if(gameobject[i][j].getTeam()==0){
                QPixmap pixmap(":/neutralbase.gif");
                painter.drawPixmap(c*40,j*40,40,40,pixmap);
-               if((gameobject[i][j].getSelected()==true)  || (unite[h].getPosX() == gameobject[i][j].getPosX() && unite[h].getPosY() == gameobject[i][j].getPosY())){
+               if((gameobject[i][j].getSelected()==true)  ){
                     painter.drawPixmap(50,250,40,40,pixmap);
 
                }}
                if(gameobject[i][j].getTeam()==1){
                QPixmap pixmap(":/orangestarbase.gif");
                painter.drawPixmap(c*40,j*40,40,40,pixmap);
-               if((gameobject[i][j].getSelected()==true)  || (unite[h].getPosX() == gameobject[i][j].getPosX() && unite[h].getPosY() == gameobject[i][j].getPosY())){
+               if((gameobject[i][j].getSelected()==true)  ){
                     painter.drawPixmap(50,250,40,40,pixmap);
 
                }
@@ -285,7 +369,7 @@ void Map::paintEvent(QPaintEvent *event)
                if(gameobject[i][j].getTeam()==2){
                QPixmap pixmap(":/bluemoonbase.gif");
                painter.drawPixmap(c*40,j*40,40,40,pixmap);
-               if((gameobject[i][j].getSelected()==true)  || (unite[h].getPosX() == gameobject[i][j].getPosX() && unite[h].getPosY() == gameobject[i][j].getPosY())){
+               if((gameobject[i][j].getSelected()==true)){
                     painter.drawPixmap(50,250,40,40,pixmap);
 
                }
@@ -302,14 +386,14 @@ void Map::paintEvent(QPaintEvent *event)
                if(gameobject[i][j].getTeam()==0){
                QPixmap pixmap(":/neutralairport.gif");
                painter.drawPixmap(c*40,j*40,40,40,pixmap);
-               if((gameobject[i][j].getSelected()==true)  || (unite[h].getPosX() == gameobject[i][j].getPosX() && unite[h].getPosY() == gameobject[i][j].getPosY())){
+               if((gameobject[i][j].getSelected()==true)  ){
                     painter.drawPixmap(50,250,40,40,pixmap);
 
                }}
                if(gameobject[i][j].getTeam()==1){
                QPixmap pixmap(":/orangestarairport.gif");
                painter.drawPixmap(c*40,j*40,40,40,pixmap);
-               if((gameobject[i][j].getSelected()==true)  || (unite[h].getPosX() == gameobject[i][j].getPosX() && unite[h].getPosY() == gameobject[i][j].getPosY())){
+               if((gameobject[i][j].getSelected()==true) ){
                     painter.drawPixmap(50,250,40,40,pixmap);
 
                }
@@ -317,7 +401,7 @@ void Map::paintEvent(QPaintEvent *event)
                if(gameobject[i][j].getTeam()==2){
                QPixmap pixmap(":/bluemoonairport.gif");
                painter.drawPixmap(c*40,j*40,40,40,pixmap);
-               if((gameobject[i][j].getSelected()==true)  || (unite[h].getPosX() == gameobject[i][j].getPosX() && unite[h].getPosY() == gameobject[i][j].getPosY())){
+               if((gameobject[i][j].getSelected()==true)  ){
                     painter.drawPixmap(50,250,40,40,pixmap);
 
                }
@@ -335,11 +419,15 @@ void Map::paintEvent(QPaintEvent *event)
                               QPixmap pixmap(":/Misc.png");
                               painter.drawPixmap(c*40,j*40,40,40,pixmap);
                           }
+               if((gameobject[i][j].getSelected()==true) ){
+                    painter.drawPixmap(50,250,40,40,pixmap);
+
+               }
            }
            else if(gameobject[i][j].getType() == 39){
                QPixmap pixmap(":/orangestarbase.gif");
                painter.drawPixmap(c*40,j*40,40,40,pixmap);
-               if((gameobject[i][j].getSelected()==true)  || (unite[h].getPosX() == gameobject[i][j].getPosX() && unite[h].getPosY() == gameobject[i][j].getPosY())){
+               if((gameobject[i][j].getSelected()==true)  ){
                     painter.drawPixmap(50,250,40,40,pixmap);
 
                }
@@ -351,7 +439,7 @@ void Map::paintEvent(QPaintEvent *event)
            else if(gameobject[i][j].getType() == 44){
                QPixmap pixmap(":/bluemoonbase.gif");
                painter.drawPixmap(c*40,j*40,40,40,pixmap);
-               if((gameobject[i][j].getSelected()==true)  || (unite[h].getPosX() == gameobject[i][j].getPosX() && unite[h].getPosY() == gameobject[i][j].getPosY())){
+               if((gameobject[i][j].getSelected()==true)  ){
                     painter.drawPixmap(50,250,40,40,pixmap);
 
                }
@@ -363,7 +451,7 @@ void Map::paintEvent(QPaintEvent *event)
            else if(gameobject[i][j].getType() == 123){
                QPixmap pixmap(":/jadesunbase.gif");
                painter.drawPixmap(c*40,j*40,40,40,pixmap);
-               if((gameobject[i][j].getSelected()==true)  || (unite[h].getPosX() == gameobject[i][j].getPosX() && unite[h].getPosY() == gameobject[i][j].getPosY())){
+               if((gameobject[i][j].getSelected()==true)  ){
                     painter.drawPixmap(50,250,40,40,pixmap);
 
                }
@@ -379,6 +467,10 @@ void Map::paintEvent(QPaintEvent *event)
                               QPixmap pixmap(":/Misc.png");
                               painter.drawPixmap(c*40,j*40,40,40,pixmap);
                           }
+               if((gameobject[i][j].getSelected()==true) ){
+                    painter.drawPixmap(50,250,40,40,pixmap);
+
+               }
            }
            else if(gameobject[i][j].getType() == 21){
                QPixmap pixmap(":/neroad.gif");
@@ -387,6 +479,10 @@ void Map::paintEvent(QPaintEvent *event)
                               QPixmap pixmap(":/Misc.png");
                               painter.drawPixmap(c*40,j*40,40,40,pixmap);
                           }
+               if((gameobject[i][j].getSelected()==true) ){
+                    painter.drawPixmap(50,250,40,40,pixmap);
+
+               }
            }
            else if(gameobject[i][j].getType() == 16){
                QPixmap pixmap(":/vroad.gif");
@@ -395,6 +491,10 @@ void Map::paintEvent(QPaintEvent *event)
                               QPixmap pixmap(":/Misc.png");
                               painter.drawPixmap(c*40,j*40,40,40,pixmap);
                           }
+               if((gameobject[i][j].getSelected()==true) ){
+                    painter.drawPixmap(50,250,40,40,pixmap);
+
+               }
            }
            else if(gameobject[i][j].getType() == 26){
                QPixmap pixmap(":/hbridge.gif");
@@ -403,6 +503,10 @@ void Map::paintEvent(QPaintEvent *event)
                               QPixmap pixmap(":/Misc.png");
                               painter.drawPixmap(c*40,j*40,40,40,pixmap);
                           }
+               if((gameobject[i][j].getSelected()==true) ){
+                    painter.drawPixmap(50,250,40,40,pixmap);
+
+               }
            }
            else if(gameobject[i][j].getType() == 29){
                QPixmap pixmap(":/hshoal.gif");
@@ -411,6 +515,10 @@ void Map::paintEvent(QPaintEvent *event)
                               QPixmap pixmap(":/Misc.png");
                               painter.drawPixmap(c*40,j*40,40,40,pixmap);
                           }
+               if((gameobject[i][j].getSelected()==true) ){
+                    painter.drawPixmap(50,250,40,40,pixmap);
+
+               }
            }
            else if(gameobject[i][j].getType() == 20){
                QPixmap pixmap(":/wnroad.gif");
@@ -419,6 +527,10 @@ void Map::paintEvent(QPaintEvent *event)
                               QPixmap pixmap(":/Misc.png");
                               painter.drawPixmap(c*40,j*40,40,40,pixmap);
                           }
+               if((gameobject[i][j].getSelected()==true) ){
+                    painter.drawPixmap(50,250,40,40,pixmap);
+
+               }
            }
            else if(gameobject[i][j].getType() == 110){
                QPixmap pixmap(":/wpipeend.gif");
@@ -427,6 +539,10 @@ void Map::paintEvent(QPaintEvent *event)
                               QPixmap pixmap(":/Misc.png");
                               painter.drawPixmap(c*40,j*40,40,40,pixmap);
                           }
+               if((gameobject[i][j].getSelected()==true) ){
+                    painter.drawPixmap(50,250,40,40,pixmap);
+
+               }
            }
 
            else if(gameobject[i][j].getType() == 95){
@@ -436,6 +552,10 @@ void Map::paintEvent(QPaintEvent *event)
                               QPixmap pixmap(":/Misc.png");
                               painter.drawPixmap(c*40,j*40,40,40,pixmap);
                           }
+               if((gameobject[i][j].getSelected()==true) ){
+                    painter.drawPixmap(50,250,40,40,pixmap);
+
+               }
            }
            else if(gameobject[i][j].getType() == 92){
                QPixmap pixmap(":/blackholebase.gif");
@@ -444,6 +564,10 @@ void Map::paintEvent(QPaintEvent *event)
                               QPixmap pixmap(":/Misc.png");
                               painter.drawPixmap(c*40,j*40,40,40,pixmap);
                           }
+               if((gameobject[i][j].getSelected()==true) ){
+                    painter.drawPixmap(50,250,40,40,pixmap);
+
+               }
            }
            else if(gameobject[i][j].getType() == 25){
                QPixmap pixmap(":/nesroad.gif");
@@ -452,6 +576,10 @@ void Map::paintEvent(QPaintEvent *event)
                               QPixmap pixmap(":/Misc.png");
                               painter.drawPixmap(c*40,j*40,40,40,pixmap);
                           }
+               if((gameobject[i][j].getSelected()==true) ){
+                    painter.drawPixmap(50,250,40,40,pixmap);
+
+               }
            }
            else if(gameobject[i][j].getType() == 10){
                QPixmap pixmap(":/neriver.gif");
@@ -460,6 +588,10 @@ void Map::paintEvent(QPaintEvent *event)
                               QPixmap pixmap(":/Misc.png");
                               painter.drawPixmap(c*40,j*40,40,40,pixmap);
                           }
+               if((gameobject[i][j].getSelected()==true) ){
+                    painter.drawPixmap(50,250,40,40,pixmap);
+
+               }
            }
            else if(gameobject[i][j].getType() == 107){
                QPixmap pixmap(":/npipeend.gif");
@@ -468,6 +600,10 @@ void Map::paintEvent(QPaintEvent *event)
                               QPixmap pixmap(":/Misc.png");
                               painter.drawPixmap(c*40,j*40,40,40,pixmap);
                           }
+               if((gameobject[i][j].getSelected()==true) ){
+                    painter.drawPixmap(50,250,40,40,pixmap);
+
+               }
            }
 
 
@@ -477,14 +613,17 @@ void Map::paintEvent(QPaintEvent *event)
                painter.drawPixmap(c*40,j*40,40,40,pixmap);}
         }
     }
+
+
     std::vector<Unites> unites= game.getUnites();
+    if(unites.size()!=0){
     for(std::vector<Unites>::size_type i = 0; i != unites.size(); i++){
 
         if(unites[i].getType()==1998 && unites[i].getTeam()==1 ){
 
             QPixmap pixmap(":/osinfantry.gif");
             painter.drawPixmap((unites[i].getPosX()+5)*40,unites[i].getPosY()*40,40,40,pixmap);
-            if(unites[i].getSelected()==true){
+            if(unites[i].getShow()==true){
                 painter.drawPixmap(75, 115, 40,40, pixmap);
 
             }
@@ -493,7 +632,7 @@ void Map::paintEvent(QPaintEvent *event)
         else if(unites[i].getType()==1998 && unites[i].getTeam()==2){
             QPixmap pixmap(":/bminfantry.gif");
             painter.drawPixmap((unites[i].getPosX()+5)*40,unites[i].getPosY()*40,40,40,pixmap);
-            if(unites[i].getSelected()==true){
+            if(unites[i].getShow()==true){
                 painter.drawPixmap(75, 115, 40,40, pixmap);
             }
 
@@ -501,7 +640,7 @@ void Map::paintEvent(QPaintEvent *event)
         else if(unites[i].getType()==3001 && unites[i].getTeam()==1){
             QPixmap pixmap(":/osanti-air.gif");
             painter.drawPixmap((unites[i].getPosX()+5)*40,unites[i].getPosY()*40,40,40,pixmap);
-            if(unites[i].getSelected()==true){
+            if(unites[i].getShow()==true){
                 painter.drawPixmap(75, 115, 40,40, pixmap);
             }
 
@@ -509,7 +648,7 @@ void Map::paintEvent(QPaintEvent *event)
         else if(unites[i].getType()==3001 && unites[i].getTeam()==2){
             QPixmap pixmap(":/bmanti-air.gif");
             painter.drawPixmap((unites[i].getPosX()+5)*40,unites[i].getPosY()*40,40,40,pixmap);
-            if(unites[i].getSelected()==true){
+            if(unites[i].getShow()==true){
                 painter.drawPixmap(75, 115, 40,40, pixmap);
             }
 
@@ -517,7 +656,7 @@ void Map::paintEvent(QPaintEvent *event)
         else if(unites[i].getType()==2003 && unites[i].getTeam()==1){
             QPixmap pixmap(":/osmech.gif");
             painter.drawPixmap((unites[i].getPosX()+5)*40,unites[i].getPosY()*40,40,40,pixmap);
-            if(unites[i].getSelected()==true){
+            if(unites[i].getShow()==true){
                 painter.drawPixmap(75, 115, 40,40, pixmap);
             }
 
@@ -525,7 +664,7 @@ void Map::paintEvent(QPaintEvent *event)
         else if(unites[i].getType()==2003 && unites[i].getTeam()==2){
             QPixmap pixmap(":/bmmech.gif");
             painter.drawPixmap((unites[i].getPosX()+5)*40,unites[i].getPosY()*40,40,40,pixmap);
-            if(unites[i].getSelected()==true){
+            if(unites[i].getShow()==true){
                 painter.drawPixmap(75, 115, 40,40, pixmap);
             }
 
@@ -533,7 +672,7 @@ void Map::paintEvent(QPaintEvent *event)
         else if(unites[i].getType()==3000 && unites[i].getTeam()==1){
             QPixmap pixmap(":/osrecon.gif");
             painter.drawPixmap((unites[i].getPosX()+5)*40,unites[i].getPosY()*40,40,40,pixmap);
-            if(unites[i].getSelected()==true){
+            if(unites[i].getShow()==true){
                 painter.drawPixmap(75, 115, 40,40, pixmap);
             }
 
@@ -541,7 +680,7 @@ void Map::paintEvent(QPaintEvent *event)
         else if(unites[i].getType()==3000 && unites[i].getTeam()==2){
             QPixmap pixmap(":/bmrecon.gif");
             painter.drawPixmap((unites[i].getPosX()+5)*40,unites[i].getPosY()*40,40,40,pixmap);
-            if(unites[i].getSelected()==true){
+            if(unites[i].getShow()==true){
                 painter.drawPixmap(75, 115, 40,40, pixmap);
             }
 
@@ -549,7 +688,7 @@ void Map::paintEvent(QPaintEvent *event)
         else if(unites[i].getType()==3002 && unites[i].getTeam()==1){
             QPixmap pixmap(":/ostank.gif");
             painter.drawPixmap((unites[i].getPosX()+5)*40,unites[i].getPosY()*40,40,40,pixmap);
-            if(unites[i].getSelected()==true){
+            if(unites[i].getShow()==true){
                 painter.drawPixmap(75, 115, 40,40, pixmap);
             }
 
@@ -557,7 +696,7 @@ void Map::paintEvent(QPaintEvent *event)
         else if(unites[i].getType()==3002 && unites[i].getTeam()==2){
             QPixmap pixmap(":/bmtank.gif");
             painter.drawPixmap((unites[i].getPosX()+5)*40,unites[i].getPosY()*40,40,40,pixmap);
-            if(unites[i].getSelected()==true){
+            if(unites[i].getShow()==true){
                 painter.drawPixmap(75, 115, 40,40, pixmap);
             }
 
@@ -565,7 +704,7 @@ void Map::paintEvent(QPaintEvent *event)
         else if(unites[i].getType()==3003 && unites[i].getTeam()==1){
             QPixmap pixmap(":/osmd.tank.gif");
             painter.drawPixmap((unites[i].getPosX()+5)*40,unites[i].getPosY()*40,40,40,pixmap);
-            if(unites[i].getSelected()==true){
+            if(unites[i].getShow()==true){
                 painter.drawPixmap(75, 115, 40,40, pixmap);
             }
 
@@ -573,7 +712,7 @@ void Map::paintEvent(QPaintEvent *event)
         else if(unites[i].getType()==3003 && unites[i].getTeam()==2){
             QPixmap pixmap(":/bmmd.tank.gif");
             painter.drawPixmap((unites[i].getPosX()+5)*40,unites[i].getPosY()*40,40,40,pixmap);
-            if(unites[i].getSelected()==true){
+            if(unites[i].getShow()==true){
                 painter.drawPixmap(75, 115, 40,40, pixmap);
             }
 
@@ -581,7 +720,7 @@ void Map::paintEvent(QPaintEvent *event)
         else if(unites[i].getType()==3004 && unites[i].getTeam()==1){
             QPixmap pixmap(":/osmegatank.gif");
             painter.drawPixmap((unites[i].getPosX()+5)*40,unites[i].getPosY()*40,40,40,pixmap);
-            if(unites[i].getSelected()==true){
+            if(unites[i].getShow()==true){
                 painter.drawPixmap(75, 115, 40,40, pixmap);
             }
 
@@ -589,7 +728,7 @@ void Map::paintEvent(QPaintEvent *event)
         else if(unites[i].getType()==3004 && unites[i].getTeam()==2){
             QPixmap pixmap(":/bmmegatank.gif");
             painter.drawPixmap((unites[i].getPosX()+5)*40,unites[i].getPosY()*40,40,40,pixmap);
-            if(unites[i].getSelected()==true){
+            if(unites[i].getShow()==true){
                 painter.drawPixmap(75 ,115, 40,40, pixmap);
             }
 
@@ -597,7 +736,7 @@ void Map::paintEvent(QPaintEvent *event)
         else if(unites[i].getType()==3005 && unites[i].getTeam()==1){
             QPixmap pixmap(":/osneotank.gif");
             painter.drawPixmap((unites[i].getPosX()+5)*40,unites[i].getPosY()*40,40,40,pixmap);
-            if(unites[i].getSelected()==true){
+            if(unites[i].getShow()==true){
                 painter.drawPixmap(75, 115, 40,40, pixmap);
             }
 
@@ -605,7 +744,7 @@ void Map::paintEvent(QPaintEvent *event)
         else if(unites[i].getType()==3005 && unites[i].getTeam()==2){
             QPixmap pixmap(":/bmneotank.gif");
             painter.drawPixmap((unites[i].getPosX()+5)*40,unites[i].getPosY()*40,40,40,pixmap);
-            if(unites[i].getSelected()==true){
+            if(unites[i].getShow()==true){
                 painter.drawPixmap(75, 115, 40,40, pixmap);
             }
 
@@ -613,7 +752,7 @@ void Map::paintEvent(QPaintEvent *event)
         else if(unites[i].getType()==2000 && unites[i].getTeam()==1){
             QPixmap pixmap(":/osb-copter.gif");
             painter.drawPixmap((unites[i].getPosX()+5)*40,unites[i].getPosY()*40,40,40,pixmap);
-            if(unites[i].getSelected()==true){
+            if(unites[i].getShow()==true){
                 painter.drawPixmap(75, 115, 40,40, pixmap);
             }
 
@@ -621,7 +760,7 @@ void Map::paintEvent(QPaintEvent *event)
         else if(unites[i].getType()==2000 && unites[i].getTeam()==2){
             QPixmap pixmap(":/bmb-copter.gif");
             painter.drawPixmap((unites[i].getPosX()+5)*40,unites[i].getPosY()*40,40,40,pixmap);
-            if(unites[i].getSelected()==true){
+            if(unites[i].getShow()==true){
                 painter.drawPixmap(75, 115, 40,40, pixmap);
             }
 
@@ -629,7 +768,7 @@ void Map::paintEvent(QPaintEvent *event)
         else if(unites[i].getType()==2002 && unites[i].getTeam()==1){
             QPixmap pixmap(":/osfighter.gif");
             painter.drawPixmap((unites[i].getPosX()+5)*40,unites[i].getPosY()*40,40,40,pixmap);
-            if(unites[i].getSelected()==true){
+            if(unites[i].getShow()==true){
                 painter.drawPixmap(75, 115, 40,40, pixmap);
             }
 
@@ -637,7 +776,7 @@ void Map::paintEvent(QPaintEvent *event)
         else if(unites[i].getType()==2002 && unites[i].getTeam()==2){
             QPixmap pixmap(":/bmfighter.gif");
             painter.drawPixmap((unites[i].getPosX()+5)*40,unites[i].getPosY()*40,40,40,pixmap);
-            if(unites[i].getSelected()==true){
+            if(unites[i].getShow()==true){
                 painter.drawPixmap(75, 115, 40,40, pixmap);
             }
 
@@ -645,7 +784,7 @@ void Map::paintEvent(QPaintEvent *event)
         else if(unites[i].getType()==2001 && unites[i].getTeam()==1){
             QPixmap pixmap(":/osbomber.gif");
             painter.drawPixmap((unites[i].getPosX()+5)*40,unites[i].getPosY()*40,40,40,pixmap);
-            if(unites[i].getSelected()==true){
+            if(unites[i].getShow()==true){
                 painter.drawPixmap(75, 115, 40,40, pixmap);
             }
 
@@ -653,17 +792,17 @@ void Map::paintEvent(QPaintEvent *event)
         else if(unites[i].getType()==2001 && unites[i].getTeam()==2){
             QPixmap pixmap(":/bmbomber.gif");
             painter.drawPixmap((unites[i].getPosX()+5)*40,unites[i].getPosY()*40,40,40,pixmap);
-            if(unites[i].getSelected()==true){
+            if(unites[i].getShow()==true){
                 painter.drawPixmap(75, 115, 40,40, pixmap);
             }
 
 
         }
 
-    }
+    }}
     painter.drawRoundRect((casee.getPosX()+5)*40,casee.getPosY()*40,40,40,5,5);
 
-}
+
 }
 
 void Map::redraw()
@@ -708,18 +847,23 @@ void Map::attackunite()
 
 void Map::mousePress(int x ,int y , QMouseEvent *ev)
 {
-
+            Game& game=Game::Instance();
             gameobject[z][e].setSelected(false); // apelé ici, donc je suspecte que z ou e soit hors borne
              // fonction deja implementé //
             z= (int)x-5;
             e= (int)y;
-
+            game.getWindow()->changeDefWindow(gameobject[z][e]);
             casee.setPosX(z);
             casee.setPosY(e);
+            gameobject[z][e].setSelected(true);
+
             if(ev->buttons() == Qt::LeftButton){
                 Game& game=Game::Instance();
+                std::vector<Unites> unites =game.getUnites();
                 game.setActville(-1);
-                game.move(z,e);
+
+                if(unites.size()!=0){
+                game.move(z,e);}
 
                 if(gameobject[z][e].getType()==34 ){
                     gameobject[z][e].setSelected(true);
@@ -731,12 +875,11 @@ void Map::mousePress(int x ,int y , QMouseEvent *ev)
                     game.getWindow()->redraw();
                 }
                 game.setActvie(-1);
-                std::vector<Unites> unites =game.getUnites();
+
                 for(std::vector<Unites>::size_type i = 0; i != unites.size(); i++){
 
                     if(unites[i].getPosX()==z && unites[i].getPosY()==e){
                         game.setActvie(i);
-
                         game.getWindow()->redraw();
                     }}
             }
@@ -770,10 +913,10 @@ void Map::mousePress(int x ,int y , QMouseEvent *ev)
                     }
 
                 }
-                 if (gameobject[z][e].getType() == 34){
+                std::vector<Unites> unite =game.getUnites();
+                 if (gameobject[z][e].getType() == 34&&gameobject[z][e].getTeam()!=game.getTurn() && unite.size()!=0){
                     Game& game=Game::Instance();
                     std::vector<Ville> ville =game.getVille();
-                    std::vector<Unites> unite =game.getUnites();
                     if(unite[game.getPosXselec()].getComptcapture()){
                     for(std::vector<Ville>::size_type i = 0; i != ville.size(); i++){
 
@@ -794,7 +937,7 @@ void Map::mousePress(int x ,int y , QMouseEvent *ev)
                     }}
 
                 }
-                if(gameobject[z][e].getType()== 35){
+                if(gameobject[z][e].getType()== 35&&gameobject[z][e].getTeam()!=game.getTurn()&& unite.size()!=0){
                     Game& game = Game::Instance();
                     std::vector<Usine> usine = game.getUsine();
                     std::vector<Unites> unite =game.getUnites();
@@ -816,7 +959,7 @@ void Map::mousePress(int x ,int y , QMouseEvent *ev)
                     }
                 }
 
-                if(gameobject[z][e].getType()== 36){
+                if(gameobject[z][e].getType()== 36&&gameobject[z][e].getTeam()!=game.getTurn()&& unite.size()!=0){
                     Game& game = Game::Instance();
                     std::vector<Aeroport> aeroport = game.getAeroport();
                     std::vector<Unites> unite =game.getUnites();
@@ -841,7 +984,7 @@ void Map::mousePress(int x ,int y , QMouseEvent *ev)
 
 
 
-                    std::vector<Unites> unite =game.getUnites();
+
                     for(std::vector<Unites>::size_type i = 0; i != unite.size(); i++){
                         game.setActvie(-1);
 
