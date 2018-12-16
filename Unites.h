@@ -46,6 +46,9 @@ public:
 
     int getPosBin() const;
 
+    bool getShow() const;
+    void setShow(bool value);
+
 protected:
     int vie;
     int prix;
@@ -59,6 +62,7 @@ protected:
     int numero;
     int Team;
     int posBin;
+    bool show=false;
     bool unity =false;
     bool comptattack = true;
     bool comptcapture = true;
