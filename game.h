@@ -14,7 +14,7 @@ public:
     void move(int x,int y);
     void movearrow(int x,int y);
     void InitGame(MainWindow *wind,Player *InitPlayer1,Player *InitPlayer2);
-    Gameobject const& getgameobject(int x,int y) const;
+    Gameobject & getgameobject(int x,int y) ;
     std::vector<Unites> getUnites() const;
     void endtour();
     int getTurn() const;
@@ -47,7 +47,6 @@ public:
     void setEndGame(bool value) ;
     static Game& newGame();
     void dijkstra(Unites &blue);
-
 
     Ville *getActville() const;
     void setActville(int i);
