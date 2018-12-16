@@ -388,8 +388,9 @@ void Game::pathfinddijkstra(Unites &unit)
         std::cout<<e->getAntecedantX()<<"  "<<e->getAntecedantY()<<std::endl;
         posx =s->getPosX();
         posy =s->getPosX();
-
-        while (!gameobject[posx][posy].getMovable()) {
+        int i=0;
+        while (!gameobject[posx][posy].getMovable()&& i<10) {
+            i++;
             posx=e->getAntecedantX();
             posy=e->getAntecedantY();
             e=&gameobject[posx][posy];
@@ -404,7 +405,7 @@ void Game::pathfinddijkstra(Unites &unit)
     }
     for (int z = 0 ;z < 21;z++) {
                 for (int w=0; w <17 ;w++) {
-                    if(gameobject[z][w].getMovable()){gameobject[z][w].setMovable(false);}
+                    gameobject[z][w].setMovable(false);
 
                 }}
 
@@ -472,6 +473,29 @@ void Game::endtour()
                     if(compteurpathfind==false){this->pathfinddijkstra(unites[i]);} // pour le IA pathfind il faut appele this->pathfinding avec l argument true et gameobject[4][15]
                     else if(compteurpathfind == true){
                         std::cout<<"il est deja en place"<<std::endl;
+                    }
+                }
+                else{
+                    for(Usine v:usine){
+                        if(v.getTeam()==2){
+                            int money =player2->getMoney();
+                            if(money >= Recon::money2){
+                                createUnite(v.getPosX(),v.getPosY(),2,3000);
+                                player2->setMoney(money-Recon::money2);
+                            }
+                            money =player2->getMoney();
+                            if(money >= Bazooka::money2){
+                                createUnite(v.getPosX(),v.getPosY(),2,2003);
+                                player2->setMoney(money-Bazooka::money2);
+                            }
+                            money =player2->getMoney();
+                            if(money >= Infanterie::money2){
+                                createUnite(v.getPosX(),v.getPosY(),2,1998);
+                                player2->setMoney(money-Infanterie::money2);
+                            }
+
+                        }
+
                     }
                 }
             }
@@ -565,6 +589,7 @@ void Game::dijkstra(Unites &blue)
 
 }
 
+
 void Game::move(int x,int y)
 {
     if (gameobject[x][y].getType() == 34
@@ -586,6 +611,14 @@ void Game::move(int x,int y)
     e = y;
 
     window->redraw();
+    for (std::vector<Unites>::size_type i = 0; i != unites.size(); i++) {
+        if (unites[i].isAtPos(x, y) ) {
+            unites[i].setShow(true);
+        }
+        else{
+            unites[i].setShow(false);
+        }
+    }
 
     for (std::vector<Unites>::size_type i = 0; i != unites.size(); i++) {
         int count=0;
@@ -609,6 +642,7 @@ void Game::move(int x,int y)
         }
         if(count==1){
             unites[posXselec].setUnitin(true);
+
         }
         else{
              unites[posXselec].setUnitin(false);
@@ -778,7 +812,7 @@ void Game::move(int x,int y)
             window->changeVieWindow(unites[posXselec]);
 
 
-         window->changeDammageWindow(unites[posXselec]);
+
             int c= unites[posXselec].getPtdeplacement();// selectionner unité  //
             moveable(c,unites[posXselec].getPosX(),unites[posXselec].getPosY(),unites[posXselec].getTypeu());
             window->redraw();
@@ -1046,16 +1080,16 @@ void Game::InitGame(MainWindow *wind,Player *InitPlayer1,Player *InitPlayer2){
     window->InitMap();
 
     df.close();
-    Infanterie Play(5,10,1);
+    /*Infanterie Play(5,10,1);
     Infanterie Play2(10,10,2);
     unites.push_back(Play);  // Attention copie (héritage perdu) (vidéo Héritage)
-    unites.push_back(Play2);
+    unites.push_back(Play2);*/
 
     window->redraw();
 }
 
 
-Gameobject const& Game::getgameobject(int x, int y) const
+Gameobject & Game::getgameobject(int x, int y)
 {
     return gameobject[x][y];
 }
