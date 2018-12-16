@@ -38,7 +38,6 @@ public:
     void changeCaptWindow(Aeroport& aeroport);
     void changeDefWindow(Terrain& terrain);
     void changeDefWindow(Gameobject& gameobject);
-    void changeDammageWindow(Unites& unite);
     void unitmoved();
     void unitcaptured();
     void createunit();
