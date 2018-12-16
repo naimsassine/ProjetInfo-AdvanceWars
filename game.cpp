@@ -129,6 +129,32 @@ void Game::setcaptureonline(int type, int i, int capturepoint, int team)
     }
 }
 
+void Game::theendgame()
+{
+    int comptaerop1 = 0;
+    int comptusine1 = 0;
+    int comptunite1 = 0;
+    int comptaerop2 = 0;
+    int comptusine2 = 0;
+    int comptunite2 = 0;
+    for(Usine & us : usine){
+        if (us.getTeam() == 1){comptusine1 = comptusine1 + 1;}
+        else if (us.getTeam() == 2){comptusine2 = comptusine2 + 1;}
+    }
+    for(Aeroport & a : aeroport){
+        if (a.getTeam() == 1){comptaerop1 = comptaerop1 + 1;}
+        else if (a.getTeam() == 2){comptaerop2 = comptaerop2 + 1;}
+    }
+    for(Unites & u : unites){
+        if (u.getTeam() == 1){comptunite1 = comptunite1 + 1;}
+        else if (u.getTeam() == 2){comptunite2 = comptunite2 + 1;}
+    }
+    if ((comptaerop1 == 0 && comptunite1 == 0 && comptusine1 == 0) || (comptaerop2 == 0 && comptunite2 == 0 && comptusine2 == 0)){
+        this->setEndGame(true);
+    }
+
+}
+
 MainWindow *Game::getWindow() const
 {
     return window;
@@ -357,8 +383,6 @@ void Game::pathfinddijkstra(Unites &unit)
 
     }
     if(s!=nullptr){
-    std::cout<<s->getPosX()<< s->getPosY()<<std::endl;
-
     int posx =s->getPosX();
     int posy =s->getPosY();
     this->moveable(unit.getPtdeplacement(),unit.getPosX(),unit.getPosY(),0);
@@ -368,7 +392,6 @@ void Game::pathfinddijkstra(Unites &unit)
         this->moveable(unit.getPtdeplacement(),unit.getPosX(),unit.getPosY(),0);
         if(s->getMovable()){
         unit.setPosX(posx);
-        std::cout<<"salma debug1"<<std::endl;
         unit.setPosY(posy);
         if(gameobject[unit.getPosX()][unit.getPosY()].getType()==34){
             capture(unit.getPosX(),unit.getPosY());
@@ -385,7 +408,6 @@ void Game::pathfinddijkstra(Unites &unit)
     else {
         this->moveable(unit.getPtdeplacement(),unit.getPosX(),unit.getPosY(),unit.getTypeu());
         Gameobject *e=&gameobject[posx][posy];
-        std::cout<<e->getAntecedantX()<<"  "<<e->getAntecedantY()<<std::endl;
         posx =s->getPosX();
         posy =s->getPosX();
         int i=0;
@@ -406,9 +428,7 @@ void Game::pathfinddijkstra(Unites &unit)
     }
     for (int z = 0 ;z < 21;z++) {
                 for (int w=0; w <17 ;w++) {
-                    gameobject[z][w].setMovable(false);
-
-                }}
+                    gameobject[z][w].setMovable(false);}}
 
 }
 
@@ -553,7 +573,6 @@ void Game::dijkstra(Unites &blue)
             gameobject[start->getPosX()][start->getPosY()].setAntecedantX(start->getPosX());
             gameobject[start->getPosX()][start->getPosY()].setAntecedantY(start->getPosY());
             gameobject[start->getPosX()][start->getPosY()].setDistance(0);
-            std::cout<<"  "<<blue.getPosX()<<" "<<gameobject[start->getPosX()][start->getPosY()].getDistance()<<std::endl;
             int Q= 357;
             int poids=0;
             while(Q>0){
@@ -848,7 +867,6 @@ void Game::move(int x,int y)
             unites[posXselec].setUnitin(true);
         }
     }
-    std::cout<<"YES"<<std::endl;
 }
 
 
@@ -1124,7 +1142,6 @@ void Game::createUnite(int x, int y,  int team ,int type ){
     }
     if(type == 1998){
         Infanterie nom1(x,y,team);
-        printf("big fat lol");
         unites.push_back(nom1);
         window->redraw();
     }
@@ -1202,9 +1219,6 @@ void Game::attack(int z, int e,int i , int je){
         int defTerrain2 = gameobject[r][s].getdefTerrain(gameobject[r][s].getPosdef());
 
         unites[i].setDamage(unites[je],unites[i],defTerrain1);
-
-        std::cout<<unites[i].getvie()<<std::endl;
-        std::cout<<unites[je].getvie()<<std::endl;
         unites[je].setDamage(unites[i],unites[je],defTerrain2);
         actvie=&unites[i];
         window->changeVieWindow(unites[posXselec]);
@@ -1213,74 +1227,24 @@ void Game::attack(int z, int e,int i , int je){
         //unites[je].setUnitin(&unites[posXselec]);
           //      actvie =&unites[je];
                // window->update();
-        window->redraw();
-
-        std::cout<<unites[i].getvie()<<std::endl;
-        std::cout<<unites[je].getvie()<<std::endl;
-
-
+        window->redraw();}
 
         if(unites[i].getvie() == 0){
              int T = unites[i].getTeam();
              unites.erase(unites.begin() + i);
              //supprimer unites[i]
              window->redraw();
-             int nombreunites = 0;
-             for(int unsigned j=0;j<unites.size();j++)
-             {
-                 if(unites[j].getTeam()==T){
-                    nombreunites = nombreunites+1;
-                 }
-             }
-             if(nombreunites == 0){
-                 if(T==1){compteurfin1 = compteurfin1 + 1;
-                 std::cout<<"couille1"<<std::endl;}
-                 else if (T==2) {compteurfin2 = compteurfin2 + 1;
-                 std::cout<<"couille2"<<std::endl;}
-             }
+             this->theendgame();
+             std::cout<<"the end est appeler 1"<<std::endl;
         }
         if(unites[je].getvie() == 0){
             int T = unites[je].getTeam();
             unites.erase(unites.begin() + je);
             //supprimer unites[i]
             window->redraw();
-            int nombreunites = 0;
-            for(int unsigned j=0;j<unites.size();j++)
-            {
-                if(unites[j].getTeam()==T){
-                   nombreunites = nombreunites + 1;
-                }
-            }
-            if(nombreunites==0){
-                if(T==1){compteurfin1 = compteurfin1 + 1;
-                std::cout<<"couille3"<<std::endl;}
-                else if (T==2) {compteurfin2 = compteurfin2 + 1;
-                std::cout<<"couille4"<<std::endl;}
-            }
-        }
+            this->theendgame();
+            std::cout<<"the end est appeler 2"<<std::endl;
 }
-    int nombreaerop1 = 0;
-    int nombreaerop2 = 0;
-    for(std::vector<Aeroport>::size_type i = 0; i != aeroport.size(); i++){
-        if (aeroport[i].getTeam() == 1) {
-            nombreaerop1 = nombreaerop1 + 1;
-        }
-        else if (aeroport[i].getTeam() == 2) {
-            nombreaerop2 = nombreaerop2 + 1;
-        }
-        }
-        if (nombreaerop1 == 0) {
-             if (compteurfin1>=2){std::cout<<"end game4"<<std::endl;
-             setEndGame(true);
-             window->redraw();}
-
-         }
-        else if (nombreaerop2 == 0) {
-             if (compteurfin2>=2){std::cout<<"end game5"<<std::endl;
-             setEndGame(true);
-             window->redraw();
-             }
-    }
 
    }
 void Game::fusion( int v, int w){
@@ -1406,28 +1370,6 @@ void Game::capture(int z, int e)
 
 void Game::capture_Usine(int z, int e)
 {
-    int nombreusines1 = 0;
-    int nombreusines2 = 0;
-    int nombreaerop1 = 0;
-    int nombreaerop2 = 0;
-    int nbreunite1 =0;
-    int nbreunite2 =0;
-    compteurfin1=0;
-    compteurfin2=0;
-    for(std::vector<Unites>::size_type i = 0; i != unites.size(); i++) {
-        if(unites[i].getTeam()==2){
-            nbreunite1++;
-        }
-        if(unites[i].getTeam()==1){
-            nbreunite2++;
-        }
-    }
-    if(nbreunite1==0){
-        compteurfin1++;
-    }
-    if(nbreunite2==0){
-        compteurfin2++;
-    }
     for(std::vector<Usine>::size_type i = 0; i != usine.size(); i++){
 
 
@@ -1440,6 +1382,8 @@ void Game::capture_Usine(int z, int e)
             usine[i].setCapturepoint(20);
             c=20;
             window->redraw();
+            this->theendgame();
+            std::cout<<"the end est appeler 3"<<std::endl;
            }
         if(!window->getLocal()){
             capturesend[0]=1;
@@ -1451,100 +1395,9 @@ void Game::capture_Usine(int z, int e)
 
     }
 
-    if (usine[i].getTeam() == 1) {
-        nombreusines1 = nombreusines1 + 1;
-    }
-    else if (usine[i].getTeam() == 2) {
-        nombreusines2 = nombreusines2 + 1;
-    }
-    else if (usine[i].getTeam() == 0) {
-        nombreusines2 = nombreusines2 + 1;
-        nombreusines1 = nombreusines1 + 1;
-    }
-
-    }
-    if (nombreusines1 == 0) {
-        compteurfin1 = compteurfin1 + 1;
-        std::cout<<"ALLE"<<std::endl;
-    }
-    else if (nombreusines2 == 0) {
-        compteurfin2 = compteurfin2 + 1;
-        std::cout<<"ALLE"<<std::endl;
-    }
-    for(std::vector<Aeroport>::size_type i = 0; i != aeroport.size(); i++){
-        if (aeroport[i].getTeam() == 1) {
-            nombreaerop1 = nombreaerop1 + 1;
-        }
-        else if (aeroport[i].getTeam() == 2) {
-            nombreaerop2 = nombreaerop2 + 1;
-        }
-        else if (aeroport[i].getTeam() == 0) {
-            nombreaerop2 = nombreaerop2 + 1;
-            nombreaerop1 = nombreaerop1 + 1;
-        }
-        }
-        if (nombreaerop1 == 0) {
-             if (compteurfin1>=2){std::cout<<"end game1"<<std::endl;
-            // Instance();
-             std::cout<<"ALLEs1"<<std::endl;
-             setEndGame(true);
-             window->redraw();}
-         }
-        else if (nombreaerop2 == 0) {
-            std::cout<<"end game1"<<std::endl;
-
-            if (compteurfin2>=2){std::cout<<"end game2"<<std::endl;
-                //Instance();
-                setEndGame(true);
-                window->redraw();
-            }
-    }
-}
+}}
 void Game::capture_Aeroport(int z, int e)
 {
-    int nombreusines1 = 0;
-    int nombreusines2 = 0;
-    int nombreaerop1 = 0;
-    int nombreaerop2 = 0;
-    int nbreunite1 =0;
-    int nbreunite2 =0;
-    compteurfin1=0;
-    compteurfin2=0;
-    for(std::vector<Unites>::size_type i = 0; i != unites.size(); i++) {
-        if(unites[i].getTeam()==2){
-            nbreunite1++;
-        }
-        if(unites[i].getTeam()==1){
-            nbreunite2++;
-        }
-    }
-
-    if(nbreunite1==0){
-        compteurfin1++;
-    }
-    if(nbreunite2==0){
-        compteurfin2++;
-    }
-    for(std::vector<Usine>::size_type i = 0; i!= usine.size(); i++){
-        if (usine[i].getTeam() == 1) {
-            nombreusines1 = nombreusines1 + 1;
-        }
-        else if (usine[i].getTeam() == 2) {
-            nombreusines2 = nombreusines2 + 1;
-        }
-        else if (usine[i].getTeam() == 0) {
-            nombreusines2 = nombreusines2 + 1;
-            nombreusines1 = nombreusines1 + 1;
-        }
-
-        }
-    if(nombreusines1==0){
-        compteurfin1++;
-    }
-    if(nombreusines2==0){
-        compteurfin2++;
-    }
-
     for(std::vector<Aeroport>::size_type i = 0; i != aeroport.size(); i++){
 
     if(aeroport[i].getPosX()==z &&aeroport[i].getPosY()==e && unites[posXselec].getType() == 1998){
@@ -1556,6 +1409,8 @@ void Game::capture_Aeroport(int z, int e)
         c=20;
         aeroport[i].setTeam(turn);
         window->redraw();
+        this->theendgame();
+        std::cout<<"the end est appeler 4"<<std::endl;
         }
         if(!window->getLocal()){
             capturesend[0]=2;
@@ -1565,29 +1420,9 @@ void Game::capture_Aeroport(int z, int e)
             window->unitcaptured();
         }
     }
-    if (aeroport[i].getTeam() == 1) {
-        nombreaerop1 = nombreaerop1 + 1;
-    }
-    else if (aeroport[i].getTeam() == 2) {
-        nombreaerop2 = nombreaerop2 + 1;
-    }
-    }
-    if (nombreaerop1 == 0) {
-        if (compteurfin1>=2){std::cout<<"end game7"<<std::endl;
-            //Instance();
-            setEndGame(true);
-            window->redraw();
-        }
-    }
-    else if (nombreaerop2 == 0) {
-        if (compteurfin2>=2){std::cout<<"end game8"<<std::endl;
-            //Instance();
-            setEndGame(true);
-            window->redraw();
-        }
-    }
 
-}
+
+}}
 void Game::affichage(){
     if(unites[posXselec].getTeam()==turn && unites[posXselec].getSelected()== true){
         window->synchro(unites[posXselec]);

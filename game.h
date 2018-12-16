@@ -64,6 +64,7 @@ public:
     int getfusionjs(int a);
     void changeposu(int i ,int newx ,int newy);
     void setcaptureonline(int type,int i ,int capturepoint ,int team);
+    void theendgame();
 
 private:
     Game();
