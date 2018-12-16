@@ -23,7 +23,7 @@
     <property name="geometry">
      <rect>
       <x>280</x>
-      <y>150</y>
+      <y>110</y>
       <width>211</width>
       <height>61</height>
      </rect>
@@ -41,9 +41,9 @@
     <property name="geometry">
      <rect>
       <x>300</x>
-      <y>60</y>
+      <y>20</y>
       <width>171</width>
-      <height>71</height>
+      <height>61</height>
      </rect>
     </property>
     <property name="font">
@@ -59,9 +59,9 @@
     <property name="geometry">
      <rect>
       <x>280</x>
-      <y>300</y>
-      <width>301</width>
-      <height>151</height>
+      <y>60</y>
+      <width>291</width>
+      <height>51</height>
      </rect>
     </property>
     <property name="font">
@@ -70,14 +70,14 @@
      </font>
     </property>
     <property name="text">
-     <string>   by Team de Segmentation Fault !!!!</string>
+     <string>   By Team de Segmentation Fault !!!!</string>
     </property>
    </widget>
    <widget class="QPushButton" name="pushButton_2">
     <property name="geometry">
      <rect>
       <x>280</x>
-      <y>220</y>
+      <y>190</y>
       <width>211</width>
       <height>61</height>
      </rect>
@@ -95,7 +95,7 @@
     <property name="geometry">
      <rect>
       <x>280</x>
-      <y>290</y>
+      <y>270</y>
       <width>211</width>
       <height>61</height>
      </rect>
@@ -106,7 +106,43 @@
      </font>
     </property>
     <property name="text">
-     <string>Player vs IA</string>
+     <string>Player vs IA Pathfind</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_4">
+    <property name="geometry">
+     <rect>
+      <x>280</x>
+      <y>350</y>
+      <width>211</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>18</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Player vs IA Greedy</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_5">
+    <property name="geometry">
+     <rect>
+      <x>280</x>
+      <y>430</y>
+      <width>211</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>18</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Player vs IA Futur</string>
     </property>
    </widget>
   </widget>

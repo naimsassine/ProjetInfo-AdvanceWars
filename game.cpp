@@ -97,6 +97,7 @@ int Game::getfusionjs(int a)
 int Game::compteurfin1 = 0;
 int Game::compteurfin2 = 0;
 bool Game::compteurpathfind = false;
+int Game::compteurunit = 0;
 
 
 void Game::changeposu(int i, int newx, int newy)
@@ -487,6 +488,30 @@ void Game::endtour()
                         getPlayer()->setMoney(getPlayer()->getMoney()-(x));
                     }}}}
         if (window->getisIA()){
+            turn = 2;
+            if(compteurunit == 0){createUnite(usine[1].getPosX(),usine[1].getPosY(),2,1998); compteurunit = 1;}
+            for(std::vector<Unites>::size_type i = 0; i != unites.size(); i++){
+                if (unites[i].getTeam() == 2){
+                    // code IA
+                    if(compteurpathfind==false){this->pathfinding(gameobject[4][15],unites[i],true);} // pour le IA pathfind il faut appele this->pathfinding avec l argument true et gameobject[4][15]
+                    else if(compteurpathfind == true){
+                        std::cout<<"il est deja en place"<<std::endl;}}}
+            window->redraw();
+            this->endtour();
+        }
+        else if (window->getIsIAGreedy()){
+            turn = 2;
+            if(compteurunit == 0){createUnite(usine[1].getPosX(),usine[1].getPosY(),2,1998); compteurunit = 1;}
+            for(std::vector<Unites>::size_type i = 0; i != unites.size(); i++){
+                if (unites[i].getTeam() == 2){
+                    // code IA
+                    if(compteurpathfind==false){this->pathfinddijkstra(unites[i]);}
+                    else if(compteurpathfind == true){
+                        std::cout<<"il est deja en place"<<std::endl;}}}
+            window->redraw();
+            this->endtour();
+        }
+        else if (window->getIsIAfuture()){
             turn = 2;
             for(std::vector<Unites>::size_type i = 0; i != unites.size(); i++){
                 if (unites[i].getTeam() == 2){

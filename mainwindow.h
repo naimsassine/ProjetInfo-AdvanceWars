@@ -54,9 +54,17 @@ public:
     void setMyTurn(bool value);
     bool getLocal() const;
     bool getMyTurn() const;
-    void IA();
+    void IAPath();
+    void IAGreedy();
+    void IAfuture();
     void setisIA(bool value);
     bool getisIA();
+
+    bool getIsIAGreedy() const;
+    void setIsIAGreedy(bool value);
+
+    bool getIsIAfuture() const;
+    void setIsIAfuture(bool value);
 
 private slots:
     void changeturn();
@@ -95,7 +103,10 @@ private:
     bool local=true;
     QTcpServer* server = nullptr;
     QTcpSocket* other = nullptr;
-    bool isIA = false;
+    bool isIAPath = false;
+    bool isIAGreedy = false;
+    bool isIAfuture = false;
+
 
 
 

@@ -46,7 +46,21 @@ void Menu::on_pushButton_2_clicked()
 
 void Menu::on_pushButton_3_clicked()
 {
-    window->IA();
+    window->IAPath();
+    window->show();
+    this->close();
+}
+
+void Menu::on_pushButton_4_clicked()
+{
+    window->IAGreedy();
+    window->show();
+    this->close();
+}
+
+void Menu::on_pushButton_5_clicked()
+{
+    window->IAfuture();
     window->show();
     this->close();
 }

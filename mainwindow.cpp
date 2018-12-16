@@ -137,24 +137,54 @@ void MainWindow::sendJson(QJsonObject obj) {
     std::cout << "Sending " << data.toStdString() << std::endl;
 }
 
+bool MainWindow::getIsIAfuture() const
+{
+    return isIAfuture;
+}
+
+void MainWindow::setIsIAfuture(bool value)
+{
+    isIAfuture = value;
+}
+
+bool MainWindow::getIsIAGreedy() const
+{
+    return isIAGreedy;
+}
+
+void MainWindow::setIsIAGreedy(bool value)
+{
+    isIAGreedy = value;
+}
+
 bool MainWindow::getMyTurn() const
 {
     return myTurn;
 }
 
-void MainWindow::IA()
+void MainWindow::IAPath()
 {
     this->setisIA(true);
 }
 
+void MainWindow::IAGreedy()
+{
+    this->setIsIAGreedy(true);
+}
+
+void MainWindow::IAfuture()
+{
+    this->setIsIAfuture(true);
+}
+
 void MainWindow::setisIA(bool value)
 {
-    isIA = value;
+    isIAPath = value;
 }
 
 bool MainWindow::getisIA()
 {
-    return isIA;
+    return isIAPath;
 }
 
 bool MainWindow::getLocal() const
