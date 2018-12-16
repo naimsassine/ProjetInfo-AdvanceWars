@@ -11,6 +11,7 @@ private:
 public:
     Recon(int InitX,int InitY,int InitTeam);
     void attack();
+    static const int money2=15000;
 
 };
 
