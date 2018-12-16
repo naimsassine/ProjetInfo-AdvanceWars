@@ -400,6 +400,7 @@ void Game::pathfinddijkstra(Unites &unit)
         posy =e->getPosY();
         unit.setPosX(posx);
         unit.setPosY(posy);
+
     }
     }
     }
@@ -1409,6 +1410,24 @@ void Game::capture_Usine(int z, int e)
     int nombreusines2 = 0;
     int nombreaerop1 = 0;
     int nombreaerop2 = 0;
+    int nbreunite1 =0;
+    int nbreunite2 =0;
+    compteurfin1=0;
+    compteurfin2=0;
+    for(std::vector<Unites>::size_type i = 0; i != unites.size(); i++) {
+        if(unites[i].getTeam()==2){
+            nbreunite1++;
+        }
+        if(unites[i].getTeam()==1){
+            nbreunite2++;
+        }
+    }
+    if(nbreunite1==0){
+        compteurfin1++;
+    }
+    if(nbreunite2==0){
+        compteurfin2++;
+    }
     for(std::vector<Usine>::size_type i = 0; i != usine.size(); i++){
 
 
@@ -1438,6 +1457,10 @@ void Game::capture_Usine(int z, int e)
     else if (usine[i].getTeam() == 2) {
         nombreusines2 = nombreusines2 + 1;
     }
+    else if (usine[i].getTeam() == 0) {
+        nombreusines2 = nombreusines2 + 1;
+        nombreusines1 = nombreusines1 + 1;
+    }
 
     }
     if (nombreusines1 == 0) {
@@ -1454,8 +1477,10 @@ void Game::capture_Usine(int z, int e)
         }
         else if (aeroport[i].getTeam() == 2) {
             nombreaerop2 = nombreaerop2 + 1;
-            setEndGame(true);
-            window->redraw();
+        }
+        else if (aeroport[i].getTeam() == 0) {
+            nombreaerop2 = nombreaerop2 + 1;
+            nombreaerop1 = nombreaerop1 + 1;
         }
         }
         if (nombreaerop1 == 0) {
@@ -1477,8 +1502,49 @@ void Game::capture_Usine(int z, int e)
 }
 void Game::capture_Aeroport(int z, int e)
 {
+    int nombreusines1 = 0;
+    int nombreusines2 = 0;
     int nombreaerop1 = 0;
     int nombreaerop2 = 0;
+    int nbreunite1 =0;
+    int nbreunite2 =0;
+    compteurfin1=0;
+    compteurfin2=0;
+    for(std::vector<Unites>::size_type i = 0; i != unites.size(); i++) {
+        if(unites[i].getTeam()==2){
+            nbreunite1++;
+        }
+        if(unites[i].getTeam()==1){
+            nbreunite2++;
+        }
+    }
+
+    if(nbreunite1==0){
+        compteurfin1++;
+    }
+    if(nbreunite2==0){
+        compteurfin2++;
+    }
+    for(std::vector<Usine>::size_type i = 0; i!= usine.size(); i++){
+        if (usine[i].getTeam() == 1) {
+            nombreusines1 = nombreusines1 + 1;
+        }
+        else if (usine[i].getTeam() == 2) {
+            nombreusines2 = nombreusines2 + 1;
+        }
+        else if (usine[i].getTeam() == 0) {
+            nombreusines2 = nombreusines2 + 1;
+            nombreusines1 = nombreusines1 + 1;
+        }
+
+        }
+    if(nombreusines1==0){
+        compteurfin1++;
+    }
+    if(nombreusines2==0){
+        compteurfin2++;
+    }
+
     for(std::vector<Aeroport>::size_type i = 0; i != aeroport.size(); i++){
 
     if(aeroport[i].getPosX()==z &&aeroport[i].getPosY()==e && unites[posXselec].getType() == 1998){
@@ -1520,6 +1586,7 @@ void Game::capture_Aeroport(int z, int e)
             window->redraw();
         }
     }
+
 }
 void Game::affichage(){
     if(unites[posXselec].getTeam()==turn && unites[posXselec].getSelected()== true){
