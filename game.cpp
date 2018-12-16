@@ -239,6 +239,9 @@ void Game::moveable(int move, int x, int y ,int typeu)
              gameobject[x][y+1].setUnitin(true);}
         else if( u.getPosX()==x && u.getPosY()==y-1 ){
              gameobject[x][y-1].setUnitin(true);}
+        else{
+           gameobject[x][y-1].setUnitin(false);
+        }
         }
 
     if(x<21 && x>-1 && y<17 && y>-1){
@@ -292,8 +295,114 @@ void Game::moveable(int move, int x, int y ,int typeu)
                              gameobject[x][y-1].setMovable(false);
                         }
                         else{
-                        moveable(s,x,y-1,typeu);
+                            moveable(s,x,y-1,typeu);
                         }}}}
+
+void Game::pathfinddijkstra(Unites &unit)
+{
+    compteurpathfind=false;
+
+    if(gameobject[unit.getPosX()][unit.getPosY()].getType()==34 && gameobject[unit.getPosX()][unit.getPosY()].getTeam()!=unit.getTeam() ){
+        capture(unit.getPosX(),unit.getPosY());
+
+    }
+    else if(gameobject[unit.getPosX()][unit.getPosY()].getType()==35&& gameobject[unit.getPosX()][unit.getPosY()].getTeam()!=unit.getTeam() ){
+        capture_Usine(unit.getPosX(),unit.getPosY());
+    }
+    else if(gameobject[unit.getPosX()][unit.getPosY()].getType()==36&& gameobject[unit.getPosX()][unit.getPosY()].getTeam()!=unit.getTeam()){
+        capture_Aeroport(unit.getPosX(),unit.getPosY());
+    }
+    else{
+    dijkstra(unit);
+    Gameobject *s=nullptr;
+    int count=0;
+    for(Ville &v:ville){
+
+        if( gameobject[v.getPosX()][v.getPosY()].getTeam()!=unit.getTeam() && !v.getUnitin()  ){
+                                count++;
+
+                                if(count==1){
+                                s=&gameobject[v.getPosX()][v.getPosY()];}
+
+                                else if(s->getDistance()>gameobject[v.getPosX()][v.getPosY()].getDistance()){
+                                    s=&gameobject[v.getPosX()][v.getPosY()];
+                                }
+        }
+
+    }
+    for(Usine &v:usine){
+        if( gameobject[v.getPosX()][v.getPosY()].getTeam()!=unit.getTeam() && !v.getUnitin()  ){
+                                count++;
+
+                                if(count==1){
+                                s=&gameobject[v.getPosX()][v.getPosY()];}
+
+                                else if(s->getDistance()>gameobject[v.getPosX()][v.getPosY()].getDistance()){
+                                    s=&gameobject[v.getPosX()][v.getPosY()];
+                                }
+        }
+
+    }
+    for(Aeroport &v:aeroport){
+        if( gameobject[v.getPosX()][v.getPosY()].getTeam()!=unit.getTeam() && !v.getUnitin()  ){
+                                count++;
+
+                                if(count==1){
+                                s=&gameobject[v.getPosX()][v.getPosY()];}
+
+                                else if(s->getDistance()>gameobject[v.getPosX()][v.getPosY()].getDistance()){
+                                    s=&gameobject[v.getPosX()][v.getPosY()];
+                                }
+        }
+
+    }
+    if(s!=nullptr){
+    std::cout<<s->getPosX()<< s->getPosY()<<std::endl;
+
+    int posx =s->getPosX();
+    int posy =s->getPosY();
+    this->moveable(unit.getPtdeplacement(),unit.getPosX(),unit.getPosY(),0);
+    if(s->getMovable()){
+        int posx =s->getPosX();
+        int posy =s->getPosY();
+        this->moveable(unit.getPtdeplacement(),unit.getPosX(),unit.getPosY(),0);
+        if(s->getMovable()){
+        unit.setPosX(posx);
+        std::cout<<"salma debug1"<<std::endl;
+        unit.setPosY(posy);
+        if(gameobject[unit.getPosX()][unit.getPosY()].getType()==34){
+            capture(unit.getPosX(),unit.getPosY());
+
+        }
+        else if(gameobject[unit.getPosX()][unit.getPosY()].getType()==35){
+            capture_Usine(unit.getPosX(),unit.getPosY());
+        }
+        else{
+            capture_Aeroport(unit.getPosX(),unit.getPosY());
+        }
+        }
+    }
+    else {
+        this->moveable(unit.getPtdeplacement(),unit.getPosX(),unit.getPosY(),unit.getTypeu());
+        Gameobject *e=&gameobject[posx][posy];
+        std::cout<<e->getAntecedantX()<<"  "<<e->getAntecedantY()<<std::endl;
+        posx =s->getPosX();
+        posy =s->getPosX();
+
+        while (!gameobject[posx][posy].getMovable()) {
+            posx=e->getAntecedantX();
+            posy=e->getAntecedantY();
+            e=&gameobject[posx][posy];
+        }
+
+        posx =e->getPosX();
+        posy =e->getPosY();
+        unit.setPosX(posx);
+        unit.setPosY(posy);
+    }
+    }
+    }
+}
 
 
 int Game::getTurn() const
@@ -354,7 +463,7 @@ void Game::endtour()
             for(std::vector<Unites>::size_type i = 0; i != unites.size(); i++){
                 if (unites[i].getTeam() == 2){
                     // code IA
-                    if(compteurpathfind==false){this->greedy(unites[i]);} // pour le IA pathfind il faut appele this->pathfinding avec l argument true et gameobject[4][15]
+                    if(compteurpathfind==false){this->pathfinddijkstra(unites[i]);} // pour le IA pathfind il faut appele this->pathfinding avec l argument true et gameobject[4][15]
                     else if(compteurpathfind == true){
                         std::cout<<"il est deja en place"<<std::endl;
                     }
@@ -396,31 +505,37 @@ Game &Game::newGame(){
 
 }
 
-void Game::dijkstra(Unites blue)
+void Game::dijkstra(Unites &blue)
 {
         std::list<Gameobject*> list;
-
         for(int i=0 ;i<21;i++){
                 for (int j=0; j <17 ;j++){
                     list.push_back(&gameobject[i][j]);
-                    if(blue.getPosX()==i&&blue.getPosY()==j){
-                        gameobject[i][j].setDistance(0);
-                    }
-                    else{
-                        gameobject[i][j].setDistance(100000);
-                    }
+                    gameobject[i][j].setDistance(100000);
+                    gameobject[i][j].setDejaparc(false);
+
                 }
             }
 
-            Gameobject* start= &gameobject[blue.getPosX()][blue.getPosY()];
+            Gameobject* start;
+            start=&gameobject[blue.getPosX()][blue.getPosY()];
             gameobject[start->getPosX()][start->getPosY()].setAntecedantX(start->getPosX());
             gameobject[start->getPosX()][start->getPosY()].setAntecedantY(start->getPosY());
+            gameobject[start->getPosX()][start->getPosY()].setDistance(0);
+            std::cout<<"  "<<blue.getPosX()<<" "<<gameobject[start->getPosX()][start->getPosY()].getDistance()<<std::endl;
             int Q= 357;
+            int poids=0;
             while(Q>0){
+
+
                 for(int i=-1 ;i<2;i++){
                     for (int j=-1; j <2 ;j++){
-                        if(i!=j&&(start->getDistance()+gameobject[start->getPosX()+i][start->getPosY()+j].getPtdemouvement(blue.getTypeu()) <gameobject[start->getPosX()+i][start->getPosY()+j].getDistance())&&!gameobject[start->getPosX()+i][start->getPosY()+j].getDejaparc()){
-                            int d=start->getDistance()+gameobject[start->getPosX()+i][start->getPosY()+j].getPtdemouvement(blue.getTypeu());
+                        poids=gameobject[start->getPosX()+i][start->getPosY()+j].getPtdemouvement(blue.getTypeu());
+                        if(poids==0){
+                            poids=100000;
+                        }
+                        if(i!=j && i+j !=0&&(start->getDistance()+poids <gameobject[start->getPosX()+i][start->getPosY()+j].getDistance())&&!gameobject[start->getPosX()+i][start->getPosY()+j].getDejaparc()){
+                            int d=start->getDistance()+poids;
                             gameobject[start->getPosX()+i][start->getPosY()+j].setDistance(d);
                             gameobject[start->getPosX()+i][start->getPosY()+j].setAntecedantX(start->getPosX());
                             gameobject[start->getPosX()+i][start->getPosY()+j].setAntecedantY(start->getPosY());
@@ -438,10 +553,7 @@ void Game::dijkstra(Unites blue)
 
             }
 
-            for(int i=0 ;i<21;i++){
-                    for (int j=0; j <17 ;j++){
-                        std::cout<<gameobject[i][j].getDistance()<<" "<<gameobject[i][j].getAntecedantX()<<" "<<gameobject[i][j].getAntecedantY()<<std::endl;
-                    }}
+
             // Make iterate point to begining and incerement it one by one till it reaches the end of list.
 
 
@@ -569,7 +681,7 @@ void Game::move(int x,int y)
 
         if(gameobject[x][y].getType()==34){
             for(std::vector<Ville>::size_type i = 0; i != ville.size(); i++){
-                if(ville[i].getPosX()==u->getPosX() &&ville[i].getPosY()==u->getPosY()) {
+                if(ville[i].getPosX()==u->getPosX() &&ville[i].getPosY()==u->getPosY() ) {
                     ville[i].setUnitin(true);
                     ville[i].setUnite(posXselec);
                     ville[i].setSelected(true);
@@ -1202,7 +1314,6 @@ void Game::fusion( int v, int w){
 void Game::capture(int z, int e)
 {
 
-    dijkstra(unites[posXselec]);
     for(std::vector<Ville>::size_type i = 0; i != ville.size(); i++){
 
 
