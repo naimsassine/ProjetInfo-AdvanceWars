@@ -44,7 +44,9 @@ void Buildings::setUnitin(bool value)
         capturepoint=20;
         game.setActville(-1);
         game.getWindow()->redraw();
-        unitin=false;}
+        unitin=false;
+        unite=-1;
+        }
         else{
             std::cout<<"salma2";
             unitin=true;
