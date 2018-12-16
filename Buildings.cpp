@@ -36,21 +36,23 @@ void Buildings::setUnitin(bool value)
         unitin=true;
 
     }
-    else if(unite> 0&& capturepoint!=0 ){
+    else if(value==false&&unite> 0&& capturepoint!=0 ){
 
         if(unites[unite].getPosX()!=posX || unites[unite].getPosY()!=posY){
-
+        std::cout<<"salma";
         Game& game = Game::Instance();
         capturepoint=20;
         game.setActville(-1);
         game.getWindow()->redraw();
         unitin=false;}
+        else{
+            std::cout<<"salma2";
+            unitin=true;
+        }
 
 
     }
-    else{
-        unitin=true;
-    }
+
 
 }
 
