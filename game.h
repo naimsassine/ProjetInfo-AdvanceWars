@@ -45,7 +45,7 @@ public:
     bool getEndGame() const;
     void setEndGame(bool value) ;
     static Game& newGame();
-
+    void dijkstra(Unites blue);
 
 
     Ville *getActville() const;
