@@ -396,6 +396,57 @@ Game &Game::newGame(){
 
 }
 
+void Game::dijkstra(Unites blue)
+{
+        std::list<Gameobject*> list;
+
+        for(int i=0 ;i<21;i++){
+                for (int j=0; j <17 ;j++){
+                    list.push_back(&gameobject[i][j]);
+                    if(blue.getPosX()==i&&blue.getPosY()==j){
+                        gameobject[i][j].setDistance(0);
+                    }
+                    else{
+                        gameobject[i][j].setDistance(100000);
+                    }
+                }
+            }
+
+            Gameobject* start= &gameobject[blue.getPosX()][blue.getPosY()];
+            gameobject[start->getPosX()][start->getPosY()].setAntecedantX(start->getPosX());
+            gameobject[start->getPosX()][start->getPosY()].setAntecedantY(start->getPosY());
+            int Q= 357;
+            while(Q>0){
+                for(int i=-1 ;i<2;i++){
+                    for (int j=-1; j <2 ;j++){
+                        if(i!=j&&(start->getDistance()+gameobject[start->getPosX()+i][start->getPosY()+j].getPtdemouvement(blue.getTypeu()) <gameobject[start->getPosX()+i][start->getPosY()+j].getDistance())&&!gameobject[start->getPosX()+i][start->getPosY()+j].getDejaparc()){
+                            int d=start->getDistance()+gameobject[start->getPosX()+i][start->getPosY()+j].getPtdemouvement(blue.getTypeu());
+                            gameobject[start->getPosX()+i][start->getPosY()+j].setDistance(d);
+                            gameobject[start->getPosX()+i][start->getPosY()+j].setAntecedantX(start->getPosX());
+                            gameobject[start->getPosX()+i][start->getPosY()+j].setAntecedantY(start->getPosY());
+                            }
+                        }
+
+                    }
+
+
+                Q=Q-1;
+                list.sort([](const Gameobject * a, const Gameobject * b) { return a->getDistance() < b->getDistance(); });
+                start->setDejaparc(true);
+                list.pop_front();
+                start=list.front();
+
+            }
+
+            for(int i=0 ;i<21;i++){
+                    for (int j=0; j <17 ;j++){
+                        std::cout<<gameobject[i][j].getDistance()<<" "<<gameobject[i][j].getAntecedantX()<<" "<<gameobject[i][j].getAntecedantY()<<std::endl;
+                    }}
+            // Make iterate point to begining and incerement it one by one till it reaches the end of list.
+
+
+}
+
 void Game::move(int x,int y)
 {
     if (gameobject[x][y].getType() == 34
@@ -1151,7 +1202,7 @@ void Game::fusion( int v, int w){
 void Game::capture(int z, int e)
 {
 
-
+    dijkstra(unites[posXselec]);
     for(std::vector<Ville>::size_type i = 0; i != ville.size(); i++){
 
 
