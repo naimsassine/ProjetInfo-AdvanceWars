@@ -159,3 +159,13 @@ int Unites::getPosBin() const
 {
     return posBin;
 }
+
+bool Unites::getShow() const
+{
+    return show;
+}
+
+void Unites::setShow(bool value)
+{
+    show = value;
+}
