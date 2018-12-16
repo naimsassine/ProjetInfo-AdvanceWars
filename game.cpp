@@ -412,7 +412,7 @@ void Game::pathfinddijkstra(Unites &unit)
         posx =s->getPosX();
         posy =s->getPosX();
         int i=0;
-        while (!gameobject[posx][posy].getMovable()&& i<10) {
+        while (!gameobject[posx][posy].getMovable()&& i<100) {
             i++;
             posx=e->getAntecedantX();
             posy=e->getAntecedantY();
@@ -702,6 +702,9 @@ void Game::move(int x,int y)
            v.setUnitin(true);
            v.setUnite(posXselec);
        }
+       else{
+           v.setUnitin(false);
+       }
 
     }
     for (Usine& v :usine){
@@ -709,12 +712,18 @@ void Game::move(int x,int y)
             v.setUnitin(true);
             v.setUnite(posXselec);
         }
+        else{
+            v.setUnitin(false);
+        }
     }
 
     for(Aeroport& v : aeroport){
         if(u->isAtPos(v.getPosX(),v.getPosY())){
             v.setUnitin(true);
             v.setUnite(posXselec);
+        }
+        else{
+            v.setUnitin(false);
         }
     }
 
