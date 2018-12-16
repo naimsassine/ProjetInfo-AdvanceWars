@@ -30,6 +30,7 @@ public:
     void moveable(int move ,int x, int y,int typeu);
     void getcaptured() const;
     void setcaptured() const;
+    void pathfinddijkstra(Unites &unit);
     std::vector<Aeroport> getAeroport() const;
     std::vector<Usine> getUsine() const;
     std::vector<Ville> getVille() const;
@@ -45,7 +46,7 @@ public:
     bool getEndGame() const;
     void setEndGame(bool value) ;
     static Game& newGame();
-    void dijkstra(Unites blue);
+    void dijkstra(Unites &blue);
 
 
     Ville *getActville() const;
