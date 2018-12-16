@@ -402,6 +402,12 @@ void Game::pathfinddijkstra(Unites &unit)
     }
     }
     }
+    for (int z = 0 ;z < 21;z++) {
+                for (int w=0; w <17 ;w++) {
+                    if(gameobject[z][w].getMovable()){gameobject[z][w].setMovable(false);}
+
+                }}
+
 }
 
 
